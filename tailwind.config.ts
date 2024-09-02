@@ -45,22 +45,13 @@ module.exports = {
         red: '#FF0000',
         green: {
           DEFAULT: '#05D58B',
-          bg: '#E7F7DB',
-          naver: '#03CF5D',
         },
         purple: '#760DDE',
         orange: {
           DEFAULT: '#FFA500',
-          bg: '#F9EEE3',
         },
         pink: {
           DEFAULT: '#FF2F9F',
-          bg: '#F7DBF0',
-        },
-        violet: {
-          DEFAULT: '#5534DA',
-          '8%': '#F1EFFD',
-          dark: '#2b1193',
         },
         white: '#F1F1F5',
         'beige-f9': '#F9F7F7',
