@@ -5,11 +5,7 @@ const rem0_100 = { ...Array.from(Array(101)).map((_, i) => `${i / 10}rem`) }
 const rem0_1300 = { ...Array.from(Array(1301)).map((_, i) => `${i / 10}rem`) }
 
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     borderRadius: {
       s: '10px',
