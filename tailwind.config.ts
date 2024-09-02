@@ -5,11 +5,7 @@ const rem0_100 = { ...Array.from(Array(101)).map((_, i) => `${i / 10}rem`) }
 const rem0_1300 = { ...Array.from(Array(1301)).map((_, i) => `${i / 10}rem`) }
 
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     borderRadius: {
       s: '10px',
@@ -33,10 +29,13 @@ module.exports = {
           DEFAULT: '#5097FA',
         },
         gray: {
-          10: '#626282',
+          10: '#6E6E82',
           20: '#9FA6B2',
+          30: '#F1F1F5',
         },
-        indigo: '#5363FF',
+        indigo: {
+          DEFAULT: '#5363FF',
+        },
         black: {
           10: '#17171C',
           20: '#21212A',
@@ -56,6 +55,7 @@ module.exports = {
         white: '#F1F1F5',
         'beige-f9': '#F9F7F7',
         yellow: '#FFC83C',
+        disabled: '#353542',
       },
       screens: {
         tablet: { max: '1199px' },
