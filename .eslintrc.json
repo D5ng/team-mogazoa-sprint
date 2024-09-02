@@ -42,7 +42,12 @@
                 "position": "before"
               },
               {
-                "pattern": "@/core/**",
+                "pattern": "@/pages/**",
+                "group": "internal",
+                "position": "before"
+              },
+              {
+                "pattern": "@/src/**",
                 "group": "internal"
               },
               {
