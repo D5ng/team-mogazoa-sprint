@@ -17,20 +17,10 @@ module.exports = {
       l: '30px',
       full: '100px',
     },
+    gradientColor: {
+      'custom-gradient': 'linear-gradient(to right, #5097FA, #5363FF)',
+    },
     extend: {
-      keyframes: {
-        bounceOnce: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-      },
-      transform: {
-        '85': 'scale(0.85)',
-      },
-      animation: {
-        bounceOnce: 'bounceOnce 3s ease-in-out infinite',
-      },
-
       borderWidth: rem0_10,
       borderRadius: rem0_100,
       fontSize: rem0_100,
@@ -40,25 +30,21 @@ module.exports = {
       spacing: rem0_1300,
       colors: {
         blue: {
-          DEFAULT: '#0094FF',
+          DEFAULT: '#5097FA',
         },
         gray: {
-          10: '#F7F7F8',
-          20: '#F1F1F1',
-          30: '#DCDCDC',
-          40: '#C1C1C1',
-          50: '#99999A',
-          60: '#818181',
-          70: '#5A5A5B',
-          80: '#3D3D3D',
+          10: '#626282',
+          20: '#9FA6B2',
         },
+        indigo: '#5363FF',
         black: {
-          DEFAULT: '#000',
-          overlay: 'rgba(0, 0, 0, 0.70)', // 모달창 뒷 배경
+          10: '#17171C',
+          20: '#21212A',
+          30: '#2E2E3A',
         },
-        red: '#F23B3B',
+        red: '#FF0000',
         green: {
-          DEFAULT: '#34C231',
+          DEFAULT: '#05D58B',
           bg: '#E7F7DB',
           naver: '#03CF5D',
         },
@@ -68,7 +54,7 @@ module.exports = {
           bg: '#F9EEE3',
         },
         pink: {
-          DEFAULT: '#D549B6',
+          DEFAULT: '#FF2F9F',
           bg: '#F7DBF0',
         },
         violet: {
@@ -76,9 +62,9 @@ module.exports = {
           '8%': '#F1EFFD',
           dark: '#2b1193',
         },
-        white: '#FFF',
+        white: '#F1F1F5',
         'beige-f9': '#F9F7F7',
-        yellow: '#FEE500',
+        yellow: '#FFC83C',
       },
       screens: {
         tablet: { max: '1199px' },
