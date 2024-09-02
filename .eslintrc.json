@@ -1,6 +1,10 @@
 {
-  "extends": "next/core-web-vitals",
-  "plugins": ["prettier", "import", "react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals"
+  ],
+  "plugins": ["prettier", "import", "react", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "no-var": "warn",
