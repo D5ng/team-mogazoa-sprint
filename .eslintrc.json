@@ -1,3 +1,77 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": ["prettier", "import", "react"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "no-var": "warn",
+    "no-multiple-empty-lines": "warn",
+    "eqeqeq": "warn",
+    "react/jsx-pascal-case": "warn",
+    "react/no-direct-mutation-state": "warn",
+    "react/jsx-no-useless-fragment": "warn",
+    "react/jsx-key": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              ["parent", "sibling"],
+              "index",
+              "object",
+              "type"
+            ],
+            "pathGroups": [
+              {
+                "pattern": "next",
+                "group": "builtin",
+                "position": "before"
+              },
+              {
+                "pattern": "@/pages/**",
+                "group": "internal",
+                "position": "before"
+              },
+              {
+                "pattern": "@/src/**",
+                "group": "internal"
+              },
+              {
+                "pattern": "@/styles/*.css",
+                "group": "index",
+                "position": "after"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": [],
+            "newlines-between": "always",
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  }
 }
