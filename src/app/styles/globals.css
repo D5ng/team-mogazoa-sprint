@@ -4,24 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html,
-  body,
-  #__next {
-    height: 100%;
-  }
 
-  html {
-    font-size: 62.5%;
-  }
+@import url('./reset.css');
 
-  body {
-    font-size: 1.6rem;
-    font-family: 'Pretendard';
-    font-weight: 400;
-  }
+:root {
+  --default-bg: #1c1c22;
+}
+
+body {
+  background-color: var(--default-bg);
+}
 
   input {
     outline: none;
+  }
+
+  .gradient {
+    background: linear-gradient(91.17deg, #5097fa 0%, #5363ff 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(91.17deg, #5097fa 0%, #5363ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 }
