@@ -26,6 +26,7 @@ const meta: Meta<typeof DropdownStoryComponent> = {
 }
 
 export const DropdownComponent: Story = {
+  name: 'Dropdown',
   args: {
     menuItems: ['React.js', 'JavaScript', 'TypeScript'],
   },
