@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import formValidations from '@/src/shared/lib/form-validation'
 
 interface SignUpFormData {
   email: string
@@ -11,7 +12,6 @@ export default function SignUpForm() {
   const {
     register,
     handleSubmit: onSubmit,
-    watch,
     formState: { errors },
   } = useForm<SignUpFormData>({
     mode: 'onBlur',
@@ -22,8 +22,6 @@ export default function SignUpForm() {
       confirmPassword: '',
     },
   })
-
-  const password = watch('password')
 
   const handleSubmit = (data: SignUpFormData) => {
     console.log(data)
@@ -36,16 +34,10 @@ export default function SignUpForm() {
         <input
           id="email"
           type="text"
-          {...register('email', {
-            required: '이메일은 필수 입력입니다.',
-            pattern: {
-              value:
-                /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-              message: '잘못된 이메일입니다.',
-            },
-          })}
+          placeholder="이메일을 입력해주세요"
+          {...register('email', formValidations.email)}
         />
-        {errors?.email && <p>{errors.email.message}</p>}
+        {errors.email && <p>{errors.email.message}</p>}
       </div>
 
       <div>
@@ -53,13 +45,10 @@ export default function SignUpForm() {
         <input
           id="nickname"
           type="text"
-          {...register('nickname', {
-            required: '닉네임은 필수 입력입니다.',
-            minLength: { value: 2, message: '닉네임은 2자 이상이어야 합니다.' },
-            maxLength: { value: 10, message: '닉네임은 10자 이하여야 합니다.' },
-          })}
+          placeholder="닉네임을 입력해주세요"
+          {...register('nickname', formValidations.nickname)}
         />
-        {errors?.nickname && <p>{errors.nickname.message}</p>}
+        {errors.nickname && <p>{errors.nickname.message}</p>}
       </div>
 
       <div>
@@ -67,15 +56,8 @@ export default function SignUpForm() {
         <input
           id="password"
           type="password"
-          {...register('password', {
-            required: '비밀번호를 입력해주세요.',
-            pattern: {
-              value:
-                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-              message:
-                '비밀번호는 8자 이상이며, 영문, 숫자, 특수문자(@$!%*#?&)를 포함해야 합니다.',
-            },
-          })}
+          placeholder="비밀번호를 입력해주세요"
+          {...register('password', formValidations.password)}
         />
         {errors.password && <p>{errors.password.message}</p>}
       </div>
@@ -85,14 +67,13 @@ export default function SignUpForm() {
         <input
           id="confirmPassword"
           type="password"
-          {...register('confirmPassword', {
-            required: '비밀번호를 입력해주세요.',
-            validate: (value) =>
-              value === password || '비밀번호가 일치하지 않습니다.',
-          })}
+          placeholder="비밀번호를 한번 더 입력해주세요"
+          {...register('confirmPassword', formValidations.confirmPassword)}
         />
         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       </div>
+
+      <button type="submit">회원가입</button>
     </form>
   )
 }
