@@ -10,7 +10,7 @@ const meta: Meta<typeof Button> = {
 export const Primary: Story = {
   name: 'Button',
   args: {
-    design: 'primary',
+    variant: 'primary',
     disabled: false,
     children: '회원가입',
   },
