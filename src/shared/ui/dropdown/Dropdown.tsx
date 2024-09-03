@@ -57,7 +57,7 @@ export function DropdownTrigger({ children }: PropsWithChildren) {
 
       <Image
         src={DropdownArrowIcon}
-        alt=""
+        alt={isToggle ? '드롭다운 목록 열기' : '드롭다운 목록 닫기'}
         width="24"
         height="24"
         className={rotateClass}
