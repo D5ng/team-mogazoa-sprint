@@ -22,8 +22,7 @@
       "@entities/*": ["./src/entities/*"],
       "@features/*": ["./src/features/*"],
       "@shared/*": ["./src/shared/*"],
-      "@widgets/*": ["./src/widgets/*"],
-      "@common/*": ["./src/shared/@common/*"]
+      "@widgets/*": ["./src/widgets/*"]
     },
     "plugins": [
       {
