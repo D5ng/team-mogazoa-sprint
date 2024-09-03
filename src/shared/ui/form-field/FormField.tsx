@@ -28,7 +28,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
   },
 )
 
-export function FormLabel({ children }: LabelProps) {
+export function FieldLabel({ children }: LabelProps) {
   const { name } = useFormField()
   return (
     <label htmlFor={name} className="text-[16px] text-white">
@@ -59,7 +59,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   )
 })
 
-export function FormErrorMessage() {
+export function FieldErrorMessage() {
   const { name, errors } = useFormField()
   const error = errors[name]
 
