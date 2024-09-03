@@ -51,7 +51,7 @@ export function DropdownTrigger({ children }: PropsWithChildren) {
   return (
     <button
       onClick={onToggle}
-      className="w-full h-[70px] border border-black-70 bg-black-60 rounded-lg px-[20px] flex justify-between items-center text-black-30 focus:text-white"
+      className="w-full h-[70px] border border-black-70 bg-black-60 rounded-lg px-[20px] flex justify-between items-center text-black-30 focus:text-white focus:border-indigo"
     >
       {selectedItem || children}
 
