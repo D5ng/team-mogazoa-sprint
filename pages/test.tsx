@@ -1,4 +1,4 @@
-import Gnb from '@/src/shared/@common/ui/Gnb/Gnb'
+import Gnb from '@/src/widgets/Gnb/Gnb'
 
 export default function main() {
   return (
