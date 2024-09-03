@@ -1,6 +1,9 @@
+@import url('./reset.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @import url('./reset.css');
 
@@ -12,9 +15,8 @@ body {
   background-color: var(--default-bg);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  input {
+    outline: none;
   }
 
   .gradient {
