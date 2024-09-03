@@ -1,12 +1,12 @@
-import { MouseEventHandler, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
-interface UseOutsideProps {
+interface UseOutsideParams {
   onCloseToggle: () => void
 }
 
 export default function useOutsideClick<T extends HTMLElement>({
   onCloseToggle,
-}: UseOutsideProps) {
+}: UseOutsideParams) {
   const ref = useRef<T>(null)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function useOutsideClick<T extends HTMLElement>({
     }
     document.addEventListener('mousedown', outsideClick)
 
-    return () => document.addEventListener('mousedown', outsideClick)
+    return () => document.removeEventListener('mousedown', outsideClick)
   }, [])
 
   return ref
