@@ -6,11 +6,11 @@ export default function GnbInput() {
   return (
     <div className="relative">
       <input
-        className="text-14 text-white w-400 h-50 rounded-l px-40 py-5 bg-black-30 tablet:w-300 tablet:h-40 target:text-12"
+        className="text-[14px] text-white w-[400px] h-[50px] rounded-[30px] px-[40px] py-[5px] bg-black-70 tablet:w-[300px] tablet:h-[40px] target:text-[12px]"
         placeholder="상품 이름을 검색해 보세요"
       />
       <Image
-        className="absolute left-13 top-16 tablet:top-12"
+        className="absolute left-[13px] top-[16px] tablet:top-[12px]"
         src={searchIcon}
         width={20}
         height={20}

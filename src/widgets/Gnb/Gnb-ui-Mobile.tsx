@@ -30,7 +30,7 @@ export default function GnbMenu() {
     }
   }, [])
   return (
-    <div className="flex items-center justify-between bg-black-20 px-30 py-20 relative">
+    <div className="flex items-center justify-between bg-black-80 px-[30px] py-[20px] relative">
       <button>
         <Image src={hamburger} width={30} height={10} alt="햄버거버튼" />
       </button>
@@ -45,7 +45,7 @@ export default function GnbMenu() {
       ) : (
         <div
           ref={inputRef}
-          className="absolute top-80 left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out opacity-80"
+          className="absolute top-[80px] left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out opacity-80"
         >
           <GnbInput />
         </div>
