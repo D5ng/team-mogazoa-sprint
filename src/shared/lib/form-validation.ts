@@ -1,17 +1,4 @@
-import { RegisterOptions } from 'react-hook-form'
-
-interface FormData {
-  email: string
-  nickname: string
-  password: string
-  confirmPassword: string
-}
-
-type FormValidations = {
-  [K in keyof FormData]: RegisterOptions<FormData, K>
-}
-
-const formValidations: FormValidations = {
+const formValidations = {
   email: {
     required: '이메일은 필수 입력입니다.',
     pattern: {
@@ -52,9 +39,9 @@ const formValidations: FormValidations = {
 
   confirmPassword: {
     required: '비밀번호를 입력해주세요.',
-    validate: (value: string, formValues: FormData) =>
+    validate: (value: string, formValues: any) =>
       value === formValues.password || '비밀번호가 일치하지 않습니다.',
   },
-}
+} as const
 
 export default formValidations

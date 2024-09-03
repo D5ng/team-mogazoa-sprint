@@ -1,22 +1,23 @@
-import type { ReactNode, InputHTMLAttributes } from 'react'
+import type { ReactNode } from 'react'
+
 import type {
   UseFormRegister,
-  FieldValues,
   FieldErrors,
-  Path,
+  RegisterOptions,
 } from 'react-hook-form'
 
-export interface FormFieldContextType<TFieldValues extends FieldValues> {
-  name: Path<TFieldValues>
-  register: UseFormRegister<TFieldValues>
-  error?: string
+export interface FormFieldContextValue {
+  name: string
+  register: UseFormRegister<any>
+  errors: FieldErrors
 }
 
-export interface FormFieldProps<TFieldValues extends FieldValues> {
-  name: Path<TFieldValues>
-  register: UseFormRegister<TFieldValues>
-  errors: FieldErrors<TFieldValues>
-  children: ReactNode
+export interface FormFieldProps {
+  name: string
+  register: UseFormRegister<any>
+  errors: FieldErrors
+  validation?: RegisterOptions
+  children: React.ReactNode
 }
 
 export interface LabelProps {

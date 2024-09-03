@@ -1,58 +1,59 @@
-// import { createContext, useContext, forwardRef } from 'react'
-// import { FieldValues } from 'react-hook-form'
-// import type {
-//   FormFieldContextType,
-//   FormFieldProps,
-//   LabelProps,
-// } from './FormField.type'
+import { createContext, useContext, forwardRef } from 'react'
+import type {
+  InputProps,
+  LabelProps,
+  FormFieldContextValue,
+  FormFieldProps,
+} from './FormField.type'
 
-// const FormFieldContext = createContext<FormFieldContextType<any> | null>(null)
+const FormFieldContext = createContext<FormFieldContextValue | null>(null)
 
-// function useFormField() {
-//   const context = useContext(FormFieldContext)
-//   if (!context) {
-//     throw new Error('FormField 컴포넌트 내에서만 사용해야 합니다.')
-//   }
-//   return context
-// }
+export function useFormField() {
+  const context = useContext(FormFieldContext)
+  if (!context) {
+    throw new Error('FormField 컴포넌트 내에서만 사용해야 합니다.')
+  }
+  return context
+}
+export function FormField({
+  name,
+  register,
+  errors,
+  validation,
+  children,
+}: FormFieldProps) {
+  return (
+    <FormFieldContext.Provider
+      value={{
+        name,
+        register: (name) => register(name, validation),
+        errors,
+      }}
+    >
+      {children}
+    </FormFieldContext.Provider>
+  )
+}
 
-// export function FormField<TFieldValues extends FieldValues>({
-//   name,
-//   register,
-//   errors,
-//   children,
-// }: FormFieldProps<TFieldValues>) {
-//   // const error = errors[name]?.message as string | undefined
-//   return (
-//     <FormFieldContext.Provider value={{ name, register }}>
-//       {children}
-//     </FormFieldContext.Provider>
-//   )
-// }
+export function FormLabel({ children }: LabelProps) {
+  const { name } = useFormField()
+  return (
+    <label htmlFor={name} className="text-base">
+      {children}
+    </label>
+  )
+}
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const { name, register, errors } = useFormField()
+  const errorClassName = errors ? 'border-red' : ''
+  return <input id={name} autoComplete={name} {...register(name)} {...props} />
+})
 
-// export function Label({ children }: LabelProps) {
-//   const { name } = useFormField()
-//   return <label htmlFor={name}>{children}</label>
-// }
+export function FormErrorMessage() {
+  const { name, errors } = useFormField()
+  const error = errors[name]
 
-// // export function Input<TFieldValues extends FieldValues>({
-// //   ...props
-// // }: InputHTMLAttributes<HTMLInputElement> &
-// //   ReturnType<UseFormRegister<TFieldValues>>) {
-// //   const { name, register } = useFormField()
-// //   return <input id={name} {...register(name)} {...props} />
-// // }
+  if (!error) return null
 
-// const Input = forwardRef<HTMLInputElement>(function Input(props, ref) {
-//   return <input ref={ref} {...props} />
-// })
-
-// export function ErrorMessage() {
-//   const { error } = useFormField()
-//   if (!error) return null
-//   return <p>{error}</p>
-// }
-
-// FormField.Label = Label
-// FormField.Input = Input
-// FormField.ErrorMessage = ErrorMessage
+  return <p>{error.message as React.ReactNode}</p>
+}

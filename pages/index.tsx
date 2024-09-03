@@ -1,5 +1,12 @@
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import formValidations from '@/src/shared/lib/form-validation'
+import {
+  FormField,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+} from '@/src/shared/ui/form-field/FormField'
 
 interface SignUpFormData {
   email: string
@@ -11,7 +18,7 @@ interface SignUpFormData {
 export default function SignUpForm() {
   const {
     register,
-    handleSubmit: onSubmit,
+    handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormData>({
     mode: 'onBlur',
@@ -23,55 +30,55 @@ export default function SignUpForm() {
     },
   })
 
-  const handleSubmit = (data: SignUpFormData) => {
+  const onSubmit = (data: SignUpFormData) => {
     console.log(data)
   }
 
   return (
-    <form onSubmit={onSubmit(handleSubmit)}>
-      <div>
-        <label htmlFor="email">이메일</label>
-        <input
-          id="email"
-          type="text"
-          placeholder="이메일을 입력해주세요"
-          {...register('email', formValidations.email)}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <FormField
+        name="email"
+        register={register}
+        errors={errors}
+        validation={formValidations.email}
+      >
+        <FormLabel>이메일</FormLabel>
+        <Input type="text" placeholder="이메일을 입력해주세요" />
+        <FormErrorMessage />
+      </FormField>
 
-      <div>
-        <label htmlFor="nickname">닉네임</label>
-        <input
-          id="nickname"
-          type="text"
-          placeholder="닉네임을 입력해주세요"
-          {...register('nickname', formValidations.nickname)}
-        />
-        {errors.nickname && <p>{errors.nickname.message}</p>}
-      </div>
+      <FormField
+        name="nickname"
+        register={register}
+        errors={errors}
+        validation={formValidations.nickname}
+      >
+        <FormLabel>닉네임</FormLabel>
+        <Input type="text" placeholder="닉네임을 입력해주세요" />
+        <FormErrorMessage />
+      </FormField>
 
-      <div>
-        <label htmlFor="password">비밀번호</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="비밀번호를 입력해주세요"
-          {...register('password', formValidations.password)}
-        />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
+      <FormField
+        name="password"
+        register={register}
+        errors={errors}
+        validation={formValidations.password}
+      >
+        <FormLabel>비밀번호</FormLabel>
+        <Input type="password" placeholder="비밀번호를 입력해주세요" />
+        <FormErrorMessage />
+      </FormField>
 
-      <div>
-        <label htmlFor="confirmPassword">비밀번호 확인</label>
-        <input
-          id="confirmPassword"
-          type="password"
-          placeholder="비밀번호를 한번 더 입력해주세요"
-          {...register('confirmPassword', formValidations.confirmPassword)}
-        />
-        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-      </div>
+      <FormField
+        name="confirmPassword"
+        register={register}
+        errors={errors}
+        validation={formValidations.confirmPassword}
+      >
+        <FormLabel>비밀번호 확인</FormLabel>
+        <Input type="password" placeholder="비밀번호를 한번 더 입력해주세요" />
+        <FormErrorMessage />
+      </FormField>
 
       <button type="submit">회원가입</button>
     </form>
