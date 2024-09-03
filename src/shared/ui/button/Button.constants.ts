@@ -10,6 +10,6 @@ export const BUTTON_VARIANT = {
   },
   tertiary: {
     default: 'border border-black-20 text-black-20',
-    disabled: 'border border-black-70 text-black-30',
+    disabled: 'border border-black-70',
   },
 } as const
