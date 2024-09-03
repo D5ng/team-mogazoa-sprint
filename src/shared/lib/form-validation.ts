@@ -1,4 +1,5 @@
-import { RegisterOptions, ValidateResult } from 'react-hook-form'
+import { RegisterOptions } from 'react-hook-form'
+import type { SignUpFormData } from '@/pages/sign-up'
 
 export const emailValidation = {
   required: '이메일은 필수 입력입니다.',
@@ -38,12 +39,11 @@ export const passwordValidation = {
   },
 } as const
 
-export const confirmPasswordValidation: RegisterOptions = {
+export const confirmPasswordValidation: RegisterOptions<
+  SignUpFormData,
+  'confirmPassword'
+> = {
   required: '비밀번호를 입력해주세요.',
-  validate: (
-    value: string,
-    formValues: Record<string, any>,
-  ): ValidateResult => {
-    return value === formValues.password || '비밀번호가 일치하지 않습니다.'
-  },
+  validate: (value, formValues) =>
+    value === formValues.password || '비밀번호가 일치하지 않습니다.',
 } as const

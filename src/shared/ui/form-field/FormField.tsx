@@ -15,25 +15,18 @@ export function useFormField() {
   }
   return context
 }
-export function FormField({
-  name,
-  register,
-  errors,
-  validation,
-  children,
-}: FormFieldProps) {
-  return (
-    <FormFieldContext.Provider
-      value={{
-        name,
-        register: (name) => register(name, validation),
-        errors,
-      }}
-    >
-      <div className="flex flex-col gap-2.5">{children}</div>
-    </FormFieldContext.Provider>
-  )
-}
+
+export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
+  (props, ref) => {
+    return (
+      <FormFieldContext.Provider value={props}>
+        <div ref={ref} className="flex flex-col gap-2.5">
+          {props.children}
+        </div>
+      </FormFieldContext.Provider>
+    )
+  },
+)
 
 export function FormLabel({ children }: LabelProps) {
   const { name } = useFormField()
@@ -44,16 +37,24 @@ export function FormLabel({ children }: LabelProps) {
   )
 }
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { name, register, errors } = useFormField()
+  const { name, onChange, onBlur, errors } = useFormField()
   const error = errors[name]
-  const errorClassName = error ? 'border-red' : 'border-black-70'
+
+  const focusClassName = error
+    ? ''
+    : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
+  const borderClassName = error ? 'border-red' : 'border-black-70'
+
   return (
     <input
       id={name}
+      name={name}
+      ref={ref}
       autoComplete={name}
-      {...register(name)}
+      onChange={onChange}
+      onBlur={onBlur}
       {...props}
-      className={`h-[70px] text-gray-50 rounded-lg px-5 placeholder:text-black-30 bg-black-60 border caret-white ${errorClassName}`}
+      className={`px-5 h-[70px] rounded-lg text-white bg-black-60 border placeholder:text-black-30 caret-white ${focusClassName} ${borderClassName}`}
     />
   )
 })

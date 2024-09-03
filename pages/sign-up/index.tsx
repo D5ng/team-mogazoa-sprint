@@ -13,7 +13,7 @@ import {
   confirmPasswordValidation,
 } from '@/src/shared/lib/form-validation'
 
-interface SignUpFormData {
+export interface SignUpFormData {
   email: string
   nickname: string
   password: string
@@ -44,44 +44,27 @@ export default function SignUpForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="w-[640px] flex flex-col gap-y-10"
     >
-      <FormField
-        name="email"
-        register={register}
-        errors={errors}
-        validation={emailValidation}
-      >
+      <FormField {...register('email', emailValidation)} errors={errors}>
         <FormLabel>이메일</FormLabel>
         <Input type="text" placeholder="이메일을 입력해주세요" />
         <FormErrorMessage />
       </FormField>
 
-      <FormField
-        name="nickname"
-        register={register}
-        errors={errors}
-        validation={nicknameValidation}
-      >
+      <FormField {...register('nickname', nicknameValidation)} errors={errors}>
         <FormLabel>닉네임</FormLabel>
         <Input type="text" placeholder="닉네임을 입력해주세요" />
         <FormErrorMessage />
       </FormField>
 
-      <FormField
-        name="password"
-        register={register}
-        errors={errors}
-        validation={passwordValidation}
-      >
+      <FormField {...register('password', passwordValidation)} errors={errors}>
         <FormLabel>비밀번호</FormLabel>
         <Input type="password" placeholder="비밀번호를 입력해주세요" />
         <FormErrorMessage />
       </FormField>
 
       <FormField
-        name="confirmPassword"
-        register={register}
+        {...register('confirmPassword', confirmPasswordValidation)}
         errors={errors}
-        validation={confirmPasswordValidation}
       >
         <FormLabel>비밀번호 확인</FormLabel>
         <Input type="password" placeholder="비밀번호를 한번 더 입력해주세요" />

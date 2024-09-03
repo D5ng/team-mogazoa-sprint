@@ -1,22 +1,15 @@
 import type { ReactNode } from 'react'
 
-import type {
-  UseFormRegister,
-  FieldErrors,
-  RegisterOptions,
-} from 'react-hook-form'
+import type { ChangeHandler } from 'react-hook-form'
 
-export interface FormFieldContextValue {
+export type FormFieldContextValue = {
   name: string
-  register: UseFormRegister<any>
-  errors: FieldErrors
+  onChange: ChangeHandler
+  onBlur: ChangeHandler
+  errors: Record<string, any>
 }
 
-export interface FormFieldProps {
-  name: string
-  register: UseFormRegister<any>
-  errors: FieldErrors
-  validation?: RegisterOptions
+export type FormFieldProps = FormFieldContextValue & {
   children: React.ReactNode
 }
 
