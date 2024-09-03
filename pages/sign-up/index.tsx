@@ -6,7 +6,12 @@ import {
   Input,
   FormErrorMessage,
 } from '@/src/shared/ui/form-field/FormField'
-import formValidations from '@/src/shared/lib/form-validation'
+import {
+  emailValidation,
+  nicknameValidation,
+  passwordValidation,
+  confirmPasswordValidation,
+} from '@/src/shared/lib/form-validation'
 
 interface SignUpFormData {
   email: string
@@ -43,7 +48,7 @@ export default function SignUpForm() {
         name="email"
         register={register}
         errors={errors}
-        validation={formValidations.email}
+        validation={emailValidation}
       >
         <FormLabel>이메일</FormLabel>
         <Input type="text" placeholder="이메일을 입력해주세요" />
@@ -54,7 +59,7 @@ export default function SignUpForm() {
         name="nickname"
         register={register}
         errors={errors}
-        validation={formValidations.nickname}
+        validation={nicknameValidation}
       >
         <FormLabel>닉네임</FormLabel>
         <Input type="text" placeholder="닉네임을 입력해주세요" />
@@ -65,7 +70,7 @@ export default function SignUpForm() {
         name="password"
         register={register}
         errors={errors}
-        validation={formValidations.password}
+        validation={passwordValidation}
       >
         <FormLabel>비밀번호</FormLabel>
         <Input type="password" placeholder="비밀번호를 입력해주세요" />
@@ -76,7 +81,7 @@ export default function SignUpForm() {
         name="confirmPassword"
         register={register}
         errors={errors}
-        validation={formValidations.confirmPassword}
+        validation={confirmPasswordValidation}
       >
         <FormLabel>비밀번호 확인</FormLabel>
         <Input type="password" placeholder="비밀번호를 한번 더 입력해주세요" />

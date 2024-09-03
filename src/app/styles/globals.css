@@ -4,8 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('./reset.css');
-
 :root {
   --default-bg: #1c1c22;
 }
