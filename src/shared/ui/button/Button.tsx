@@ -1,0 +1,19 @@
+import { BUTTON_VARIANT } from './Button.constants'
+import type { ButtonProps } from './Button.type'
+
+export default function Button({ disabled, ...props }: ButtonProps) {
+  const commonStyle =
+    'font-semibold rounded-lg text-lg h-[65px] w-full disabled:cursor-not-allowed disabled:text-black-30'
+  const variant = BUTTON_VARIANT[props.variant]
+  const defaultStyle = disabled ? variant.disabled : variant.default
+
+  return (
+    <button
+      disabled={disabled}
+      {...props}
+      className={`${commonStyle} ${defaultStyle} ${props.className || ''}`}
+    >
+      {props.children}
+    </button>
+  )
+}
