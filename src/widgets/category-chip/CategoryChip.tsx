@@ -12,6 +12,6 @@ export default function CategoryChip({ name }: CategoryChipProps) {
   if (!category)
     throw new Error('카테고리가 일치하지 않아요. 다시 확인해주세요.')
 
-  const className = `px-2.5 py-1 rounded-lg ${CATEGORY_COLOR_VARIANTS[category]}`
+  const className = `px-2.5 py-1 rounded-lg tablet:text-xs tablet:px-2 ${CATEGORY_COLOR_VARIANTS[category]}`
   return <span className={className}>{name}</span>
 }
