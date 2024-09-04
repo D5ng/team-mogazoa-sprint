@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { createContext, PropsWithChildren, useContext } from 'react'
 import { useToggle, useSelect, useOutsideClick } from '@shared/hooks'
 import type {
-  Dropdown,
+  DropdownProps,
   DropdownContextType,
   DropdownMenuItemType,
 } from './Dropdown.type'
@@ -25,7 +25,7 @@ export const useDropdownContext = () => {
   return dropdownContext
 }
 
-export function Dropdown({ children, variant = 'border' }: Dropdown) {
+export function Dropdown({ children, variant = 'border' }: DropdownProps) {
   const selectStates = useSelect<string>({ defaultValue: '' })
   const toggleStates = useToggle()
 

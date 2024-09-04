@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 export type DropdownVariantType = 'border' | 'none'
 
-export interface Dropdown {
+export interface DropdownProps {
   children: ReactNode
   variant?: DropdownVariantType
 }
