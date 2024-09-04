@@ -1,10 +1,10 @@
 import ProfileImage from '@/src/shared/ui/profileImage/ProfileImage'
-import { RankingProps } from './Ranking.types'
+import { RankingUiProps } from './Ranking.types'
 import RankingChip from './RankingChip'
 
-export default function RankingUi({ data }: RankingProps) {
+export default function RankingUi({ data }: RankingUiProps) {
   return (
-    <div className="flex">
+    <div className="flex shrink-0">
       <ProfileImage
         className="tablet:w-[38px] tablet:h-[38px]"
         size={42}
@@ -12,7 +12,7 @@ export default function RankingUi({ data }: RankingProps) {
       />
       <div className="flex-col items-center justify-between ml-[10px] tablet:ml-[8px]">
         <div className="flex gap-[5px]">
-          <RankingChip variant={data.variant} />
+          <RankingChip variant={data.variant} rank={data.rank} />
           <p className="text-[16px] tablet:text-[14px] text-white">
             {data.nickName}
           </p>

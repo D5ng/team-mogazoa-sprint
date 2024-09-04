@@ -1,13 +1,23 @@
+export type Variant = 'first' | 'second' | 'etc'
+
 export type RankingChipProps = {
-  variant: 'first' | 'second' | 'etc'
+  rank: number
+  variant: Variant
+}
+
+export interface RankingItem {
+  rank: number
+  profileImg: string
+  nickName: string
+  folower: number
+  review: number
+  variant: Variant
 }
 
 export interface RankingProps {
-  data: {
-    profileImg: string
-    nickName: string
-    variant: 'first' | 'second' | 'etc'
-    folower: number
-    review: number
-  }
+  data: RankingItem[]
+}
+
+export interface RankingUiProps {
+  data: RankingItem
 }
