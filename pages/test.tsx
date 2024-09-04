@@ -1,3 +1,4 @@
+
 import Ranking from '@/src/widgets/ranking/Ranking'
 
 const test = () => {
@@ -9,3 +10,4 @@ const test = () => {
 }
 
 export default test
+
