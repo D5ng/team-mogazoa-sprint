@@ -13,7 +13,11 @@ interface DropdownProps {
   title: string
 }
 
-function DropdownStoryComponent({ menuItems, variant, title }: DropdownProps) {
+function DropdownStoryComponent({
+  menuItems,
+  variant = 'border',
+  title,
+}: DropdownProps) {
   return (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
@@ -26,27 +30,31 @@ function DropdownStoryComponent({ menuItems, variant, title }: DropdownProps) {
   )
 }
 
-type DropdownStory = StoryObj<typeof DropdownStoryComponent>
+type Story = StoryObj<typeof DropdownStoryComponent>
 
 const meta: Meta<typeof DropdownStoryComponent> = {
-  component: (args) => <DropdownStoryComponent {...args} />,
+  component: DropdownStoryComponent,
 }
 
-export const DropdownComponent: DropdownStory = {
+export const DropdownComponent: Story = {
   name: 'Dropdown',
+  argTypes: {
+    title: {
+      control: 'text',
+      description: '타이틀 텍스트를 설정해주는 부분',
+    },
+    variant: {
+      control: 'select',
+      options: ['border', 'none'],
+    },
+    menuItems: {
+      control: 'object',
+    },
+  },
   args: {
     title: '카테고리 선택',
     variant: 'border',
     menuItems: ['React.js', 'JavaScript', 'TypeScript'],
-  },
-}
-
-export const DropdownSortable: DropdownStory = {
-  name: '최신순 드롭다운',
-  args: {
-    title: '최신순',
-    variant: 'none',
-    menuItems: ['최신순', '별점 높은순', '별점 낮은순', '좋아요순'],
   },
 }
 
