@@ -41,7 +41,7 @@ export default function Ranking() {
   return (
     <div className="flex flex-col tablet:gap-[20px] gap-[30px] ">
       <h1 className="text-white text-[16px] tablet:text-[14px]">리뷰어 랭킹</h1>
-      <div className=" lg:flex-col flex gap-[30px]">
+      <div className=" lg:flex-col flex gap-[30px] tablet:gap-[20px] mobile:gap-[15px]">
         {data.map((data, index) => (
           <RankingUi key={index} data={data} />
         ))}
