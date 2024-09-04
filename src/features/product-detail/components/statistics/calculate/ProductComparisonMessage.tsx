@@ -1,5 +1,5 @@
 import { CountMessage, StarRatingMessage } from './helper'
-import { ProductComparisonMessageProps } from './ProductComparisonMessage.type'
+import type { ProductComparisonMessageProps } from './ProductComparisonMessage.type'
 
 export default function ProductComparisonMessage({
   title,
