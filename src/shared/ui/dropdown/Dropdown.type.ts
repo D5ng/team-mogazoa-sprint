@@ -1,7 +1,10 @@
 import { ReactNode } from 'react'
 
+export type DropdownVariantType = 'border' | 'none'
+
 export interface Dropdown {
   children: ReactNode
+  variant?: DropdownVariantType
 }
 
 export type DropdownContextType = {
@@ -11,6 +14,7 @@ export type DropdownContextType = {
   onCloseToggle: () => void
   selectedItem: string
   onSelect: (select: any) => void
+  variant: DropdownVariantType
 }
 
 export type DropdownMenuItemType = {
