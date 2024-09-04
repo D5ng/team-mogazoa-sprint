@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useAutocomplete } from '@/src/shared/hooks'
 
 const SUGGESTION_LIST = [
   'Air Pods Max',
@@ -16,40 +16,24 @@ export default function AutoComplete() {
   const { register, watch, setValue } = useForm()
   const searchTerm = watch('searchInput', '')
 
-  const [suggestions, setSuggestions] = useState<string[]>([])
-  const [highlightedIndex, setHighlightedIndex] = useState(-1)
+  const {
+    suggestions,
+    highlightedIndex,
+    handleAutocompleteKeys,
+    clearSuggestions,
+  } = useAutocomplete(searchTerm, SUGGESTION_LIST)
 
-  useEffect(() => {
-    setSuggestions(
-      searchTerm
-        ? SUGGESTION_LIST.filter((item) =>
-            item.toLowerCase().includes(searchTerm.toLowerCase()),
-          )
-        : [],
-    )
-    setHighlightedIndex(-1)
-  }, [searchTerm])
-
-  const handleAutocompleteKeys = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!suggestions.length) return
-
-    const keyActions = {
-      arrowDown: () =>
-        setHighlightedIndex((prev) =>
-          prev < suggestions.length - 1 ? prev + 1 : prev,
-        ),
-      arrowUp: () =>
-        setHighlightedIndex((prev) => (prev > 0 ? prev - 1 : prev)),
-      enter: () => {
-        if (highlightedIndex >= 0) {
-          setValue('searchInput', suggestions[highlightedIndex])
-          setSuggestions([])
-        }
-      },
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const selectedSuggestion = handleAutocompleteKeys(e)
+    if (selectedSuggestion) {
+      setValue('searchInput', selectedSuggestion)
+      clearSuggestions()
     }
+  }
 
-    const action = keyActions[e.key as keyof typeof keyActions]
-    if (action) action()
+  const handleSuggestionClick = (suggestion: string) => {
+    setValue('searchInput', suggestion)
+    clearSuggestions()
   }
 
   return (
@@ -58,13 +42,16 @@ export default function AutoComplete() {
         <input
           {...register('searchInput')}
           className="flex-1 border border-white rounded-lg caret-white text-white bg-gray-800"
-          onKeyDown={handleAutocompleteKeys}
+          onKeyDown={handleKeyDown}
         />
         <button
-          onClick={() => setValue('searchInput', '')}
+          onClick={() => {
+            setValue('searchInput', '')
+            clearSuggestions()
+          }}
           className="text-white"
         >
-          &times;
+          ×
         </button>
       </div>
       {suggestions.length > 0 && (
@@ -72,11 +59,7 @@ export default function AutoComplete() {
           {suggestions.map((suggestion, index) => (
             <li
               key={index}
-              onClick={() => {
-                setValue('searchInput', suggestion)
-                setSuggestions([])
-              }}
-              onMouseOver={() => setHighlightedIndex(index)}
+              onClick={() => handleSuggestionClick(suggestion)}
               className={`p-2 cursor-pointer hover:bg-gray-700 ${
                 highlightedIndex === index
                   ? 'bg-blue-500 text-white'
