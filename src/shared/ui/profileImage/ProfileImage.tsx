@@ -1,19 +1,22 @@
 import Image from 'next/image'
 import { ProfileImgProps } from './ProfileImage.type'
 
-export default function ProfileImage({
-  size,
-  url = `https://pbs.twimg.com/media/EFHWmyXUEAASe0o.jpg`,
-  ...props
-}: ProfileImgProps) {
+export default function ProfileImage({ size, url, ...props }: ProfileImgProps) {
   return (
-    <Image
-      {...props}
-      className={`rounded-full ${props.className || ''}`}
-      src={url}
-      width={size}
-      height={size}
-      alt="프로필이미지"
-    />
+    <div style={{ width: size, height: size }} className={` rounded-full `}>
+      <div
+        {...props}
+        className={`overflow-hidden rounded-full ${props.className || ''}`}
+      >
+        <Image
+          src={url}
+          layout="responsive"
+          width={size}
+          height={size}
+          alt="프로필 이미지"
+          className={`object-cover`}
+        />
+      </div>
+    </div>
   )
 }

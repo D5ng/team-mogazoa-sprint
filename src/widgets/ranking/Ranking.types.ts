@@ -2,11 +2,11 @@ export type RankingChipProps = {
   variant: 'first' | 'second' | 'etc'
 }
 
-export type RankingProps = {
+export interface RankingProps {
   data: {
     profileImg: string
     nickName: string
-    variant: string
+    variant: 'first' | 'second' | 'etc'
     folower: number
     review: number
   }
