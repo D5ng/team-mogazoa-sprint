@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
 
-export default function useAutocomplete(
-  searchTerm: string,
-  suggestionList: string[],
-) {
+interface UseAutocompleteParams {
+  searchTerm: string
+  suggestionList: string[]
+}
+
+export default function useAutocomplete({
+  searchTerm,
+  suggestionList,
+}: UseAutocompleteParams) {
   const [suggestions, setSuggestions] = useState<string[]>([])
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
 
@@ -18,37 +23,26 @@ export default function useAutocomplete(
     setHighlightedIndex(-1)
   }, [searchTerm, suggestionList])
 
-  function handleAutocompleteKeys(e: React.KeyboardEvent) {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!suggestions.length) return null
 
-    const keyActions = {
-      arrowDown: () =>
+    const keyActions: { [key: string]: () => string | null } = {
+      ArrowDown: () => {
         setHighlightedIndex((prev) =>
-          prev < suggestions.length - 1 ? prev + 1 : prev,
-        ),
-      arrowUp: () =>
-        setHighlightedIndex((prev) => (prev > 0 ? prev - 1 : prev)),
-      enter: () => {
-        if (highlightedIndex >= 0) {
-          return suggestions[highlightedIndex]
-        }
+          Math.min(prev + 1, suggestions.length - 1),
+        )
         return null
       },
+      ArrowUp: () => {
+        setHighlightedIndex((prev) => Math.max(prev - 1, 0))
+        return null
+      },
+      Enter: () => suggestions[highlightedIndex] || null,
     }
 
-    const action = keyActions[e.key as keyof typeof keyActions]
+    const action = keyActions[e.key]
     return action ? action() : null
   }
 
-  function clearSuggestions() {
-    setSuggestions([])
-    setHighlightedIndex(-1)
-  }
-
-  return {
-    suggestions,
-    highlightedIndex,
-    handleAutocompleteKeys,
-    clearSuggestions,
-  }
+  return { suggestions, highlightedIndex, handleKeyDown }
 }
