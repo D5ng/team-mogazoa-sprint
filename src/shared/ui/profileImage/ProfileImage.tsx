@@ -4,10 +4,12 @@ import { ProfileImgProps } from './ProfileImage.type'
 export default function ProfileImage({
   size,
   url = `https://pbs.twimg.com/media/EFHWmyXUEAASe0o.jpg`,
+  ...props
 }: ProfileImgProps) {
   return (
     <Image
-      className="rounded-full"
+      {...props}
+      className={`rounded-full ${props.className || ''}`}
       src={url}
       width={size}
       height={size}

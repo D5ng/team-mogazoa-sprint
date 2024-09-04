@@ -13,7 +13,6 @@ export default function Ranking() {
   return (
     <>
       <RankingUi data={data} />
-      <ProfileImage size={120} />
     </>
   )
 }
