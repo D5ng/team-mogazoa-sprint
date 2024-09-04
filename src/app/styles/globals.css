@@ -4,9 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@import url('./reset.css');
-
 :root {
   --default-bg: #1c1c22;
 }
@@ -15,18 +12,17 @@ body {
   background-color: var(--default-bg);
 }
 
-  input {
-    outline: none;
-  }
+input {
+  outline: none;
+}
 
-  .gradient {
-    background: linear-gradient(91.17deg, #5097fa 0%, #5363ff 100%);
-  }
+.gradient {
+  background: linear-gradient(91.17deg, #5097fa 0%, #5363ff 100%);
+}
 
-  .text-gradient {
-    background: linear-gradient(91.17deg, #5097fa 0%, #5363ff 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
+.text-gradient {
+  background: linear-gradient(91.17deg, #5097fa 0%, #5363ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
