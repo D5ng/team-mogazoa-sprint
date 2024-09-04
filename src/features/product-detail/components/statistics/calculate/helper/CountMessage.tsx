@@ -9,8 +9,9 @@ export default function CountMessage({
 
   return (
     <>
-      같은 카테고리의 제품들보다
-      <br />
+      같은 카테고리의 제품들보다&nbsp;
+      <br className="mobile:hidden" />
+      &nbsp;
       <strong className="text-white">{count}</strong>&nbsp;개&nbsp;
       {isHigher ? '더 많아요!' : '더 적아요!'}
     </>

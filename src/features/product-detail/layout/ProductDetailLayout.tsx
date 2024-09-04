@@ -10,7 +10,7 @@ export default function ProductDetailLayout({
   children,
 }: ProductDetailLayoutProps) {
   return (
-    <section className="w-[940px] text-xl font-normal flex flex-col gap-y-[30px]">
+    <section className="text-xl font-normal flex flex-col gap-y-[30px] text-white">
       <h2>{title}</h2>
       {children}
     </section>

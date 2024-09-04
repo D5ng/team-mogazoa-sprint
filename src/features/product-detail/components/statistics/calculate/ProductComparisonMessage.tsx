@@ -11,7 +11,7 @@ export default function ProductComparisonMessage({
   const isSame = score === scoreMetric
 
   return (
-    <p className="text-center text-black-30 text-sm">
+    <p className="text-center text-black-30 text-sm tablet:text-xs mobile:text-start">
       {title === '별점 평균' ? (
         <StarRatingMessage
           count={Math.abs(diff)}
