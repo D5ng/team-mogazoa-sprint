@@ -1,44 +1,14 @@
 export const CATEGORY_CHIPS = [
-  {
-    id: 0,
-    name: '음악',
-  },
-  {
-    id: 1,
-    name: '영화/드라마',
-  },
-  {
-    id: 2,
-    name: '강의/책',
-  },
-  {
-    id: 3,
-    name: '호텔',
-  },
-  {
-    id: 4,
-    name: '가구/인테리어',
-  },
-  {
-    id: 5,
-    name: '전자기기',
-  },
-  {
-    id: 6,
-    name: '식당',
-  },
-  {
-    id: 7,
-    name: '화장품',
-  },
-  {
-    id: 8,
-    name: '의류/악세서리',
-  },
-  {
-    id: 9,
-    name: '앱',
-  },
+  '음악',
+  '영화/드라마',
+  '강의/책',
+  '호텔',
+  '가구/인테리어',
+  '전자기기',
+  '식당',
+  '화장품',
+  '의류/악세서리',
+  '앱',
 ] as const
 
 export const CATEGORY_COLOR_VARIANTS = {
