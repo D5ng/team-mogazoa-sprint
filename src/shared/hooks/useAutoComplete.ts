@@ -1,63 +1,53 @@
-import { useState, useEffect, useCallback } from 'react'
-import debounce from 'lodash/debounce'
+import { useState, useCallback, useMemo } from 'react'
+import { UseFormSetValue } from 'react-hook-form'
+import useDebounce from './useDebounce'
+import useToggle from './useToggle'
+import useOutsideClick from './useOutsideClick'
 
-interface UseAutocompleteParams {
-  searchTerm: string
-  suggestionList: string[]
-  debounceTime?: number
-}
+export default function useAutocomplete(
+  suggestionList: string[],
+  debounceDelay: number,
+  setValue: UseFormSetValue<any>,
+) {
+  const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay)
 
-export default function useAutocomplete({
-  searchTerm,
-  suggestionList,
-  debounceTime = 300,
-}: UseAutocompleteParams) {
-  const [suggestions, setSuggestions] = useState<string[]>([])
-  const [highlightedIndex, setHighlightedIndex] = useState(-1)
+  const { isToggle: isOpen, onOpenToggle, onCloseToggle } = useToggle()
+  const ref = useOutsideClick<HTMLDivElement>({ onCloseToggle })
 
-  const debouncedUpdate = useCallback(
-    debounce((term: string) => {
-      if (!term) {
-        setSuggestions([])
-        return
-      }
-      const filteredSuggestions = suggestionList.filter((item) =>
-        item.toLowerCase().includes(term.toLowerCase()),
-      )
-      setSuggestions(filteredSuggestions)
-      setHighlightedIndex(-1)
-    }, debounceTime),
-    [suggestionList, debounceTime],
+  const suggestions = useMemo(() => {
+    if (!debouncedSearchTerm) return []
+    return suggestionList.filter((item) =>
+      item.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
+    )
+  }, [suggestionList, debouncedSearchTerm])
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value
+      setSearchTerm(value)
+      setValue('autocompleteInput', value)
+      onOpenToggle()
+    },
+    [setValue, onOpenToggle],
   )
 
-  useEffect(() => {
-    debouncedUpdate(searchTerm)
+  const handleSuggestionSelect = useCallback(
+    (suggestion: string) => {
+      setSearchTerm(suggestion)
+      setValue('autocompleteInput', suggestion)
+      onCloseToggle()
+    },
+    [setValue, onCloseToggle],
+  )
 
-    return () => {
-      debouncedUpdate.cancel()
-    }
-  }, [searchTerm, debouncedUpdate])
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!suggestions.length) return null
-
-    const keyActions: { [key: string]: () => string | null } = {
-      ArrowDown: () => {
-        setHighlightedIndex((prev) =>
-          Math.min(prev + 1, suggestions.length - 1),
-        )
-        return null
-      },
-      ArrowUp: () => {
-        setHighlightedIndex((prev) => Math.max(prev - 1, 0))
-        return null
-      },
-      Enter: () => suggestions[highlightedIndex] || null,
-    }
-
-    const action = keyActions[e.key]
-    return action ? action() : null
+  return {
+    searchTerm,
+    suggestions,
+    isOpen,
+    onOpenToggle,
+    handleInputChange,
+    handleSuggestionSelect,
+    ref,
   }
-
-  return { suggestions, highlightedIndex, handleKeyDown }
 }

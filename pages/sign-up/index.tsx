@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { Form } from '@/src/shared/ui/form/Form'
+import { Form } from '@/src/shared/ui'
 import {
   FormField,
   FieldLabel,
