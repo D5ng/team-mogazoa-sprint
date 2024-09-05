@@ -13,6 +13,7 @@ export const Primary: Story = {
     variant: 'primary',
     disabled: false,
     children: '회원가입',
+    isLoading: false,
   },
 }
 
