@@ -4,17 +4,8 @@ export interface ReviewResponse {
 }
 
 export interface ReviewItem {
-  user: {
-    image: string
-    nickname: string
-    id: number
-  }
-  reviewImages: [
-    {
-      source: string
-      id: number
-    },
-  ]
+  user: ReviewUser
+  reviewImages: ReviewImage[]
   productId: number
   userId: number
   updatedAt: string
@@ -23,5 +14,16 @@ export interface ReviewItem {
   likeCount: number
   content: string
   rating: number
+  id: number
+}
+
+export interface ReviewUser {
+  image: string | null
+  nickname: string
+  id: number
+}
+
+export interface ReviewImage {
+  source: string
   id: number
 }
