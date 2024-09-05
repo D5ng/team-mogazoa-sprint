@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
-export type DropdownVariantProps = 'border' | 'none'
+export type DropdownVariantType = 'border' | 'none'
 
 export interface DropdownProps {
   children: ReactNode
-  variant?: DropdownVariantProps
+  variant?: DropdownVariantType
 }
 
 export type DropdownContextType = {
@@ -14,9 +14,9 @@ export type DropdownContextType = {
   onCloseToggle: () => void
   selectedItem: string
   onSelect: (select: any) => void
-  variant: DropdownVariantProps
+  variant: DropdownVariantType
 }
 
-export type DropdownMenuItemType = {
+export interface DropdownMenuItemProps {
   children: ReactNode
 }

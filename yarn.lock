@@ -6062,8 +6062,13 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-react@npm:^7.33.2":
+<<<<<<< Updated upstream
   version: 7.35.0
   resolution: "eslint-plugin-react@npm:7.35.0"
+=======
+  version: 7.35.1
+  resolution: "eslint-plugin-react@npm:7.35.1"
+>>>>>>> Stashed changes
   dependencies:
     array-includes: "npm:^3.1.8"
     array.prototype.findlast: "npm:^1.2.5"
@@ -6085,7 +6090,11 @@ __metadata:
     string.prototype.repeat: "npm:^1.0.0"
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
+<<<<<<< Updated upstream
   checksum: 10c0/eedcc33de4b2cda91d56ae517a4f771a0c76da9c1e26c95543969012871381e11d4d6cffdf6fa8423036585c289eb3500f3f93fb1d314fb2624e0aa1e463305e
+=======
+  checksum: 10c0/faaa2108543675951949685208d105d9c3efa0ac8f4d950851b8f20e065b8bf87fdd7e78abae9b0382090bc22e61c00709388f35bdab2a8b1d283f985d310ed7
+>>>>>>> Stashed changes
   languageName: node
   linkType: hard
 
@@ -8549,6 +8558,11 @@ __metadata:
     "@storybook/nextjs": "npm:^8.2.9"
     "@storybook/react": "npm:^8.2.9"
     "@storybook/test": "npm:^8.2.9"
+<<<<<<< Updated upstream
+=======
+    "@tanstack/react-query": "npm:^5.54.1"
+    "@types/lodash": "npm:^4.17.7"
+>>>>>>> Stashed changes
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
