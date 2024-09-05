@@ -11,6 +11,7 @@ module.exports = {
       indigo: {
         DEFAULT: '#5363FF',
       },
+
       black: {
         10: '#F1F1F5',
         20: '#9FA6B2',
@@ -20,6 +21,7 @@ module.exports = {
         60: '#252530',
         70: '#353542',
         80: '#17171C',
+
       },
       white: '#F1F1F5',
       red: '#FF0000',
@@ -36,7 +38,7 @@ module.exports = {
       yellow: '#FFC83C',
     },
     screens: {
-      tablet: { max: '1199px' },
+      tablet: { max: '1024px' },
       mobile: { max: '767px' },
     },
     fontFamily: {
