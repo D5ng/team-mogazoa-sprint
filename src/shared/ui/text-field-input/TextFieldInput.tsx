@@ -24,6 +24,7 @@ export default function TextFieldInput({
   const { suggestions, highlightedIndex, handleKeyDown } = useAutocomplete({
     searchTerm,
     suggestionList: SUGGESTION_LIST,
+    debounceTime: 300,
   })
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
 

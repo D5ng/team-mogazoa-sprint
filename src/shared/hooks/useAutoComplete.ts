@@ -1,27 +1,41 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import debounce from 'lodash/debounce'
 
 interface UseAutocompleteParams {
   searchTerm: string
   suggestionList: string[]
+  debounceTime?: number
 }
 
 export default function useAutocomplete({
   searchTerm,
   suggestionList,
+  debounceTime = 300,
 }: UseAutocompleteParams) {
   const [suggestions, setSuggestions] = useState<string[]>([])
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
 
+  const debouncedUpdate = useCallback(
+    debounce((term: string) => {
+      setSuggestions(
+        term
+          ? suggestionList.filter((item) =>
+              item.toLowerCase().includes(term.toLowerCase()),
+            )
+          : [],
+      )
+      setHighlightedIndex(-1)
+    }, debounceTime),
+    [suggestionList, debounceTime],
+  )
+
   useEffect(() => {
-    setSuggestions(
-      searchTerm
-        ? suggestionList.filter((item) =>
-            item.toLowerCase().includes(searchTerm.toLowerCase()),
-          )
-        : [],
-    )
-    setHighlightedIndex(-1)
-  }, [searchTerm, suggestionList])
+    debouncedUpdate(searchTerm)
+
+    return () => {
+      debouncedUpdate.cancel()
+    }
+  }, [searchTerm, debouncedUpdate])
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!suggestions.length) return null
