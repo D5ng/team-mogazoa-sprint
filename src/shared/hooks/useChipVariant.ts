@@ -1,19 +1,23 @@
 import { useMemo } from 'react'
 import { RankingItem, Variant } from '../../widgets/ranking/Ranking.types'
 
-const variantLUT: Variant[] = ['first', 'second', 'etc']
-const rankLUT: number[] = [1, 2]
+const variantLUT: Record<number, Variant> = {
+  0: 'first',
+  1: 'second',
+}
 
 export default function useChipVariant(
   data: Omit<RankingItem, 'variant' | 'rank'>[],
 ): RankingItem[] {
   const updatedData = useMemo(() => {
-    return data.map((item, index) => {
-      const variant = index < 2 ? variantLUT[index] : 'etc'
-      const rank = index < 2 ? rankLUT[index] : index + 1
-
-      return { ...item, variant, rank }
+    const result: RankingItem[] = []
+    data.forEach((item, index) => {
+      const variant = variantLUT[index] || 'etc'
+      const rank = index + 1
+      result.push({ ...item, variant, rank })
     })
+
+    return result
   }, [data])
 
   return updatedData
