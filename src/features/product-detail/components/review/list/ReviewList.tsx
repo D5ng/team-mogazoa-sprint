@@ -1,10 +1,16 @@
-import React from 'react'
-import ReviewItem from '../item/ReviewListItem'
+import { ReviewListItem } from '@features/product-detail/components'
+import type { ReviewItem } from '@/src/app/types'
 
-export default function ReviewList() {
+interface ReviewListProps {
+  reviews: ReviewItem[]
+}
+
+export default function ReviewList({ reviews }: ReviewListProps) {
   return (
     <ul className="flex flex-col gap-y-5">
-      <ReviewItem />
+      {reviews.map((review) => (
+        <ReviewListItem {...review} />
+      ))}
     </ul>
   )
 }
