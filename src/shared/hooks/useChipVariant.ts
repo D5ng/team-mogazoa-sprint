@@ -1,24 +1,16 @@
 import { useMemo } from 'react'
 import { RankingItem, Variant } from '../../widgets/ranking/Ranking.types'
 
+const variantLUT: Variant[] = ['first', 'second', 'etc']
+const rankLUT: number[] = [1, 2]
+
 export default function useChipVariant(
   data: Omit<RankingItem, 'variant' | 'rank'>[],
 ): RankingItem[] {
   const updatedData = useMemo(() => {
     return data.map((item, index) => {
-      let variant: Variant
-      let rank: number
-
-      if (index === 0) {
-        variant = 'first'
-        rank = 1
-      } else if (index === 1) {
-        variant = 'second'
-        rank = 2
-      } else {
-        variant = 'etc'
-        rank = index + 1
-      }
+      const variant = index < 2 ? variantLUT[index] : 'etc'
+      const rank = index < 2 ? rankLUT[index] : index + 1
 
       return { ...item, variant, rank }
     })
