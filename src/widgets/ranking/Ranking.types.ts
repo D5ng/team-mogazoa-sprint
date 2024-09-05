@@ -12,6 +12,7 @@ export interface RankingItem {
   folower: number
   review: number
   variant: Variant
+  id: number
 }
 
 export interface RankingProps {
