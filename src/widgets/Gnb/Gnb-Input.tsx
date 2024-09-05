@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import searchIcon from '@/src/app/assets/images/searchIcon.png'
+import { search } from '@app/icons'
 
 export default function GnbInput() {
   // 상품 검색 로직은 어떻게 작동되는지 파악이 안돼서 후에 작성 하겠습니다.
@@ -11,7 +11,7 @@ export default function GnbInput() {
       />
       <Image
         className="absolute left-[13px] top-[16px] tablet:top-[12px]"
-        src={searchIcon}
+        src={search}
         width={20}
         height={20}
         alt="돋보기 아이콘"
