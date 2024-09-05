@@ -17,13 +17,14 @@ export default function useAutocomplete({
 
   const debouncedUpdate = useCallback(
     debounce((term: string) => {
-      setSuggestions(
-        term
-          ? suggestionList.filter((item) =>
-              item.toLowerCase().includes(term.toLowerCase()),
-            )
-          : [],
+      if (!term) {
+        setSuggestions([])
+        return
+      }
+      const filteredSuggestions = suggestionList.filter((item) =>
+        item.toLowerCase().includes(term.toLowerCase()),
       )
+      setSuggestions(filteredSuggestions)
       setHighlightedIndex(-1)
     }, debounceTime),
     [suggestionList, debounceTime],
