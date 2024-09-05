@@ -3130,29 +3130,29 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 22.5.2
-  resolution: "@types/node@npm:22.5.2"
+  version: 22.5.3
+  resolution: "@types/node@npm:22.5.3"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/624a7fd76229eacc6c158eb3b9afd55b811d7f01976c5f92c630d5b9d47047cc218928c343988484a165ac400e5eb6fe70ea300fc7242deeb0e920c7724290f6
+  checksum: 10c0/a068e31dd424a0eadfba7d9a5c5b415b76cfd729f3caa299674ad257f59df85c5fe77f1d0a343e811864c790baefb9003d7627618ee3cf85400af338481ba29f
   languageName: node
   linkType: hard
 
 "@types/node@npm:^18.0.0":
-  version: 18.19.48
-  resolution: "@types/node@npm:18.19.48"
+  version: 18.19.49
+  resolution: "@types/node@npm:18.19.49"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/f07fc6636629bf5121d33e532f824470ecd44b14831c486fe11b95aac6c8bf7c838651a4cae82031fbc99888192b84f77e939a2cf27edb20935ed4a6d01d0b5d
+  checksum: 10c0/552b74e35744b9729764d3ebff6cef8dd000a230a6bc80b04e2d817439e4850cd4251df9952afa4e991433f8c10f931ebba500cc4d35a0c0eb86efdcd4bbcd05
   languageName: node
   linkType: hard
 
 "@types/node@npm:^20":
-  version: 20.16.3
-  resolution: "@types/node@npm:20.16.3"
+  version: 20.16.4
+  resolution: "@types/node@npm:20.16.4"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/907c01d58ae36695fbed0b101e7a14cc2e0c5b9b2ba7904ef21cef093e4aac0649ac2a7a283fc94e19311dd0551d778445dd45fcf2d8bd45c494c9ecd802de69
+  checksum: 10c0/1dfd24b8a1552adf1f37c189bcebb6e287184852188d8aa28f8e955f15079f8ee62d88f142b6a52c0fd59132fc40644bf6197c139e4e1d645c1db040b231caaa
   languageName: node
   linkType: hard
 
@@ -6122,8 +6122,10 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-react@npm:^7.33.2":
+
   version: 7.35.1
   resolution: "eslint-plugin-react@npm:7.35.1"
+
   dependencies:
     array-includes: "npm:^3.1.8"
     array.prototype.findlast: "npm:^1.2.5"
@@ -6145,7 +6147,9 @@ __metadata:
     string.prototype.repeat: "npm:^1.0.0"
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
+
   checksum: 10c0/faaa2108543675951949685208d105d9c3efa0ac8f4d950851b8f20e065b8bf87fdd7e78abae9b0382090bc22e61c00709388f35bdab2a8b1d283f985d310ed7
+
   languageName: node
   linkType: hard
 
@@ -6510,9 +6514,9 @@ __metadata:
   linkType: hard
 
 "filesize@npm:^10.0.12":
-  version: 10.1.4
-  resolution: "filesize@npm:10.1.4"
-  checksum: 10c0/b02a792da0da66fce5525566691369db6f0fadf5407b3626ca14821998dfaec65cf4a69fc3ca3ae999bf963e4afa19a8a787996f935c508506cccff3cc075faf
+  version: 10.1.5
+  resolution: "filesize@npm:10.1.5"
+  checksum: 10c0/fd48ad9be9ee040a708a791661fdb5efab29448bc8152958e31902db4206a73cb82ca79d80b86e430395c0040a34f3f1fccd11cb995569142f197f8bd4548c77
   languageName: node
   linkType: hard
 
@@ -8631,7 +8635,9 @@ __metadata:
     "@storybook/react": "npm:^8.2.9"
     "@storybook/test": "npm:^8.2.9"
     "@tanstack/react-query": "npm:^5.54.1"
+
     "@types/lodash": "npm:^4.17.7"
+
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
@@ -12121,11 +12127,11 @@ __metadata:
   linkType: hard
 
 "yaml@npm:^2.3.4":
-  version: 2.5.0
-  resolution: "yaml@npm:2.5.0"
+  version: 2.5.1
+  resolution: "yaml@npm:2.5.1"
   bin:
     yaml: bin.mjs
-  checksum: 10c0/771a1df083c8217cf04ef49f87244ae2dd7d7457094425e793b8f056159f167602ce172aa32d6bca21f787d24ec724aee3cecde938f6643564117bd151452631
+  checksum: 10c0/40fba5682898dbeeb3319e358a968fe886509fab6f58725732a15f8dda3abac509f91e76817c708c9959a15f786f38ff863c1b88062d7c1162c5334a7d09cb4a
   languageName: node
   linkType: hard
 

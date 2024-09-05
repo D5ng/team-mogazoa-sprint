@@ -1,9 +1,13 @@
-import Gnb from '@/src/widgets/Gnb/Gnb'
 
-export default function main() {
+import Ranking from '@/src/widgets/ranking/Ranking'
+
+const test = () => {
   return (
     <>
-      <Gnb />
+      <Ranking />
     </>
   )
 }
+
+export default test
+
