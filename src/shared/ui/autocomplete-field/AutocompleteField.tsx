@@ -102,7 +102,7 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}
       placeholder={placeholder}
-      className="w-full h-full px-5 rounded-lg text-white bg-black-60 border border-black-70 focus:ring-1 focus:ring-indigo focus:border-indigo placeholder:text-black-30 caret-white"
+      className="input-base"
     />
   )
 }

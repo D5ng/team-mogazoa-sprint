@@ -20,7 +20,7 @@ const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
           ref={ref}
           placeholder={placeholder}
           rows={rows}
-          className={`w-full p- rounded-lg text-white bg-black-60 border border-black-70 focus:ring-1 focus:ring-indigo focus:border-indigo placeholder:text-black-30 caret-white ${props.className || ''}`}
+          className={`input-base ${props.className || ''}`}
           {...props}
         />
       </div>
