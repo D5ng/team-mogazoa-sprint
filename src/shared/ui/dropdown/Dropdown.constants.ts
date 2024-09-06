@@ -9,4 +9,4 @@ export const DROPDOWN_VARIANT = {
     button:
       'w-full rounded-lg px-[20px] flex justify-between items-center text-black-30',
   },
-}
+} as const
