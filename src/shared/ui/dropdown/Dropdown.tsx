@@ -5,6 +5,7 @@ import type {
   DropdownProps,
   DropdownContextType,
   DropdownMenuItemProps,
+  DropdownTriggerProps,
 } from './Dropdown.type'
 import { DROPDOWN_VARIANT } from './Dropdown.constants'
 import DropdownArrowIcon from '@app/images/icons/dropdown-arrow.svg'
@@ -25,7 +26,11 @@ export const useDropdownContext = () => {
   return dropdownContext
 }
 
-export function Dropdown({ children, variant = 'border' }: DropdownProps) {
+export function Dropdown({
+  children,
+  className,
+  variant = 'border',
+}: DropdownProps) {
   const selectStates = useSelect<string>({ defaultValue: '' })
   const toggleStates = useToggle()
 
@@ -41,18 +46,25 @@ export function Dropdown({ children, variant = 'border' }: DropdownProps) {
         ...selectStates,
       }}
     >
-      <div className={DROPDOWN_VARIANT[variant].wrapper} ref={ref}>
+      <div
+        className={`${DROPDOWN_VARIANT[variant].wrapper} ${className}`}
+        ref={ref}
+      >
         {children}
       </div>
     </DropdownContext.Provider>
   )
 }
 
-export function DropdownTrigger({ children }: PropsWithChildren) {
+export function DropdownTrigger({ children }: DropdownTriggerProps) {
   const { isToggle, onToggle, selectedItem, variant } = useDropdownContext()
   const rotateClass = isToggle ? 'rotate-180' : 'rotate-0'
   return (
-    <button onClick={onToggle} className={DROPDOWN_VARIANT[variant].button}>
+    <button
+      type="button"
+      onClick={onToggle}
+      className={DROPDOWN_VARIANT[variant].button}
+    >
       {selectedItem || children}
 
       <Image
@@ -60,7 +72,7 @@ export function DropdownTrigger({ children }: PropsWithChildren) {
         alt={isToggle ? '드롭다운 목록 열기' : '드롭다운 목록 닫기'}
         width="24"
         height="24"
-        className={rotateClass}
+        className={`${rotateClass} tablet:w-[22px] tablet:h-[22px]`}
       />
     </button>
   )
@@ -72,7 +84,7 @@ export function DropdownMenu({ children }: PropsWithChildren) {
   if (hasError) return null
   return (
     isToggle && (
-      <ul className="absolute top-[calc(100%+5px)] w-full p-[10px] flex flex-col gap-y-[5px] bg-black-60 border-black-70 rounded-lg text-black-30">
+      <ul className="absolute top-[calc(100%+5px)] w-full p-[10px] flex flex-col gap-y-[5px] bg-black-60 border border-black-70 rounded-lg text-black-30 z-[100]">
         {children}
       </ul>
     )
@@ -87,7 +99,7 @@ export function DropdownMenuItem({ children }: DropdownMenuItemProps) {
   }
   return (
     <li
-      className="px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px] overflow-hidden text-ellipsis whitespace-nowrap"
+      className="px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px] overflow-hidden text-ellipsis whitespace-nowrap tablet:text-sm tablet:px-[10px]"
       onClick={handleClick}
     >
       {children}
