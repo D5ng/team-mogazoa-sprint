@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { createContext, PropsWithChildren, useContext } from 'react'
 import { useToggle, useSelect, useOutsideClick } from '@shared/hooks'
 import type {
-  Dropdown,
+  DropdownProps,
   DropdownContextType,
-  DropdownMenuItemType,
+  DropdownMenuItemProps,
 } from './Dropdown.type'
 import { DROPDOWN_VARIANT } from './Dropdown.constants'
 import DropdownArrowIcon from '@app/images/icons/dropdown-arrow.svg'
@@ -25,7 +25,7 @@ export const useDropdownContext = () => {
   return dropdownContext
 }
 
-export function Dropdown({ children, variant = 'border' }: Dropdown) {
+export function Dropdown({ children, variant = 'border' }: DropdownProps) {
   const selectStates = useSelect<string>({ defaultValue: '' })
   const toggleStates = useToggle()
 
@@ -68,6 +68,8 @@ export function DropdownTrigger({ children }: PropsWithChildren) {
 
 export function DropdownMenu({ children }: PropsWithChildren) {
   const { isToggle } = useDropdownContext()
+  const hasError = !children || (children as []).length === 0
+  if (hasError) return null
   return (
     isToggle && (
       <ul className="absolute top-[calc(100%+5px)] w-full p-[10px] flex flex-col gap-y-[5px] bg-black-60 border-black-70 rounded-lg text-black-30">
@@ -77,7 +79,7 @@ export function DropdownMenu({ children }: PropsWithChildren) {
   )
 }
 
-export function DropdownMenuItem({ children }: DropdownMenuItemType) {
+export function DropdownMenuItem({ children }: DropdownMenuItemProps) {
   const { onSelect, onCloseToggle } = useDropdownContext()
   const handleClick = () => {
     onSelect(children as string)
@@ -85,7 +87,7 @@ export function DropdownMenuItem({ children }: DropdownMenuItemType) {
   }
   return (
     <li
-      className="px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px]"
+      className="px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px] overflow-hidden text-ellipsis whitespace-nowrap"
       onClick={handleClick}
     >
       {children}
