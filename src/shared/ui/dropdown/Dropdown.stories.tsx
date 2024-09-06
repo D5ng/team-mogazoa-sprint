@@ -23,7 +23,7 @@ function DropdownStoryComponent({
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
         {menuItems.map((menu) => (
-          <DropdownMenuItem key={menu}>{menu}</DropdownMenuItem>
+          <DropdownMenuItem>{menu}</DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>

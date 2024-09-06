@@ -3130,29 +3130,53 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
+<<<<<<< HEAD
   version: 22.5.4
   resolution: "@types/node@npm:22.5.4"
   dependencies:
     undici-types: "npm:~6.19.2"
   checksum: 10c0/b445daa7eecd761ad4d778b882d6ff7bcc3b4baad2086ea9804db7c5d4a4ab0298b00d7f5315fc640a73b5a1d52bbf9628e09c9fec0cf44dbf9b4df674a8717d
+=======
+  version: 22.5.3
+  resolution: "@types/node@npm:22.5.3"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/a068e31dd424a0eadfba7d9a5c5b415b76cfd729f3caa299674ad257f59df85c5fe77f1d0a343e811864c790baefb9003d7627618ee3cf85400af338481ba29f
+>>>>>>> 7cd17f41d37cf12792e14dc693cb91f385705941
   languageName: node
   linkType: hard
 
 "@types/node@npm:^18.0.0":
+<<<<<<< HEAD
   version: 18.19.50
   resolution: "@types/node@npm:18.19.50"
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/36e6bc9eb47213ce94a868dad9504465ad89fba6af9f7954e22bb27fb17a32ac495f263d0cf4fdaee74becd7b2629609a446ec8c2b59b7a07bd587567c8a4782
+=======
+  version: 18.19.49
+  resolution: "@types/node@npm:18.19.49"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/552b74e35744b9729764d3ebff6cef8dd000a230a6bc80b04e2d817439e4850cd4251df9952afa4e991433f8c10f931ebba500cc4d35a0c0eb86efdcd4bbcd05
+>>>>>>> 7cd17f41d37cf12792e14dc693cb91f385705941
   languageName: node
   linkType: hard
 
 "@types/node@npm:^20":
+<<<<<<< HEAD
   version: 20.16.5
   resolution: "@types/node@npm:20.16.5"
   dependencies:
     undici-types: "npm:~6.19.2"
   checksum: 10c0/6af7994129815010bcbc4cf8221865559c8116ff43e74a6549525c2108267596fc2d18aff5d5ecfe089fb60a119f975631343e2c65c52bfa0955ed9dc56733d6
+=======
+  version: 20.16.4
+  resolution: "@types/node@npm:20.16.4"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/1dfd24b8a1552adf1f37c189bcebb6e287184852188d8aa28f8e955f15079f8ee62d88f142b6a52c0fd59132fc40644bf6197c139e4e1d645c1db040b231caaa
+>>>>>>> 7cd17f41d37cf12792e14dc693cb91f385705941
   languageName: node
   linkType: hard
 
@@ -4177,6 +4201,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
+"axobject-query@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "axobject-query@npm:4.1.0"
+  checksum: 10c0/c470e4f95008f232eadd755b018cb55f16c03ccf39c027b941cd8820ac6b68707ce5d7368a46756db4256fbc91bb4ead368f84f7fb034b2b7932f082f6dc0775
+=======
 "axios@npm:^1.7.7":
   version: 1.7.7
   resolution: "axios@npm:1.7.7"
@@ -4188,10 +4218,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axobject-query@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "axobject-query@npm:4.1.0"
-  checksum: 10c0/c470e4f95008f232eadd755b018cb55f16c03ccf39c027b941cd8820ac6b68707ce5d7368a46756db4256fbc91bb4ead368f84f7fb034b2b7932f082f6dc0775
+"axobject-query@npm:~3.1.1":
+  version: 3.1.1
+  resolution: "axobject-query@npm:3.1.1"
+  dependencies:
+    deep-equal: "npm:^2.0.5"
+  checksum: 10c0/fff3175a22fd1f41fceb7ae0cd25f6594a0d7fba28c2335dd904538b80eb4e1040432564a3c643025cd2bb748f68d35aaabffb780b794da97ecfc748810b25ad
+>>>>>>> 7cd17f41d37cf12792e14dc693cb91f385705941
   languageName: node
   linkType: hard
 
@@ -6120,8 +6153,15 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-react@npm:^7.33.2":
+<<<<<<< HEAD
   version: 7.35.2
   resolution: "eslint-plugin-react@npm:7.35.2"
+=======
+
+  version: 7.35.1
+  resolution: "eslint-plugin-react@npm:7.35.1"
+
+>>>>>>> 7cd17f41d37cf12792e14dc693cb91f385705941
   dependencies:
     array-includes: "npm:^3.1.8"
     array.prototype.findlast: "npm:^1.2.5"
@@ -6143,7 +6183,13 @@ __metadata:
     string.prototype.repeat: "npm:^1.0.0"
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
+<<<<<<< HEAD
   checksum: 10c0/5f891f5a77e902a0ca8d10b23d0b800e90a09400187febe5986c5078d6277baa4b974d6acdbba25baae065dbcf12eb9241b5f5782527d0780314c2ee5006a8af
+=======
+
+  checksum: 10c0/faaa2108543675951949685208d105d9c3efa0ac8f4d950851b8f20e065b8bf87fdd7e78abae9b0382090bc22e61c00709388f35bdab2a8b1d283f985d310ed7
+
+>>>>>>> 7cd17f41d37cf12792e14dc693cb91f385705941
   languageName: node
   linkType: hard
 
@@ -6508,9 +6554,15 @@ __metadata:
   linkType: hard
 
 "filesize@npm:^10.0.12":
+<<<<<<< HEAD
   version: 10.1.6
   resolution: "filesize@npm:10.1.6"
   checksum: 10c0/9a196d64da4e947b8c0d294be09a3dfa7a634434a1fc5fb3465f1c9acc1237ea0363f245ba6e24477ea612754d942bc964d86e0e500905a72e9e0e17ae1bbdbc
+=======
+  version: 10.1.5
+  resolution: "filesize@npm:10.1.5"
+  checksum: 10c0/fd48ad9be9ee040a708a791661fdb5efab29448bc8152958e31902db4206a73cb82ca79d80b86e430395c0040a34f3f1fccd11cb995569142f197f8bd4548c77
+>>>>>>> 7cd17f41d37cf12792e14dc693cb91f385705941
   languageName: node
   linkType: hard
 
@@ -8629,7 +8681,9 @@ __metadata:
     "@storybook/react": "npm:^8.2.9"
     "@storybook/test": "npm:^8.2.9"
     "@tanstack/react-query": "npm:^5.54.1"
+
     "@types/lodash": "npm:^4.17.7"
+
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
