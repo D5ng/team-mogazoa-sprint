@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { Form, ImageInput, TextBoxInput } from '@shared/ui'
+import { Form, ImageInput, TextBoxInput, TextFieldInput } from '@shared/ui'
 import {
   FormField,
   FieldLabel,
@@ -23,7 +23,6 @@ export interface SignUpFormData {
 export default function SignUpForm() {
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormData>({
@@ -41,49 +40,41 @@ export default function SignUpForm() {
   }
 
   return (
-    // <Form
-    //   onSubmit={handleSubmit(onSubmit)}
-    //   className="w-[640px] flex flex-col gap-y-10"
-    // >
-    //   <FormField {...register('email', emailValidation)} errors={errors}>
-    //     <FieldLabel>이메일</FieldLabel>
-    //     <FieldInput type="text" placeholder="이메일을 입력해주세요" />
-    //     <FieldErrorMessage />
-    //   </FormField>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-[640px] flex flex-col gap-y-10"
+    >
+      <FormField {...register('email', emailValidation)} errors={errors}>
+        <FieldLabel>이메일</FieldLabel>
+        <FieldInput type="text" placeholder="이메일을 입력해주세요" />
+        <FieldErrorMessage />
+      </FormField>
 
-    //   <FormField {...register('nickname', nicknameValidation)} errors={errors}>
-    //     <FieldLabel>닉네임</FieldLabel>
-    //     <FieldInput type="text" placeholder="닉네임을 입력해주세요" />
-    //     <FieldErrorMessage />
-    //   </FormField>
+      <FormField {...register('nickname', nicknameValidation)} errors={errors}>
+        <FieldLabel>닉네임</FieldLabel>
+        <FieldInput type="text" placeholder="닉네임을 입력해주세요" />
+        <FieldErrorMessage />
+      </FormField>
 
-    //   <FormField {...register('password', passwordValidation)} errors={errors}>
-    //     <FieldLabel>비밀번호</FieldLabel>
-    //     <FieldInput type="password" placeholder="비밀번호를 입력해주세요" />
-    //     <FieldErrorMessage />
-    //   </FormField>
+      <FormField {...register('password', passwordValidation)} errors={errors}>
+        <FieldLabel>비밀번호</FieldLabel>
+        <FieldInput type="password" placeholder="비밀번호를 입력해주세요" />
+        <FieldErrorMessage />
+      </FormField>
 
-    //   <FormField
-    //     {...register('confirmPassword', confirmPasswordValidation)}
-    //     errors={errors}
-    //   >
-    //     <FieldLabel>비밀번호 확인</FieldLabel>
-    //     <FieldInput
-    //       type="password"
-    //       placeholder="비밀번호를 한번 더 입력해주세요"
-    //     />
-    //     <FieldErrorMessage />
-    //   </FormField>
+      <FormField
+        {...register('confirmPassword', confirmPasswordValidation)}
+        errors={errors}
+      >
+        <FieldLabel>비밀번호 확인</FieldLabel>
+        <FieldInput
+          type="password"
+          placeholder="비밀번호를 한번 더 입력해주세요"
+        />
+        <FieldErrorMessage />
+      </FormField>
 
-    //   <button type="submit">회원가입</button>
-    // </Form>
-    <>
-      <TextBoxInput
-        register={register('text-area')}
-        control={control}
-        placeholder="Enter your text here"
-      />
-      <ImageInput />
-    </>
+      <button type="submit">회원가입</button>
+    </Form>
   )
 }
