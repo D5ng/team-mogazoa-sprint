@@ -12,6 +12,10 @@ body {
   background-color: var(--default-bg);
 }
 
+input {
+  outline: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
