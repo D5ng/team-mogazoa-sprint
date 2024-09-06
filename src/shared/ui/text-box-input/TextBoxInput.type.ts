@@ -1,9 +1,10 @@
-import { TextareaHTMLAttributes } from 'react'
+import { UseFormRegisterReturn, Control } from 'react-hook-form'
 
 export interface TextBoxInputProps
-  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  name: string
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  register: UseFormRegisterReturn
+  control: Control<any>
   placeholder?: string
   rows?: number
-  maxLength: number
+  maxLength?: number
 }
