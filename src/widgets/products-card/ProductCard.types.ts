@@ -7,4 +7,8 @@ export interface ProductCardItems {
   rating: number
 }
 
+export type ProductCardProps = {
+  data: ProductCardItems
+}
+
 export type ProductCardData = ProductCardItems[]
