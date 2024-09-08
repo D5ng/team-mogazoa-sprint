@@ -5,14 +5,25 @@ import {
   DropdownMenu,
   DropdownMenuItem,
 } from './Dropdown'
+import type { DropdownVariantType } from './Dropdown.type'
 
-function DropdownStoryComponent({ menuItems }: { menuItems: string[] }) {
+interface DropdownProps {
+  menuItems: string[]
+  variant: DropdownVariantType
+  title: string
+}
+
+function DropdownStoryComponent({
+  menuItems,
+  variant = 'border',
+  title,
+}: DropdownProps) {
   return (
-    <Dropdown>
-      <DropdownTrigger>카테고리 선택</DropdownTrigger>
+    <Dropdown variant={variant}>
+      <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
         {menuItems.map((menu) => (
-          <DropdownMenuItem>{menu}</DropdownMenuItem>
+          <DropdownMenuItem key={menu}>{menu}</DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>
@@ -22,12 +33,27 @@ function DropdownStoryComponent({ menuItems }: { menuItems: string[] }) {
 type Story = StoryObj<typeof DropdownStoryComponent>
 
 const meta: Meta<typeof DropdownStoryComponent> = {
-  component: (args) => <DropdownStoryComponent {...args} />,
+  component: DropdownStoryComponent,
 }
 
 export const DropdownComponent: Story = {
   name: 'Dropdown',
+  argTypes: {
+    title: {
+      control: 'text',
+      description: '타이틀 텍스트를 설정해주는 부분',
+    },
+    variant: {
+      control: 'select',
+      options: ['border', 'none'],
+    },
+    menuItems: {
+      control: 'object',
+    },
+  },
   args: {
+    title: '카테고리 선택',
+    variant: 'border',
     menuItems: ['React.js', 'JavaScript', 'TypeScript'],
   },
 }
