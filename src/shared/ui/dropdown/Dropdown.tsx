@@ -84,7 +84,7 @@ export function DropdownMenu({ children }: PropsWithChildren) {
   if (hasError) return null
   return (
     isToggle && (
-      <ul className="absolute top-[calc(100%+5px)] w-full p-[10px] flex flex-col gap-y-[5px] bg-black-60 border border-black-70 rounded-lg text-black-30 z-[100]">
+      <ul className="absolute top-[calc(100%+5px)] w-full p-[10px] flex flex-col gap-y-[5px] bg-black-60 border border-black-70 rounded-lg text-black-30 z-[100] max-h-[300px] overflow-y-scroll">
         {children}
       </ul>
     )
@@ -99,7 +99,7 @@ export function DropdownMenuItem({ children }: DropdownMenuItemProps) {
   }
   return (
     <li
-      className="px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px] overflow-hidden text-ellipsis whitespace-nowrap tablet:text-sm tablet:px-[10px]"
+      className="px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px] overflow-hidden text-ellipsis whitespace-nowrap tablet:text-sm tablet:px-[10px] shrink-0"
       onClick={handleClick}
     >
       {children}
