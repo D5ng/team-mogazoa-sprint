@@ -5,6 +5,7 @@ import type {
   DropdownProps,
   DropdownContextType,
   DropdownMenuItemProps,
+  DropdownTriggerProps,
 } from './Dropdown.type'
 import { DROPDOWN_VARIANT } from './Dropdown.constants'
 import DropdownArrowIcon from '@app/images/icons/dropdown-arrow.svg'
@@ -25,7 +26,11 @@ export const useDropdownContext = () => {
   return dropdownContext
 }
 
-export function Dropdown({ children, variant = 'border' }: DropdownProps) {
+export function Dropdown({
+  children,
+  variant = 'border',
+  className,
+}: DropdownProps) {
   const selectStates = useSelect<string>({ defaultValue: '' })
   const toggleStates = useToggle()
 
@@ -41,18 +46,24 @@ export function Dropdown({ children, variant = 'border' }: DropdownProps) {
         ...selectStates,
       }}
     >
-      <div className={DROPDOWN_VARIANT[variant].wrapper} ref={ref}>
+      <div
+        className={`${DROPDOWN_VARIANT[variant].wrapper} ${className}`}
+        ref={ref}
+      >
         {children}
       </div>
     </DropdownContext.Provider>
   )
 }
 
-export function DropdownTrigger({ children }: PropsWithChildren) {
+export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
   const { isToggle, onToggle, selectedItem, variant } = useDropdownContext()
   const rotateClass = isToggle ? 'rotate-180' : 'rotate-0'
   return (
-    <button onClick={onToggle} className={DROPDOWN_VARIANT[variant].button}>
+    <button
+      onClick={onToggle}
+      className={`${DROPDOWN_VARIANT[variant].button} ${className}`}
+    >
       {selectedItem || children}
 
       <Image
