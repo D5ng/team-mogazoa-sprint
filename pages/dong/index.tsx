@@ -1,5 +1,5 @@
-import { ReviewWrapper } from '@features/product-detail/components'
+import { ProductInfoWrapper } from '@features/product-detail/components'
 
 export default function index() {
-  return <ReviewWrapper />
+  return <ProductInfoWrapper />
 }
