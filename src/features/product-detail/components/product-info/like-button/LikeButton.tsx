@@ -3,7 +3,7 @@ import { emptyHeart, heart } from '@/src/app/icons'
 
 export default function LikeButton() {
   return (
-    <button>
+    <button className="w-[28px] h-[28px] tablet:w-[24px] tablet:h-[24px]">
       <Image src={emptyHeart} alt="좋아요" />
     </button>
   )
