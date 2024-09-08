@@ -5,7 +5,7 @@ export const BUTTON_VARIANT = {
   },
   secondary: {
     default:
-      'bg-gradient-to-r from-blue to-indigo bg-clip-text text-transparent border border-indigo',
+      'bg-gradient-to-r from-blue to-indigo bg-clip-text !text-transparent border border-indigo',
     disabled: 'border border-black-70',
   },
   tertiary: {
