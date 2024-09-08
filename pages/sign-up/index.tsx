@@ -5,13 +5,13 @@ import {
   FieldLabel,
   FieldInput,
   FieldErrorMessage,
-} from '@/src/shared/ui/form-field/FormField'
+} from '@features/auth/components/form-field/FormField'
 import {
   emailValidation,
   nicknameValidation,
   passwordValidation,
   confirmPasswordValidation,
-} from '@/src/shared/lib/form-validation'
+} from '@features/auth/lib/form-validation'
 
 export interface SignUpFormData {
   email: string

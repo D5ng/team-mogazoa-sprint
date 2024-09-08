@@ -6,5 +6,5 @@ export { default as TextFieldInput } from './text-field-input/TextFieldInput'
 export { default as TextBoxInput } from './text-box-input/TextBoxInput'
 
 export * from './autocomplete-field/AutocompleteField'
-export * from './form-field/FormField'
+export * from '../../features/auth/components/form-field/FormField'
 export * from './dropdown/Dropdown'
