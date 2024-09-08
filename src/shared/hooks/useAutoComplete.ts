@@ -22,15 +22,16 @@ export default function useAutocomplete(
     )
   }, [suggestionList, debouncedSearchTerm])
 
-  const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value
-      setSearchTerm(value)
-      setValue('autocompleteInput', value)
-      onOpenToggle()
-    },
-    [setValue, onOpenToggle],
-  )
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> =
+    useCallback(
+      (e) => {
+        const value = e.target.value
+        setSearchTerm(value)
+        setValue('autocompleteInput', value)
+        onOpenToggle()
+      },
+      [setValue, onOpenToggle],
+    )
 
   const handleSuggestionSelect = useCallback(
     (suggestion: string) => {
