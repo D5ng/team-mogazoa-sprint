@@ -36,36 +36,36 @@ export function FieldLabel({ children }: LabelProps) {
     </label>
   )
 }
-export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { name, onChange, onBlur, errors } = useFormField()
-  const error = errors[name]
+export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
+  (props, ref) => {
+    const { name, onChange, onBlur, errors } = useFormField()
+    const error = errors[name]
 
-  const focusClassName = error
-    ? ''
-    : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
-  const borderClassName = error ? 'border-red' : 'border-black-70'
+    const inputStyle =
+      'px-5 h-[70px] rounded-lg text-white bg-black-60 border placeholder:text-black-30 caret-white'
+    const focusClassName = error
+      ? ''
+      : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
+    const borderClassName = error ? 'border-red' : 'border-black-70'
 
-  return (
-    <input
-      id={name}
-      name={name}
-      ref={ref}
-      autoComplete={name}
-      onChange={onChange}
-      onBlur={onBlur}
-      {...props}
-      className={`px-5 h-[70px] rounded-lg text-white bg-black-60 border placeholder:text-black-30 caret-white ${focusClassName} ${borderClassName}`}
-    />
-  )
-})
+    return (
+      <input
+        id={name}
+        name={name}
+        ref={ref}
+        autoComplete={name}
+        onChange={onChange}
+        onBlur={onBlur}
+        {...props}
+        className={`${inputStyle} ${focusClassName} ${borderClassName}`}
+      />
+    )
+  },
+)
 
 export function FieldErrorMessage() {
   const { name, errors } = useFormField()
   const error = errors[name]
 
-  return (
-    <p className="h-1 text-red text-sm">
-      {error ? (error.message as React.ReactNode) : null}
-    </p>
-  )
+  return <p className="h-1 text-red text-sm">{error && error.message}</p>
 }
