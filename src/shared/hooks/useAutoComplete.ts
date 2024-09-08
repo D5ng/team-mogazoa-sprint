@@ -4,13 +4,12 @@ import useDebounce from './useDebounce'
 
 export default function useAutocomplete(
   suggestionList: string[],
-  debounceDelay: number,
   setValue: UseFormSetValue<any>,
   onOpenToggle: () => void,
   onCloseToggle: () => void,
 ) {
   const [searchTerm, setSearchTerm] = useState('')
-  const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay)
+  const debouncedSearchTerm = useDebounce(searchTerm)
 
   const suggestions = useMemo(() => {
     if (!debouncedSearchTerm) return []

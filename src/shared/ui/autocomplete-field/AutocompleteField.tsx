@@ -30,7 +30,6 @@ export function AutocompleteField({
   const { isToggle: isOpen, onOpenToggle, onCloseToggle } = useToggle()
   const autocomplete = useAutocomplete(
     suggestionList,
-    debounceDelay,
     setValue,
     onOpenToggle,
     onCloseToggle,
