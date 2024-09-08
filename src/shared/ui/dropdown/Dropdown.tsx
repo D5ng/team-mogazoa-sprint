@@ -71,7 +71,7 @@ export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
         alt={isToggle ? '드롭다운 목록 열기' : '드롭다운 목록 닫기'}
         width="24"
         height="24"
-        className={rotateClass}
+        className={`${rotateClass} tablet:w-[22px] tablet:h-[22px]`}
       />
     </button>
   )
