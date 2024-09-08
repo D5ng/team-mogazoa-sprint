@@ -1,6 +1,5 @@
-import { StatisticsWrapper } from '@features/product-detail/components'
-import { MOCK } from '@/src/features/product-detail/constants'
+import React from 'react'
 
-export default function Index() {
-  return <StatisticsWrapper {...MOCK} />
+export default function index() {
+  return <div>index</div>
 }
