@@ -21,19 +21,13 @@ const useAutocompleteContext = () => {
 
 export function AutocompleteField({
   suggestionList,
-  debounceDelay = 300,
   children,
   ...props
 }: AutocompleteFieldProps) {
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const { register, setValue } = useForm()
   const { isToggle: isOpen, onOpenToggle, onCloseToggle } = useToggle()
-  const autocomplete = useAutocomplete(
-    suggestionList,
-    setValue,
-    onOpenToggle,
-    onCloseToggle,
-  )
+  const autocomplete = useAutocomplete(suggestionList, setValue)
 
   const contextValue = {
     ...autocomplete,

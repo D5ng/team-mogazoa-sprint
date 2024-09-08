@@ -1,42 +1,43 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
-import useDebounce from './useDebounce'
+import { debounce } from 'lodash'
 
 export default function useAutocomplete(
   suggestionList: string[],
   setValue: UseFormSetValue<any>,
-  onOpenToggle: () => void,
-  onCloseToggle: () => void,
 ) {
   const [searchTerm, setSearchTerm] = useState('')
-  const debouncedSearchTerm = useDebounce(searchTerm)
+  const [suggestions, setSuggestions] = useState<string[]>([])
 
-  const suggestions = useMemo(() => {
-    if (!debouncedSearchTerm) return []
-    return suggestionList.filter((item) =>
-      item.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
+  const debounceFilter = debounce((term: string) => {
+    if (!term) {
+      setSuggestions([])
+      return
+    }
+    const filtered = suggestionList.filter((item) =>
+      item.toLowerCase().includes(term.toLowerCase()),
     )
-  }, [suggestionList, debouncedSearchTerm])
+    setSuggestions(filtered)
+  }, 300)
 
-  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> =
-    useCallback(
-      (e) => {
-        const value = e.target.value
-        setSearchTerm(value)
-        setValue('autocompleteInput', value)
-        onOpenToggle()
-      },
-      [setValue, onOpenToggle],
-    )
+  useEffect(() => {
+    return () => {
+      debounceFilter.cancel()
+    }
+  }, [])
 
-  const handleSuggestionSelect = useCallback(
-    (suggestion: string) => {
-      setSearchTerm(suggestion)
-      setValue('autocompleteInput', suggestion)
-      onCloseToggle()
-    },
-    [setValue, onCloseToggle],
-  )
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const value = e.target.value
+    setSearchTerm(value)
+    setValue('autocompleteInput', value)
+    debounceFilter(value)
+  }
+
+  const handleSuggestionSelect = (suggestion: string) => {
+    setSearchTerm(suggestion)
+    setValue('autocompleteInput', suggestion)
+    setSuggestions([])
+  }
 
   return {
     searchTerm,
