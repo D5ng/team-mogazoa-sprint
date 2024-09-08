@@ -8,9 +8,10 @@ export default function ReviewContents({
   isLiked,
   reviewImages,
   userId,
+  likeCount,
 }: Pick<
   ReviewItem,
-  'content' | 'updatedAt' | 'isLiked' | 'reviewImages' | 'userId'
+  'content' | 'updatedAt' | 'isLiked' | 'reviewImages' | 'userId' | 'likeCount'
 >) {
   return (
     <div className="relative w-[calc(100%-150px-80px)] flex flex-col gap-y-5 text-base tablet:text-xs mobile:w-full">
@@ -22,7 +23,7 @@ export default function ReviewContents({
           <button className="underline">수정</button>
           <button className="underline">삭제</button>
         </div>
-        <ThumbsButton isLiked={isLiked} />
+        <ThumbsButton isLiked={isLiked} likeCount={likeCount} />
       </div>
     </div>
   )
