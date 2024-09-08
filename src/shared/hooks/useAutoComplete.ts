@@ -1,19 +1,16 @@
 import { useState, useCallback, useMemo } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
 import useDebounce from './useDebounce'
-import useToggle from './useToggle'
-import useOutsideClick from './useOutsideClick'
 
 export default function useAutocomplete(
   suggestionList: string[],
   debounceDelay: number,
   setValue: UseFormSetValue<any>,
+  onOpenToggle: () => void,
+  onCloseToggle: () => void,
 ) {
   const [searchTerm, setSearchTerm] = useState('')
   const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay)
-
-  const { isToggle: isOpen, onOpenToggle, onCloseToggle } = useToggle()
-  const ref = useOutsideClick<HTMLDivElement>({ onCloseToggle })
 
   const suggestions = useMemo(() => {
     if (!debouncedSearchTerm) return []
@@ -45,10 +42,7 @@ export default function useAutocomplete(
   return {
     searchTerm,
     suggestions,
-    isOpen,
-    onOpenToggle,
     handleInputChange,
     handleSuggestionSelect,
-    ref,
   }
 }

@@ -21,10 +21,11 @@ export interface AutocompleteContextType {
   searchTerm: string
   suggestions: string[]
   isOpen: boolean
+  onOpenToggle: () => void
+  onCloseToggle: () => void
   register: UseFormRegister<any>
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleSuggestionSelect: (suggestion: string) => void
-  onOpenToggle: React.Dispatch<React.SetStateAction<boolean>>
   highlightedIndex: number
-  setHighlightedIndex: React.Dispatch<React.SetStateAction<number>>
+  setHighlightedIndex: (index: number | ((prevIndex: number) => number)) => void
 }

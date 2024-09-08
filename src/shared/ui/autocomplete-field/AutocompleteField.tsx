@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useAutocomplete } from '@shared/hooks'
+import { useAutocomplete, useToggle } from '@shared/hooks'
 
 import type {
   AutocompleteContextType,
@@ -27,21 +27,28 @@ export function AutocompleteField({
 }: AutocompleteFieldProps) {
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const { register, setValue } = useForm()
-  const autocomplete = useAutocomplete(suggestionList, debounceDelay, setValue)
+  const { isToggle: isOpen, onOpenToggle, onCloseToggle } = useToggle()
+  const autocomplete = useAutocomplete(
+    suggestionList,
+    debounceDelay,
+    setValue,
+    onOpenToggle,
+    onCloseToggle,
+  )
 
   const contextValue = {
     ...autocomplete,
     register,
+    isOpen,
+    onOpenToggle,
+    onCloseToggle,
     highlightedIndex,
     setHighlightedIndex,
   }
 
   return (
     <AutoCompleteInputContext.Provider value={contextValue}>
-      <div
-        ref={autocomplete.ref}
-        className={`relative w-full ${props.className || ''}`}
-      >
+      <div className={`relative w-full ${props.className || ''}`}>
         {children}
       </div>
     </AutoCompleteInputContext.Provider>
@@ -56,6 +63,7 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
     suggestions,
     isOpen,
     onOpenToggle,
+    onCloseToggle,
     handleSuggestionSelect,
     highlightedIndex,
     setHighlightedIndex,
@@ -63,7 +71,7 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!isOpen) {
-      onOpenToggle(true)
+      onOpenToggle()
       return
     }
 
@@ -88,9 +96,11 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
           handleSuggestionSelect(suggestions[highlightedIndex])
         }
         setHighlightedIndex(-1)
+        onCloseToggle()
         break
       case 'Escape':
         setHighlightedIndex(-1)
+        onCloseToggle()
         break
     }
   }
@@ -129,14 +139,19 @@ export function AutocompleteDropdownItem({
   suggestion,
   isHighlighted,
 }: AutocompleteDropdownItemProps) {
-  const { handleSuggestionSelect } = useAutocompleteContext()
+  const { handleSuggestionSelect, onCloseToggle } = useAutocompleteContext()
   const highlightClassName = isHighlighted
     ? 'bg-gray-70 text-white'
     : 'text-black-30'
 
+  const handleClick = () => {
+    handleSuggestionSelect(suggestion)
+    onCloseToggle()
+  }
+
   return (
     <li
-      onClick={() => handleSuggestionSelect(suggestion)}
+      onClick={handleClick}
       className={`p-2 cursor-pointer hover:bg-gray-60 ${highlightClassName}`}
     >
       {suggestion}
