@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import type { TextFieldInputProps } from '@shared/ui/text-field-input/TextFieldInput.type'
+import type { TextFieldInputProps } from '@/src/shared/ui/input/text-field-input/TextFieldInput.type'
 
 export default function TextFieldInput({
   placeholder,

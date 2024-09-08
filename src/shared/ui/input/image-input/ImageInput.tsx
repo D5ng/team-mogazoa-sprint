@@ -1,12 +1,5 @@
 import Image from 'next/image'
-import { InputHTMLAttributes } from 'react'
-import { UseFormRegisterReturn } from 'react-hook-form'
-
-interface ImageInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  image: File | null
-  register?: UseFormRegisterReturn
-  resetField?: () => void
-}
+import { ImageInputProps } from './ImageInput.type'
 
 export default function ImageInput({
   image,
