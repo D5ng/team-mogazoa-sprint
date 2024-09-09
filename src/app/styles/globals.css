@@ -10,6 +10,14 @@
 
 body {
   background-color: var(--default-bg);
+  font-family: 'Pretendard', sans-serif;
+  font-display: swap;
+}
+
+
+input,
+textarea {
+  outline: none;
 }
 
 @layer utilities {
@@ -67,5 +75,11 @@ body {
     100% {
       transform: rotate(360deg);
     }
+  }
+}
+
+@layer components {
+  .input-base {
+    @apply w-full p-5 rounded-lg text-white bg-black-60 border border-black-70 focus:ring-1 focus:ring-indigo focus:border-indigo placeholder:text-black-30 caret-white;
   }
 }
