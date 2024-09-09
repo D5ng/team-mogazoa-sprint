@@ -10,7 +10,14 @@ export default function ReviewRating({ rating }: Pick<ReviewItem, 'rating'>) {
   return (
     <div className="flex gap-x-[2px]">
       {ratingCount.map((rating) => (
-        <Image src={star} alt="" width={18} height={18} key={rating} />
+        <Image
+          src={star}
+          alt=""
+          width={18}
+          height={18}
+          key={rating}
+          className="tablet:w-3 tablet:h-3"
+        />
       ))}
     </div>
   )

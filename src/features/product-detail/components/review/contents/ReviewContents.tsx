@@ -7,14 +7,22 @@ export default function ReviewContents({
   updatedAt,
   isLiked,
   reviewImages,
-}: Pick<ReviewItem, 'content' | 'updatedAt' | 'isLiked' | 'reviewImages'>) {
+  userId,
+  likeCount,
+}: Pick<
+  ReviewItem,
+  'content' | 'updatedAt' | 'isLiked' | 'reviewImages' | 'userId' | 'likeCount'
+>) {
   return (
-    <div className="relative flex flex-col gap-y-5 text-base">
+    <div className="relative w-[calc(100%-150px-80px)] flex flex-col gap-y-5 text-base tablet:text-xs mobile:w-full">
       <p>{content}</p>
       {!!reviewImages.length && <ReviewImages reviewImages={reviewImages} />}
-      <div className="flex justify-between items-end">
+      <div className="flex items-end gap-x-5 mobile:gap-x-3">
         <span className="text-black-30">{updatedAt}</span>
-        <ThumbsButton isLiked={isLiked} />
+        <div className="flex gap-x-2 text-black-20">
+          <button className="underline">수정</button>
+          <button className="underline">삭제</button>
+        </div>
       </div>
     </div>
   )
