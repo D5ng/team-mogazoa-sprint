@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { UseFormRegister } from 'react-hook-form'
 
 export interface AutocompleteFieldProps {
   suggestionList: string[]
@@ -20,10 +19,6 @@ export interface AutocompleteDropdownItemProps {
 export interface AutocompleteContextType {
   searchTerm: string
   suggestions: string[]
-  isOpen: boolean
-  onOpenToggle: () => void
-  onCloseToggle: () => void
-  register: UseFormRegister<any>
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleSuggestionSelect: (suggestion: string) => void
   highlightedIndex: number

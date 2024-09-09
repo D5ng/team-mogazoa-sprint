@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useAutocomplete, useToggle } from '@shared/hooks'
+import { useAutocomplete } from '@shared/hooks'
 
 import type {
   AutocompleteContextType,
@@ -25,16 +25,11 @@ export function AutocompleteField({
   ...props
 }: AutocompleteFieldProps) {
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
-  const { register, setValue } = useForm()
-  const { isToggle: isOpen, onOpenToggle, onCloseToggle } = useToggle()
+  const { setValue } = useForm()
   const autocomplete = useAutocomplete(suggestionList, setValue)
 
   const contextValue = {
     ...autocomplete,
-    register,
-    isOpen,
-    onOpenToggle,
-    onCloseToggle,
     highlightedIndex,
     setHighlightedIndex,
   }
@@ -51,23 +46,14 @@ export function AutocompleteField({
 export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
   const {
     searchTerm,
-    register,
     handleInputChange,
     suggestions,
-    isOpen,
-    onOpenToggle,
-    onCloseToggle,
     handleSuggestionSelect,
     highlightedIndex,
     setHighlightedIndex,
   } = useAutocompleteContext()
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!isOpen) {
-      onOpenToggle()
-      return
-    }
-
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (!suggestions.length) return
 
     switch (e.key) {
@@ -89,18 +75,19 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
           handleSuggestionSelect(suggestions[highlightedIndex])
         }
         setHighlightedIndex(-1)
-        onCloseToggle()
         break
       case 'Escape':
         setHighlightedIndex(-1)
-        onCloseToggle()
+        handleSuggestionSelect('')
+        break
+      case 'Backspace':
+        setHighlightedIndex(0)
         break
     }
   }
 
   return (
     <input
-      {...register('autocompleteInput')}
       value={searchTerm}
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}
@@ -111,9 +98,9 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
 }
 
 export function AutocompleteDropdown() {
-  const { isOpen, suggestions, highlightedIndex } = useAutocompleteContext()
+  const { suggestions, highlightedIndex } = useAutocompleteContext()
 
-  if (!isOpen || !suggestions.length) return null
+  if (!suggestions.length) return null
 
   return (
     <ul className="absolute w-full mt-1.5 bg-black-60 border border-black-70 rounded-lg z-dropdown">
@@ -132,14 +119,13 @@ export function AutocompleteDropdownItem({
   suggestion,
   isHighlighted,
 }: AutocompleteDropdownItemProps) {
-  const { handleSuggestionSelect, onCloseToggle } = useAutocompleteContext()
+  const { handleSuggestionSelect } = useAutocompleteContext()
   const highlightClassName = isHighlighted
     ? 'bg-gray-70 text-white'
     : 'text-black-30'
 
   const handleClick = () => {
     handleSuggestionSelect(suggestion)
-    onCloseToggle()
   }
 
   return (
