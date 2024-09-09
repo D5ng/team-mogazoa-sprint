@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { UseFormSetError } from 'react-hook-form'
 import { AxiosError, isAxiosError } from 'axios'
@@ -13,6 +14,7 @@ export const useSignUp = (
   signUpFunction: (data: SignUpFieldData) => Promise<AuthResponse>,
   setError: UseFormSetError<SignUpFieldData>,
 ) => {
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
   const handleAxiosError = (error: AxiosError<AuthServerError>) => {
@@ -38,7 +40,8 @@ export const useSignUp = (
     setIsLoading(true)
     try {
       await signUpFunction(data)
-      console.log('회원가입 성공')
+      // 로그인, 메인페이지 중 어디로 리다이렉트 하는 것이 자연스러울까요?
+      router.push('/signIn')
     } catch (err) {
       if (isAxiosError(err)) {
         handleAxiosError(err as AxiosError<AuthServerError>)
