@@ -3,9 +3,11 @@ import Gnb from '@widgets/Gnb/Gnb'
 
 export default function SingUpPage() {
   return (
-    <main className="w-screen h-screen flex flex-col justify-center items-center">
+    <>
       <Gnb />
-      <SignUpField />
-    </main>
+      <main className="w-screen h-screen flex justify-center items-center bg-black-80">
+        <SignUpField />
+      </main>
+    </>
   )
 }
