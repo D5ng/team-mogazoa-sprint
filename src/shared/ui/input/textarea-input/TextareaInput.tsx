@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
-import { TextBoxInputProps } from './TextBoxInput.type'
+import { TextareaInputProps } from './TextareaInput.type'
 
-const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
+const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
   ({ placeholder, name, value, maxLength = 500, ...props }, ref) => {
     const textLength = value ? value.length : 0
 
@@ -26,6 +26,6 @@ const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
   },
 )
 
-TextBoxInput.displayName = 'TextBoxInput'
+TextareaInput.displayName = 'TextareaInput'
 
-export default TextBoxInput
+export default TextareaInput

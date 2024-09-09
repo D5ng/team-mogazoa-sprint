@@ -1,4 +1,4 @@
-export interface TextBoxInputProps
+export interface TextareaInputProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string
   value: string

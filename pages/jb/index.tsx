@@ -3,7 +3,7 @@ import {
   Button,
   Form,
   ImageInput,
-  TextBoxInput,
+  TextareaInput,
   TextFieldInput,
 } from '@shared/ui'
 
@@ -33,7 +33,7 @@ export default function () {
         </div>
         <ImageInput {...register('productImage')} setValue={setValue} />
       </div>
-      <TextBoxInput
+      <TextareaInput
         {...register('textBoxInput')}
         value={textBoxValue}
         placeholder="상품 설명을 입력해주세요"
