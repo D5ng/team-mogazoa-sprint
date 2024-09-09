@@ -14,7 +14,6 @@ body {
   font-display: swap;
 }
 
-
 input,
 textarea {
   outline: none;
@@ -80,6 +79,6 @@ textarea {
 
 @layer components {
   .input-base {
-    @apply w-full p-5 rounded-lg text-white bg-black-60 border border-black-70 focus:ring-1 focus:ring-indigo focus:border-indigo placeholder:text-black-30 caret-white;
+    @apply w-full h-full p-5 rounded-lg text-white bg-black-60 border border-black-70 focus:ring-1 focus:ring-indigo focus:border-indigo placeholder:text-black-30 caret-white;
   }
 }
