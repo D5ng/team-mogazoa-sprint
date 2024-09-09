@@ -4,9 +4,9 @@ interface FormProps {
   className?: string
 }
 
-export default function Form({ onSubmit, children, className }: FormProps) {
+export default function Form({ onSubmit, children, ...props }: FormProps) {
   return (
-    <form onSubmit={onSubmit} className={className}>
+    <form onSubmit={onSubmit} className={`${props.className || ''}`}>
       {children}
     </form>
   )
