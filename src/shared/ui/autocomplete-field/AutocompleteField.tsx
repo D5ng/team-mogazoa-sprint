@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useAutocomplete } from '@shared/hooks'
-
+import { useAutocomplete, useKeyboardSelect } from '@shared/hooks'
 import type {
   AutocompleteContextType,
   AutocompleteFieldProps,
@@ -53,38 +52,12 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
     setHighlightedIndex,
   } = useAutocompleteContext()
 
-  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (!suggestions.length) return
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault()
-        setHighlightedIndex((prev) =>
-          prev < suggestions.length - 1 ? prev + 1 : 0,
-        )
-        break
-      case 'ArrowUp':
-        e.preventDefault()
-        setHighlightedIndex((prev) =>
-          prev > 0 ? prev - 1 : suggestions.length - 1,
-        )
-        break
-      case 'Enter':
-        e.preventDefault()
-        if (highlightedIndex >= 0) {
-          handleSuggestionSelect(suggestions[highlightedIndex])
-        }
-        setHighlightedIndex(-1)
-        break
-      case 'Escape':
-        setHighlightedIndex(-1)
-        handleSuggestionSelect('')
-        break
-      case 'Backspace':
-        setHighlightedIndex(0)
-        break
-    }
-  }
+  const handleKeyDown = useKeyboardSelect(
+    suggestions,
+    highlightedIndex,
+    setHighlightedIndex,
+    handleSuggestionSelect,
+  )
 
   return (
     <input
