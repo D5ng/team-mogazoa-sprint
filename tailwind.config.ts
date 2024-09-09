@@ -3,7 +3,6 @@
 module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-
     colors: {
       blue: {
         DEFAULT: '#5097FA',
@@ -21,7 +20,6 @@ module.exports = {
         60: '#252530',
         70: '#353542',
         80: '#17171C',
-
       },
       white: '#F1F1F5',
       red: '#FF0000',
@@ -35,6 +33,7 @@ module.exports = {
       pink: {
         DEFAULT: '#FF2F9F',
       },
+      transparent: 'transparent',
       yellow: '#FFC83C',
     },
     screens: {
