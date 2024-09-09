@@ -36,7 +36,7 @@ export const STATISTICS_MOCK = {
   isFavorite: false,
   category: {
     id: 1,
-    name: '전자제품',
+    name: '전자기기',
   },
   categoryMetric: {
     rating: 3.8,
