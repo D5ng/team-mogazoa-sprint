@@ -2,5 +2,10 @@ export interface SignUpFieldData {
   email: string
   nickname: string
   password: string
-  confirmPassword: string
+  passwordConfirmation: string
+}
+
+export interface SignFieldData {
+  email: string
+  password: string
 }

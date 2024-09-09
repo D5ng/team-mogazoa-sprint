@@ -10,7 +10,7 @@ import {
   emailValidation,
   nicknameValidation,
   passwordValidation,
-  confirmPasswordValidation as passwordConfirmationValidation,
+  passwordConfirmationValidation,
 } from '@features/auth/lib/form-validation'
 import { isAxiosError } from 'axios'
 import { signUp } from '@app/api'
@@ -34,24 +34,18 @@ export default function SignUpField() {
 
   const onSubmit = async (data: SignUpFieldData) => {
     try {
-      const signUpData: SignUpRequest = {
-        email: data.email,
-        nickname: data.nickname,
-        password: data.password,
-        passwordConfirmation: data.passwordConfirmation,
-      }
-      await signUp(signUpData)
+      await signUp(data)
       console.log('회원가입 성공')
     } catch (err) {
       if (isAxiosError(err) && err.response) {
         const error = err as any
         const field = Object.keys(
-          error.response.data.details,
+          error.response.data?.details || {},
         )[0] as keyof SignUpFieldData
         const message = error.response.data.message
         setError(field, { type: 'manual', message })
       } else {
-        console.error('An unexpected error occurred:', err)
+        console.error(err)
       }
     }
   }

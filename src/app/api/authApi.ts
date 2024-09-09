@@ -23,7 +23,7 @@ export const signUp = async (
   SignupRequest: SignUpFieldData,
 ): Promise<AuthResponse> => {
   const response = await axiosInstance.post<AuthResponse>(
-    'auth/signUp',
+    '/auth/signUp',
     SignupRequest,
   )
   return response.data
@@ -33,7 +33,7 @@ export const signIn = async (
   SignInRequest: SignUpFieldData,
 ): Promise<AuthResponse> => {
   const response = await axiosInstance.post<AuthResponse>(
-    'auth/signIn',
+    '/auth/signIn',
     SignInRequest,
   )
   return response.data
