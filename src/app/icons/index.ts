@@ -19,4 +19,3 @@ export { default as search } from 'public/images/search.svg'
 export { default as share } from 'public/images/share.svg'
 export { default as star } from 'public/images/star.svg'
 export { default as emptyReview } from 'public/images/empty-review.svg'
-

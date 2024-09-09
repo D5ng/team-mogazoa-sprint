@@ -1,6 +1,13 @@
-import { ProductInfoWrapper } from '@features/product-detail/components'
-import { STATISTICS_MOCK } from '@features/product-detail/constants'
+import ProductAddModal from '@/src/features/product-add-modal/components/ProductAddModal'
+import { useToggle } from '@/src/shared/hooks'
 
 export default function index() {
-  return <ProductInfoWrapper {...STATISTICS_MOCK} />
+  const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
+
+  return (
+    <>
+      <button onClick={onOpenToggle}>Open toggle</button>
+      {isToggle && <ProductAddModal onCloseToggle={onCloseToggle} />}
+    </>
+  )
 }
