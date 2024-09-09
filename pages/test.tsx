@@ -8,7 +8,6 @@ const test = () => {
     <>
       <Gnb />
       <SideMenu />
-      <Ranking />
     </>
   )
 }
