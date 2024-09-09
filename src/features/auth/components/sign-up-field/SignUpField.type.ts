@@ -1,4 +1,4 @@
-export interface SignUpFormData {
+export interface SignUpFieldData {
   email: string
   nickname: string
   password: string
