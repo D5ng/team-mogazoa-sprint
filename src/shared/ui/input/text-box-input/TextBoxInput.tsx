@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { TextBoxInputProps } from './TextBoxInput.type'
 
 const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
