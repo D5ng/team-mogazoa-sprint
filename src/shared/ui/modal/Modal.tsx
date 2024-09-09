@@ -15,7 +15,7 @@ const useModalContext = () => {
 }
 
 export function Modal(props: ModalProps) {
-  const element = document.getElementById('modal')!
+  const portalElement = document.getElementById('modal')!
   return createPortal(
     <ModalContext.Provider value={{ onCloseModal: props.onCloseModal }}>
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl">
@@ -24,19 +24,19 @@ export function Modal(props: ModalProps) {
         {props.children}
       </div>
     </ModalContext.Provider>,
-    element,
+    portalElement,
   )
 }
 
 export function ModalBackdrop() {
   const { onCloseModal } = useModalContext()
-  const element = document.getElementById('backdrop')!
+  const portalElement = document.getElementById('backdrop')!
   return createPortal(
     <div
       className="fixed w-screen h-screen left-0 top-0 bg-[#000000b3] z-[110]"
       onClick={onCloseModal}
     ></div>,
-    element,
+    portalElement,
   )
 }
 
