@@ -10,27 +10,50 @@ import {
   emailValidation,
   nicknameValidation,
   passwordValidation,
-  confirmPasswordValidation,
+  confirmPasswordValidation as passwordConfirmationValidation,
 } from '@features/auth/lib/form-validation'
-import type { SignUpFieldData } from './SignUpField.type'
+import { isAxiosError } from 'axios'
+import { signUp } from '@app/api'
+import type { SignUpFieldData } from '@app/types'
 
 export default function SignUpField() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<SignUpFieldData>({
     mode: 'onBlur',
     defaultValues: {
       email: '',
       nickname: '',
       password: '',
-      confirmPassword: '',
+      passwordConfirmation: '',
     },
   })
 
-  const onSubmit = (data: SignUpFieldData) => {
-    console.log(data)
+  const onSubmit = async (data: SignUpFieldData) => {
+    try {
+      const signUpData: SignUpRequest = {
+        email: data.email,
+        nickname: data.nickname,
+        password: data.password,
+        passwordConfirmation: data.passwordConfirmation,
+      }
+      await signUp(signUpData)
+      console.log('회원가입 성공')
+    } catch (err) {
+      if (isAxiosError(err) && err.response) {
+        const error = err as any
+        const field = Object.keys(
+          error.response.data.details,
+        )[0] as keyof SignUpFieldData
+        const message = error.response.data.message
+        setError(field, { type: 'manual', message })
+      } else {
+        console.error('An unexpected error occurred:', err)
+      }
+    }
   }
 
   return (
@@ -57,7 +80,7 @@ export default function SignUpField() {
       </FormField>
 
       <FormField
-        {...register('confirmPassword', confirmPasswordValidation)}
+        {...register('passwordConfirmation', passwordConfirmationValidation)}
         errors={errors}
       >
         <FieldLabel>비밀번호 확인</FieldLabel>
