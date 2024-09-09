@@ -12,9 +12,9 @@ import {
   passwordValidation,
   passwordConfirmationValidation,
 } from '@features/auth/lib/form-validation'
-import { isAxiosError } from 'axios'
 import { signUp } from '@app/api'
-import type { SignUpFieldData } from '@app/types'
+import type { SignUpFieldData } from '@features/auth/types/auth.type'
+import { useSignUp } from '@/src/features/auth/hooks/useSignUp'
 
 export default function SignUpField() {
   const {
@@ -32,23 +32,7 @@ export default function SignUpField() {
     },
   })
 
-  const onSubmit = async (data: SignUpFieldData) => {
-    try {
-      await signUp(data)
-      console.log('회원가입 성공')
-    } catch (err) {
-      if (isAxiosError(err) && err.response) {
-        const error = err as any
-        const field = Object.keys(
-          error.response.data?.details || {},
-        )[0] as keyof SignUpFieldData
-        const message = error.response.data.message
-        setError(field, { type: 'manual', message })
-      } else {
-        console.error(err)
-      }
-    }
-  }
+  const { onSubmit, isLoading } = useSignUp(signUp, setError)
 
   return (
     <Form
@@ -85,7 +69,7 @@ export default function SignUpField() {
         <FieldErrorMessage />
       </FormField>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" isLoading={isLoading}>
         회원가입
       </Button>
     </Form>

@@ -1,5 +1,5 @@
 import { RegisterOptions } from 'react-hook-form'
-import type { SignUpFieldData } from '@app/types'
+import type { SignUpFieldData } from '@features/auth/types/auth.type'
 
 export const emailValidation = {
   required: '이메일은 필수 입력입니다.',

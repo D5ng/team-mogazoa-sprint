@@ -1,40 +1,22 @@
 import { axiosInstance } from '@app/config'
-import { SignUpFieldData } from '@app/types'
-
-export type SignInRequest = 'email' | 'password'
-
-export interface AuthUser {
-  id: number
-  email: string
-  description: string
-  image: string | null
-  teamId: string
-  nickname: string
-  updatedAt: string
-  createdAt: string
-}
-
-export interface AuthResponse {
-  accessToken: string
-  user: AuthUser
-}
+import { AuthResponse, SignUpFieldData } from '@features/auth/types/auth.type'
 
 export const signUp = async (
-  SignupRequest: SignUpFieldData,
+  signUpRequest: SignUpFieldData,
 ): Promise<AuthResponse> => {
   const response = await axiosInstance.post<AuthResponse>(
-    '/auth/signUp',
-    SignupRequest,
+    'auth/signUp',
+    signUpRequest,
   )
   return response.data
 }
 
 export const signIn = async (
-  SignInRequest: SignUpFieldData,
+  signInRequest: SignUpFieldData,
 ): Promise<AuthResponse> => {
   const response = await axiosInstance.post<AuthResponse>(
-    '/auth/signIn',
-    SignInRequest,
+    'auth/signIn',
+    signInRequest,
   )
   return response.data
 }
