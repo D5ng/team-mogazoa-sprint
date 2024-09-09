@@ -22,5 +22,7 @@ export interface DropdownMenuItemProps {
   children: ReactNode
 }
 
-export interface DropdownTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface DropdownTriggerProps {
+  className?: string
+  children: ReactNode
+}
