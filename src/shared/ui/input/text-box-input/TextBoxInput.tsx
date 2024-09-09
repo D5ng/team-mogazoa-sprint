@@ -1,34 +1,24 @@
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { TextBoxInputProps } from './TextBoxInput.type'
-import { useWatch } from 'react-hook-form'
 
 const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
-  (
-    { placeholder, control, rows = 4, maxLength = 500, name, ...props },
-    ref,
-  ) => {
-    const value = useWatch({
-      control,
-      name,
-      defaultValue: '',
-    })
-    const currentLength = value?.length || 0
+  ({ placeholder, name, value, maxLength = 500, ...props }, ref) => {
+    const charCount = value ? value.length : 0
 
     return (
       <div className={`relative w-full ${props.className || ''}`}>
-        <label htmlFor={name} className="sr-only">
-          {name}
-        </label>
         <textarea
           id={name}
+          name={name}
           placeholder={placeholder}
-          rows={rows}
+          rows={props.rows}
           maxLength={maxLength}
           className={`input-base ${props.className || ''}`}
           ref={ref}
+          {...props}
         />
         <span className="absolute right-5 bottom-5 text-sm text-black-30">
-          {currentLength}/{maxLength}
+          {charCount}/{maxLength}
         </span>
       </div>
     )

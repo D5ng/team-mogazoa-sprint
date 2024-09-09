@@ -8,11 +8,13 @@ import {
 } from '@shared/ui'
 
 export default function () {
-  const { register, setValue, control } = useForm()
+  const { register, setValue, watch, handleSubmit } = useForm()
 
-  const onSubmit = (data: any) => {
-    console.log(data)
-  }
+  const textBoxValue = watch('textBoxInput')
+
+  const onSubmit = handleSubmit((data) => {
+    console.log('Form Data:', data)
+  })
 
   return (
     <Form onSubmit={onSubmit} className="flex flex-col gap-5 p-10">
@@ -20,12 +22,12 @@ export default function () {
         <div className="flex flex-2 flex-col gap-5 max-w-full h-full">
           <TextFieldInput
             placeholder="상품명"
-            {...register('textFiledInput')}
+            {...register('textFieldInput')}
             setValue={setValue}
           />
           <TextFieldInput
             placeholder="카테고리 선택"
-            {...register('textFiledInput')}
+            {...register('category')}
             setValue={setValue}
           />
         </div>
@@ -37,10 +39,12 @@ export default function () {
       </div>
       <TextBoxInput
         {...register('textBoxInput')}
-        control={control}
+        value={textBoxValue}
         placeholder="상품 설명을 입력해주세요"
       />
-      <Button variant="primary">추가하기</Button>
+      <Button variant="primary" type="submit">
+        추가하기
+      </Button>
     </Form>
   )
 }

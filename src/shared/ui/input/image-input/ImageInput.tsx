@@ -45,13 +45,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
             sizes="100%"
           />
         ) : (
-          <Image
-            src={addImage}
-            alt="이미지 업로드"
-            width={24}
-            height={24}
-            priority
-          />
+          <Image src={addImage} alt="이미지 업로드" width={24} height={24} />
         )}
         {preview && (
           <button
