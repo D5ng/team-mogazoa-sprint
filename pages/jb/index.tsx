@@ -19,7 +19,7 @@ export default function () {
   return (
     <Form onSubmit={onSubmit} className="flex flex-col gap-5 p-10">
       <div className="flex gap-5 h-40">
-        <div className="flex flex-2 flex-col gap-5 max-w-full h-full">
+        <div className="flex flex-col flex-grow gap-5 max-w-full h-full">
           <TextFieldInput
             placeholder="상품명"
             {...register('textFieldInput')}
@@ -31,11 +31,7 @@ export default function () {
             setValue={setValue}
           />
         </div>
-        <ImageInput
-          {...register('productImage')}
-          setValue={setValue}
-          className="flex-1"
-        />
+        <ImageInput {...register('productImage')} setValue={setValue} />
       </div>
       <TextBoxInput
         {...register('textBoxInput')}
