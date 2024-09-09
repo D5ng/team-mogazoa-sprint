@@ -7,7 +7,7 @@ import { STATISTICS_MOCK } from '@features/product-detail/constants'
 
 export default function index() {
   return (
-    <main className="w-[940px] m-auto mt-[60px]">
+    <main className="w-[940px] m-auto mt-[60px] tablet:w-full">
       <section>
         <ProductInfoWrapper {...STATISTICS_MOCK} />
       </section>

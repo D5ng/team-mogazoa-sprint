@@ -30,13 +30,13 @@ export default function ProductContents({
       <div className="flex gap-x-5 tablet:gap-x-[15px] mobile:flex-col mobile:gap-x-0 mobile:gap-y-[15px]">
         <Button
           variant="primary"
-          className="w-[345px] h-[65px] tablet:w-[33.065vw] tablet:h-[55px] mobile:!w-full"
+          className="w-[345px] h-[65px] tablet:w-[33.065vw] tablet:h-[55px] mobile:w-full"
         >
           리뷰 작성하기
         </Button>
         <Button
           variant="secondary"
-          className="w-[180px] h-[65px] tablet:w-[16.532vw] tablet:h-[55px] mobile:!w-full"
+          className="w-[180px] h-[65px] tablet:w-[16.532vw] tablet:h-[55px] mobile:w-full"
         >
           비교하기
         </Button>
