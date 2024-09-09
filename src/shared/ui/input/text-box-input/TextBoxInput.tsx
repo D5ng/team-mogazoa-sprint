@@ -4,13 +4,12 @@ import { useWatch } from 'react-hook-form'
 
 const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
   (
-    { placeholder, control, rows = 4, maxLength = 500, register, ...props },
+    { placeholder, control, rows = 4, maxLength = 500, name, ...props },
     ref,
   ) => {
-    const name = register?.name
     const value = useWatch({
       control,
-      name: name,
+      name,
       defaultValue: '',
     })
     const currentLength = value?.length || 0
@@ -26,7 +25,6 @@ const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
           rows={rows}
           maxLength={maxLength}
           className={`input-base ${props.className || ''}`}
-          {...register}
           {...props}
           ref={ref}
         />
