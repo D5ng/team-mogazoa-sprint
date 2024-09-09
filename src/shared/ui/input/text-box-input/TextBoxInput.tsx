@@ -3,7 +3,7 @@ import { TextBoxInputProps } from './TextBoxInput.type'
 
 const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
   ({ placeholder, name, value, maxLength = 500, ...props }, ref) => {
-    const charCount = value ? value.length : 0
+    const textLength = value ? value.length : 0
 
     return (
       <div
@@ -19,7 +19,7 @@ const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
           {...props}
         />
         <span className="absolute right-5 bottom-5 text-sm text-black-30">
-          {charCount}/{maxLength}
+          {textLength}/{maxLength}
         </span>
       </div>
     )
