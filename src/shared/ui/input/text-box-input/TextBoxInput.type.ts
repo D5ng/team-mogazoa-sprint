@@ -7,4 +7,5 @@ export interface TextBoxInputProps
   placeholder?: string
   rows?: number
   maxLength?: number
+  className?: string
 }

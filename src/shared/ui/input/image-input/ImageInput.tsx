@@ -29,7 +29,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
     }
 
     return (
-      <div className="relative w-full h-full">
+      <div className={`relative w-full h-full ${props.className || ''}`}>
         <div
           onClick={handleImageClick}
           className="relative w-full h-full flex items-center justify-center cursor-pointer"
@@ -63,7 +63,6 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
         <input
           type="file"
           className="hidden"
-          {...props}
           ref={fileInputRef}
           onChange={(e) => {
             onChange(e)

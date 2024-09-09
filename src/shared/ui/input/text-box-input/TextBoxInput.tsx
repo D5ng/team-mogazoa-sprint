@@ -15,7 +15,7 @@ const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
     const currentLength = value?.length || 0
 
     return (
-      <div className="relative w-full">
+      <div className={`relative w-full ${props.className || ''}`}>
         <label htmlFor={name} className="sr-only">
           {name}
         </label>
@@ -25,7 +25,6 @@ const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
           rows={rows}
           maxLength={maxLength}
           className={`input-base ${props.className || ''}`}
-          {...props}
           ref={ref}
         />
         <span className="absolute right-5 bottom-5 text-sm text-black-30">
