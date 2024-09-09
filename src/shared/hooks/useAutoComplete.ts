@@ -1,62 +1,48 @@
-import { useState, useEffect, useCallback } from 'react'
-import debounce from 'lodash/debounce'
+import { useState, useEffect } from 'react'
+import { UseFormSetValue } from 'react-hook-form'
+import { debounce } from 'lodash'
 
-interface UseAutocompleteParams {
-  searchTerm: string
-  suggestionList: string[]
-  debounceTime?: number
-}
-
-export default function useAutocomplete({
-  searchTerm,
-  suggestionList,
-  debounceTime = 300,
-}: UseAutocompleteParams) {
+export default function useAutocomplete(
+  suggestionList: string[],
+  setValue: UseFormSetValue<any>,
+) {
+  const [searchTerm, setSearchTerm] = useState('')
   const [suggestions, setSuggestions] = useState<string[]>([])
-  const [highlightedIndex, setHighlightedIndex] = useState(-1)
 
-  const debouncedUpdate = useCallback(
-    debounce((term: string) => {
-      setSuggestions(
-        term
-          ? suggestionList.filter((item) =>
-              item.toLowerCase().includes(term.toLowerCase()),
-            )
-          : [],
-      )
-      setHighlightedIndex(-1)
-    }, debounceTime),
-    [suggestionList, debounceTime],
-  )
+  const debounceFilter = debounce((term: string) => {
+    if (!term) {
+      setSuggestions([])
+      return
+    }
+    const filtered = suggestionList.filter((item) =>
+      item.toLowerCase().includes(term.toLowerCase()),
+    )
+    setSuggestions(filtered)
+  }, 300)
 
   useEffect(() => {
-    debouncedUpdate(searchTerm)
-
     return () => {
-      debouncedUpdate.cancel()
+      debounceFilter.cancel()
     }
-  }, [searchTerm, debouncedUpdate])
+  }, [])
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!suggestions.length) return null
-
-    const keyActions: { [key: string]: () => string | null } = {
-      ArrowDown: () => {
-        setHighlightedIndex((prev) =>
-          Math.min(prev + 1, suggestions.length - 1),
-        )
-        return null
-      },
-      ArrowUp: () => {
-        setHighlightedIndex((prev) => Math.max(prev - 1, 0))
-        return null
-      },
-      Enter: () => suggestions[highlightedIndex] || null,
-    }
-
-    const action = keyActions[e.key]
-    return action ? action() : null
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const value = e.target.value
+    setSearchTerm(value)
+    setValue('autocompleteInput', value)
+    debounceFilter(value)
   }
 
-  return { suggestions, highlightedIndex, handleKeyDown }
+  const handleSuggestionSelect = (suggestion: string) => {
+    setSearchTerm(suggestion)
+    setValue('autocompleteInput', suggestion)
+    setSuggestions([])
+  }
+
+  return {
+    searchTerm,
+    suggestions,
+    handleInputChange,
+    handleSuggestionSelect,
+  }
 }

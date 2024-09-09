@@ -1,17 +1,22 @@
 import { useForm } from 'react-hook-form'
-import { Form } from '@/src/shared/ui/form/Form'
+import {
+  AutocompleteDropdown,
+  AutocompleteField,
+  AutocompleteInput,
+  Form,
+} from '@shared/ui'
 import {
   FormField,
   FieldLabel,
   FieldInput,
   FieldErrorMessage,
-} from '@/src/shared/ui/form-field/FormField'
+} from '@features/auth/components/form-field/FormField'
 import {
   emailValidation,
   nicknameValidation,
   passwordValidation,
   confirmPasswordValidation,
-} from '@/src/shared/lib/form-validation'
+} from '@features/auth/lib/form-validation'
 
 export interface SignUpFormData {
   email: string
