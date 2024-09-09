@@ -41,8 +41,6 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
     const { name, onChange, onBlur, errors } = useFormField()
     const error = errors[name]
 
-    const inputStyle =
-      'px-5 h-[70px] rounded-lg text-white bg-black-60 border placeholder:text-black-30 caret-white'
     const focusClassName = error
       ? ''
       : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
@@ -57,7 +55,7 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
         onChange={onChange}
         onBlur={onBlur}
         {...props}
-        className={`${inputStyle} ${focusClassName} ${borderClassName}`}
+        className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
       />
     )
   },
