@@ -1,4 +1,4 @@
-import ProductAddModal from '@/src/features/product-add-modal/components/ProductAddModal'
+import ProductAddModal from '@features/product-add-modal/components/modal/ProductAddModal'
 import { useToggle } from '@/src/shared/hooks'
 
 export default function index() {
