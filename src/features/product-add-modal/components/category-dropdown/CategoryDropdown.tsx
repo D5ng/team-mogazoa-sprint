@@ -12,7 +12,7 @@ interface CategoryDropdownProps {
 
 export default function CategoryDropdown({ onChange }: CategoryDropdownProps) {
   return (
-    <Dropdown className="w-[360px]">
+    <Dropdown className="w-[360px] mobile:w-full">
       <DropdownTrigger>카테고리 선택</DropdownTrigger>
       <DropdownMenu>
         {CATEGORY_CHIPS.map((category) => (

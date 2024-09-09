@@ -36,13 +36,13 @@ export default function ProductAddModal({
       <ModalTitle>상품 추가</ModalTitle>
       <Form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-y-5 my-[40px]"
+        className="flex flex-col gap-y-5 my-[40px] tablet:gap-y-[15px] mobile:gap-y-2.5 mobile:my-5"
       >
-        <div className="flex items-center gap-5">
-          <div className="flex flex-col gap-y-5">
+        <div className="flex items-center gap-x-5 tablet:gap-x-[15px] mobile:flex-col-reverse mobile:items-start mobile:gap-y-2.5">
+          <div className="flex flex-col gap-y-5 tablet:gap-y-[15px] mobile:w-full mobile:gap-y-2.5">
             <TextFieldInput
               placeholder="상품명 (상품 등록 여부를 확인해 주세요)"
-              className="h-[70px]"
+              className="h-[70px] tablet:h-[60px] mobile:w-full"
               setValue={setValue}
               {...register('name')}
             />
@@ -56,7 +56,11 @@ export default function ProductAddModal({
               }}
             />
           </div>
-          <ImageInput {...register('image')} setValue={setValue} />
+          <ImageInput
+            {...register('image')}
+            setValue={setValue}
+            className="tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px]"
+          />
         </div>
         <TextareaInput
           {...register('description')}
