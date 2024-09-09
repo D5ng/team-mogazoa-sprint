@@ -12,7 +12,9 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
       fileInputRef.current?.click()
     }
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange: React.ChangeEventHandler<HTMLInputElement> = (
+      e,
+    ) => {
       const file = e.target.files?.[0]
       if (file?.type.startsWith('image/')) {
         setPreview(URL.createObjectURL(file))
@@ -20,7 +22,8 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
       }
     }
 
-    const handleReset = () => {
+    const handleReset: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+      e.stopPropagation()
       setPreview(null)
       setValue(name, null)
       if (fileInputRef.current) {
@@ -29,28 +32,27 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
     }
 
     return (
-      <div className={`relative w-full h-full ${props.className || ''}`}>
-        <div
-          onClick={handleImageClick}
-          className="relative w-full h-full flex items-center justify-center cursor-pointer"
-        >
-          {preview ? (
-            <Image
-              src={preview}
-              alt="업로드된 이미지"
-              fill
-              className="object-cover"
-            />
-          ) : (
-            <Image
-              src={addImage}
-              alt="이미지 업로드"
-              width={24}
-              height={24}
-              priority
-            />
-          )}
-        </div>
+      <div
+        onClick={handleImageClick}
+        className={`relative flex items-center justify-center input-base cursor-pointer ${props.className || ''}`}
+      >
+        {preview ? (
+          <Image
+            src={preview}
+            alt="업로드된 이미지"
+            fill
+            className="object-cover w-full h-full rounded-lg"
+            sizes="100%"
+          />
+        ) : (
+          <Image
+            src={addImage}
+            alt="이미지 업로드"
+            width={24}
+            height={24}
+            priority
+          />
+        )}
         {preview && (
           <button
             type="button"
