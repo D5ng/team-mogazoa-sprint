@@ -2,7 +2,7 @@ export interface ProductCardItems {
   id: number
   image: string
   name: string
-  reveiwCount: number
+  reviewCount: number
   favoriteCount: number
   rating: number
 }

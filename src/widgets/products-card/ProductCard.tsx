@@ -1,13 +1,15 @@
-import ProductCardUi from './ProductCardUi'
+import ProductCardUi from './ProductCardItem'
 import { CARD_MOCK_DATA } from './ProductCard.mock'
 import { ProductCardItems } from './ProductCard.types'
 
 export default function ProductCard() {
   return (
-    <div>
+    <ul>
       {CARD_MOCK_DATA.map((data: ProductCardItems) => (
-        <ProductCardUi key={data.id} data={data} />
+        <li>
+          <ProductCardUi key={data.id} data={data} />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
