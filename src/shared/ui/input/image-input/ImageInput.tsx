@@ -1,58 +1,80 @@
 import Image from 'next/image'
-import { ImageInputProps } from './ImageInput.type'
+import { close, addImage } from '@app/icons/index'
+import { forwardRef, useRef, useState } from 'react'
+import type { ImageInputProps } from './ImageInput.type'
 
-export default function ImageInput({
-  image,
-  register,
-  resetField,
-  ...props
-}: ImageInputProps) {
-  const name = register?.name
+const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
+  ({ setValue, name, onChange, ...props }, ref) => {
+    const [preview, setPreview] = useState<string | null>(null)
+    const fileInputRef = useRef<HTMLInputElement>(null)
 
-  return (
-    <div className="relative w-full">
-      {image && (
-        <Image
-          src="/images/close.svg"
-          alt="close"
-          width={24}
-          height={24}
-          className="absolute top-1.5 right-1.5 z cursor-pointer"
-          onClick={resetField}
-        />
-      )}
+    const handleImageClick = () => {
+      fileInputRef.current?.click()
+    }
 
-      <label htmlFor={name} className="block w-full h-full cursor-pointer">
-        {image && (
-          <div className="relative w-full h-full">
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0]
+      if (file?.type.startsWith('image/')) {
+        setPreview(URL.createObjectURL(file))
+        setValue(name, file)
+      }
+    }
+
+    const handleReset = () => {
+      setPreview(null)
+      setValue(name, null)
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''
+      }
+    }
+
+    return (
+      <div className="relative w-full h-full">
+        <div
+          onClick={handleImageClick}
+          className="relative w-full h-full flex items-center justify-center cursor-pointer"
+        >
+          {preview ? (
             <Image
+              src={preview}
+              alt="업로드된 이미지"
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              src={URL.createObjectURL(image)}
-              alt="product-image"
-              style={{ objectFit: 'cover' }}
+              className="object-cover"
             />
-          </div>
-        )}
-        {!image && (
-          <div className="flex items-center justify-center w-full h-full bg-gray-100">
+          ) : (
             <Image
-              src="/images/addImage.svg"
-              alt="image-placeholder"
+              src={addImage}
+              alt="이미지 업로드"
               width={24}
               height={24}
+              priority
             />
-          </div>
+          )}
+        </div>
+        {preview && (
+          <button
+            type="button"
+            onClick={handleReset}
+            className="absolute top-2 right-2 p-1 bg-black-80 opacity-50 rounded-lg"
+          >
+            <Image src={close} alt="이미지 제거 버튼" width={20} height={20} />
+          </button>
         )}
-      </label>
-      <input
-        type="file"
-        accept="image/*"
-        id={name}
-        className="hidden"
-        {...register}
-        {...props}
-      />
-    </div>
-  )
-}
+        <input
+          type="file"
+          className="hidden"
+          {...props}
+          ref={fileInputRef}
+          onChange={(e) => {
+            onChange(e)
+            handleFileChange(e)
+          }}
+        />
+      </div>
+    )
+  },
+)
+
+ImageInput.displayName = 'ImageInput'
+
+export default ImageInput

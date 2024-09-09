@@ -1,12 +1,10 @@
-import { useForm } from 'react-hook-form'
 import type { TextFieldInputProps } from '@/src/shared/ui/input/text-field-input/TextFieldInput.type'
 
 export default function TextFieldInput({
   placeholder,
+  setValue
   ...props
 }: TextFieldInputProps) {
-  const { register, setValue } = useForm()
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue('input', e.target.value)
   }
@@ -14,10 +12,10 @@ export default function TextFieldInput({
   return (
     <div className={`relative w-full ${props.className || ''}`}>
       <input
-        {...register('input')}
         onChange={handleInputChange}
         placeholder={placeholder}
         className="input-base"
+        {...props}
       />
     </div>
   )
