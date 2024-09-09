@@ -2,7 +2,8 @@ import type { TextFieldInputProps } from '@/src/shared/ui/input/text-field-input
 
 export default function TextFieldInput({
   placeholder,
-  setValue
+  setValue,
+  name,
   ...props
 }: TextFieldInputProps) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,6 +13,8 @@ export default function TextFieldInput({
   return (
     <div className={`relative w-full ${props.className || ''}`}>
       <input
+        id={name}
+        name={name}
         onChange={handleInputChange}
         placeholder={placeholder}
         className="input-base"
