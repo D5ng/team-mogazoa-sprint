@@ -1,10 +1,5 @@
 import { useForm } from 'react-hook-form'
-import {
-  AutocompleteDropdown,
-  AutocompleteField,
-  AutocompleteInput,
-  Form,
-} from '@shared/ui'
+import { Form } from '@shared/ui'
 import {
   FormField,
   FieldLabel,
