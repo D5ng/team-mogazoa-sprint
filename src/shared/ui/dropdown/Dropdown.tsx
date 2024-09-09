@@ -28,8 +28,8 @@ export const useDropdownContext = () => {
 
 export function Dropdown({
   children,
-  className,
   variant = 'border',
+  className,
 }: DropdownProps) {
   const selectStates = useSelect<string>({ defaultValue: '' })
   const toggleStates = useToggle()
@@ -56,14 +56,13 @@ export function Dropdown({
   )
 }
 
-export function DropdownTrigger({ children }: DropdownTriggerProps) {
+export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
   const { isToggle, onToggle, selectedItem, variant } = useDropdownContext()
   const rotateClass = isToggle ? 'rotate-180' : 'rotate-0'
   return (
     <button
-      type="button"
       onClick={onToggle}
-      className={DROPDOWN_VARIANT[variant].button}
+      className={`${DROPDOWN_VARIANT[variant].button} ${className}`}
     >
       {selectedItem || children}
 

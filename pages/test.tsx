@@ -1,13 +1,15 @@
+import Gnb from '@/src/widgets/Gnb/Gnb'
+import SideMenu from '@/src/widgets/side-menu/SideMenu'
 
 import Ranking from '@/src/widgets/ranking/Ranking'
 
 const test = () => {
   return (
     <>
-      <Ranking />
+      <Gnb />
+      <SideMenu />
     </>
   )
 }
 
 export default test
-

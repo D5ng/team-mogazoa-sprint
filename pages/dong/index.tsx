@@ -1,5 +1,5 @@
-import React from 'react'
+import { ReviewWrapper } from '@features/product-detail/components'
 
 export default function index() {
-  return <div>index</div>
+  return <ReviewWrapper />
 }

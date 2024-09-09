@@ -20,7 +20,7 @@ export const STATISTICS_CARD = [
   },
 ] as const
 
-export const MOCK = {
+export const STATISTICS_MOCK = {
   id: 1,
   name: '에어팟 프로',
   description: '노이즈 캔슬링이 잘 되는 이어폰',
