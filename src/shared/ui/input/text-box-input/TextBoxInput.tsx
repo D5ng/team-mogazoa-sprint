@@ -6,13 +6,14 @@ const TextBoxInput = forwardRef<HTMLTextAreaElement, TextBoxInputProps>(
     const charCount = value ? value.length : 0
 
     return (
-      <div className={`relative w-full h-[160px] ${props.className || ''}`}>
+      <div
+        className={`relative w-full h-[160px] mobile:h-[120px] ${props.className || ''}`}
+      >
         <textarea
           id={name}
           name={name}
           placeholder={placeholder}
           maxLength={maxLength}
-          rows={4}
           className={`input-base resize-none overflow-y-auto ${props.className || ''}`}
           ref={ref}
           {...props}

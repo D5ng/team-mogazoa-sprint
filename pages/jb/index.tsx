@@ -13,7 +13,7 @@ export default function () {
   const textBoxValue = watch('textBoxInput')
 
   const onSubmit = handleSubmit((data) => {
-    console.log('Form Data:', data)
+    console.log(data)
   })
 
   return (
