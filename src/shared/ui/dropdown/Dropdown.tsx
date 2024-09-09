@@ -28,13 +28,8 @@ export const useDropdownContext = () => {
 
 export function Dropdown({
   children,
-<<<<<<< HEAD
   variant = 'border',
   className,
-=======
-  className,
-  variant = 'border',
->>>>>>> 53375dc7b2b4fa53316d585eb8af74e656f4e8e4
 }: DropdownProps) {
   const selectStates = useSelect<string>({ defaultValue: '' })
   const toggleStates = useToggle()
