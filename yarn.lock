@@ -8658,6 +8658,7 @@ __metadata:
     react-dom: "npm:^18"
     react-hook-form: "npm:^7.53.0"
     storybook: "npm:^8.2.9"
+    tailwind-merge: "npm:^2.5.2"
     tailwindcss: "npm:^3.4.1"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -11182,6 +11183,13 @@ __metadata:
     "@pkgr/core": "npm:^0.1.0"
     tslib: "npm:^2.6.2"
   checksum: 10c0/d8b89e1bf30ba3ffb469d8418c836ad9c0c062bf47028406b4d06548bc66af97155ea2303b96c93bf5c7c0f0d66153a6fbd6924c76521b434e6a9898982abc2e
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^2.5.2":
+  version: 2.5.2
+  resolution: "tailwind-merge@npm:2.5.2"
+  checksum: 10c0/e43a9a468f7ba4ed5b4a399558d96d6270a3d8131dca111cccc803e71cc23885060d18d721f312a24fff0a75c567dbb30b2a87c18aba25eb4255df197d8170ab
   languageName: node
   linkType: hard
 
