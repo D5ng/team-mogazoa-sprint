@@ -1,8 +1,8 @@
 import axios from 'axios'
-import type { SignUpFieldData } from '@features/auth/types/auth.type'
 import axiosInstance from '@app/config/axios-instance'
-import { UseFormSetError } from 'react-hook-form'
-import { postSignIn } from '@app/api/postSignIn'
+import { postSignIn } from '@features/auth/api'
+import type { UseFormSetError } from 'react-hook-form'
+import type { SignUpFieldData } from '@features/auth/types/auth.type'
 
 const url = 'auth/signUp'
 

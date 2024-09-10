@@ -27,13 +27,12 @@ export default function SignInField() {
     },
   })
 
-  const { signIn } = useAuth()
+  const { signInSubmit } = useAuth()
+  const onSubmit = signInSubmit(setError)
 
   return (
     <Form
-      handleSubmit={handleSubmit}
-      apiRequest={signIn}
-      setError={setError}
+      onSubmit={handleSubmit(onSubmit)}
       className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
     >
       <FormField {...register('email', emailValidation)} errors={errors}>

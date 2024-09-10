@@ -31,13 +31,12 @@ export default function SignUpField() {
     },
   })
 
-  const { signUp } = useAuth()
+  const { signUpSubmit } = useAuth()
+  const onSubmit = signUpSubmit(setError)
 
   return (
     <Form
-      handleSubmit={handleSubmit}
-      apiRequest={signUp}
-      setError={setError}
+      onSubmit={handleSubmit(onSubmit)}
       className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
     >
       <FormField {...register('email', emailValidation)} errors={errors}>
