@@ -15,7 +15,10 @@ export const postSignUp = async (
 
     await postSignIn({ email: data.email, password: data.password })
   } catch (error) {
-    if (!axios.isAxiosError(error)) return
+    if (!axios.isAxiosError(error)) {
+      console.error(error)
+      throw new Error('회원가입 중 예상치 못한 오류가 발생했습니다.')
+    }
 
     const errorMessage = error.response?.data.message
 

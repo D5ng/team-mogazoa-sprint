@@ -17,7 +17,10 @@ export const postSignIn = async (
 
     return response
   } catch (error) {
-    if (!axios.isAxiosError(error)) return
+    if (!axios.isAxiosError(error)) {
+      console.error(error)
+      throw new Error('로그인 중 예상치 못한 오류가 발생했습니다.')
+    }
 
     const errorMessage = error.response?.data.message
 
