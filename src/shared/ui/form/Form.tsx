@@ -21,8 +21,8 @@ export default function Form({
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       await apiRequest(data, setError)
-    } catch (e) {
-      console.error(e)
+    } catch (error) {
+      console.error(error)
     }
   }
 
