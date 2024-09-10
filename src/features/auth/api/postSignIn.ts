@@ -10,14 +10,12 @@ export const postSignIn = async (
   setError?: UseFormSetError<SignInFieldData>,
 ) => {
   try {
-    const res = await axiosInstance.post(url, data)
+    const response = await axiosInstance.post(url, data)
 
-    const accessToken = res.data.accessToken
+    const accessToken = response.data.accessToken
     document.cookie = `accessToken=${accessToken}; path=/`
 
-    window.location.href = '/'
-
-    return res
+    return response
   } catch (error) {
     if (!axios.isAxiosError(error)) return
 

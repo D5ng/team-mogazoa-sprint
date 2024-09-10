@@ -14,8 +14,6 @@ export const postSignUp = async (
     await axiosInstance.post(url, data)
 
     await postSignIn({ email: data.email, password: data.password })
-
-    window.location.href = '/'
   } catch (error) {
     if (!axios.isAxiosError(error)) return
 

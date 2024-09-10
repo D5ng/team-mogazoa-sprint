@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation'
 import { UseFormSetError } from 'react-hook-form'
 import { postSignUp, postSignIn } from '@/src/features/auth/api'
 import type {
@@ -6,12 +7,15 @@ import type {
 } from '@features/auth/types/auth.type'
 
 export default function useAuth() {
+  const router = useRouter()
+
   const signUp = async (
     data: SignUpFieldData,
     setError: UseFormSetError<SignUpFieldData>,
   ) => {
     try {
       await postSignUp(data, setError)
+      router.push('/')
     } catch (error) {
       console.error(error)
     }
@@ -23,6 +27,7 @@ export default function useAuth() {
   ) => {
     try {
       await postSignIn(data, setError)
+      router.push('/')
     } catch (error) {
       console.error(error)
     }
