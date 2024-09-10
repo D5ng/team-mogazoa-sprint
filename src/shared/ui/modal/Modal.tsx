@@ -18,7 +18,7 @@ export function Modal(props: ModalProps) {
   const portalElement = document.getElementById('modal')!
   return createPortal(
     <ModalContext.Provider value={{ onCloseModal: props.onCloseModal }}>
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl tablet:w-[590px] mobile:w-[calc(100%-40px)] mobile:px-5 ">
         <ModalBackdrop />
         <ModalExit />
         {props.children}
@@ -44,11 +44,17 @@ export function ModalExit() {
   const { onCloseModal } = useModalContext()
   return (
     <button onClick={onCloseModal} className="absolute right-[20px] top-[20px]">
-      <Image src={close} alt="모달 창 닫기" width="40" height="40" />
+      <Image
+        src={close}
+        alt="모달 창 닫기"
+        width="40"
+        height="40"
+        className="tablet:w-[36px] tablet:h-[36px] mobile:w-[24px] mobile:h-[24px]"
+      />
     </button>
   )
 }
 
 export function ModalTitle({ children }: PropsWithChildren) {
-  return <h2 className="text-2xl font-semibold">{children}</h2>
+  return <h2 className="text-2xl font-semibold tablet:text-xl">{children}</h2>
 }
