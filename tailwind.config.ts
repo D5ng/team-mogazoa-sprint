@@ -37,7 +37,8 @@ module.exports = {
       yellow: '#FFC83C',
     },
     screens: {
-      tablet: { max: '1024px' },
+      tablet: { max: '1280px' },
+      tabletS: { max: '900px' },
       mobile: { max: '767px' },
     },
     fontFamily: {

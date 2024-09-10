@@ -1,5 +1,5 @@
 export { default as add } from 'public/images/add.svg'
-export { default as addImage } from 'public/images/addImage.svg'
+// export { default as addImage } from 'public/images/addImage.svg'
 export { default as category } from 'public/images/category.svg'
 export { default as close } from 'public/images/close.svg'
 export { default as dropDown } from 'public/images/dropDown.svg'
@@ -19,4 +19,3 @@ export { default as search } from 'public/images/search.svg'
 export { default as share } from 'public/images/share.svg'
 export { default as star } from 'public/images/star.svg'
 export { default as emptyReview } from 'public/images/empty-review.svg'
-
