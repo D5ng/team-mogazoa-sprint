@@ -21,7 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
           />
         </head>
         <Gnb />
-        <Component {...pageProps} />
+        <div className="mt-[100px] tablet:mt-[80px] mobile:mt-[70px]">
+          <Component {...pageProps} />
+        </div>
       </>
     )
   )

@@ -24,7 +24,7 @@ export default function GnbMenu() {
   })
   return (
     <>
-      <div className="flex items-center justify-between bg-black-80 px-[30px] py-[20px] relative">
+      <div className="fixed top-0 w-full flex items-center justify-between bg-black-80 px-[30px] py-[20px]">
         <button className="sideMenu" onClick={() => toggleSideMenu()}>
           <Image src={hamburger} width={30} height={10} alt="햄버거버튼" />
         </button>
