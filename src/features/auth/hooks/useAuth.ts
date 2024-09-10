@@ -1,3 +1,4 @@
+import { UseFormSetError } from 'react-hook-form'
 import { postSignUp, postSignIn } from '@app/api'
 import type {
   SignUpFieldData,
@@ -5,19 +6,25 @@ import type {
 } from '@features/auth/types/auth.type'
 
 export default function useAuth() {
-  const signUp = async (data: SignUpFieldData, setError: any) => {
+  const signUp = async (
+    data: SignUpFieldData,
+    setError: UseFormSetError<SignUpFieldData>,
+  ) => {
     try {
       await postSignUp(data, setError)
     } catch (error) {
-      console.log('error :', error)
+      console.error(error)
     }
   }
 
-  const signIn = async (data: SignInFieldData, setError: any) => {
+  const signIn = async (
+    data: SignInFieldData,
+    setError: UseFormSetError<SignInFieldData>,
+  ) => {
     try {
       await postSignIn(data, setError)
     } catch (error) {
-      console.log('error :', error)
+      console.error(error)
     }
   }
 

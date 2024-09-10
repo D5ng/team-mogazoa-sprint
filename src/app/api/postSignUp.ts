@@ -10,17 +10,10 @@ export const postSignUp = async (
   data: SignUpFieldData,
   setError: UseFormSetError<SignUpFieldData>,
 ) => {
-  const userData = {
-    email: data.email,
-    nickname: data.nickname,
-    password: data.password,
-    passwordConfirmation: data.passwordConfirmation,
-  }
-
   try {
-    await axiosInstance.post(url, userData)
+    await axiosInstance.post(url, data)
 
-    await postSignIn({ email: userData.email, password: userData.password })
+    await postSignIn({ email: data.email, password: data.password })
 
     window.location.href = '/'
   } catch (error) {
