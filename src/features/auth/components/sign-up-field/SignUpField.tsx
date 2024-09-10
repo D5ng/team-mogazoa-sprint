@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { useAuth } from '@features/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
   FormField,
@@ -12,9 +13,7 @@ import {
   passwordValidation,
   passwordConfirmationValidation,
 } from '@features/auth/lib/form-validation'
-import { postSignUp } from '@app/api'
 import type { SignUpFieldData } from '@features/auth/types/auth.type'
-import useAuth from '@features/auth/hooks/useAuth'
 
 export default function SignUpField() {
   const {
@@ -32,11 +31,13 @@ export default function SignUpField() {
     },
   })
 
-  const { onSubmit } = useAuth(setError)
+  const { signUp } = useAuth()
 
   return (
     <Form
-      onSubmit={handleSubmit(onSubmit)}
+      handleSubmit={handleSubmit}
+      apiRequest={signUp}
+      setError={setError}
       className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
     >
       <FormField {...register('email', emailValidation)} errors={errors}>

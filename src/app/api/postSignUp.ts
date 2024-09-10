@@ -1,10 +1,8 @@
 import axios from 'axios'
-import type {
-  AuthResponse,
-  SignUpFieldData,
-} from '@features/auth/types/auth.type'
+import type { SignUpFieldData } from '@features/auth/types/auth.type'
 import axiosInstance from '@app/config/axios-instance'
 import { UseFormSetError } from 'react-hook-form'
+import { postSignIn } from '@app/api/postSignIn'
 
 const url = 'auth/signUp'
 
@@ -22,7 +20,7 @@ export const postSignUp = async (
   try {
     await axiosInstance.post(url, userData)
 
-    // await postSignIn({ email: userData.email, password: userData.password })
+    await postSignIn({ email: userData.email, password: userData.password })
 
     window.location.href = '/'
   } catch (error) {
@@ -35,14 +33,4 @@ export const postSignUp = async (
     errorMessage === '이미 사용중인 닉네임입니다.' &&
       setError('nickname', { message: errorMessage }, { shouldFocus: true })
   }
-}
-
-export const postSignIn = async (
-  signInRequest: SignUpFieldData,
-): Promise<AuthResponse> => {
-  const response = await axiosInstance.post<AuthResponse>(
-    'auth/signIn',
-    signInRequest,
-  )
-  return response.data
 }

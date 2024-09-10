@@ -1,11 +1,12 @@
 import { useForm } from 'react-hook-form'
+import { useAuth } from '@features/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
   FormField,
   FieldLabel,
   FieldInput,
   FieldErrorMessage,
-} from '@/src/shared/ui/form-field/FormField'
+} from '@shared/ui/form-field/FormField'
 import {
   emailValidation,
   passwordValidation,
@@ -17,6 +18,7 @@ export default function SignInField() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<SignInFieldData>({
     mode: 'onBlur',
     defaultValues: {
@@ -25,13 +27,13 @@ export default function SignInField() {
     },
   })
 
-  const onSubmit = (data: SignInFieldData) => {
-    console.log(data)
-  }
+  const { signIn } = useAuth()
 
   return (
     <Form
-      onSubmit={handleSubmit(onSubmit)}
+      handleSubmit={handleSubmit}
+      apiRequest={signIn}
+      setError={setError}
       className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
     >
       <FormField {...register('email', emailValidation)} errors={errors}>

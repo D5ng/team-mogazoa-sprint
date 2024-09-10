@@ -1,12 +1,36 @@
+import type {
+  SubmitHandler,
+  UseFormHandleSubmit,
+  FieldValues,
+} from 'react-hook-form'
 interface FormProps {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  handleSubmit: UseFormHandleSubmit<FieldValues>
   children: React.ReactNode
+  setError?: any
+  apiRequest?: any
   className?: string
 }
 
-export default function Form({ onSubmit, children, ...props }: FormProps) {
+export default function Form({
+  apiRequest,
+  handleSubmit,
+  setError,
+  children,
+  ...props
+}: FormProps) {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    try {
+      await apiRequest(data, setError)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return (
-    <form onSubmit={onSubmit} className={`${props.className || ''}`}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={`${props.className || ''}`}
+    >
       {children}
     </form>
   )
