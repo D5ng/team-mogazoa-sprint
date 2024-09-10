@@ -1,3 +1,4 @@
+import type { ProductDetailResponse } from '@app/types'
 import Button from '@shared/ui/button/Button'
 import CategoryChip from '@widgets/category-chip/CategoryChip'
 import {
@@ -5,7 +6,6 @@ import {
   KaKaoShareButton,
   LikeButton,
 } from '@features/product-detail/components'
-import { ProductDetailResponse } from '@features/product-detail/types'
 
 export default function ProductContents({
   name,
