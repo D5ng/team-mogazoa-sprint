@@ -15,10 +15,10 @@ export default function GnbMenu({ isSigned = false }: { isSigned?: boolean }) {
         </>
       ) : (
         <>
-          <Link className="hover:text-blue" href="/signIn">
+          <Link className="hover:text-blue" href="/sign-in">
             로그인
           </Link>
-          <Link className="hover:text-blue" href="/signUp">
+          <Link className="hover:text-blue" href="/sign-up">
             회원가입
           </Link>
         </>

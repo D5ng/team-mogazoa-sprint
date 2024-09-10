@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 export default function GnbInput() {
   // 상품 검색 로직은 어떻게 작동되는지 파악이 안돼서 후에 작성 하겠습니다.
   const router = useRouter()
-  if (router.pathname === '/signin' || router.pathname === '/signup') return
+  if (router.pathname === '/sign-in' || router.pathname === '/sign-up') return
   return (
     <div className="relative">
       <input
