@@ -1,6 +1,9 @@
-import { UseFormRegisterReturn } from 'react-hook-form'
+import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
+import { ProductAddType } from '@app/types'
 
+type SetValueTypes = UseFormSetValue<ProductAddType>
 export interface ImageInputProps extends UseFormRegisterReturn {
-  setValue: (name: string, value: any) => void
+  setValue: SetValueTypes
   className?: string
+  name: keyof ProductAddType
 }

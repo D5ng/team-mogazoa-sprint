@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge'
 import Loading from '../loading/Loading'
 import { BUTTON_VARIANT } from './Button.constants'
 import type { ButtonProps } from './Button.type'
@@ -12,7 +13,7 @@ export default function Button({ disabled, isLoading, ...props }: ButtonProps) {
     <button
       disabled={disabled}
       {...props}
-      className={`${commonStyle} ${defaultStyle} ${props.className || ''}`}
+      className={twMerge(commonStyle, defaultStyle, props.className || '')}
     >
       {isLoading ? <Loading /> : props.children}
     </button>

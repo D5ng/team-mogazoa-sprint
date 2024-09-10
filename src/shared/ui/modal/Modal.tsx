@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { createContext, PropsWithChildren, useContext } from 'react'
 import { createPortal } from 'react-dom'
-import type { ModalContextType, ModalProps } from './Modal.type'
 import { close } from '@app/icons'
+import type { ModalContextType, ModalProps } from './Modal.type'
 
 const ModalContext = createContext<ModalContextType>({
   onCloseModal: () => {},
