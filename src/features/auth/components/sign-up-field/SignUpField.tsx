@@ -12,9 +12,9 @@ import {
   passwordValidation,
   passwordConfirmationValidation,
 } from '@features/auth/lib/form-validation'
-import { signUp } from '@app/api'
+import { postSignUp } from '@app/api'
 import type { SignUpFieldData } from '@features/auth/types/auth.type'
-import { useSignUp } from '@/src/features/auth/hooks/useSignUp'
+import useAuth from '@features/auth/hooks/useAuth'
 
 export default function SignUpField() {
   const {
@@ -32,7 +32,7 @@ export default function SignUpField() {
     },
   })
 
-  const { onSubmit, isLoading } = useSignUp(signUp, setError)
+  const { onSubmit } = useAuth(setError)
 
   return (
     <Form
@@ -69,7 +69,7 @@ export default function SignUpField() {
         <FieldErrorMessage />
       </FormField>
 
-      <Button variant="primary" type="submit" isLoading={isLoading}>
+      <Button variant="primary" type="submit">
         회원가입
       </Button>
     </Form>
