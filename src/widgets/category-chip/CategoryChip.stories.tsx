@@ -17,7 +17,7 @@ export const CategoryChipStory: Story = {
     },
   },
   args: {
-    name: CATEGORY_CHIPS[0],
+    name: CATEGORY_CHIPS[0].name,
   },
 }
 

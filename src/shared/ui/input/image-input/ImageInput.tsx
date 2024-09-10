@@ -34,7 +34,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
     return (
       <div
         onClick={handleImageClick}
-        className={`relative flex items-center justify-center input-base cursor-pointer w-[160px] h-full tablet:w-[135px] mobile:w-[140px] ${props.className || ''}`}
+        className={`relative flex items-center justify-center input-base cursor-pointer w-[160px] h-[160px] tablet:w-[135px] mobile:w-[140px] ${props.className || ''}`}
       >
         {preview ? (
           <Image
