@@ -3,13 +3,17 @@ import { CATEGORY_CHIPS } from '../category-chip/CategoryChip.constants'
 
 export default function SideMenu() {
   return (
-    <ul className="flex flex-col gap-[8px]">
-      <li className="text-[16px] tablet:text-[14px] ml-[20px] text-white">
+    <article>
+      <p className="text-[16px] tablet:text-[14px] ml-[20px] text-white mb-[10px]">
         카테고리
-      </li>
-      {CATEGORY_CHIPS.map((category, index) => (
-        <MenuTaps key={index}>{category}</MenuTaps>
-      ))}
-    </ul>
+      </p>
+      <ul className="flex flex-col gap-[8px] ">
+        {CATEGORY_CHIPS.map((category, index) => (
+          <li>
+            <MenuTaps key={index}>{category}</MenuTaps>
+          </li>
+        ))}
+      </ul>
+    </article>
   )
 }

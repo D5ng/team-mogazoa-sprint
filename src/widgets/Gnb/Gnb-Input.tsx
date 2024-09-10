@@ -13,7 +13,7 @@ export default function GnbInput() {
         placeholder="상품 이름을 검색해 보세요"
       />
       <Image
-        className="absolute left-[13px] top-[16Px] tablet:top-[5px]"
+        className="absolute left-[13px] top-[16Px] tablet:top-[11px]"
         src={search}
         width={20}
         height={20}

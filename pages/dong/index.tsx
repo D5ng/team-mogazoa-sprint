@@ -1,4 +1,3 @@
-import Gnb from '@/src/widgets/Gnb/Gnb'
 import { ProductInfoWrapper } from '@features/product-detail/components'
 import { STATISTICS_MOCK } from '@features/product-detail/constants'
 

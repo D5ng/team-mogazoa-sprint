@@ -4,7 +4,7 @@ import ProductCardItem from './ProductCardItem'
 
 export default function ProductCard() {
   return (
-    <article className="w-[50vw] tablet:w-[625px] tabletS:w-[70vw] mobile:w-[80vw] tablet:mt-[20px] flex flex-col gap-[2vw]">
+    <article className="w-[50vw] tablet:w-[625px] tabletS:w-[60vw] mobile:w-[80vw] mt-[20px] flex flex-col gap-[2vw]">
       <section>
         <h1 className="ml-[10px] mb-[10px] text-[24px] tablet:text-[20px] mobile:text-[16px] text-white">
           지금 핫한 상품 <span className="font-bold text-gradient">TOP 6</span>
