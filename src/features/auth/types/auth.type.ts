@@ -5,7 +5,7 @@ export interface SignUpFieldData {
   passwordConfirmation: string
 }
 
-export interface SignFieldData {
+export interface SignInFieldData {
   email: string
   password: string
 }

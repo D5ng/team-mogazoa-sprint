@@ -10,7 +10,7 @@ import {
   emailValidation,
   passwordValidation,
 } from '@features/auth/lib/form-validation'
-import type { SignInFieldData } from './SignInField.type'
+import type { SignInFieldData } from '@features/auth/types/auth.type'
 
 export default function SignInField() {
   const {
