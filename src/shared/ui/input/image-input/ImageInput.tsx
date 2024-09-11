@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { close, addImage } from '@app/icons/index'
+import { close, addImage } from '@shared/icons/index'
 import { forwardRef, useRef, useState } from 'react'
 import type { ImageInputProps } from './ImageInput.type'
 

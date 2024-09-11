@@ -1,4 +1,4 @@
-import { CATEGORY_CHIPS } from '@widgets/category-chip/CategoryChip.constants'
+import { CATEGORY_CHIPS } from '@/src/widgets/product/category-chip/CategoryChip.constants'
 import {
   Dropdown,
   DropdownMenu,
