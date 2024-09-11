@@ -10,6 +10,10 @@ export interface SignInFieldData {
   password: string
 }
 
+export interface NicknameFieldData {
+  nickname: string
+}
+
 export interface AuthUser {
   id: number
   email: string

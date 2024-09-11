@@ -35,6 +35,19 @@ const setAccessTokenCookie = (res: ServerResponse, token: string) => {
   )
 }
 
+const setIdTokenCookie = (res: ServerResponse, token: string) => {
+  res.setHeader(
+    'Set-Cookie',
+    serialize('idToken', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== 'development',
+      maxAge: 60 * 5,
+      sameSite: 'strict',
+      path: '/',
+    }),
+  )
+}
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { code } = context.query
@@ -45,19 +58,37 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const idToken = await exchangeCodeForToken(code)
 
-    const authResponse = await socialSignIn({
-      social: 'google',
-      token: idToken,
-      redirectUri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
-    })
+    try {
+      const response = await socialSignIn({
+        social: 'google',
+        token: idToken,
+        redirectUri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
+      })
 
-    setAccessTokenCookie(context.res, authResponse.accessToken)
+      setAccessTokenCookie(context.res, response.accessToken)
 
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      }
+    } catch (error: any) {
+      if (
+        error.response?.status === 403 ||
+        error.response?.data?.message === '등록되지 않은 사용자입니다.'
+      ) {
+        setIdTokenCookie(context.res, idToken)
+
+        return {
+          redirect: {
+            destination: '/social-auth',
+            permanent: false,
+          },
+        }
+      } else {
+        throw error
+      }
     }
   } catch (error) {
     console.error(error)
