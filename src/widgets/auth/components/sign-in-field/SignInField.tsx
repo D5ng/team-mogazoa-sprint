@@ -17,10 +17,11 @@ export default function SignInField() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid, isDirty, isSubmitting },
     setError,
   } = useForm<SignInFieldData>({
-    mode: 'onBlur',
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
     defaultValues: {
       email: '',
       password: '',
@@ -47,7 +48,12 @@ export default function SignInField() {
         <FieldErrorMessage />
       </FormField>
 
-      <Button variant="primary" type="submit">
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={!(isValid && isDirty)}
+        isLoading={isSubmitting}
+      >
         로그인
       </Button>
     </Form>

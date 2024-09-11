@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '@/src/widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
@@ -19,10 +20,13 @@ export default function SignUpField() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid, isDirty, isSubmitting },
     setError,
+    watch,
+    trigger,
   } = useForm<SignUpFieldData>({
-    mode: 'onBlur',
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
     defaultValues: {
       email: '',
       nickname: '',
@@ -33,6 +37,14 @@ export default function SignUpField() {
 
   const { signUpSubmit } = useAuth()
   const onSubmit = signUpSubmit(setError)
+
+  const password = watch('password')
+
+  useEffect(() => {
+    if (password) {
+      trigger('passwordConfirmation')
+    }
+  }, [password, trigger])
 
   return (
     <Form
@@ -58,7 +70,11 @@ export default function SignUpField() {
       </FormField>
 
       <FormField
-        {...register('passwordConfirmation', passwordConfirmationValidation)}
+        {...register('passwordConfirmation', {
+          ...passwordConfirmationValidation,
+          validate: (value) =>
+            value === password || '비밀번호가 일치하지 않습니다.',
+        })}
         errors={errors}
       >
         <FieldLabel>비밀번호 확인</FieldLabel>
@@ -69,7 +85,13 @@ export default function SignUpField() {
         <FieldErrorMessage />
       </FormField>
 
-      <Button variant="primary" type="submit" className="mobile:mt-20">
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={!(isValid && isDirty)}
+        isLoading={isSubmitting}
+        className="mobile:mt-20"
+      >
         회원가입
       </Button>
     </Form>
