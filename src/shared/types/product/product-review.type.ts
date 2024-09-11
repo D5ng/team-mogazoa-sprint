@@ -3,18 +3,20 @@ export interface ProductReviewsResponse {
   list: ProductReviewItem[]
 }
 
+export interface ReviewImages {
+  source: string
+  id: number
+}
+
+export interface ReviewUser {
+  image: string | null
+  nickname: string
+  id: number
+}
+
 export interface ProductReviewItem {
-  user: {
-    image: string
-    nickname: string
-    id: number
-  }
-  reviewImages: [
-    {
-      source: string
-      id: number
-    },
-  ]
+  user: ReviewUser
+  reviewImages: ReviewImages[]
   productId: number
   userId: number
   updatedAt: string
