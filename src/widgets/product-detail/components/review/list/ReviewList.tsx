@@ -1,9 +1,9 @@
-import { ReviewListItem } from '@features/product-detail/components'
-import type { ReviewItem } from '@/src/app/types'
+import { ReviewListItem } from '@widgets/product-detail/components'
+import type { ProductReviewItem } from '@shared/types'
 import ReviewEmptyList from './ReviewEmptyList'
 
 interface ReviewListProps {
-  reviews: ReviewItem[]
+  reviews: ProductReviewItem[]
 }
 
 export default function ReviewList({ reviews }: ReviewListProps) {

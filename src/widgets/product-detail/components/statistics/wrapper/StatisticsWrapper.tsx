@@ -1,6 +1,6 @@
-import type { ProductDetailResponse } from '@app/types'
-import { StatisticsList } from '@features/product-detail/components'
-import { ProductDetailLayout } from '@features/product-detail/layout'
+import type { ProductDetailResponse } from '@shared/types'
+import { StatisticsList } from '@widgets/product-detail/components'
+import { ProductDetailLayout } from '@widgets/product-detail/layout'
 
 export default function StatisticsWrapper(
   statisticsData: ProductDetailResponse,

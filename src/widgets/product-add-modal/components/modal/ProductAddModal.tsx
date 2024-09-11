@@ -1,5 +1,5 @@
 import { Controller, useForm } from 'react-hook-form'
-import { ProductAddType } from '@app/types'
+import { SendProductType } from '@shared/types'
 import {
   Button,
   Form,
@@ -9,7 +9,7 @@ import {
   Modal,
   ModalTitle,
 } from '@shared/ui'
-import { CategoryDropdown } from '@features/product-add-modal/components'
+import { CategoryDropdown } from '@widgets/product-add-modal/components'
 
 interface ProductAddModalProps {
   onCloseToggle: () => void
@@ -25,11 +25,11 @@ export default function ProductAddModal({
     watch,
     setValue,
     control,
-  } = useForm<ProductAddType>()
+  } = useForm<SendProductType>()
 
   const description = watch('description')
 
-  const onSubmit = (data: ProductAddType) => console.log(data)
+  const onSubmit = (data: SendProductType) => console.log(data)
 
   return (
     <Modal onCloseModal={onCloseToggle}>

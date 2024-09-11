@@ -1,9 +1,8 @@
 import React from 'react'
-import type { ReviewItem } from '@app/types'
+import type { ProductReviewItem } from '@shared/types'
 import ReviewProfile from '../profile/ReviewProfile'
 import ReviewContents from '../contents/ReviewContents'
 import dayjs from 'dayjs'
-
 
 export default function ReviewListItem({
   user,
@@ -14,7 +13,7 @@ export default function ReviewListItem({
   rating,
   userId,
   likeCount,
-}: ReviewItem) {
+}: ProductReviewItem) {
   const date = dayjs(updatedAt).format('YYYY-MM-DD')
   return (
     <li className="flex items-start gap-x-[80px] bg-black-60 p-[30px] rounded-xl border border-black-70 mobile:flex-col mobile:gap-x-0 mobile:gap-y-[30px]">

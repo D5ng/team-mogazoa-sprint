@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import { ReviewImage } from '@/src/app/types'
+import type { ReviewImages } from '@shared/types'
 
 interface ReviewImagesProps {
-  reviewImages: ReviewImage[]
+  reviewImages: ReviewImages[]
 }
 
 export default function ReviewImages({ reviewImages }: ReviewImagesProps) {

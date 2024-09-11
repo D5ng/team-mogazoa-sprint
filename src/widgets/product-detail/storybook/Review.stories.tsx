@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { ReviewWrapper } from '@features/product-detail/components'
-import { REVIEW_MOCK } from '@features/product-detail/constants'
+import { ReviewWrapper } from '@widgets/product-detail/components'
+import { REVIEW_MOCK } from '@widgets/product-detail/constants'
 
 type Story = StoryObj<typeof ReviewWrapper>
 

@@ -1,6 +1,6 @@
-import { LatestDropdown, ReviewList } from '@features/product-detail/components'
-import { ProductDetailLayout } from '@features/product-detail/layout'
-import { REVIEW_MOCK } from '@features/product-detail/constants'
+import { LatestDropdown, ReviewList } from '@widgets/product-detail/components'
+import { ProductDetailLayout } from '@widgets/product-detail/layout'
+import { REVIEW_MOCK } from '@widgets/product-detail/constants'
 
 export default function ReviewWrapper() {
   return (

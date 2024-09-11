@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { StatisticsWrapper } from '@features/product-detail/components'
-import { STATISTICS_MOCK } from '@features/product-detail/constants'
+import { StatisticsWrapper } from '@widgets/product-detail/components'
+import { STATISTICS_MOCK } from '@widgets/product-detail/constants'
 
 type Story = StoryObj<typeof StatisticsWrapper>
 

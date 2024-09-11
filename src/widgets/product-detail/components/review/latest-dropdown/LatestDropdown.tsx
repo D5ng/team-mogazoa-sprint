@@ -4,7 +4,7 @@ import {
   DropdownMenuItem,
   DropdownTrigger,
 } from '@shared/ui/dropdown/Dropdown'
-import { LATEST_DROPDOWN_ITEMS } from '@features/product-detail/constants'
+import { LATEST_DROPDOWN_ITEMS } from '@widgets/product-detail/constants'
 
 export default function LatestDropdown() {
   return (

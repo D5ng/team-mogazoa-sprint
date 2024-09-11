@@ -1,8 +1,10 @@
 import Image from 'next/image'
-import type { ReviewItem } from '@app/types'
+import type { ProductReviewItem } from '@shared/types'
 import { star } from '@shared/icons'
 
-export default function ReviewRating({ rating }: Pick<ReviewItem, 'rating'>) {
+export default function ReviewRating({
+  rating,
+}: Pick<ProductReviewItem, 'rating'>) {
   const ratingCount = Array(rating)
     .fill(0)
     .map((_, i) => i)

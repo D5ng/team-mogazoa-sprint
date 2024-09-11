@@ -1,4 +1,4 @@
-import { ReviewItem } from '@app/types'
+import { ProductReviewItem } from '@shared/types'
 import ThumbsButton from './thumbs-button/ThumbsButton'
 import ReviewImages from './review-images/ReviewImages'
 
@@ -10,7 +10,7 @@ export default function ReviewContents({
   userId,
   likeCount,
 }: Pick<
-  ReviewItem,
+  ProductReviewItem,
   'content' | 'updatedAt' | 'isLiked' | 'reviewImages' | 'userId' | 'likeCount'
 >) {
   return (

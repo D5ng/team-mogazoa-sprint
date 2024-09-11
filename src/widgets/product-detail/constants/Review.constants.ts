@@ -1,12 +1,11 @@
-
-import type { ReviewItem } from '@/src/app/types'
+import type { ProductReviewItem } from '@shared/types'
 export const LATEST_DROPDOWN_ITEMS = [
   '최신순',
   '별점 높은순',
   '별점 낮은순',
   '좋아요순',
 ] as const
-export const REVIEW_MOCK: ReviewItem[] = [
+export const REVIEW_MOCK: ProductReviewItem[] = [
   {
     user: { image: null, nickname: '동현스', id: 1 },
     content:
