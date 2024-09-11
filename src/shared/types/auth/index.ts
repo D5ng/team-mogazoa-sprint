@@ -28,7 +28,7 @@ export type Social = 'google' | 'kakao'
 export interface SocialSignUp {
   social: Social
   nickname: string
-  redirectUri: string
+  redirectUri: string | undefined
   token: string
 }
 

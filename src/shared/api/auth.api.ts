@@ -23,6 +23,6 @@ export async function socialSignUp({ social, ...data }: SocialSignUp) {
 
 export async function socialSignIn({ social, ...data }: SocialSignIn) {
   return (
-    await axiosInstance.post<AuthResponse>(`/auth/signUp/${social}`, data)
+    await axiosInstance.post<AuthResponse>(`/auth/signIn/${social}`, data)
   ).data
 }

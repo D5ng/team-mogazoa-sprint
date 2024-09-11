@@ -2,14 +2,11 @@ import { GetServerSideProps } from 'next'
 import axios from 'axios'
 import { serialize } from 'cookie'
 import { socialSignIn } from '@shared/api'
+import type { ServerResponse } from 'http'
 
 interface GoogleTokenResponse {
   id_token: string
 }
-
-const REDIRECT_URI =
-  process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI ||
-  'http://localhost:3000/auth/callback'
 
 const exchangeCodeForToken = async (code: string): Promise<string> => {
   const tokenEndpoint = 'https://accounts.google.com/o/oauth2/token'
@@ -17,20 +14,15 @@ const exchangeCodeForToken = async (code: string): Promise<string> => {
     code,
     client_id: process.env.NEXT_PUBLIC_GOOGLE_ID,
     client_secret: process.env.GOOGLE_SECRET,
-    redirect_uri: REDIRECT_URI,
+    redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI,
     grant_type: 'authorization_code',
   }
 
-  try {
-    const response = await axios.post<GoogleTokenResponse>(tokenEndpoint, data)
-    return response.data.id_token
-  } catch (error) {
-    console.error('Failed to exchange code for token:', error)
-    throw new Error('Token exchange failed')
-  }
+  const response = await axios.post<GoogleTokenResponse>(tokenEndpoint, data)
+  return response.data.id_token
 }
 
-const setAccessTokenCookie = (res: any, token: string) => {
+const setAccessTokenCookie = (res: ServerResponse, token: string) => {
   res.setHeader(
     'Set-Cookie',
     serialize('accessToken', token, {
@@ -44,25 +36,19 @@ const setAccessTokenCookie = (res: any, token: string) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { code } = context.query
-
-  if (typeof code !== 'string') {
-    console.error('Invalid or missing code in query parameters')
-    return {
-      redirect: {
-        destination: '/error?message=invalid_code',
-        permanent: false,
-      },
-    }
-  }
-
   try {
+    const { code } = context.query
+
+    if (typeof code !== 'string') {
+      throw new Error('인증 코드가 잘못되었거나 누락되었습니다.')
+    }
+
     const idToken = await exchangeCodeForToken(code)
 
     const authResponse = await socialSignIn({
       social: 'google',
       token: idToken,
-      redirectUri: REDIRECT_URI,
+      redirectUri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI!,
     })
 
     setAccessTokenCookie(context.res, authResponse.accessToken)
@@ -74,10 +60,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   } catch (error) {
-    console.error('Authentication failed:', error)
+    console.error(error)
+    if (axios.isAxiosError(error)) {
+      console.error(error.response?.data)
+      console.error(error.response?.status)
+    }
     return {
       redirect: {
-        destination: '/error?message=auth_failed',
+        destination: '/error',
         permanent: false,
       },
     }
