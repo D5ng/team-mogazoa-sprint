@@ -1,5 +1,5 @@
-import { RegisterOptions } from 'react-hook-form'
-import type { SignUpFormData } from '@/pages/sign-up'
+import type { RegisterOptions } from 'react-hook-form'
+import type { SignUpFieldData } from '@features/auth/types/auth.type'
 
 export const emailValidation = {
   required: '이메일은 필수 입력입니다.',
@@ -39,9 +39,9 @@ export const passwordValidation = {
   },
 } as const
 
-export const confirmPasswordValidation: RegisterOptions<
-  SignUpFormData,
-  'confirmPassword'
+export const passwordConfirmationValidation: RegisterOptions<
+  SignUpFieldData,
+  'passwordConfirmation'
 > = {
   required: '비밀번호를 입력해주세요.',
   validate: (value, formValues) =>
