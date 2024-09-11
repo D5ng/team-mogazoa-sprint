@@ -1,5 +1,5 @@
-import axiosInstance from '@app/config/axios-instance'
-import { FollowUser } from '@shared/types'
+import { axiosInstance } from '@shared/config'
+import type { FollowUser } from '@shared/types'
 
 export async function followUser(data: FollowUser) {
   return (await axiosInstance.post(`/follow`, data)).data
