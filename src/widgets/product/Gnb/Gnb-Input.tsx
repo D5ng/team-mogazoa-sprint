@@ -6,7 +6,7 @@ import {
   AutocompleteField,
   AutocompleteInput,
 } from '@/src/shared/ui'
-import { PRODUCT_MOCK } from './Gnb.mock'
+import { PRODUCT_MOCK } from '@widgets/product/gnb/Gnb.mock'
 import { twMerge } from 'tailwind-merge'
 import { useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
@@ -17,7 +17,7 @@ export default function GnbInput() {
   const router = useRouter()
   const { ref: inputRef, filteredProducts } = useProduct()
   const { register, setValue } = useForm()
-  if (router.pathname === '/sign-in' || router.pathname === '/sign-up') return
+
   const INPUT_STYLE = twMerge(
     'text-[14px] text-white w-[400px] h-[50px] rounded-[30px] px-[40px] py-[5px] bg-black-70 tablet:w-[300px] tablet:h-[40px] target:text-[12px]',
   )
@@ -25,6 +25,7 @@ export default function GnbInput() {
   useEffect(() => {
     console.log(inputRef.current?.value)
   }, [inputRef?.current?.value])
+  if (router.pathname === '/sign-in' || router.pathname === '/sign-up') return
 
   return (
     <div className="relative">
