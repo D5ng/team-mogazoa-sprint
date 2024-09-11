@@ -1,8 +1,4 @@
-interface FormProps {
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-  children: React.ReactNode
-  className?: string
-}
+import type { FormProps } from './Form.type'
 
 export default function Form({ onSubmit, children, ...props }: FormProps) {
   return (
