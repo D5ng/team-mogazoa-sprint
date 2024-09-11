@@ -1,12 +1,12 @@
-import axiosInstance from '@app/config/axios-instance'
-import {
+import { axiosInstance } from '@shared/config'
+import type {
   FetchProducts,
   FetchProductsReviews,
   ProductDetailResponse,
   ProductId,
   ProductResponse,
   SendProductType,
-} from '../types'
+} from '@shared/types'
 
 export async function fetchProducts({
   keyword,

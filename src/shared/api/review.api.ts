@@ -1,5 +1,5 @@
-import axiosInstance from '@/src/app/config/axios-instance'
-import { CreateReview, ReviewId, UpdateReview } from '@shared/types'
+import { axiosInstance } from '@shared/config'
+import type { CreateReview, ReviewId, UpdateReview } from '@shared/types'
 
 export async function likeReview({ reviewId }: ReviewId) {
   return (await axiosInstance.post(`/reviews/${reviewId}/like`)).data

@@ -1,4 +1,4 @@
-import axiosInstance from '@app/config/axios-instance'
+import { axiosInstance } from '@shared/config'
 import type { Upload } from '@shared/types'
 
 export async function createUpload(imageFormData: FormData) {
