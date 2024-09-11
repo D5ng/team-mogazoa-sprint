@@ -1,4 +1,4 @@
-import axiosInstance from '@app/config/axios-instance'
+import { axiosInstance } from '@shared/config'
 import type { AuthResponse, SignIn, SignUp, SocialSignUp } from '@shared/types'
 
 export async function signUp(data: SignUp) {
