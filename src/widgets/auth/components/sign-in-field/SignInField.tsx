@@ -1,38 +1,34 @@
 import { useForm } from 'react-hook-form'
-import { useAuth } from '@features/auth/hooks'
+import { useAuth } from '@/src/widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
   FormField,
   FieldLabel,
   FieldInput,
   FieldErrorMessage,
-} from '@/src/shared/ui/form-field/FormField'
+} from '@shared/ui/form-field/FormField'
 import {
   emailValidation,
-  nicknameValidation,
   passwordValidation,
-  passwordConfirmationValidation,
-} from '@features/auth/lib/form-validation'
-import type { SignUpFieldData } from '@features/auth/types/auth.type'
+} from '@/src/widgets/auth/lib/form-validation'
+import type { SignInFieldData } from '@/src/widgets/auth/types/auth.type'
 
-export default function SignUpField() {
+export default function SignInField() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<SignUpFieldData>({
+  } = useForm<SignInFieldData>({
     mode: 'onBlur',
     defaultValues: {
       email: '',
-      nickname: '',
       password: '',
-      passwordConfirmation: '',
     },
   })
 
-  const { signUpSubmit } = useAuth()
-  const onSubmit = signUpSubmit(setError)
+  const { signInSubmit } = useAuth()
+  const onSubmit = signInSubmit(setError)
 
   return (
     <Form
@@ -45,32 +41,14 @@ export default function SignUpField() {
         <FieldErrorMessage />
       </FormField>
 
-      <FormField {...register('nickname', nicknameValidation)} errors={errors}>
-        <FieldLabel>닉네임</FieldLabel>
-        <FieldInput type="text" placeholder="닉네임을 입력해주세요" />
-        <FieldErrorMessage />
-      </FormField>
-
       <FormField {...register('password', passwordValidation)} errors={errors}>
         <FieldLabel>비밀번호</FieldLabel>
         <FieldInput type="password" placeholder="비밀번호를 입력해주세요" />
         <FieldErrorMessage />
       </FormField>
 
-      <FormField
-        {...register('passwordConfirmation', passwordConfirmationValidation)}
-        errors={errors}
-      >
-        <FieldLabel>비밀번호 확인</FieldLabel>
-        <FieldInput
-          type="password"
-          placeholder="비밀번호를 한번 더 입력해주세요"
-        />
-        <FieldErrorMessage />
-      </FormField>
-
       <Button variant="primary" type="submit">
-        회원가입
+        로그인
       </Button>
     </Form>
   )

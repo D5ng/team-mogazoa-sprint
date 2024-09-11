@@ -1,10 +1,10 @@
 import { useRouter } from 'next/navigation'
 import { UseFormSetError } from 'react-hook-form'
-import { postSignUp, postSignIn } from '@/src/features/auth/api'
+import { postSignUp, postSignIn } from '@/src/widgets/auth/api'
 import type {
   SignUpFieldData,
   SignInFieldData,
-} from '@features/auth/types/auth.type'
+} from '@/src/widgets/auth/types/auth.type'
 
 export default function useAuth() {
   const router = useRouter()

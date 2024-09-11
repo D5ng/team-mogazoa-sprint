@@ -1,5 +1,5 @@
 import axios from 'axios'
-import getCookies from '@features/auth/lib/getCookies'
+import getCookies from '@/src/widgets/auth/lib/getCookies'
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,

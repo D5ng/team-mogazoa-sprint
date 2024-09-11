@@ -1,7 +1,7 @@
 import axios from 'axios'
-import axiosInstance from '@app/config/axios-instance'
+import axiosInstance from '@/src/shared/config/axios-instance'
 import type { UseFormSetError } from 'react-hook-form'
-import type { SignInFieldData } from '@features/auth/types/auth.type'
+import type { SignInFieldData } from '@/src/widgets/auth/types/auth.type'
 
 const url = 'auth/signIn'
 
