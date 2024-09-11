@@ -1,4 +1,3 @@
-import { SendProductType } from '@/src/shared/types'
 import { CATEGORY_CHIPS } from '@/src/widgets/product/category-chip/CategoryChip.constants'
 import {
   Dropdown,
@@ -7,9 +6,10 @@ import {
   DropdownTrigger,
 } from '@shared/ui'
 import { Control, useController } from 'react-hook-form'
+import type { ProductType } from '@shared/types'
 
 interface CategoryDropdownProps {
-  control: Control<SendProductType>
+  control: Control<ProductType>
 }
 
 export default function CategoryDropdown({ control }: CategoryDropdownProps) {
@@ -22,7 +22,7 @@ export default function CategoryDropdown({ control }: CategoryDropdownProps) {
       <DropdownMenu>
         {CATEGORY_CHIPS.map((category) => (
           <DropdownMenuItem
-            onClick={() => onChange(category.id)}
+            onClick={onChange.bind(null, category.id)}
             key={category.id}
           >
             {category.name}
