@@ -1,21 +1,38 @@
 import { CARD_MOCK_DATA } from '@/src/widgets/product/products-card/ProductCard.mock'
 import { ProductCardData } from '@/src/widgets/product/products-card/ProductCard.types'
-import { useEffect, useRef, useState } from 'react'
+import { debounce } from 'lodash'
+import { useCallback, useMemo, useState } from 'react'
 
 export default function useProduct() {
-  const ref = useRef<HTMLInputElement | null>(null)
-  const [filteredProducts, setFilteredProducts] =
-    useState<ProductCardData>(CARD_MOCK_DATA)
+  const [inputValue, setInputValue] = useState('')
+  const [selectedKey, setSelectedKey] = useState<number | null>(null)
 
-  const searchValue = ref.current?.value || ''
-  console.log(searchValue)
+  const handleSelect = (key: number) => {
+    setSelectedKey(key)
+    console.log(key)
+  }
 
-  useEffect(() => {
-    const filtered = CARD_MOCK_DATA.filter((product) =>
-      product.name.toLowerCase().includes(searchValue.toLowerCase()),
+  const updateInputValue = useCallback(
+    debounce((value: string) => {
+      setInputValue(value)
+    }, 300),
+    [],
+  )
+
+  const filteredProducts = useMemo(() => {
+    return CARD_MOCK_DATA.filter((product) =>
+      product?.name.toLowerCase().includes(inputValue.toLowerCase()),
     )
-    setFilteredProducts(filtered)
-  }, [searchValue])
+  }, [inputValue])
 
-  return { ref, filteredProducts }
+  console.log(inputValue)
+  console.log(filteredProducts)
+
+  return {
+    filteredProducts,
+    updateInputValue,
+    inputValue,
+    handleSelect,
+    selectedKey,
+  }
 }

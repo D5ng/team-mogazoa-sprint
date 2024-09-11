@@ -11,6 +11,7 @@ export const postSignIn = async (
 ) => {
   try {
     const response = await axiosInstance.post(url, data)
+    console.log(response)
 
     const accessToken = response.data.accessToken
     document.cookie = `accessToken=${accessToken}; path=/`
