@@ -3003,6 +3003,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cookie@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@types/cookie@npm:0.6.0"
+  checksum: 10c0/5b326bd0188120fb32c0be086b141b1481fec9941b76ad537f9110e10d61ee2636beac145463319c71e4be67a17e85b81ca9e13ceb6e3bb63b93d16824d6c149
+  languageName: node
+  linkType: hard
+
 "@types/cross-spawn@npm:^6.0.2":
   version: 6.0.6
   resolution: "@types/cross-spawn@npm:6.0.6"
@@ -8636,6 +8643,7 @@ __metadata:
     "@storybook/react": "npm:^8.2.9"
     "@storybook/test": "npm:^8.2.9"
     "@tanstack/react-query": "npm:^5.54.1"
+    "@types/cookie": "npm:^0.6.0"
     "@types/lodash": "npm:^4.17.7"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"

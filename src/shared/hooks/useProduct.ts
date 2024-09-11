@@ -8,7 +8,7 @@ export default function useProduct() {
     useState<ProductCardData>(CARD_MOCK_DATA)
 
   const searchValue = ref.current?.value || ''
-  console.log(searchValue)
+  // console.log(searchValue)
 
   useEffect(() => {
     const filtered = CARD_MOCK_DATA.filter((product) =>
