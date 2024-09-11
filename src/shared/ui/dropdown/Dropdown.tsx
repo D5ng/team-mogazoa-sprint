@@ -9,6 +9,7 @@ import type {
 } from './Dropdown.type'
 import { DROPDOWN_VARIANT } from './Dropdown.constants'
 import DropdownArrowIcon from '@app/images/icons/dropdown-arrow.svg'
+import { twMerge } from 'tailwind-merge'
 
 export const DropdownContext = createContext<DropdownContextType>({
   isToggle: false,
@@ -47,7 +48,7 @@ export function Dropdown({
       }}
     >
       <div
-        className={`${DROPDOWN_VARIANT[variant].wrapper} ${className}`}
+        className={twMerge(DROPDOWN_VARIANT[variant].wrapper, className)}
         ref={ref}
       >
         {children}
@@ -59,10 +60,11 @@ export function Dropdown({
 export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
   const { isToggle, onToggle, selectedItem, variant } = useDropdownContext()
   const rotateClass = isToggle ? 'rotate-180' : 'rotate-0'
+
   return (
     <button
       onClick={onToggle}
-      className={`${DROPDOWN_VARIANT[variant].button} ${className}`}
+      className={twMerge(DROPDOWN_VARIANT[variant].button, className)}
     >
       {selectedItem || children}
 
@@ -90,11 +92,15 @@ export function DropdownMenu({ children }: PropsWithChildren) {
   )
 }
 
-export function DropdownMenuItem({ children }: DropdownMenuItemProps) {
+export function DropdownMenuItem({
+  children,
+  ...props
+}: DropdownMenuItemProps) {
   const { onSelect, onCloseToggle } = useDropdownContext()
   const handleClick = () => {
     onSelect(children as string)
     onCloseToggle()
+    props.onClick && props.onClick()
   }
   return (
     <li
