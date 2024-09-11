@@ -1,8 +1,8 @@
+import type { ProductDetailResponse } from '@app/types'
 import {
   ProductImage,
   ProductContents,
 } from '@features/product-detail/components'
-import { ProductDetailResponse } from '@features/product-detail/types'
 
 export default function ProductInfoWrapper({
   name,
