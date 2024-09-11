@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { ReviewItem } from '@/src/app/types'
-import { thumb, emptyThumb } from '@app/icons'
+import { thumb, emptyThumb } from '@shared/icons'
 
 export default function ThumbsButton({
   isLiked,

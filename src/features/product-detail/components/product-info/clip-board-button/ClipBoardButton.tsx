@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { share } from '@app/icons'
+import { share } from '@shared/icons'
 
 export default function ClipBoardButton() {
   return (

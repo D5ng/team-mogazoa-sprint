@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { emptyHeart, heart } from '@/src/app/icons'
+import { emptyHeart, heart } from '@shared/icons'
 
 export default function LikeButton() {
   return (

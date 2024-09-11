@@ -1,6 +1,6 @@
+import type { ProductDetailResponse } from '@app/types'
 import { StatisticsListItem } from '@features/product-detail/components'
 import { STATISTICS_CARD } from '@features/product-detail/constants'
-import type { ProductDetailResponse } from '@features/product-detail/types'
 
 export default function StatisticsList(statisticsData: ProductDetailResponse) {
   return (

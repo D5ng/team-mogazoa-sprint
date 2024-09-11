@@ -1,4 +1,4 @@
-import { SignUpField } from '@features/auth/components'
+import { SignUpField } from '@/src/widgets/auth/components'
 import Gnb from '@widgets/Gnb/Gnb'
 
 export default function SingUpPage() {
