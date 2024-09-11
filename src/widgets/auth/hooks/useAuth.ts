@@ -33,6 +33,16 @@ export default function useAuth() {
     }
   }
 
+  const logout = async () => {
+    try {
+      document.cookie =
+        'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const signUpSubmit = (setError: UseFormSetError<SignUpFieldData>) => {
     return async (data: SignUpFieldData) => {
       await signUp(data, setError)
@@ -45,5 +55,5 @@ export default function useAuth() {
     }
   }
 
-  return { signUpSubmit, signInSubmit }
+  return { signUpSubmit, signInSubmit, logout }
 }
