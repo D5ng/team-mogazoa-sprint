@@ -42,7 +42,7 @@ export const AutocompleteField = forwardRef<
 export const AutocompleteInput = forwardRef<
   HTMLInputElement,
   AutocompleteInputProps
->(({ placeholder }, ref) => {
+>(({ placeholder, ...props }, ref) => {
   const {
     searchTerm,
     handleInputChange,
@@ -65,7 +65,7 @@ export const AutocompleteInput = forwardRef<
       onChange={handleInputChange}
       onKeyDown={handleKeyDown}
       placeholder={placeholder}
-      className="input-base"
+      className={`input-base ${props.className || ''}`}
       ref={ref}
     />
   )

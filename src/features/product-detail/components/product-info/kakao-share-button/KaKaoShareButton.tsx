@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { kakao } from '@app/icons'
+import { kakao } from '@shared/icons'
 
 export default function KaKaoShareButton() {
   return (

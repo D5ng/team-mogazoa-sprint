@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import type { ReviewItem } from '@app/types'
-import { star } from '@app/icons'
+import { star } from '@shared/icons'
 
 export default function ReviewRating({ rating }: Pick<ReviewItem, 'rating'>) {
   const ratingCount = Array(rating)

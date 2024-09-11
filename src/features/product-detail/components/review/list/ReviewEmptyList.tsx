@@ -1,4 +1,4 @@
-import { emptyReview } from '@app/icons'
+import { emptyReview } from '@shared/icons'
 import Image from 'next/image'
 
 export default function ReviewEmptyList() {

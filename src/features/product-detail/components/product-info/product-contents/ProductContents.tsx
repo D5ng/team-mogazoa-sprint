@@ -1,5 +1,5 @@
 import Button from '@shared/ui/button/Button'
-import CategoryChip from '@widgets/category-chip/CategoryChip'
+import CategoryChip from '@/src/widgets/product/category-chip/CategoryChip'
 import {
   ClipBoardButton,
   KaKaoShareButton,
