@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { add } from '@app/icons'
+import { add } from '@shared/icons'
 import { useToggle } from '@shared/hooks'
-import { ProductAddModal } from '@features/product-add-modal/components'
+import { ProductAddModal } from '@widgets/product-add-modal/components'
 
 export default function ProductAddButton() {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()

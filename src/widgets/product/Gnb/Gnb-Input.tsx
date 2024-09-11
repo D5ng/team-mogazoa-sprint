@@ -6,7 +6,7 @@ import {
   AutocompleteField,
   AutocompleteInput,
 } from '@/src/shared/ui'
-import { PRODUCT_MOCK } from './Gnb.mock'
+import { PRODUCT_MOCK } from '@widgets/product/Gnb/Gnb.mock'
 import { twMerge } from 'tailwind-merge'
 import { useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
