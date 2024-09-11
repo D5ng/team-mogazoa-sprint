@@ -1,8 +1,8 @@
-import { ProductType } from '@shared/types'
+import { ProductPayload } from '@shared/types'
 
-export const defaultValues: ProductType = {
+export const defaultValues: ProductPayload = {
   name: '',
   description: '',
   categoryId: 0,
-  image: null,
+  image: '',
 }

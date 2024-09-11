@@ -1,16 +1,10 @@
 import { useForm } from 'react-hook-form'
-import {
-  Button,
-  Form,
-  ImageInput,
-  TextareaInput,
-  TextFieldInput,
-} from '@shared/ui'
-
-import type { ProductType } from '@shared/types'
+import { Button, Form, TextareaInput, TextFieldInput } from '@shared/ui'
 import { CategoryDropdown } from '@widgets/product-add-modal/components'
+import type { ProductPayload } from '@shared/types'
 import { useProductForm } from '@widgets/product-add-modal/hooks'
 import { defaultValues } from './defaultValues'
+import ProductImageUpload from './ProductImageUpload'
 
 export default function ProductAddForm() {
   const {
@@ -22,13 +16,13 @@ export default function ProductAddForm() {
     control,
     reset,
     setError,
-  } = useForm<ProductType>({ defaultValues, mode: 'onBlur' })
+  } = useForm<ProductPayload>({ defaultValues, mode: 'onBlur' })
 
   const description = watch('description')
 
   const onSubmit = useProductForm({
-    onSuccess: () => reset(),
-    onFailed: (field: keyof ProductType, errorMessage: string) =>
+    onSuccess: () => {},
+    onFailed: (field: keyof ProductPayload, errorMessage: string) =>
       setError(field, { message: errorMessage }),
   })
 
@@ -45,14 +39,9 @@ export default function ProductAddForm() {
             setValue={setValue}
             {...register('name')}
           />
-
           <CategoryDropdown control={control} />
         </div>
-        <ImageInput
-          {...register('image')}
-          setValue={setValue}
-          className="tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px]"
-        />
+        <ProductImageUpload setValue={setValue} />
       </div>
       <TextareaInput
         {...register('description')}

@@ -6,10 +6,10 @@ import {
   DropdownTrigger,
 } from '@shared/ui'
 import { Control, useController } from 'react-hook-form'
-import type { ProductType } from '@shared/types'
+import type { ProductPayload } from '@shared/types'
 
 interface CategoryDropdownProps {
-  control: Control<ProductType>
+  control: Control<ProductPayload>
 }
 
 export default function CategoryDropdown({ control }: CategoryDropdownProps) {
