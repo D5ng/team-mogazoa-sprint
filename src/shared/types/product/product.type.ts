@@ -25,7 +25,7 @@ export interface FetchProducts {
 
 export type ProductType = {
   categoryId: number
-  image: File | null
+  image: File
   description: string
   name: string
 }

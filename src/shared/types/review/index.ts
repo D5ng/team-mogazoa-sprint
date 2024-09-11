@@ -5,7 +5,7 @@ export interface ReviewId {
 export interface CreateReview {
   productId: number
   images: {
-    file: File
+    url: string
     index: number
   }[]
   content: string
