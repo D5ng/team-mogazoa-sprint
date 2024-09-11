@@ -19,5 +19,20 @@ export default function useOAuth() {
 
     router.push(googleOAuthUrl)
   }
-  return { googleSignIn }
+
+  const kakaoSignIn = () => {
+    const KAKAO_CLIENT_ID = process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID
+    const KAKAO_REDIRECT_URI = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI
+
+    if (!KAKAO_CLIENT_ID || !KAKAO_REDIRECT_URI) {
+      console.error('Kakao OAuth 구성이 누락되었습니다.')
+      return
+    }
+
+    const kakaoOAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`
+
+    router.push(kakaoOAuthUrl)
+  }
+
+  return { googleSignIn, kakaoSignIn }
 }
