@@ -26,7 +26,11 @@ export default function RatingListItem({
       onMouseLeave={onMouseLeave}
       data-idx={currentIndex}
     >
-      <button className="block w-full h-full" onClick={onUpdateRating}>
+      <button
+        className="block w-full h-full"
+        onClick={onUpdateRating}
+        type="button"
+      >
         <Image src={iconSource} alt="" fill />
       </button>
     </li>
