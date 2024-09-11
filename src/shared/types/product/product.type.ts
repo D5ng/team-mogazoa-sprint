@@ -23,9 +23,16 @@ export interface FetchProducts {
   cursor?: number
 }
 
-export type SendProductType = {
+export type ProductType = {
   categoryId: number
   image: File | null
+  description: string
+  name: string
+}
+
+export type ProductPayload = {
+  categoryId: number
+  image: string
   description: string
   name: string
 }
