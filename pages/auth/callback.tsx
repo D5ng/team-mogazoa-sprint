@@ -7,7 +7,9 @@ interface GoogleTokenResponse {
   id_token: string
 }
 
-const REDIRECT_URI = 'http://localhost:3000/auth/callback'
+const REDIRECT_URI =
+  process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI ||
+  'http://localhost:3000/auth/callback'
 
 const exchangeCodeForToken = async (code: string): Promise<string> => {
   const tokenEndpoint = 'https://accounts.google.com/o/oauth2/token'
@@ -19,8 +21,13 @@ const exchangeCodeForToken = async (code: string): Promise<string> => {
     grant_type: 'authorization_code',
   }
 
-  const response = await axios.post<GoogleTokenResponse>(tokenEndpoint, data)
-  return response.data.id_token
+  try {
+    const response = await axios.post<GoogleTokenResponse>(tokenEndpoint, data)
+    return response.data.id_token
+  } catch (error) {
+    console.error('Failed to exchange code for token:', error)
+    throw new Error('Token exchange failed')
+  }
 }
 
 const setAccessTokenCookie = (res: any, token: string) => {
@@ -40,7 +47,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { code } = context.query
 
   if (typeof code !== 'string') {
-    return { props: {} }
+    console.error('Invalid or missing code in query parameters')
+    return {
+      redirect: {
+        destination: '/error?message=invalid_code',
+        permanent: false,
+      },
+    }
   }
 
   try {
@@ -64,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.error('Authentication failed:', error)
     return {
       redirect: {
-        destination: '/error',
+        destination: '/error?message=auth_failed',
         permanent: false,
       },
     }
