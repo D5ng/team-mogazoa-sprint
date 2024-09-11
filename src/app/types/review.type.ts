@@ -22,8 +22,3 @@ export interface ReviewUser {
   nickname: string
   id: number
 }
-
-export interface ReviewImage {
-  source: string
-  id: number
-}
