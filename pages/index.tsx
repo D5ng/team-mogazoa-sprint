@@ -1,7 +1,7 @@
 import useWindowResize from '@/src/shared/hooks/useWindowResize'
 import ProductCard from '@/src/widgets/product/products-card/ProductCard'
 import Ranking from '@/src/widgets/product/ranking/Ranking'
-import SideMenu from '@/src/widgets/side-menu/SideMenu'
+import SideMenu from '@/src/widgets/product/side-menu/SideMenu'
 
 const home = () => {
   const WINDOW_SIZE = useWindowResize()
