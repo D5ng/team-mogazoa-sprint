@@ -1,15 +1,11 @@
+import { useProductStore } from '@/src/app/provider/productStore'
 import { CARD_MOCK_DATA } from '@/src/widgets/product/products-card/ProductCard.mock'
 import { ProductCardData } from '@/src/widgets/product/products-card/ProductCard.types'
 import { debounce } from 'lodash'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 export default function useProduct() {
-  const [inputValue, setInputValue] = useState('')
-  const [selectedKey, setSelectedKey] = useState<number | null>(null)
-
-  const handleSelect = (key: number) => {
-    setSelectedKey(key)
-  }
+  const { inputValue, selectedKey, setInputValue } = useProductStore()
 
   const updateInputValue = useCallback(
     debounce((value: string) => {
@@ -28,7 +24,6 @@ export default function useProduct() {
     filteredProducts,
     updateInputValue,
     inputValue,
-    handleSelect,
     selectedKey,
   }
 }

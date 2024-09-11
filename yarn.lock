@@ -2860,21 +2860,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.54.1":
-  version: 5.54.1
-  resolution: "@tanstack/query-core@npm:5.54.1"
-  checksum: 10c0/df064281e4fece7ea95544fba44b70d9ca547d1aa30beb0f2e7d08ab76978928e7b40bb30f05bd535b6b6090b6e67e56f16762dc0f121e181ff0b690c6121491
+"@tanstack/query-core@npm:5.55.4":
+  version: 5.55.4
+  resolution: "@tanstack/query-core@npm:5.55.4"
+  checksum: 10c0/c463b582b8c7c24fddd8da9c6fd311805df48bbfbdf9feae5662cd6e3d1df3eba47a1fc0c6e7f3feed6e0add2e363fbfcaad25e931b1bda6da6aabdccf3e5898
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.54.1":
-  version: 5.54.1
-  resolution: "@tanstack/react-query@npm:5.54.1"
+"@tanstack/react-query@npm:^5.55.4":
+  version: 5.55.4
+  resolution: "@tanstack/react-query@npm:5.55.4"
   dependencies:
-    "@tanstack/query-core": "npm:5.54.1"
+    "@tanstack/query-core": "npm:5.55.4"
   peerDependencies:
     react: ^18 || ^19
-  checksum: 10c0/d91aafb9b386b6a7eb21be1eb960b91ad60e672c35fa16d408b222e6d731705686a8be34f312afed0165be7945b5fd6f3adebcfa4b920e00e1f5e7cfdcdb35e6
+  checksum: 10c0/b81f4e2942aa4e978278816e7939ac4df500cc38e052fd24c48e6ee5eddb89809b546e8536b50558f65ad679635ac0763ddfa3c14e73d60cfcf0646d5e57fd2a
   languageName: node
   linkType: hard
 
@@ -8635,7 +8635,7 @@ __metadata:
     "@storybook/nextjs": "npm:^8.2.9"
     "@storybook/react": "npm:^8.2.9"
     "@storybook/test": "npm:^8.2.9"
-    "@tanstack/react-query": "npm:^5.54.1"
+    "@tanstack/react-query": "npm:^5.55.4"
     "@types/lodash": "npm:^4.17.7"
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
@@ -8661,6 +8661,7 @@ __metadata:
     tailwind-merge: "npm:^2.5.2"
     tailwindcss: "npm:^3.4.1"
     typescript: "npm:^5.5.4"
+    zustand: "npm:^4.5.5"
   languageName: unknown
   linkType: soft
 
@@ -11799,6 +11800,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"use-sync-external-store@npm:1.2.2":
+  version: 1.2.2
+  resolution: "use-sync-external-store@npm:1.2.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/23b1597c10adf15b26ade9e8c318d8cc0abc9ec0ab5fc7ca7338da92e89c2536abd150a5891bf076836c352fdfa104fc7231fb48f806fd9960e0cbe03601abaf
+  languageName: node
+  linkType: hard
+
 "util-deprecate@npm:^1.0.1, util-deprecate@npm:^1.0.2, util-deprecate@npm:~1.0.1":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -12151,5 +12161,25 @@ __metadata:
   version: 1.1.1
   resolution: "yocto-queue@npm:1.1.1"
   checksum: 10c0/cb287fe5e6acfa82690acb43c283de34e945c571a78a939774f6eaba7c285bacdf6c90fbc16ce530060863984c906d2b4c6ceb069c94d1e0a06d5f2b458e2a92
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^4.5.5":
+  version: 4.5.5
+  resolution: "zustand@npm:4.5.5"
+  dependencies:
+    use-sync-external-store: "npm:1.2.2"
+  peerDependencies:
+    "@types/react": ">=16.8"
+    immer: ">=9.0.6"
+    react: ">=16.8"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    immer:
+      optional: true
+    react:
+      optional: true
+  checksum: 10c0/d04469d76b29c7e4070da269886de4efdadedd3d3824dc2a06ac4ff62e3b5877f925e927afe7382de651829872b99adec48082f1bd69fe486149be666345e626
   languageName: node
   linkType: hard

@@ -5,9 +5,8 @@ import useUsersRankingData from '@/src/shared/hooks/useUsersRankingData'
 
 export default function Ranking() {
   const { rankingData } = useUsersRankingData()
-
+  console.log(rankingData)
   const data = useChipVariant(rankingData)
-  console.log(data)
 
   return (
     <div className="flex mobile:pt-[10px] flex-col tablet:gap-[20px] gap-[30px] shrink-0">

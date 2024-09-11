@@ -1,24 +1,22 @@
-import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
 import { fetchUserRanking } from '../api'
-import { useEffect, useState } from 'react'
+import { RankingItem } from '@/src/widgets/product/ranking/Ranking.types'
+import { UserRanking } from '../types'
 
 export default function useUsersRankingData() {
-  const [rankingData, setRankingData] = useState<any>([])
-  useEffect(() => {
-    const fetchRankingData = async () => {
-      try {
-        const response = await fetchUserRanking()
-        setRankingData(response)
-      } catch (error) {
-        if (!axios.isAxiosError(error)) {
-          console.error(error)
-          throw new Error('유저 랭킹 갱신에 실패하였습니다')
-        }
-      }
-    }
+  const {
+    data: rankingData,
+    isLoading,
+    error,
+  } = useQuery<RankingItem[], Error>({
+    queryKey: ['fetchUserRanking'],
+    queryFn: fetchUserRanking,
+  })
 
-    fetchRankingData()
-  }, [])
+  if (error) {
+    console.error(error)
+    return { rankingData: [], isLoading: false, error }
+  }
 
-  return { rankingData }
+  return { rankingData, isLoading: false, error: null }
 }
