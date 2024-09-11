@@ -1,3 +1,4 @@
+import { SendProductType } from '@/src/shared/types'
 import { CATEGORY_CHIPS } from '@/src/widgets/product/category-chip/CategoryChip.constants'
 import {
   Dropdown,
@@ -5,12 +6,16 @@ import {
   DropdownMenuItem,
   DropdownTrigger,
 } from '@shared/ui'
+import { Control, useController } from 'react-hook-form'
 
 interface CategoryDropdownProps {
-  onChange: (...event: any[]) => void
+  control: Control<SendProductType>
 }
 
-export default function CategoryDropdown({ onChange }: CategoryDropdownProps) {
+export default function CategoryDropdown({ control }: CategoryDropdownProps) {
+  const {
+    field: { onChange },
+  } = useController({ name: 'categoryId', control: control })
   return (
     <Dropdown className="w-[360px] mobile:w-full">
       <DropdownTrigger>카테고리 선택</DropdownTrigger>
