@@ -33,4 +33,4 @@ export interface SocialSignUp {
 }
 
 export interface SocialSignIn
-  extends Pick<SocialSignUp, 'redirectUri' | 'token'> {}
+  extends Pick<SocialSignUp, 'redirectUri' | 'token' | 'social'> {}

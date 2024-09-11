@@ -23,7 +23,7 @@ export default function GnbInput() {
   )
 
   useEffect(() => {
-    console.log(inputRef.current?.value)
+    // console.log(inputRef.current?.value)
   }, [inputRef?.current?.value])
   if (router.pathname === '/sign-in' || router.pathname === '/sign-up') return
 

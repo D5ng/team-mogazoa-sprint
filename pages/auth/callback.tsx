@@ -1,15 +1,10 @@
 import { GetServerSideProps } from 'next'
 import axios from 'axios'
-import { axiosInstance } from '@/src/shared/config'
 import { serialize } from 'cookie'
+import { socialSignIn } from '@shared/api'
 
 interface GoogleTokenResponse {
   id_token: string
-}
-
-interface OAuthData {
-  redirectUri: string
-  token: string
 }
 
 const REDIRECT_URI = 'http://localhost:3000/auth/callback'
@@ -26,16 +21,6 @@ const exchangeCodeForToken = async (code: string): Promise<string> => {
 
   const response = await axios.post<GoogleTokenResponse>(tokenEndpoint, data)
   return response.data.id_token
-}
-
-const signInWithGoogle = async (token: string): Promise<string> => {
-  const oAuthData: OAuthData = {
-    redirectUri: REDIRECT_URI,
-    token,
-  }
-
-  const response = await axiosInstance.post('/auth/signIn/google', oAuthData)
-  return response.data.accessToken
 }
 
 const setAccessTokenCookie = (res: any, token: string) => {
@@ -60,8 +45,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   try {
     const idToken = await exchangeCodeForToken(code)
-    const accessToken = await signInWithGoogle(idToken)
-    setAccessTokenCookie(context.res, accessToken)
+
+    const authResponse = await socialSignIn({
+      social: 'google',
+      token: idToken,
+      redirectUri: REDIRECT_URI,
+    })
+
+    setAccessTokenCookie(context.res, authResponse.accessToken)
 
     return {
       redirect: {
@@ -70,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   } catch (error) {
-    console.error(error)
+    console.error('Authentication failed:', error)
     return {
       redirect: {
         destination: '/error',
