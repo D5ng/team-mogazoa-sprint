@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { createContext, useContext, useState, forwardRef } from 'react'
 import { useAutocomplete, useKeyboardSelect } from '@shared/hooks'
 import type {
   AutocompleteContextType,
@@ -18,13 +17,11 @@ const useAutocompleteContext = () => {
   return context
 }
 
-export function AutocompleteField({
-  suggestionList,
-  children,
-  ...props
-}: AutocompleteFieldProps) {
+export const AutocompleteField = forwardRef<
+  HTMLDivElement,
+  AutocompleteFieldProps
+>(({ suggestionList, setValue, name, children, ...props }, ref) => {
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
-  const { setValue } = useForm()
   const autocomplete = useAutocomplete(suggestionList, setValue)
 
   const contextValue = {
@@ -35,14 +32,17 @@ export function AutocompleteField({
 
   return (
     <AutoCompleteInputContext.Provider value={contextValue}>
-      <div className={`relative w-full ${props.className || ''}`}>
+      <div ref={ref} className={`relative w-full ${props.className || ''}`}>
         {children}
       </div>
     </AutoCompleteInputContext.Provider>
   )
-}
+})
 
-export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
+export const AutocompleteInput = forwardRef<
+  HTMLInputElement,
+  AutocompleteInputProps
+>(({ placeholder }, ref) => {
   const {
     searchTerm,
     handleInputChange,
@@ -66,9 +66,10 @@ export function AutocompleteInput({ placeholder }: AutocompleteInputProps) {
       onKeyDown={handleKeyDown}
       placeholder={placeholder}
       className="input-base"
+      ref={ref}
     />
   )
-}
+})
 
 export function AutocompleteDropdown() {
   const { suggestions, highlightedIndex } = useAutocompleteContext()
