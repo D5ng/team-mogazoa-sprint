@@ -1,22 +1,20 @@
-import ReviewIcon from '@app/images/icons/review-icon.svg'
-import HeartIcon from '@app/images/icons/heart-icon.svg'
-import StarRatingIcon from '@app/images/icons/star-rating-icon.svg'
+import { heart, review, star } from '@shared/icons'
 
 export const STATISTICS_CARD = [
   {
     name: 'rating',
     title: '별점 평균',
-    image: StarRatingIcon,
+    image: star,
   },
   {
     name: 'favoriteCount',
     title: '찜',
-    image: HeartIcon,
+    image: heart,
   },
   {
     name: 'reviewCount',
     title: '리뷰',
-    image: ReviewIcon,
+    image: review,
   },
 ] as const
 

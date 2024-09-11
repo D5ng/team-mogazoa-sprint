@@ -1,9 +1,7 @@
-import { useOutsideClick, useToggle } from '@/src/shared/hooks'
 import useWindowResize from '@/src/shared/hooks/useWindowResize'
-import ProductCard from '@/src/widgets/products-card/ProductCard'
-import Ranking from '@/src/widgets/ranking/Ranking'
+import ProductCard from '@/src/widgets/product/products-card/ProductCard'
+import Ranking from '@/src/widgets/product/ranking/Ranking'
 import SideMenu from '@/src/widgets/side-menu/SideMenu'
-import SideMenuMobile from '@/src/widgets/side-menu/SideMenuMobile'
 
 const home = () => {
   const WINDOW_SIZE = useWindowResize()

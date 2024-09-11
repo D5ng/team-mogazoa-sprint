@@ -8,9 +8,9 @@ export default function SideMenu() {
         카테고리
       </p>
       <ul className="flex flex-col gap-[8px] ">
-        {CATEGORY_CHIPS.map((category, index) => (
+        {CATEGORY_CHIPS.map((data) => (
           <li>
-            <MenuTaps key={index}>{category}</MenuTaps>
+            <MenuTaps key={data.id}>{data.name}</MenuTaps>
           </li>
         ))}
       </ul>

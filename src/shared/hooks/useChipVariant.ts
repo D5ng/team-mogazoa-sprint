@@ -1,5 +1,8 @@
 import { useMemo } from 'react'
-import { RankingItem, Variant } from '../../widgets/ranking/Ranking.types'
+import {
+  RankingItem,
+  Variant,
+} from '../../widgets/product/ranking/Ranking.types'
 
 const variantLUT: Record<number, Variant> = {
   0: 'first',

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { ProductCardProps } from './ProductCard.types'
-import { star } from '@app/icons'
+import { star } from '@shared/icons'
 import Link from 'next/link'
 
 export default function ProductCardItem({ data }: ProductCardProps) {
