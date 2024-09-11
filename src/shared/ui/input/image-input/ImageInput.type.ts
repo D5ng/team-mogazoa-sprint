@@ -3,7 +3,8 @@ import { ProductType } from '@shared/types'
 
 type SetValueTypes = UseFormSetValue<ProductType>
 export interface ImageInputProps extends UseFormRegisterReturn {
-  setValue: SetValueTypes
+  // setValue: SetValueTypes
   className?: string
-  name: keyof ProductType
+  // name: keyof ProductType
+  onSuccess: () => void
 }
