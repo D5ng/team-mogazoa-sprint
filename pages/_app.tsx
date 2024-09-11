@@ -1,5 +1,6 @@
 import '@/src/app/styles/globals.css'
-import Gnb from '@/src/widgets/Gnb/Gnb'
+import Gnb from '@widgets/product/Gnb/Gnb'
+
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
 

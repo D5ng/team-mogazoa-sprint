@@ -2,8 +2,8 @@ import {
   ProductInfoWrapper,
   ReviewWrapper,
   StatisticsWrapper,
-} from '@features/product-detail/components'
-import { STATISTICS_MOCK } from '@features/product-detail/constants'
+} from '@widgets/product-detail/components'
+import { STATISTICS_MOCK } from '@widgets/product-detail/constants'
 
 export default function index() {
   return (
