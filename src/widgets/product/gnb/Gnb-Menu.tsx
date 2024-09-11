@@ -2,8 +2,10 @@ import Link from 'next/link'
 import getCookies from '../../auth/lib/getCookies'
 
 export default function GnbMenu() {
-  const isSigned = getCookies()
+  const cookies = getCookies()
+  const isSigned = cookies && cookies['accessToken']
   console.log(isSigned)
+
   const MENU_DEFAULT_STYLE =
     'hover:text-blue mobile:text-black-20 rounded-xl font-semibold mobile:px-[10px] mobile:py-[2px] mobile:text-[3vw] mobile:hover:border-blue  mobile:border-black-20'
   return (

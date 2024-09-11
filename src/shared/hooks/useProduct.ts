@@ -9,7 +9,6 @@ export default function useProduct() {
 
   const handleSelect = (key: number) => {
     setSelectedKey(key)
-    console.log(key)
   }
 
   const updateInputValue = useCallback(
@@ -24,9 +23,6 @@ export default function useProduct() {
       product?.name.toLowerCase().includes(inputValue.toLowerCase()),
     )
   }, [inputValue])
-
-  console.log(inputValue)
-  console.log(filteredProducts)
 
   return {
     filteredProducts,

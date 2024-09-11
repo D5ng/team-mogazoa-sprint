@@ -11,7 +11,6 @@ import { twMerge } from 'tailwind-merge'
 import { useForm } from 'react-hook-form'
 
 export default function GnbInput() {
-  // 상품 검색 로직은 어떻게 작동되는지 파악이 안돼서 후에 작성 하겠습니다.
   const router = useRouter()
   const { register, setValue } = useForm()
 
