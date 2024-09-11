@@ -20,7 +20,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
   (props, ref) => {
     return (
       <FormFieldContext.Provider value={props}>
-        <div ref={ref} className="flex flex-col gap-2.5">
+        <div ref={ref} className="flex flex-col gap-2.5 mobile:min-w-[335px]">
           {props.children}
         </div>
       </FormFieldContext.Provider>

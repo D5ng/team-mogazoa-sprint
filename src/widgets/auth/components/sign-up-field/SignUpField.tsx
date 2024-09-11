@@ -69,7 +69,7 @@ export default function SignUpField() {
         <FieldErrorMessage />
       </FormField>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" className="mobile:mt-20">
         회원가입
       </Button>
     </Form>
