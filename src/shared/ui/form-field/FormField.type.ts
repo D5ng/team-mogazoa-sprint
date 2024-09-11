@@ -19,3 +19,8 @@ export interface LabelProps {
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+export interface EyeProps {
+  isToggle: boolean
+  onToggle: () => void
+}
