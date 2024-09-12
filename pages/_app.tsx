@@ -1,5 +1,6 @@
 import '@/src/app/styles/globals.css'
 import Gnb from '@/src/widgets/product/gnb/Gnb'
+
 import type { AppProps } from 'next/app'
 import { Suspense, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

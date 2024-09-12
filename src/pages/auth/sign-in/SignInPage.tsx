@@ -1,5 +1,5 @@
 import { SignInField } from '@/src/widgets/auth/components'
-import Gnb from '@/src/widgets/product/gnb/Gnb'
+import Gnb from '@widgets/product/gnb/Gnb'
 
 export default function SingUpPage() {
   return (
