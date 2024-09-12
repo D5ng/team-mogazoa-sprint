@@ -2,7 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { fetchProductDetail } from '@shared/api'
 import {
-  ProductInfoWrapper,
+  ProductInfo,
   ReviewWrapper,
   StatisticsList,
 } from '@widgets/product-detail/components'
@@ -13,7 +13,7 @@ export default function ProductDetailPage({
   return (
     <main className="w-[940px] m-auto mt-[60px] tablet:w-full">
       <section>
-        <ProductInfoWrapper productId={productId} />
+        <ProductInfo productId={productId} />
       </section>
       <section className="mt-[80px]">
         <StatisticsList productId={productId} />
