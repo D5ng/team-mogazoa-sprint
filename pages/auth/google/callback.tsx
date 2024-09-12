@@ -82,7 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
         return {
           redirect: {
-            destination: '/social-auth',
+            destination: '/oauth/google',
             permanent: false,
           },
         }

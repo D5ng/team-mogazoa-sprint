@@ -1,5 +1,6 @@
 import '@/src/app/styles/globals.css'
 import Gnb from '@/src/widgets/product/gnb/Gnb'
+import { KakaoScript } from '@/src/app/provider/KakaoScript'
 
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="">
           <Component {...pageProps} />
         </div>
+        <KakaoScript />
       </>
     )
   )
