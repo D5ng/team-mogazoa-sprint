@@ -18,19 +18,6 @@ export default function ProductReviewForm() {
   const images = watch('images')
   const onSubmit = useCreateReviewForm({})
 
-  const onUploadSuccess = async (file: File, index: number) => {
-    try {
-      const { url } = await createImageUpload(file)
-      images.push({ url, index })
-      setValue('images', images)
-    } catch (error) {}
-  }
-
-  const onCancel = (index: number) => {
-    const filteredImage = images.filter((image) => image.index !== index)
-    setValue('images', filteredImage)
-  }
-
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-5">
       <Rating control={control} />
@@ -39,7 +26,7 @@ export default function ProductReviewForm() {
         placeholder="리뷰를 작성해 주세요"
         {...register('content')}
       />
-      <div className="flex gap-x-2.5">
+      <div className="flex gap-x-2.5 overflow-x-scroll">
         {[1, 2, 3].map((order) => (
           <ProductReviewImageUpload
             key={order}
@@ -48,25 +35,8 @@ export default function ProductReviewForm() {
             images={images}
           />
         ))}
-
-        {/* <ImageInput
-          {...register('images')}
-          setValue={setValue}
-          className="tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px]"
-        />
-        <ImageInput
-          {...register('images')}
-          setValue={setValue}
-          className="tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px]"
-        />
-        <ImageInput
-          {...register('images')}
-          setValue={setValue}
-          className="tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px]"
-        /> */}
       </div>
-
-      <Button variant="primary" className="mt-10">
+      <Button variant="primary" className="mt-10 mobile:mt-0">
         추가하기
       </Button>
     </Form>

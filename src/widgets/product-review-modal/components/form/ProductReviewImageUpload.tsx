@@ -31,7 +31,7 @@ export default function ProductReviewImageUpload({
       imageIndex={imageIndex}
       onCancel={onCancel}
       onSuccess={onUploadSuccess}
-      className="tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px]"
+      className="tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px] flex-shrink-0"
     />
   )
 }

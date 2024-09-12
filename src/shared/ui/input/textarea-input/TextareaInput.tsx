@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { TextareaInputProps } from './TextareaInput.type'
+import { twMerge } from 'tailwind-merge'
 
 const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
   ({ placeholder, name, value, maxLength = 500, ...props }, ref) => {
@@ -7,14 +8,20 @@ const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
 
     return (
       <div
-        className={`relative w-full h-[160px] mobile:h-[120px] ${props.className || ''}`}
+        className={twMerge(
+          'relative w-full h-[160px] mobile:h-[120px]',
+          props.className,
+        )}
       >
         <textarea
           id={name}
           name={name}
           placeholder={placeholder}
           maxLength={maxLength}
-          className={`input-base resize-none overflow-y-auto ${props.className || ''}`}
+          className={twMerge(
+            'input-base resize-none overflow-y-auto tablet:text-sm',
+            props.className || '',
+          )}
           ref={ref}
           {...props}
         />
