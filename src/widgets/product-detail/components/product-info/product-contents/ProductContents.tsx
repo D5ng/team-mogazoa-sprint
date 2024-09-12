@@ -6,14 +6,19 @@ import {
   KaKaoShareButton,
   LikeButton,
 } from '@widgets/product-detail/components'
+import { useFetchProductDetail } from '@shared/hooks'
+
+interface ProductContentsProps
+  extends Pick<ProductDetailResponse, 'name' | 'category' | 'description'> {}
 
 export default function ProductContents({
   name,
+  category,
   description,
-}: Pick<ProductDetailResponse, 'name' | 'description'>) {
+}: ProductContentsProps) {
   return (
     <div className="relative w-[calc(100%-355px-40px)] text-white tablet:w-[51.478vw] mobile:w-full mobile:mt-5">
-      <CategoryChip name="전자기기" />
+      <CategoryChip name={category.name} />
       <div className="flex justify-between items-center mt-2.5">
         <div className="flex items-center gap-x-[15px] mobile:w-full mobile:justify-between">
           <p className="text-2xl font-semibold tablet:text-xl">{name}</p>
