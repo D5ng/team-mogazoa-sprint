@@ -2,6 +2,22 @@ export interface UserId {
   userId: number
 }
 
+export interface UserData {
+  updatedAt: string
+  createdAt: string
+  teamId: string
+  image: string
+  description: string
+  nickname: string
+  id: number
+  mostFavoriteCategory: FavoriteCategory
+  averageRating: number
+  reviewCount: number
+  followeesCount: number
+  followersCount: number
+  isFollowing: boolean
+}
+
 export interface FavoriteCategory {
   name: string
   id: number
