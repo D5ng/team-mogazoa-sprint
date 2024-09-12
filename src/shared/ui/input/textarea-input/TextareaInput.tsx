@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { TextareaInputProps } from './TextareaInput.type'
+import ErrorMessage from '@/src/shared/ui/error-message/ErrorMessage'
 
 const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
   ({ placeholder, name, value, maxLength = 500, errors, ...props }, ref) => {
@@ -28,7 +29,7 @@ const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
         <span className="absolute right-5 bottom-5 text-sm text-black-30">
           {textLength}/{maxLength}
         </span>
-        <p className="text-red text-xs">{error && error.message}</p>
+        <ErrorMessage error={error} />
       </div>
     )
   },

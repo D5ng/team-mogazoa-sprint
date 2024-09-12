@@ -5,6 +5,7 @@ import type {
   FormFieldContextValue,
   FormFieldProps,
 } from './FormField.type'
+import ErrorMessage from '@shared/ui/error-message/ErrorMessage'
 
 const FormFieldContext = createContext<FormFieldContextValue | null>(null)
 
@@ -47,23 +48,19 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
     const borderClassName = error ? 'border-red' : 'border-black-70'
 
     return (
-      <input
-        id={name}
-        name={name}
-        ref={ref}
-        autoComplete={name}
-        onChange={onChange}
-        onBlur={onBlur}
-        {...props}
-        className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
-      />
+      <>
+        <input
+          id={name}
+          name={name}
+          ref={ref}
+          autoComplete={name}
+          onChange={onChange}
+          onBlur={onBlur}
+          {...props}
+          className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
+        />
+        <ErrorMessage error={error} />
+      </>
     )
   },
 )
-
-export function FieldErrorMessage() {
-  const { name, errors } = useFormField()
-  const error = errors[name]
-
-  return <p className="h-1 text-red text-sm">{error && error.message}</p>
-}

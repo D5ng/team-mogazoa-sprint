@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import type { TextFieldInputProps } from '@shared/ui/input/text-field-input/TextFieldInput.type'
+import ErrorMessage from '@/src/shared/ui/error-message/ErrorMessage'
 
 const TextFieldInput = forwardRef<HTMLInputElement, TextFieldInputProps>(
   ({ placeholder, setValue, name, errors, onBlur, ...props }, ref) => {
@@ -25,7 +26,7 @@ const TextFieldInput = forwardRef<HTMLInputElement, TextFieldInputProps>(
           className={`input-base ${focusClassName} ${borderClassName}`}
           ref={ref}
         />
-        <p className="text-red text-xs">{error && error.message}</p>
+        <ErrorMessage error={error} />
       </div>
     )
   },

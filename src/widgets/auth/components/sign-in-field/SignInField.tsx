@@ -5,7 +5,6 @@ import {
   FormField,
   FieldLabel,
   FieldInput,
-  FieldErrorMessage,
 } from '@shared/ui/form-field/FormField'
 import {
   emailValidation,
@@ -38,13 +37,11 @@ export default function SignInField() {
       <FormField {...register('email', emailValidation)} errors={errors}>
         <FieldLabel>이메일</FieldLabel>
         <FieldInput type="text" placeholder="이메일을 입력해주세요" />
-        <FieldErrorMessage />
       </FormField>
 
       <FormField {...register('password', passwordValidation)} errors={errors}>
         <FieldLabel>비밀번호</FieldLabel>
         <FieldInput type="password" placeholder="비밀번호를 입력해주세요" />
-        <FieldErrorMessage />
       </FormField>
 
       <Button variant="primary" type="submit">
