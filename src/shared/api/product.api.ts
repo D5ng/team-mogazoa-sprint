@@ -6,6 +6,7 @@ import type {
   ProductId,
   ProductResponse,
   ProductPayload,
+  ProductReviewsResponse,
 } from '@shared/types'
 
 export async function fetchProducts({
@@ -45,7 +46,11 @@ export async function fetchProductsReviews({
   order,
   cursor,
 }: FetchProductsReviews) {
-  return (await axiosInstance.get(`/products/${productId}/reviews`)).data
+  return (
+    await axiosInstance.get<ProductReviewsResponse>(
+      `/products/${productId}/reviews?cursor=${cursor}`,
+    )
+  ).data
 }
 
 export async function favoriteProduct({ productId }: ProductId) {
