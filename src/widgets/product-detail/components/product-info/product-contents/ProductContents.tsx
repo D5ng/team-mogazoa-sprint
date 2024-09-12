@@ -1,12 +1,10 @@
 import type { ProductDetailResponse } from '@shared/types'
 import Button from '@shared/ui/button/Button'
 import CategoryChip from '@/src/widgets/product/category-chip/CategoryChip'
-import {
-  ClipBoardButton,
-  KaKaoShareButton,
-  LikeButton,
-} from '@widgets/product-detail/components'
-import { useFetchProductDetail } from '@shared/hooks'
+import LikeButton from './LikeButton'
+import KaKaoShareButton from './KaKaoShareButton'
+import ClipBoardButton from './ClipBoardButton'
+import ReviewButton from './ReviewButton'
 
 interface ProductContentsProps
   extends Pick<ProductDetailResponse, 'name' | 'category' | 'description'> {}
@@ -33,12 +31,7 @@ export default function ProductContents({
         {description}
       </p>
       <div className="flex gap-x-5 tablet:gap-x-[15px] mobile:flex-col mobile:gap-x-0 mobile:gap-y-[15px]">
-        <Button
-          variant="primary"
-          className="w-[345px] h-[65px] tablet:w-[33.065vw] tablet:h-[55px] mobile:w-full"
-        >
-          리뷰 작성하기
-        </Button>
+        <ReviewButton />
         <Button
           variant="secondary"
           className="w-[180px] h-[65px] tablet:w-[16.532vw] tablet:h-[55px] mobile:w-full"

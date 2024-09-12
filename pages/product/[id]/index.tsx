@@ -1,28 +1,12 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { fetchProductDetail } from '@shared/api'
-import {
-  ProductInfo,
-  ReviewWrapper,
-  StatisticsList,
-} from '@widgets/product-detail/components'
+import { ProductDetail } from '@/src/pages'
 
 export default function ProductDetailPage({
   productId,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return (
-    <main className="w-[940px] m-auto mt-[60px] tablet:w-full">
-      <section>
-        <ProductInfo productId={productId} />
-      </section>
-      <section className="mt-[80px]">
-        <StatisticsList productId={productId} />
-      </section>
-      <section className="mt-[80px]">
-        <ReviewWrapper />
-      </section>
-    </main>
-  )
+  return <ProductDetail productId={productId} />
 }
 
 export const getServerSideProps = (async (context) => {

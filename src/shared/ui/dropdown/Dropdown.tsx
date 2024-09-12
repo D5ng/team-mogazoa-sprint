@@ -63,6 +63,7 @@ export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
 
   return (
     <button
+      type="button"
       onClick={onToggle}
       className={twMerge(DROPDOWN_VARIANT[variant].button, className)}
     >
