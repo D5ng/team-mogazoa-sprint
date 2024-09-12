@@ -20,7 +20,7 @@ export default function ProductReviewModal({
         </h2>
         <CategoryChip name="전자기기" />
       </div>
-      <ProductReviewForm productId={productId} />
+      <ProductReviewForm productId={productId} onCloseToggle={onCloseToggle} />
     </Modal>
   )
 }

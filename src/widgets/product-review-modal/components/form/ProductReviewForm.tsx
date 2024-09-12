@@ -9,21 +9,31 @@ import ProductReviewImageUpload from './ProductReviewImageUpload'
 
 interface ProductReviewFormProps {
   productId: number
+  onCloseToggle: () => void
 }
 
 export default function ProductReviewForm({
   productId,
+  onCloseToggle,
 }: ProductReviewFormProps) {
   const defaultValues = defaultValuesFn(productId)
-  const { register, handleSubmit, setValue, watch, control } =
-    useForm<CreateReview>({
-      defaultValues,
-      mode: 'onBlur',
-    })
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    control,
+    formState: { isValid },
+  } = useForm<CreateReview>({
+    defaultValues,
+    mode: 'onBlur',
+  })
 
   const content = watch('content')
   const images = watch('images')
-  const onSubmit = useCreateReviewForm({})
+  const { onSubmit, isPending } = useCreateReviewForm({
+    onSuccess: () => onCloseToggle(),
+  })
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-5">
@@ -43,7 +53,12 @@ export default function ProductReviewForm({
           />
         ))}
       </div>
-      <Button variant="primary" className="mt-10 mobile:mt-0">
+      <Button
+        variant="primary"
+        className="mt-10 mobile:mt-0"
+        isLoading={isPending}
+        disabled={isPending || !isValid}
+      >
         추가하기
       </Button>
     </Form>
