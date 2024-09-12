@@ -7,3 +7,4 @@ export { default as useIntersect } from './useIntersect'
 export { default as useImageUpload } from './useImageUpload'
 
 export * from './query'
+export * from './mutate'
