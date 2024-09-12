@@ -1,19 +1,24 @@
 import axios from 'axios'
-import axiosInstance from '@/src/shared/config/axios-instance'
+import axiosInstance from '@shared/config/axios-instance'
+import useAuthStore from '@shared/store/authStore'
 import type { UseFormSetError } from 'react-hook-form'
-import type { SignInFieldData } from '@/src/widgets/auth/types/auth.type'
+import type { SignIn } from '@shared/types/auth/auth.type'
 
 const url = 'auth/signIn'
 
 export const postSignIn = async (
-  data: SignInFieldData,
-  setError?: UseFormSetError<SignInFieldData>,
+  data: SignIn,
+  setError?: UseFormSetError<SignIn>,
 ) => {
   try {
     const response = await axiosInstance.post(url, data)
 
     const accessToken = response.data.accessToken
+    const user = response.data.user
     document.cookie = `accessToken=${accessToken}; path=/`
+
+    const setUser = useAuthStore.getState().setUser
+    setUser(user)
 
     return response
   } catch (error) {

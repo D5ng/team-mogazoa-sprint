@@ -19,7 +19,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.0",
-    "tailwind-merge": "^2.5.2"
+    "tailwind-merge": "^2.5.2",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.8.0",

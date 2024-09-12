@@ -1,14 +1,14 @@
 import axios from 'axios'
-import axiosInstance from '@/src/shared/config/axios-instance'
-import { postSignIn } from '@/src/widgets/auth/api'
+import axiosInstance from '@shared/config/axios-instance'
+import { postSignIn } from '@widgets/auth/api'
 import type { UseFormSetError } from 'react-hook-form'
-import type { SignUpFieldData } from '@/src/widgets/auth/types/auth.type'
+import type { SignUp } from '@shared/types'
 
 const url = 'auth/signUp'
 
 export const postSignUp = async (
-  data: SignUpFieldData,
-  setError: UseFormSetError<SignUpFieldData>,
+  data: SignUp,
+  setError: UseFormSetError<SignUp>,
 ) => {
   try {
     await axiosInstance.post(url, data)

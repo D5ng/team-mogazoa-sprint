@@ -11,7 +11,7 @@ import {
   emailValidation,
   passwordValidation,
 } from '@/src/widgets/auth/lib/form-validation'
-import type { SignInFieldData } from '@/src/widgets/auth/types/auth.type'
+import type { SignIn } from '@shared/types/auth/auth.type'
 
 export default function SignInField() {
   const {
@@ -19,7 +19,7 @@ export default function SignInField() {
     handleSubmit,
     formState: { errors, isValid, isDirty, isSubmitting },
     setError,
-  } = useForm<SignInFieldData>({
+  } = useForm<SignIn>({
     mode: 'onTouched',
     reValidateMode: 'onChange',
     defaultValues: {
