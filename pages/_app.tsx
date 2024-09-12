@@ -1,6 +1,6 @@
-import '@/src/app/styles/globals.css'
-import Gnb from '@/src/widgets/product/gnb/Gnb'
-import { KakaoScript } from '@/src/app/provider/KakaoScript'
+import '@app/styles/globals.css'
+import Gnb from '@widgets/product/gnb/Gnb'
+import { KakaoScript } from '@app/provider/KakaoScript'
 
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
