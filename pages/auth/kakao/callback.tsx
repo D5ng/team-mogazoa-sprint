@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const { code } = context.query
 
     if (!code || typeof code !== 'string') {
-      throw new Error('Invalid Kakao code')
+      throw new Error('유효하지 않은 kakao code입니다.')
     }
 
     const kakaoRedirectUri = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI

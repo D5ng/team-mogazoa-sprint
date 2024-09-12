@@ -60,6 +60,8 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
     const { name, onChange, onBlur, errors } = useFormField()
     const { isToggle, onToggle } = useToggle()
     const error = errors[name]
+    const inputType =
+      props.type === 'password' ? (isToggle ? 'text' : 'password') : props.type
 
     const focusClassName = error
       ? ''
@@ -75,7 +77,7 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
           onChange={onChange}
           onBlur={onBlur}
           {...props}
-          type={isToggle ? 'text' : 'password'}
+          type={inputType}
           className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
         />
         {props.type === 'password' && (
