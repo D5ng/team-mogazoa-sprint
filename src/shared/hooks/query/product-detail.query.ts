@@ -22,17 +22,12 @@ export function useFetchProductReview({
   cursor,
   order,
 }: FetchProductsReviews) {
-  return useInfiniteQuery({
+  return useSuspenseInfiniteQuery({
     queryKey: ['product-detail-review'],
-    queryFn: ({ pageParam = 1 }) => fetchProductsReviews({ productId }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) =>
-      lastPage.nextCursor,
-    getPreviousPageParam: (
-      firstPage,
-      allPages,
-      firstPageParam,
-      allPageParams,
-    ) => firstPage.prevCursor,
+    queryFn: ({ pageParam }) =>
+      fetchProductsReviews({ productId, cursor: pageParam }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage.nextCursor || null,
+    select: (data) => (data.pages ?? []).flatMap((page) => page.list),
   })
 }
