@@ -19,6 +19,7 @@ export default function ProductInfo({ productId }: ProductInfoProps) {
         name={name}
         category={category}
         description={description}
+        productId={productId}
       />
     </div>
   )
