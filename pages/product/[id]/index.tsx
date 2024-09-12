@@ -4,7 +4,7 @@ import { fetchProductDetail } from '@shared/api'
 import {
   ProductInfoWrapper,
   ReviewWrapper,
-  StatisticsWrapper,
+  StatisticsList,
 } from '@widgets/product-detail/components'
 
 export default function ProductDetailPage({
@@ -16,7 +16,7 @@ export default function ProductDetailPage({
         <ProductInfoWrapper productId={productId} />
       </section>
       <section className="mt-[80px]">
-        <StatisticsWrapper productId={productId} />
+        <StatisticsList productId={productId} />
       </section>
       <section className="mt-[80px]">
         <ReviewWrapper />
