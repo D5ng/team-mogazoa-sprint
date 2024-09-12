@@ -1,12 +1,19 @@
 import '@/src/app/styles/globals.css'
 import Gnb from '@/src/widgets/product/gnb/Gnb'
 import type { AppProps } from 'next/app'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = useState<boolean>(false)
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  })
 
   useEffect(() => {
     setMounted(true)
@@ -16,9 +23,12 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     mounted && (
       <>
-        <Gnb />
         <QueryClientProvider client={queryClient}>
-          <Component {...pageProps} />
+          <Gnb />
+          <Suspense fallback={<div>로딩중</div>}>
+            <Component {...pageProps} />
+          </Suspense>
+          <ReactQueryDevtools />
         </QueryClientProvider>
       </>
     )

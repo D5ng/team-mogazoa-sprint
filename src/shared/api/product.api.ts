@@ -14,7 +14,14 @@ export async function fetchProducts({
   order,
   cursor,
 }: FetchProducts) {
-  return (await axiosInstance.get<ProductResponse>(`/products`)).data
+  const params: Record<string, any> = {}
+
+  if (keyword) params.keyword = keyword
+  if (category) params.category = category
+  if (order) params.order = order
+  if (cursor) params.cursor = cursor
+  return (await axiosInstance.get<ProductResponse>('/products', { params }))
+    .data
 }
 
 export async function fetchProductDetail({ productId }: ProductId) {
