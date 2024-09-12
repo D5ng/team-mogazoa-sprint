@@ -4,10 +4,17 @@ import type { CreateReview } from '@shared/types'
 import { createImageUpload } from '@shared/utils'
 import { Rating } from '@widgets/product-review-modal/components'
 import { useCreateReviewForm } from '@widgets/product-review-modal/hooks'
-import { defaultValues } from './defaultValues'
+import { defaultValues as defaultValuesFn } from './defaultValues'
 import ProductReviewImageUpload from './ProductReviewImageUpload'
 
-export default function ProductReviewForm() {
+interface ProductReviewFormProps {
+  productId: number
+}
+
+export default function ProductReviewForm({
+  productId,
+}: ProductReviewFormProps) {
+  const defaultValues = defaultValuesFn(productId)
   const { register, handleSubmit, setValue, watch, control } =
     useForm<CreateReview>({
       defaultValues,

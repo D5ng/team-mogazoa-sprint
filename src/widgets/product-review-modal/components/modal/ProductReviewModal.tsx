@@ -4,10 +4,12 @@ import ProductReviewForm from '../form/ProductReviewForm'
 
 export interface ProductReviewModalProps {
   onCloseToggle: () => void
+  productId: number
 }
 
 export default function ProductReviewModal({
   onCloseToggle,
+  productId,
 }: ProductReviewModalProps) {
   return (
     <Modal onCloseModal={onCloseToggle}>
@@ -18,7 +20,7 @@ export default function ProductReviewModal({
         </h2>
         <CategoryChip name="전자기기" />
       </div>
-      <ProductReviewForm />
+      <ProductReviewForm productId={productId} />
     </Modal>
   )
 }

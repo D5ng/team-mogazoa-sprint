@@ -1,8 +1,10 @@
 import { CreateReview } from '@shared/types'
 
-export const defaultValues: CreateReview = {
-  productId: 0,
+type defaultValuesFn = (productId: number) => CreateReview
+
+export const defaultValues: defaultValuesFn = (productId: number) => ({
+  productId: productId,
   images: [],
   content: '',
   rating: 1,
-}
+})
