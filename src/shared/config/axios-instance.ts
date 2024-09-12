@@ -6,12 +6,14 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)accessToken\s*=\s*([^;]*).*$)|^.*$/,
-      '$1',
-    )
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`
+    if (typeof window !== 'undefined') {
+      const token = document.cookie.replace(
+        /(?:(?:^|.*;\s*)accessToken\s*=\s*([^;]*).*$)|^.*$/,
+        '$1',
+      )
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`
+      }
     }
     return config
   },
