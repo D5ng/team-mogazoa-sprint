@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { useAuth } from '@/src/widgets/auth/hooks'
+import { useAuth } from '@widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
   FormField,
@@ -10,7 +10,7 @@ import {
 import {
   emailValidation,
   passwordValidation,
-} from '@/src/widgets/auth/lib/form-validation'
+} from '@widgets/auth/lib/form-validation'
 import type { SignIn } from '@shared/types/auth/auth.type'
 
 export default function SignInField() {

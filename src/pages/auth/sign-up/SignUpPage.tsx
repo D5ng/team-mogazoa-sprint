@@ -1,4 +1,4 @@
-import { SignUpField } from '@/src/widgets/auth/components'
+import { SignUpField } from '@widgets/auth/components'
 
 export default function SingUpPage() {
   return (

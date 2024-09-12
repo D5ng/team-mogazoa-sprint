@@ -1,5 +1,5 @@
-import { SignInField } from '@/src/widgets/auth/components'
-import SnsField from '@/src/widgets/auth/components/sns-field/SnsField'
+import { SignInField } from '@widgets/auth/components'
+import SnsField from '@widgets/auth/components/sns-field/SnsField'
 
 export default function SingInPage() {
   return (

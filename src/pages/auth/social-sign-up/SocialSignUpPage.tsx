@@ -1,5 +1,5 @@
-import NicknameField from '@/src/widgets/auth/components/nickname-field/NicknameField'
-import { NicknameFieldData } from '@/src/widgets/auth/types/auth.type'
+import { NicknameFieldData } from '@shared/types/auth/auth.type'
+import NicknameField from '@widgets/auth/components/nickname-field/NicknameField'
 
 interface SocialSignUpPageProps {
   handleSubmit: (data: NicknameFieldData) => Promise<void>

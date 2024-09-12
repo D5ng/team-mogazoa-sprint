@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { serialize } from 'cookie'
-import { User } from '@/src/shared/types'
+import { User } from '@shared/types'
 import { socialSignIn } from '@shared/api'
 
 export type OauthToken = string | string[]
