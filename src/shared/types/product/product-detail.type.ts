@@ -2,7 +2,7 @@ export interface ProductDetailResponse {
   id: number
   name: string
   description: string
-  image: string | null
+  image: string
   rating: number
   reviewCount: number
   favoriteCount: number
