@@ -1,6 +1,10 @@
-import { useQuery } from '@tanstack/react-query'
-import { fetchProductDetail } from '@shared/api'
-import { ProductDetailResponse } from '@shared/types'
+import {
+  useInfiniteQuery,
+  useQuery,
+  useSuspenseInfiniteQuery,
+} from '@tanstack/react-query'
+import { fetchProductDetail, fetchProductsReviews } from '@shared/api'
+import { FetchProductsReviews, ProductDetailResponse } from '@shared/types'
 
 export function useFetchProductDetail(
   productId: number,
@@ -10,5 +14,25 @@ export function useFetchProductDetail(
     queryKey: ['product-detail'],
     queryFn: () => fetchProductDetail({ productId }),
     initialData,
+  })
+}
+
+export function useFetchProductReview({
+  productId,
+  cursor,
+  order,
+}: FetchProductsReviews) {
+  return useInfiniteQuery({
+    queryKey: ['product-detail-review'],
+    queryFn: ({ pageParam = 1 }) => fetchProductsReviews({ productId }),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) =>
+      lastPage.nextCursor,
+    getPreviousPageParam: (
+      firstPage,
+      allPages,
+      firstPageParam,
+      allPageParams,
+    ) => firstPage.prevCursor,
   })
 }
