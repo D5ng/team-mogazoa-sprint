@@ -17,8 +17,7 @@ export const postSignIn = async (
     const user = response.data.user
     document.cookie = `accessToken=${accessToken}; path=/`
 
-    const setUser = useAuthStore.getState().setUser
-    setUser(user)
+    useAuthStore.getState().setUser(user)
 
     return response
   } catch (error) {
