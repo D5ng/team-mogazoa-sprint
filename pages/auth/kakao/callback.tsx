@@ -1,19 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { serialize } from 'cookie'
-import { User } from '@shared/types'
 import { socialSignIn } from '@shared/api'
-
-export type OauthToken = string | string[]
-
-export interface SignInWithOauthRequestBody {
-  redirectUri: string
-  token: OauthToken
-}
-
-export interface SignInResponse {
-  accessToken: string
-  user: User
-}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {

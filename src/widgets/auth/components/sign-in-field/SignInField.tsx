@@ -11,7 +11,7 @@ import {
   emailValidation,
   passwordValidation,
 } from '@widgets/auth/lib/form-validation'
-import type { SignIn } from '@shared/types/auth/auth.type'
+import type { SignIn } from '@shared/types'
 
 export default function SignInField() {
   const {

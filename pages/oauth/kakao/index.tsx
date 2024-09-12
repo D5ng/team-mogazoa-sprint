@@ -2,14 +2,8 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { serialize } from 'cookie'
-import { User } from '@shared/types'
 import { socialSignUp } from '@shared/api'
 import SocialSignUpPage from '@/src/pages/auth/social-sign-up/SocialSignUpPage'
-
-export interface SignInResponse {
-  accessToken: string
-  user: User
-}
 
 export default function KakaoSocialAuth() {
   const router = useRouter()

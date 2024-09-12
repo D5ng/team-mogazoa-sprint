@@ -7,7 +7,7 @@ import {
   FieldErrorMessage,
 } from '@shared/ui/form-field/FormField'
 import { nicknameValidation } from '@widgets/auth/lib/form-validation'
-import { NicknameFieldData } from '@shared/types/auth/auth.type'
+import type { NicknameFieldData } from '@shared/types'
 
 interface NicknameFieldProps {
   onSubmit: (data: NicknameFieldData) => Promise<void>
