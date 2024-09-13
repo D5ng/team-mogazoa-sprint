@@ -1,8 +1,6 @@
 import { ReviewListItem } from '@widgets/product-detail/components'
-import type { ProductReviewItem } from '@shared/types'
 import { useFetchProductReview, useIntersect } from '@shared/hooks'
 import ReviewEmptyList from './ReviewEmptyList'
-import { Suspense, useState } from 'react'
 
 interface ReviewListProps {
   productId: number

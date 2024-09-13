@@ -1,8 +1,6 @@
+import { Suspense } from 'react'
 import { LatestDropdown, ReviewList } from '@widgets/product-detail/components'
 import { ProductDetailLayout } from '@widgets/product-detail/layout'
-import { REVIEW_MOCK } from '@widgets/product-detail/constants'
-import { useFetchProductReview, useIntersect } from '@shared/hooks'
-import { Suspense } from 'react'
 
 interface ReviewWrapperProps {
   productId: number
