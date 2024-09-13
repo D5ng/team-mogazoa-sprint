@@ -17,15 +17,16 @@ export default function ReviewList({
     isFetching,
     hasNextPage,
     fetchNextPage,
+    error,
   } = useFetchProductReview({
     productId,
     order: reviewSortOption,
   })
 
+  if (error && !isFetching) throw error
+
   const onIntersect = () => {
-    if (hasNextPage && !isFetching) {
-      fetchNextPage()
-    }
+    if (hasNextPage && !isFetching) fetchNextPage()
   }
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
