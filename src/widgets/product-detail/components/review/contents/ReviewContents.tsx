@@ -2,6 +2,7 @@ import { ProductReviewItem } from '@shared/types'
 import ThumbsButton from './thumbs-button/ThumbsButton'
 import ReviewImages from './review-images/ReviewImages'
 import useAuthStore from '@/src/shared/store/authStore'
+import { useDeleteReview } from '@/src/shared/hooks'
 
 export default function ReviewContents({
   content,
@@ -22,6 +23,8 @@ export default function ReviewContents({
   | 'id'
 >) {
   const user = useAuthStore().user
+  const { mutateAsync: deleteMutate } = useDeleteReview()
+  const handleDeleteReview = async () => await deleteMutate({ reviewId: id })
 
   return (
     <div className="relative w-[calc(100%-150px-80px)] flex flex-col gap-y-5 text-base tablet:text-xs mobile:w-full">
@@ -32,7 +35,9 @@ export default function ReviewContents({
         {userId === user?.id && (
           <div className="flex gap-x-2 text-black-20">
             <button className="underline">수정</button>
-            <button className="underline">삭제</button>
+            <button className="underline" onClick={handleDeleteReview}>
+              삭제
+            </button>
           </div>
         )}
         <ThumbsButton isLiked={isLiked} likeCount={likeCount} id={id} />
