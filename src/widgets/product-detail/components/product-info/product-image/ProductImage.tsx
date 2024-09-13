@@ -6,7 +6,7 @@ interface ProductImageProps {
 
 export default function ProductImage({ image }: ProductImageProps) {
   return (
-    <div className="relative w-[355px] h-[250px] tablet:w-[37.634vw] tablet:h-[197px] mobile:w-full mobile:h-[62.933vw]">
+    <div className="relative w-[355px] tablet:w-[37.634vw] mobile:w-full mobile:h-[62.933vw]">
       <Image
         src={image}
         alt=""

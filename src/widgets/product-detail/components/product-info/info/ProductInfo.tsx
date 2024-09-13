@@ -13,7 +13,7 @@ export default function ProductInfo({ productId }: ProductInfoProps) {
   const { image, category, description, name } = detailQuery.data!
 
   return (
-    <div className="flex justify-center gap-x-[40px] target:gap-x-5 mobile:flex-col">
+    <section className="flex justify-between gap-x-[40px] target:gap-x-5 mobile:flex-col">
       <ProductImage image={image} />
       <ProductContents
         name={name}
@@ -21,6 +21,6 @@ export default function ProductInfo({ productId }: ProductInfoProps) {
         description={description}
         productId={productId}
       />
-    </div>
+    </section>
   )
 }

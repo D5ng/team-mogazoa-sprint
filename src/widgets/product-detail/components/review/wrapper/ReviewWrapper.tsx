@@ -24,6 +24,7 @@ export default function ReviewWrapper({ productId }: ReviewWrapperProps) {
 
   return (
     <ProductDetailLayout
+      className="mt-[80px] tablet:mt-[60px] mobile:mt-[60px]"
       title="상품 리뷰"
       renderDropdown={
         <LatestDropdown onSelectedOption={handleSelectedOption} />
