@@ -6,11 +6,11 @@ export const processAuth = async <T extends SignUp | SignIn>(
   authFunction: (data: T) => Promise<AuthResponse>,
   data: T,
   setError: UseFormSetError<T>,
-  getToken: (accessToken: string, user: User) => void,
+  storeToken: (accessToken: string, user: User) => void,
 ) => {
   try {
     const { accessToken, user } = await authFunction(data)
-    getToken(accessToken, user)
+    storeToken(accessToken, user)
   } catch (error) {
     if (isAxiosError(error) && error.response?.data?.details) {
       const field = Object.keys(error.response.data.details)[0]
