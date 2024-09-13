@@ -1,1 +1,1 @@
-export { default as useProductForm } from './useProductForm'
+export { default as useProductAddForm } from './useProductAddForm'

@@ -1,27 +1,36 @@
 import { useForm } from 'react-hook-form'
 import { Button, Form, TextareaInput, TextFieldInput } from '@shared/ui'
-import { CategoryDropdown } from '@widgets/product-add-modal/components'
+import { descriptionValidation, nameValidation } from '@shared/utils'
+import {
+  CategoryDropdown,
+  ProductImageUpload,
+} from '@widgets/product-add-modal/components'
 import type { ProductPayload } from '@shared/types'
-import { useProductForm } from '@widgets/product-add-modal/hooks'
+import { useProductAddForm } from '@widgets/product-add-modal/hooks'
 import { defaultValues } from './defaultValues'
-import ProductImageUpload from './ProductImageUpload'
 
-export default function ProductAddForm() {
+interface ProductAddFormProps {
+  onCloseToggle: () => void
+}
+
+export default function ProductAddForm({ onCloseToggle }: ProductAddFormProps) {
   const {
-    formState: { errors },
+    formState: { errors, isValid },
     register,
     handleSubmit,
     watch,
     setValue,
     control,
-    reset,
     setError,
-  } = useForm<ProductPayload>({ defaultValues, mode: 'onBlur' })
+  } = useForm<ProductPayload>({
+    defaultValues,
+    mode: 'all',
+  })
 
   const description = watch('description')
 
-  const onSubmit = useProductForm({
-    onSuccess: () => {},
+  const onSubmit = useProductAddForm({
+    onSuccess: () => onCloseToggle(),
     onFailed: (field: keyof ProductPayload, errorMessage: string) =>
       setError(field, { message: errorMessage }),
   })
@@ -37,18 +46,30 @@ export default function ProductAddForm() {
             placeholder="상품명 (상품 등록 여부를 확인해 주세요)"
             className="h-[70px] tablet:h-[60px] mobile:w-full"
             setValue={setValue}
-            {...register('name')}
+            {...register('name', nameValidation)}
+            errors={errors}
           />
-          <CategoryDropdown control={control} />
+          <CategoryDropdown
+            error={errors.categoryId?.message}
+            control={control}
+          />
         </div>
-        <ProductImageUpload setValue={setValue} />
+        <ProductImageUpload error={errors.image?.message} control={control} />
       </div>
       <TextareaInput
-        {...register('description')}
+        {...register('description', descriptionValidation)}
         value={description}
         placeholder="상품 설명을 입력해주세요"
+        errors={errors}
       />
-      <Button variant="primary">추가하기</Button>
+      <div>
+        <p className="text-sm text-black-20 pb-2.5">
+          모든 입력란은 필수 항목입니다.
+        </p>
+        <Button variant="primary" disabled={!isValid}>
+          추가하기
+        </Button>
+      </div>
     </Form>
   )
 }

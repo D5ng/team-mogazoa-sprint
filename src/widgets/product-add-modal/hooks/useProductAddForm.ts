@@ -7,13 +7,13 @@ interface UseProductForm {
   onFailed: (field: keyof ProductPayload, errorMessage: string) => void
 }
 
-export default function useProductForm({
+export default function useProductAddForm({
   onSuccess,
   onFailed,
 }: UseProductForm) {
   const onSubmit = async (data: ProductPayload) => {
-    console.log(data)
-    if (!data.image) return
+    if (!data.categoryId)
+      return onFailed('categoryId', '카테고리를 입력해주세요.')
 
     try {
       await createProduct({
@@ -29,6 +29,10 @@ export default function useProductForm({
           error.response.data.details,
         )[0] as keyof ProductPayload
         const errorMessage = error.response.data.details[field].message
+
+        if (field.includes('image'))
+          return onFailed('image', '이미지를 올려주세요.')
+
         return onFailed(field, errorMessage)
       }
 
