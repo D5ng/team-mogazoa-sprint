@@ -9,6 +9,7 @@ import type {
 } from './FormField.type'
 import { useToggle } from '@shared/hooks'
 import { eyeOff, eyeOn } from '@shared/icons'
+import ErrorMessage from '@shared/ui/error-message/ErrorMessage'
 
 const FormFieldContext = createContext<FormFieldContextValue | null>(null)
 
@@ -68,7 +69,11 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
       : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
     const borderClassName = error ? 'border-red' : 'border-black-70'
     return (
+<<<<<<< HEAD
       <div className="relative">
+=======
+      <>
+>>>>>>> 904a7586a112d983055e5d82ec0e39f44a888cde
         <input
           id={name}
           name={name}
@@ -77,6 +82,7 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
           onChange={onChange}
           onBlur={onBlur}
           {...props}
+<<<<<<< HEAD
           type={inputType}
           className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
         />
@@ -84,13 +90,12 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
           <EyeToggle isToggle={isToggle} onToggle={onToggle} />
         )}
       </div>
+=======
+          className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
+        />
+        <ErrorMessage error={error} />
+      </>
+>>>>>>> 904a7586a112d983055e5d82ec0e39f44a888cde
     )
   },
 )
-
-export function FieldErrorMessage() {
-  const { name, errors } = useFormField()
-  const error = errors[name]
-
-  return <p className="h-1 text-red text-sm">{error && error.message}</p>
-}
