@@ -1,9 +1,5 @@
-import ProfileCard from '@widgets/profile/components/profile-card/ProfileCard'
+import Profile from '@/src/pages/profile/Profile'
 
 export default function index() {
-  return (
-    <div>
-      <ProfileCard />
-    </div>
-  )
+  return <Profile />
 }
