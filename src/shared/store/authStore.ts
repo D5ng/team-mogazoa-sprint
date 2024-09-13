@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { createJSONStorage, persist } from 'zustand/middleware'
 import type { User } from '@shared/types'
 
 interface AuthState {
@@ -15,7 +15,7 @@ const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'auth-user',
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 )
