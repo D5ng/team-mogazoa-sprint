@@ -2,45 +2,31 @@ import { ProductReviewItem } from '@shared/types'
 import ThumbsButton from './thumbs-button/ThumbsButton'
 import ReviewImages from './review-images/ReviewImages'
 import useAuthStore from '@/src/shared/store/authStore'
-import { useDeleteReview } from '@/src/shared/hooks'
+import ReviewDeleteButton from './delete-button/ReviewDeleteButton'
+import ReviewUpdateButton from './update-button/ReviewUpdateButton'
 
-export default function ReviewContents({
-  content,
-  updatedAt,
-  isLiked,
-  reviewImages,
-  userId,
-  likeCount,
-  id,
-}: Pick<
-  ProductReviewItem,
-  | 'content'
-  | 'updatedAt'
-  | 'isLiked'
-  | 'reviewImages'
-  | 'userId'
-  | 'likeCount'
-  | 'id'
->) {
+export default function ReviewContents(props: ProductReviewItem) {
   const user = useAuthStore().user
-  const { mutateAsync: deleteMutate } = useDeleteReview()
-  const handleDeleteReview = async () => await deleteMutate({ reviewId: id })
 
   return (
     <div className="relative w-[calc(100%-150px-80px)] flex flex-col gap-y-5 text-base tablet:text-xs mobile:w-full">
-      <p>{content}</p>
-      {!!reviewImages.length && <ReviewImages reviewImages={reviewImages} />}
+      <p>{props.content}</p>
+      {!!props.reviewImages.length && (
+        <ReviewImages reviewImages={props.reviewImages} />
+      )}
       <div className="flex items-end gap-x-5 mobile:gap-x-3">
-        <span className="text-black-30">{updatedAt}</span>
-        {userId === user?.id && (
+        <span className="text-black-30">{props.updatedAt}</span>
+        {props.userId === user?.id && (
           <div className="flex gap-x-2 text-black-20">
-            <button className="underline">수정</button>
-            <button className="underline" onClick={handleDeleteReview}>
-              삭제
-            </button>
+            <ReviewUpdateButton {...props} />
+            <ReviewDeleteButton reviewId={props.id} />
           </div>
         )}
-        <ThumbsButton isLiked={isLiked} likeCount={likeCount} id={id} />
+        <ThumbsButton
+          isLiked={props.isLiked}
+          likeCount={props.likeCount}
+          id={props.id}
+        />
       </div>
     </div>
   )
