@@ -34,7 +34,11 @@ export default function ProductContents({
         {description}
       </p>
       <div className="flex gap-x-5 tablet:gap-x-[15px] mobile:flex-col mobile:gap-x-0 mobile:gap-y-[15px]">
-        <ReviewButton productId={productId} />
+        <ReviewButton
+          productId={productId}
+          categoryName={category.name}
+          productName={name}
+        />
         <Button
           variant="secondary"
           className="w-[180px] h-[65px] tablet:w-[16.532vw] tablet:h-[55px] mobile:w-full"

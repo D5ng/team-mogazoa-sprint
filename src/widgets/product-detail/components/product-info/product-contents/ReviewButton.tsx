@@ -4,9 +4,15 @@ import { ReviewCreateModal } from '@widgets/product-review-modal/components'
 
 interface ReviewButtonProps {
   productId: number
+  categoryName: string
+  productName: string
 }
 
-export default function ReviewButton({ productId }: ReviewButtonProps) {
+export default function ReviewButton({
+  productId,
+  categoryName,
+  productName,
+}: ReviewButtonProps) {
   const { isToggle, onCloseToggle, onOpenToggle } = useToggle()
   return (
     <>
@@ -21,6 +27,8 @@ export default function ReviewButton({ productId }: ReviewButtonProps) {
         <ReviewCreateModal
           onCloseToggle={onCloseToggle}
           productId={productId}
+          categoryName={categoryName}
+          productName={productName}
         />
       )}
     </>
