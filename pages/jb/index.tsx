@@ -1,10 +1,9 @@
-import { STATISTICS_MOCK } from '@/src/widgets/product-detail/constants'
-import { StatisticsList } from '@widgets/product-detail/components'
+import ProfileCard from '@widgets/profile/components/profile-card/ProfileCard'
 
 export default function index() {
   return (
     <div>
-      <StatisticsList {...STATISTICS_MOCK} />
+      <ProfileCard />
     </div>
   )
 }
