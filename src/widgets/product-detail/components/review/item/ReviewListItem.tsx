@@ -13,6 +13,7 @@ export default function ReviewListItem({
   rating,
   userId,
   likeCount,
+  id,
 }: ProductReviewItem) {
   const date = dayjs(updatedAt).format('YYYY-MM-DD')
   return (
@@ -29,6 +30,7 @@ export default function ReviewListItem({
         isLiked={isLiked}
         userId={userId}
         likeCount={likeCount}
+        id={id}
       />
     </li>
   )

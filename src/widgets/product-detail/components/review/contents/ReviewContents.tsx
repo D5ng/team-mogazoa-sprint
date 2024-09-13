@@ -10,9 +10,16 @@ export default function ReviewContents({
   reviewImages,
   userId,
   likeCount,
+  id,
 }: Pick<
   ProductReviewItem,
-  'content' | 'updatedAt' | 'isLiked' | 'reviewImages' | 'userId' | 'likeCount'
+  | 'content'
+  | 'updatedAt'
+  | 'isLiked'
+  | 'reviewImages'
+  | 'userId'
+  | 'likeCount'
+  | 'id'
 >) {
   const user = useAuthStore().user
 
@@ -28,7 +35,7 @@ export default function ReviewContents({
             <button className="underline">삭제</button>
           </div>
         )}
-        <ThumbsButton isLiked={isLiked} likeCount={likeCount} />
+        <ThumbsButton isLiked={isLiked} likeCount={likeCount} id={id} />
       </div>
     </div>
   )
