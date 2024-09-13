@@ -1,22 +1,21 @@
 import { useForm } from 'react-hook-form'
-import { Button, Form, ImageInput, TextareaInput } from '@shared/ui'
+import { Button, Form, TextareaInput } from '@shared/ui'
 import type { CreateReview } from '@shared/types'
-import { createImageUpload } from '@shared/utils'
-import { Rating } from '@widgets/product-review-modal/components'
+import {
+  Rating,
+  ReviewImageUpload,
+} from '@widgets/product-review-modal/components'
 import { useCreateReviewForm } from '@widgets/product-review-modal/hooks'
-import { defaultValues as defaultValuesFn } from './defaultValues'
-import ProductReviewImageUpload from './ProductReviewImageUpload'
 
-interface ProductReviewFormProps {
+interface ReviewCreateFormProps {
   productId: number
   onCloseToggle: () => void
 }
 
-export default function ProductReviewForm({
+export default function ReviewCreateForm({
   productId,
   onCloseToggle,
-}: ProductReviewFormProps) {
-  const defaultValues = defaultValuesFn(productId)
+}: ReviewCreateFormProps) {
   const {
     register,
     handleSubmit,
@@ -25,7 +24,12 @@ export default function ProductReviewForm({
     control,
     formState: { isValid },
   } = useForm<CreateReview>({
-    defaultValues,
+    defaultValues: {
+      productId: productId,
+      images: [],
+      content: '',
+      rating: 1,
+    },
     mode: 'onBlur',
   })
 
@@ -45,7 +49,7 @@ export default function ProductReviewForm({
       />
       <div className="flex gap-x-2.5 overflow-x-scroll">
         {[1, 2, 3].map((order) => (
-          <ProductReviewImageUpload
+          <ReviewImageUpload
             key={order}
             imageIndex={order}
             setValue={setValue}

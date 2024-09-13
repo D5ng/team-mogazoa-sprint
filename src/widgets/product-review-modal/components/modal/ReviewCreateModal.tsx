@@ -1,16 +1,16 @@
 import { Modal, ModalTitle } from '@/src/shared/ui'
 import CategoryChip from '@widgets/product/category-chip/CategoryChip'
-import ProductReviewForm from '../form/ProductReviewForm'
+import ProductReviewForm from '../form/ReviewCreateForm'
 
-export interface ProductReviewModalProps {
+export interface ReviewCreateModalProps {
   onCloseToggle: () => void
   productId: number
 }
 
-export default function ProductReviewModal({
+export default function ReviewCreateModal({
   onCloseToggle,
   productId,
-}: ProductReviewModalProps) {
+}: ReviewCreateModalProps) {
   return (
     <Modal onCloseModal={onCloseToggle}>
       <ModalTitle>리뷰 작성하기</ModalTitle>
