@@ -1,5 +1,4 @@
 import { useCreateReview } from '@shared/hooks'
-import { createReview } from '@shared/api'
 import type { CreateReview } from '@shared/types'
 import { isAxiosError } from 'axios'
 
