@@ -11,7 +11,7 @@ export interface UserCommon {
   updatedAt: string
   createdAt: string
   teamId: string
-  image: string
+  image: string | null
   description: string
   nickname: string
   id: number
@@ -22,7 +22,7 @@ export interface UserCommon {
 export type UserRanking = UserCommon[]
 
 export interface UserItem extends UserCommon {
-  mostFavoriteCategory: FavoriteCategory
+  mostFavoriteCategory: FavoriteCategory | null
   averageRating: number
   followeesCount: number
   isFollowing: boolean

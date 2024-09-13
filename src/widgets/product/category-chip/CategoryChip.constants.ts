@@ -39,9 +39,13 @@ export const CATEGORY_CHIPS = [
     id: 10,
     name: '앱',
   },
+  {
+    id: 11,
+    name: '없음',
+  },
 ] as const
 
-export const CATEGORY_COLOR_VARIANTS = {
+export const CATEGORY_COLOR_VARIANTS: Record<string, string> = {
   음악: 'bg-[#C5D17C1A] text-[#C5D17C]',
   '영화/드라마': 'bg-[#F755321A] text-[#F75532]',
   '강의/책': 'bg-[#A953FF1A] text-[#A953FF]',
@@ -52,4 +56,5 @@ export const CATEGORY_COLOR_VARIANTS = {
   화장품: 'bg-[#FD529A1A] text-[#FD529A]',
   '의류/악세서리': 'bg-[#757AFF1A] text-[#757AFF]',
   앱: 'bg-[#3098E31A] text-[#3098E3]',
+  없음: 'text-white text-base',
 }
