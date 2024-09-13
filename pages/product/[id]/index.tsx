@@ -10,16 +10,16 @@ export default function ProductDetailPage({
 }
 
 export const getServerSideProps = (async (context) => {
-  const productId = context.params!.id
+  const productId = +context.params?.id!
   if (!productId) return { notFound: true }
 
   try {
     const queryClient = new QueryClient()
     await queryClient.prefetchQuery({
-      queryKey: ['product-detail'],
+      queryKey: ['product-detail', productId],
       queryFn: () => fetchProductDetail({ productId: +productId }),
     })
-    const data = queryClient.getQueryData(['product-detail'])
+    const data = queryClient.getQueryData(['product-detail', productId])
     if (!data) return { notFound: true }
 
     return {
