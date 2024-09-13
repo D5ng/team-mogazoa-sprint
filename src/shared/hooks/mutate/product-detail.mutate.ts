@@ -4,12 +4,23 @@ import {
   likeReview,
   cancelLikeReview,
   deleteReview,
+  updateReview,
 } from '@shared/api'
 
 export function useCreateReview() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: createReview,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['product-detail'] })
+      queryClient.invalidateQueries({ queryKey: ['product-detail-review'] })
+    },
+  })
+}
+export function useUpdateReview() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: updateReview,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['product-detail'] })
       queryClient.invalidateQueries({ queryKey: ['product-detail-review'] })
