@@ -1,3 +1,5 @@
+import { UseFormSetError, FieldValues } from 'react-hook-form'
+
 export interface NicknameFieldData {
   nickname: string
 }
@@ -47,3 +49,8 @@ export interface AuthResponse {
   accessToken: string
   user: User
 }
+
+export type AuthFunction<T extends FieldValues> = (
+  data: T,
+  setError?: UseFormSetError<T>,
+) => Promise<AuthResponse | void | undefined>

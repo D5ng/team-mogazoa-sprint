@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { signUp, signIn } from '@/src/shared/api'
+import { signUp, signIn } from '@shared/api'
 import type { UseFormSetError } from 'react-hook-form'
 import type { SignUp } from '@shared/types'
 

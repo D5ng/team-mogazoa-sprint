@@ -1,17 +1,13 @@
 import { useRouter } from 'next/navigation'
 import { UseFormSetError, FieldValues } from 'react-hook-form'
 import { postSignUp, postSignIn } from '@widgets/auth/api'
-import type { AxiosResponse } from 'axios'
-import type { AuthResponse, SignIn, SignUp } from '@shared/types'
+import type { AuthFunction, SignIn, SignUp } from '@shared/types'
 
 export default function useAuth() {
   const router = useRouter()
 
   const handleAuth = async <T extends FieldValues>(
-    authFunction: (
-      data: T,
-      setError: UseFormSetError<T>,
-    ) => Promise<void | AxiosResponse<AuthResponse>>,
+    authFunction: AuthFunction<T>,
     data: T,
     setError: UseFormSetError<T>,
   ) => {
@@ -25,13 +21,23 @@ export default function useAuth() {
 
   const signUpSubmit = (setError: UseFormSetError<SignUp>) => {
     return async (data: SignUp) => {
-      await handleAuth<SignUp>(postSignUp, data, setError)
+      await handleAuth<SignUp>(
+        (data, setError) =>
+          postSignUp(data, setError as UseFormSetError<SignUp>),
+        data,
+        setError,
+      )
     }
   }
 
   const signInSubmit = (setError: UseFormSetError<SignIn>) => {
     return async (data: SignIn) => {
-      await handleAuth<SignIn>(postSignIn, data, setError)
+      await handleAuth<SignIn>(
+        (data, setError) =>
+          postSignIn(data, setError as UseFormSetError<SignIn>),
+        data,
+        setError,
+      )
     }
   }
 
