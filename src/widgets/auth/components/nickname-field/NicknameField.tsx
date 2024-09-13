@@ -4,14 +4,10 @@ import {
   FormField,
   FieldLabel,
   FieldInput,
-  FieldErrorMessage,
 } from '@shared/ui/form-field/FormField'
 import { nicknameValidation } from '@widgets/auth/lib/form-validation'
 import type { NicknameFieldData } from '@shared/types'
-
-interface NicknameFieldProps {
-  onSubmit: (data: NicknameFieldData) => Promise<void>
-}
+import type { NicknameFieldProps } from '@widgets/auth/components/nickname-field/NicknameField.type'
 
 export default function NicknameField({ onSubmit }: NicknameFieldProps) {
   const {
@@ -34,7 +30,6 @@ export default function NicknameField({ onSubmit }: NicknameFieldProps) {
       <FormField {...register('nickname', nicknameValidation)} errors={errors}>
         <FieldLabel>닉네임</FieldLabel>
         <FieldInput type="text" placeholder="닉네임을 입력해주세요" />
-        <FieldErrorMessage />
       </FormField>
 
       <Button

@@ -1,3 +1,5 @@
+import { UseFormSetError, FieldValues } from 'react-hook-form'
+
 export interface NicknameFieldData {
   nickname: string
 }
@@ -34,16 +36,12 @@ export interface SocialSignUp {
 export interface SocialSignIn
   extends Pick<SocialSignUp, 'redirectUri' | 'token' | 'social'> {}
 
-export interface AuthServerError {
-  message: string
-  details?: {
-    [K in keyof SignUp]?: {
-      message: string
-    }
-  }
-}
-
 export interface AuthResponse {
   accessToken: string
   user: User
 }
+
+export type AuthFunction<T extends FieldValues> = (
+  data: T,
+  setError?: UseFormSetError<T>,
+) => Promise<AuthResponse | void | undefined>
