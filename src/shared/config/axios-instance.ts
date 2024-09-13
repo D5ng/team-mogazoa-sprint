@@ -1,5 +1,4 @@
 import axios from 'axios'
-import getCookies from '@/src/widgets/auth/lib/getCookies'
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
@@ -7,10 +6,13 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    if (typeof document !== 'undefined') {
-      const accessToken = getCookies()['accessToken']
-      if (accessToken) {
-        config.headers['Authorization'] = `Bearer ${accessToken}`
+    if (typeof window !== 'undefined') {
+      const token = document.cookie.replace(
+        /(?:(?:^|.*;\s*)accessToken\s*=\s*([^;]*).*$)|^.*$/,
+        '$1',
+      )
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`
       }
     }
     return config

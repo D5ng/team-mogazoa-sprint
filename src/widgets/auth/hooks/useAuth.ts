@@ -1,18 +1,12 @@
 import { useRouter } from 'next/navigation'
 import { UseFormSetError } from 'react-hook-form'
-import { postSignUp, postSignIn } from '@/src/widgets/auth/api'
-import type {
-  SignUpFieldData,
-  SignInFieldData,
-} from '@/src/widgets/auth/types/auth.type'
+import { postSignUp, postSignIn } from '@widgets/auth/api'
+import type { SignIn, SignUp } from '@shared/types'
 
 export default function useAuth() {
   const router = useRouter()
 
-  const signUp = async (
-    data: SignUpFieldData,
-    setError: UseFormSetError<SignUpFieldData>,
-  ) => {
+  const signUp = async (data: SignUp, setError: UseFormSetError<SignUp>) => {
     try {
       await postSignUp(data, setError)
       router.push('/')
@@ -21,10 +15,7 @@ export default function useAuth() {
     }
   }
 
-  const signIn = async (
-    data: SignInFieldData,
-    setError: UseFormSetError<SignInFieldData>,
-  ) => {
+  const signIn = async (data: SignIn, setError: UseFormSetError<SignIn>) => {
     try {
       await postSignIn(data, setError)
       router.push('/')
@@ -33,17 +24,27 @@ export default function useAuth() {
     }
   }
 
-  const signUpSubmit = (setError: UseFormSetError<SignUpFieldData>) => {
-    return async (data: SignUpFieldData) => {
+  const logout = async () => {
+    try {
+      document.cookie =
+        'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const signUpSubmit = (setError: UseFormSetError<SignUp>) => {
+    return async (data: SignUp) => {
       await signUp(data, setError)
     }
   }
 
-  const signInSubmit = (setError: UseFormSetError<SignInFieldData>) => {
-    return async (data: SignInFieldData) => {
+  const signInSubmit = (setError: UseFormSetError<SignIn>) => {
+    return async (data: SignIn) => {
       await signIn(data, setError)
     }
   }
 
-  return { signUpSubmit, signInSubmit }
+  return { signUpSubmit, signInSubmit, logout }
 }

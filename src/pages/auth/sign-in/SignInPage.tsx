@@ -1,13 +1,11 @@
-import { SignInField } from '@/src/widgets/auth/components'
-import Gnb from '@/src/widgets/product/gnb/Gnb'
+import { SignInField } from '@widgets/auth/components'
+import SnsField from '@widgets/auth/components/sns-field/SnsField'
 
-export default function SingUpPage() {
+export default function SingInPage() {
   return (
-    <div className="h-screen">
-      <Gnb />
-      <main className="w-full h-full flex justify-center items-center bg-black-80">
-        <SignInField />
-      </main>
-    </div>
+    <main className="flex flex-col gap-14 justify-center items-center mt-48 bg-black-80">
+      <SignInField />
+      <SnsField />
+    </main>
   )
 }
