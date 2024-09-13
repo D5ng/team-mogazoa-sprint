@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 export type DropdownVariantType = 'border' | 'none'
 
@@ -22,9 +22,11 @@ export interface DropdownMenuItemProps {
   children: ReactNode
   id?: number
   onClick?: () => void
+  onBlur?: () => void
 }
 
-export interface DropdownTriggerProps {
+export interface DropdownTriggerProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   children: ReactNode
 }

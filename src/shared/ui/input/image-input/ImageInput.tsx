@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Loading } from '@shared/ui'
 import { close, addImage } from '@shared/icons'
 import { useImageUpload } from '@shared/hooks'
+import { twMerge } from 'tailwind-merge'
 
 interface ImageInputProps {
   onCancel: (imageIndex: number) => void
@@ -25,7 +26,10 @@ export default function ImageInput({
   return (
     <div
       onClick={onClick}
-      className={`relative flex items-center justify-center input-base cursor-pointer w-[160px] h-[160px] tablet:w-[135px] mobile:w-[140px] ${className || ''}`}
+      className={twMerge(
+        `relative flex items-center justify-center input-base cursor-pointer w-[160px] h-[160px] tablet:w-[135px] mobile:w-[140px]`,
+        className || '',
+      )}
     >
       {isLoading ? (
         <Loading />

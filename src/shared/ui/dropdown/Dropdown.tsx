@@ -57,7 +57,11 @@ export function Dropdown({
   )
 }
 
-export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
+export function DropdownTrigger({
+  children,
+  className,
+  onBlur,
+}: DropdownTriggerProps) {
   const { isToggle, onToggle, selectedItem, variant } = useDropdownContext()
   const rotateClass = isToggle ? 'rotate-180' : 'rotate-0'
 
@@ -66,6 +70,7 @@ export function DropdownTrigger({ children, className }: DropdownTriggerProps) {
       type="button"
       onClick={onToggle}
       className={twMerge(DROPDOWN_VARIANT[variant].button, className)}
+      onBlur={onBlur}
     >
       {selectedItem || children}
 
@@ -102,6 +107,7 @@ export function DropdownMenuItem({
     onSelect(children as string)
     onCloseToggle()
     props.onClick && props.onClick()
+    props.onBlur && props.onBlur()
   }
   return (
     <li

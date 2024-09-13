@@ -31,7 +31,7 @@ export type ProductType = {
 }
 
 export type ProductPayload = {
-  categoryId: number
+  categoryId: number | null
   image: string
   description: string
   name: string
