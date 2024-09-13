@@ -1,26 +1,37 @@
 import { useRouter } from 'next/navigation'
-import { UseFormSetError } from 'react-hook-form'
+import { UseFormSetError, FieldValues } from 'react-hook-form'
 import { postSignUp, postSignIn } from '@widgets/auth/api'
-import type { SignIn, SignUp } from '@shared/types'
+import type { AxiosResponse } from 'axios'
+import type { AuthResponse, SignIn, SignUp } from '@shared/types'
 
 export default function useAuth() {
   const router = useRouter()
 
-  const signUp = async (data: SignUp, setError: UseFormSetError<SignUp>) => {
+  const handleAuth = async <T extends FieldValues>(
+    authFunction: (
+      data: T,
+      setError: UseFormSetError<T>,
+    ) => Promise<void | AxiosResponse<AuthResponse>>,
+    data: T,
+    setError: UseFormSetError<T>,
+  ) => {
     try {
-      await postSignUp(data, setError)
+      await authFunction(data, setError)
       router.push('/')
     } catch (error) {
       console.error(error)
     }
   }
 
-  const signIn = async (data: SignIn, setError: UseFormSetError<SignIn>) => {
-    try {
-      await postSignIn(data, setError)
-      router.push('/')
-    } catch (error) {
-      console.error(error)
+  const signUpSubmit = (setError: UseFormSetError<SignUp>) => {
+    return async (data: SignUp) => {
+      await handleAuth<SignUp>(postSignUp, data, setError)
+    }
+  }
+
+  const signInSubmit = (setError: UseFormSetError<SignIn>) => {
+    return async (data: SignIn) => {
+      await handleAuth<SignIn>(postSignIn, data, setError)
     }
   }
 
@@ -31,18 +42,6 @@ export default function useAuth() {
       router.push('/')
     } catch (error) {
       console.error(error)
-    }
-  }
-
-  const signUpSubmit = (setError: UseFormSetError<SignUp>) => {
-    return async (data: SignUp) => {
-      await signUp(data, setError)
-    }
-  }
-
-  const signInSubmit = (setError: UseFormSetError<SignIn>) => {
-    return async (data: SignIn) => {
-      await signIn(data, setError)
     }
   }
 

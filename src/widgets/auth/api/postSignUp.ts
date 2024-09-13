@@ -1,6 +1,5 @@
 import axios from 'axios'
-import axiosInstance from '@shared/config/axios-instance'
-import { postSignIn } from '@widgets/auth/api'
+import { signUp, signIn } from '@/src/shared/api'
 import type { UseFormSetError } from 'react-hook-form'
 import type { SignUp } from '@shared/types'
 
@@ -11,9 +10,9 @@ export const postSignUp = async (
   setError: UseFormSetError<SignUp>,
 ) => {
   try {
-    await axiosInstance.post(url, data)
+    await signUp(data)
 
-    await postSignIn({ email: data.email, password: data.password })
+    await signIn({ email: data.email, password: data.password })
   } catch (error) {
     if (!axios.isAxiosError(error)) {
       console.error(error)
