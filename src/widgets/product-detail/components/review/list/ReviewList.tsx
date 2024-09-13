@@ -22,8 +22,6 @@ export default function ReviewList({
     order: reviewSortOption,
   })
 
-  console.log(reviewSortOption)
-
   const onIntersect = () => {
     if (hasNextPage && !isFetching) {
       fetchNextPage()
