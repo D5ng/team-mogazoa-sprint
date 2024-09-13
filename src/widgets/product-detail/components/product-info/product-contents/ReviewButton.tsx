@@ -1,6 +1,6 @@
 import { useToggle } from '@shared/hooks'
 import { Button } from '@shared/ui'
-import { ProductReviewModal } from '@widgets/product-review-modal/components'
+import { ReviewCreateModal } from '@widgets/product-review-modal/components'
 
 interface ReviewButtonProps {
   productId: number
@@ -18,7 +18,7 @@ export default function ReviewButton({ productId }: ReviewButtonProps) {
         리뷰 작성하기
       </Button>
       {isToggle && (
-        <ProductReviewModal
+        <ReviewCreateModal
           onCloseToggle={onCloseToggle}
           productId={productId}
         />
