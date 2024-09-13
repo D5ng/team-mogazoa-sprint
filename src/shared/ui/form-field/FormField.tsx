@@ -69,11 +69,7 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
       : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
     const borderClassName = error ? 'border-red' : 'border-black-70'
     return (
-<<<<<<< HEAD
       <div className="relative">
-=======
-      <>
->>>>>>> 904a7586a112d983055e5d82ec0e39f44a888cde
         <input
           id={name}
           name={name}
@@ -82,20 +78,10 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
           onChange={onChange}
           onBlur={onBlur}
           {...props}
-<<<<<<< HEAD
-          type={inputType}
-          className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
-        />
-        {props.type === 'password' && (
-          <EyeToggle isToggle={isToggle} onToggle={onToggle} />
-        )}
-      </div>
-=======
           className={`h-[70px] input-base ${focusClassName} ${borderClassName}`}
         />
         <ErrorMessage error={error} />
-      </>
->>>>>>> 904a7586a112d983055e5d82ec0e39f44a888cde
+      </div>
     )
   },
 )

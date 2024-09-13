@@ -1,7 +1,4 @@
-import { SendProductType } from '@shared/types'
-import type { RegisterOptions } from 'react-hook-form'
-
-export const nameValidation: RegisterOptions<SendProductType, 'name'> = {
+export const nameValidation = {
   required: '입력값은 필수입니다.',
   minLength: {
     value: 1,
@@ -13,10 +10,7 @@ export const nameValidation: RegisterOptions<SendProductType, 'name'> = {
   },
 } as const
 
-export const descriptionValidation: RegisterOptions<
-  SendProductType,
-  'description'
-> = {
+export const descriptionValidation = {
   required: '입력값은 필수입니다.',
   minLength: {
     value: 10,
