@@ -1,4 +1,6 @@
 import { Suspense, useState } from 'react'
+import { QueryErrorResetBoundary } from '@tanstack/react-query'
+import { ErrorFallback, ErrorBoundary } from '@shared/ui'
 import {
   LatestDropdown,
   ReviewList,
@@ -27,9 +29,18 @@ export default function ReviewWrapper({ productId }: ReviewWrapperProps) {
         <LatestDropdown onSelectedOption={handleSelectedOption} />
       }
     >
-      <Suspense fallback={<ReviewSkeleton />}>
-        <ReviewList productId={productId} reviewSortOption={reviewSortOption} />
-      </Suspense>
+      <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ErrorBoundary onReset={reset} fallback={ErrorFallback}>
+            <Suspense fallback={<ReviewSkeleton />}>
+              <ReviewList
+                productId={productId}
+                reviewSortOption={reviewSortOption}
+              />
+            </Suspense>
+          </ErrorBoundary>
+        )}
+      </QueryErrorResetBoundary>
     </ProductDetailLayout>
   )
 }
