@@ -4,13 +4,23 @@ import {
   QueryClient,
   QueryClientProvider,
   HydrationBoundary,
+  QueryCache,
 } from '@tanstack/react-query'
 import '@app/styles/globals.css'
 import Gnb from '@/src/widgets/product/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            throwOnError: true,
+          },
+        },
+      }),
+  )
 
   return (
     <QueryClientProvider client={queryClient}>
