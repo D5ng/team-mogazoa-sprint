@@ -9,6 +9,7 @@ interface ImageInputProps {
   onFailed?: () => void
   className?: string
   imageIndex?: number
+  previewImage?: string
 }
 
 export default function ImageInput({
@@ -16,9 +17,10 @@ export default function ImageInput({
   className,
   onCancel,
   imageIndex = 0,
+  previewImage,
 }: ImageInputProps) {
   const { ref, preview, isLoading, onChange, onClick, onReset } =
-    useImageUpload({ onSuccess, onCancel, imageIndex })
+    useImageUpload({ onSuccess, onCancel, imageIndex, previewImage })
 
   return (
     <div
