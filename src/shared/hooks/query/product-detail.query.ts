@@ -7,7 +7,7 @@ export function useFetchProductDetail(
   initialData?: ProductDetailResponse,
 ) {
   return useQuery({
-    queryKey: ['product-detail'],
+    queryKey: ['product-detail', productId],
     queryFn: () => fetchProductDetail({ productId }),
     initialData,
   })
@@ -15,7 +15,7 @@ export function useFetchProductDetail(
 
 export function useFetchProductReview({
   productId,
-  order,
+  order = 'recent',
 }: FetchProductsReviews) {
   return useSuspenseInfiniteQuery({
     queryKey: ['product-detail-review', order],
