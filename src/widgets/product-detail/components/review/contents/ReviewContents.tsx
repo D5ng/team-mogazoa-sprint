@@ -28,6 +28,7 @@ export default function ReviewContents({
             <button className="underline">삭제</button>
           </div>
         )}
+        <ThumbsButton isLiked={isLiked} likeCount={likeCount} />
       </div>
     </div>
   )
