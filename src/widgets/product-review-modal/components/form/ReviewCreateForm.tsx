@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { Button, Form, TextareaInput } from '@shared/ui'
 import type { CreateReview } from '@shared/types'
+import { descriptionValidation } from '@shared/utils'
 import {
   Rating,
   ReviewImageUpload,
@@ -22,7 +23,7 @@ export default function ReviewCreateForm({
     setValue,
     watch,
     control,
-    formState: { isValid },
+    formState: { isValid, errors },
   } = useForm<CreateReview>({
     defaultValues: {
       productId: productId,
@@ -45,7 +46,8 @@ export default function ReviewCreateForm({
       <TextareaInput
         value={content}
         placeholder="리뷰를 작성해 주세요"
-        {...register('content')}
+        {...register('content', descriptionValidation)}
+        errors={errors}
       />
       <div className="flex gap-x-2.5 overflow-x-scroll">
         {[1, 2, 3].map((order) => (
