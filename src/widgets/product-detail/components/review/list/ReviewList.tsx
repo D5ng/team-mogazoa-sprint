@@ -1,12 +1,17 @@
 import { ReviewListItem } from '@widgets/product-detail/components'
 import { useFetchProductReview, useIntersect } from '@shared/hooks'
+import { ReviewSortOptions } from '@widgets/product-detail/constants'
 import ReviewEmptyList from './ReviewEmptyList'
 
 interface ReviewListProps {
   productId: number
+  reviewSortOption: ReviewSortOptions
 }
 
-export default function ReviewList({ productId }: ReviewListProps) {
+export default function ReviewList({
+  productId,
+  reviewSortOption,
+}: ReviewListProps) {
   const {
     data: reviews,
     isFetching,
@@ -14,7 +19,10 @@ export default function ReviewList({ productId }: ReviewListProps) {
     fetchNextPage,
   } = useFetchProductReview({
     productId,
+    order: reviewSortOption,
   })
+
+  console.log(reviewSortOption)
 
   const onIntersect = () => {
     if (hasNextPage && !isFetching) {

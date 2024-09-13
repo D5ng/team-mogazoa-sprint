@@ -48,7 +48,7 @@ export async function fetchProductsReviews({
 }: FetchProductsReviews) {
   return (
     await axiosInstance.get<ProductReviewsResponse>(
-      `/products/${productId}/reviews?cursor=${cursor}`,
+      `/products/${productId}/reviews?cursor=${cursor}&order=${order}`,
     )
   ).data
 }

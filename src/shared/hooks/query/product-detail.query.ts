@@ -1,8 +1,4 @@
-import {
-  useInfiniteQuery,
-  useQuery,
-  useSuspenseInfiniteQuery,
-} from '@tanstack/react-query'
+import { useQuery, useSuspenseInfiniteQuery } from '@tanstack/react-query'
 import { fetchProductDetail, fetchProductsReviews } from '@shared/api'
 import { FetchProductsReviews, ProductDetailResponse } from '@shared/types'
 
@@ -19,13 +15,12 @@ export function useFetchProductDetail(
 
 export function useFetchProductReview({
   productId,
-  cursor,
   order,
 }: FetchProductsReviews) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['product-detail-review'],
+    queryKey: ['product-detail-review', order],
     queryFn: ({ pageParam }) =>
-      fetchProductsReviews({ productId, cursor: pageParam }),
+      fetchProductsReviews({ productId, cursor: pageParam, order }),
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextCursor || null,
     select: (data) => (data.pages ?? []).flatMap((page) => page.list),
