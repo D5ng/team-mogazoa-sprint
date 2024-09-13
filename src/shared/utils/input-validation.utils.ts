@@ -21,3 +21,11 @@ export const descriptionValidation = {
     message: '입력값은 최대 500자 이하이어야 합니다.',
   },
 } as const
+
+export const categoryValidation = {
+  required: '입력값은 필수입니다.',
+} as const
+
+export const imageValidation = {
+  required: '입력값은 필수입니다.',
+}
