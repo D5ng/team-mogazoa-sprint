@@ -1,5 +1,9 @@
 import { Suspense, useState } from 'react'
-import { LatestDropdown, ReviewList } from '@widgets/product-detail/components'
+import {
+  LatestDropdown,
+  ReviewList,
+  ReviewSkeleton,
+} from '@widgets/product-detail/components'
 import { ProductDetailLayout } from '@widgets/product-detail/layout'
 import {
   LATEST_DROPDOWN_ITEMS,
@@ -7,11 +11,6 @@ import {
 } from '@widgets/product-detail/constants'
 interface ReviewWrapperProps {
   productId: number
-}
-
-// Test Code
-function Fallback() {
-  return <h1 className="text-[100px]">Hello World</h1>
 }
 
 export default function ReviewWrapper({ productId }: ReviewWrapperProps) {
@@ -28,7 +27,7 @@ export default function ReviewWrapper({ productId }: ReviewWrapperProps) {
         <LatestDropdown onSelectedOption={handleSelectedOption} />
       }
     >
-      <Suspense fallback={<Fallback />}>
+      <Suspense fallback={<ReviewSkeleton />}>
         <ReviewList productId={productId} reviewSortOption={reviewSortOption} />
       </Suspense>
     </ProductDetailLayout>
