@@ -1,54 +1,40 @@
 import { useRouter } from 'next/navigation'
-import { UseFormSetError, FieldValues } from 'react-hook-form'
-import { postSignUp, postSignIn } from '@widgets/auth/api'
-import type { AuthFunction, SignIn, SignUp } from '@shared/types'
+import { signUp, signIn } from '@shared/api'
+import { processAuth } from '@widgets/auth/api/auth.api'
+import type { UseFormSetError } from 'react-hook-form'
+import type { SignUp, SignIn, User } from '@shared/types'
+import useAuthStore from '@shared/store/authStore'
 
 export default function useAuth() {
   const router = useRouter()
 
-  const handleAuth = async <T extends FieldValues>(
-    authFunction: AuthFunction<T>,
-    data: T,
-    setError: UseFormSetError<T>,
-  ) => {
-    try {
-      await authFunction(data, setError)
-      router.push('/')
-    } catch (error) {
-      console.error(error)
-    }
+  const storeToken = (accessToken: string, user: User) => {
+    document.cookie = `accessToken=${accessToken}; path=/`
+    useAuthStore.getState().setUser(user)
+    router.push('/')
   }
 
-  const signUpSubmit = (setError: UseFormSetError<SignUp>) => {
-    return async (data: SignUp) => {
-      await handleAuth<SignUp>(
-        (data, setError) =>
-          postSignUp(data, setError as UseFormSetError<SignUp>),
-        data,
-        setError,
-      )
-    }
-  }
+  const signUpSubmit =
+    (setError: UseFormSetError<SignUp>) => async (data: SignUp) => {
+      const signUpAndSignIn = async (signUpData: SignUp) => {
+        await signUp(signUpData)
+        const { email, password } = signUpData
+        return signIn({ email, password })
+      }
 
-  const signInSubmit = (setError: UseFormSetError<SignIn>) => {
-    return async (data: SignIn) => {
-      await handleAuth<SignIn>(
-        (data, setError) =>
-          postSignIn(data, setError as UseFormSetError<SignIn>),
-        data,
-        setError,
-      )
+      await processAuth(signUpAndSignIn, data, setError, storeToken)
     }
-  }
 
-  const logout = async () => {
-    try {
-      document.cookie =
-        'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
-      router.push('/')
-    } catch (error) {
-      console.error(error)
+  const signInSubmit =
+    (setError: UseFormSetError<SignIn>) => async (data: SignIn) => {
+      await processAuth(signIn, data, setError, storeToken)
     }
+
+  const logout = () => {
+    document.cookie =
+      'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+    useAuthStore.getState().setUser(undefined as unknown as User)
+    router.push('/')
   }
 
   return { signUpSubmit, signInSubmit, logout }

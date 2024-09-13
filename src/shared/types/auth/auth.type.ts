@@ -36,15 +36,6 @@ export interface SocialSignUp {
 export interface SocialSignIn
   extends Pick<SocialSignUp, 'redirectUri' | 'token' | 'social'> {}
 
-export interface AuthServerError {
-  message: string
-  details?: {
-    [K in keyof SignUp]?: {
-      message: string
-    }
-  }
-}
-
 export interface AuthResponse {
   accessToken: string
   user: User
