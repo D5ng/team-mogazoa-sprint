@@ -27,7 +27,7 @@ export async function fetchUserProfile({ userId }: UserId) {
   return (await axiosInstance.get<UserItem>(`/users/${userId}`)).data
 }
 
-export async function fetchUsersReviewdProduct({
+export async function fetchUsersReviewedProduct({
   userId,
   cursor,
 }: CursorParams & UserId) {
@@ -47,7 +47,7 @@ export async function fetchUsersCreatedProduct({
   ).data
 }
 
-export async function fetchUsersFavoritedProduct({
+export async function fetchUsersFavoriteProduct({
   userId,
   cursor,
 }: CursorParams & UserId) {
@@ -63,7 +63,7 @@ export async function fetchUsersFollowees({
   cursor,
 }: CursorParams & UserId) {
   return (
-    await axiosInstance.get<UsersProductResponse>(`/users/${userId}/folowees`)
+    await axiosInstance.get<UsersProductResponse>(`/users/${userId}/followees`)
   ).data
 }
 
@@ -72,6 +72,6 @@ export async function fetchUsersFollowers({
   cursor,
 }: CursorParams & UserId) {
   return (
-    await axiosInstance.get<UsersProductResponse>(`/users/${userId}/folowers`)
+    await axiosInstance.get<UsersProductResponse>(`/users/${userId}/followers`)
   ).data
 }
