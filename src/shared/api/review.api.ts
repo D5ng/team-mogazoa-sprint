@@ -5,7 +5,7 @@ export async function likeReview({ reviewId }: ReviewId) {
   return (await axiosInstance.post(`/reviews/${reviewId}/like`)).data
 }
 
-export async function deleteLikeReview({ reviewId }: ReviewId) {
+export async function cancelLikeReview({ reviewId }: ReviewId) {
   return (await axiosInstance.delete(`/reviews/${reviewId}/like`)).data
 }
 
