@@ -1,5 +1,7 @@
+import { Variant } from '@/src/widgets/product/ranking/Ranking.types'
+
 export interface UserId {
-  userId: number
+  userId: number | undefined
 }
 
 export interface FavoriteCategory {
@@ -11,7 +13,7 @@ export interface UserCommon {
   updatedAt: string
   createdAt: string
   teamId: string
-  image: string
+  image: string | null
   description: string
   nickname: string
   id: number
@@ -19,10 +21,20 @@ export interface UserCommon {
   followersCount: number
 }
 
-export type UserRanking = UserCommon[]
+export interface UserRankingItem {
+  rank: number
+  image: string
+  nickname: string
+  followersCount: number
+  reviewCount: number
+  variant: Variant
+  id: number
+}
+
+export type UserRanking = UserRankingItem[]
 
 export interface UserItem extends UserCommon {
-  mostFavoriteCategory: FavoriteCategory
+  mostFavoriteCategory: FavoriteCategory | null
   averageRating: number
   followeesCount: number
   isFollowing: boolean

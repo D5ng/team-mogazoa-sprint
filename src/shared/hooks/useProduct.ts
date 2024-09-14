@@ -1,7 +1,6 @@
 import { CARD_MOCK_DATA } from '@/src/widgets/product/products-card/ProductCard.mock'
 import { ProductCardData } from '@/src/widgets/product/products-card/ProductCard.types'
 import { useEffect, useRef, useState } from 'react'
-
 export default function useProduct() {
   const ref = useRef<HTMLInputElement | null>(null)
   const [filteredProducts, setFilteredProducts] =
@@ -16,6 +15,5 @@ export default function useProduct() {
     )
     setFilteredProducts(filtered)
   }, [searchValue])
-
   return { ref, filteredProducts }
 }

@@ -13,7 +13,12 @@ export default function ReviewImages({ reviewImages }: ReviewImagesProps) {
           className="relative w-[100px] h-[100px] rounded-lg overflow-hidden tablet:w-[80px] tablet:h-[80px]"
           key={reviewImage.id}
         >
-          <Image src={reviewImage.source} alt="이미지 썸네일" fill />
+          <Image
+            src={reviewImage.source}
+            alt="이미지 썸네일"
+            fill
+            className="object-cover object-center"
+          />
         </li>
       ))}
     </ul>

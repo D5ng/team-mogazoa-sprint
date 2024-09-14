@@ -6,9 +6,7 @@ import type {
   FormFieldProps,
 } from './FormField.type'
 import ErrorMessage from '@shared/ui/error-message/ErrorMessage'
-
 const FormFieldContext = createContext<FormFieldContextValue | null>(null)
-
 export function useFormField() {
   const context = useContext(FormFieldContext)
   if (!context) {
@@ -43,7 +41,6 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
       ? ''
       : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
     const borderClassName = error ? 'border-red' : 'border-black-70'
-
     return (
       <>
         <input

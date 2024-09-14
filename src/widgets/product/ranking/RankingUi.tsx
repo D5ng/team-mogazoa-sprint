@@ -10,18 +10,18 @@ export default function RankingUi({ data }: RankingUiProps) {
         <ProfileImage
           className="tablet:w-[38px] tablet:h-[38px]"
           size={42}
-          url={data.profileImg}
+          url={data.image}
         />
         <div className="flex-col items-center justify-between ml-[10px] tablet:ml-[8px]">
           <div className="flex gap-[5px]">
             <RankingChip variant={data.variant} rank={data.rank} />
             <p className="text-[16px] tablet:text-[14px] text-white">
-              {data.nickName}
+              {data.nickname}
             </p>
           </div>
           <div className="flex text-[12px] tablet:text-[10px] tablet:gap-[6px] gap-[8px] text-black-30 mt-[4px]">
-            <p>팔로워 {data.folower}</p>
-            <p>리뷰 {data.review}</p>
+            <p>팔로워 {data.followersCount}</p>
+            <p>리뷰 {data.reviewCount}</p>
           </div>
         </div>
       </Link>

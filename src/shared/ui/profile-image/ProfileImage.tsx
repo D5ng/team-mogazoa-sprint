@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import defaultImage from 'public/images/default-profile.webp'
 import { ProfileImgProps } from './ProfileImage.type'
 
 export default function ProfileImage({ size, url, ...props }: ProfileImgProps) {
@@ -9,7 +10,7 @@ export default function ProfileImage({ size, url, ...props }: ProfileImgProps) {
         className={`overflow-hidden rounded-full ${props.className || ''}`}
       >
         <Image
-          src={url}
+          src={url || defaultImage}
           layout="responsive"
           width={size}
           height={size}

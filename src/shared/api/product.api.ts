@@ -5,7 +5,8 @@ import type {
   ProductDetailResponse,
   ProductId,
   ProductResponse,
-  SendProductType,
+  ProductPayload,
+  ProductReviewsResponse,
 } from '@shared/types'
 
 export async function fetchProducts({
@@ -16,42 +17,43 @@ export async function fetchProducts({
 }: FetchProducts) {
   return (await axiosInstance.get<ProductResponse>(`/products`)).data
 }
-
 export async function fetchProductDetail({ productId }: ProductId) {
   return (
     await axiosInstance.get<ProductDetailResponse>(`/products/${productId}`)
   ).data
 }
 
-export async function createProduct(data: SendProductType) {
+export async function createProduct(data: ProductPayload) {
   return (await axiosInstance.post(`/products`, data)).data
 }
 
 export async function updateProduct({
   productId,
   ...data
-}: SendProductType & ProductId) {
+}: ProductPayload & ProductId) {
   return (
-    await axiosInstance.patch<SendProductType>(`/products/${productId}`, data)
+    await axiosInstance.patch<ProductPayload>(`/products/${productId}`, data)
   ).data
 }
 
 export async function deleteProduct({ productId }: ProductId) {
   return (await axiosInstance.delete(`/products/${productId}`)).data
 }
-
 export async function fetchProductsReviews({
   productId,
   order,
   cursor,
 }: FetchProductsReviews) {
-  return (await axiosInstance.get(`/products/${productId}/reviews`)).data
+  return (
+    await axiosInstance.get<ProductReviewsResponse>(
+      `/products/${productId}/reviews?cursor=${cursor}&order=${order}`,
+    )
+  ).data
 }
 
 export async function favoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.post(`/products/${productId}/favorite`)).data
 }
-
 export async function deleteFavoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.delete(`/products/${productId}/favorite`)).data
 }

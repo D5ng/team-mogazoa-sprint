@@ -3,7 +3,7 @@ import { signUp, signIn } from '@shared/api'
 import { processAuth } from '@widgets/auth/api/auth.api'
 import type { UseFormSetError } from 'react-hook-form'
 import type { SignUp, SignIn, User } from '@shared/types'
-import useAuthStore from '@shared/store/authStore'
+import useAuthStore from '@/src/app/provider/authStore'
 
 export default function useAuth() {
   const router = useRouter()
