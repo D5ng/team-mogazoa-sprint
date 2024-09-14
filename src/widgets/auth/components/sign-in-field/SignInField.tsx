@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { useAuth } from '@/src/widgets/auth/hooks'
+import { useAuth } from '@widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
   FormField,
@@ -9,17 +9,18 @@ import {
 import {
   emailValidation,
   passwordValidation,
-} from '@/src/widgets/auth/lib/form-validation'
-import type { SignInFieldData } from '@/src/widgets/auth/types/auth.type'
+} from '@widgets/auth/lib/form-validation'
+import type { SignIn } from '@shared/types'
 
 export default function SignInField() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid, isDirty, isSubmitting },
     setError,
-  } = useForm<SignInFieldData>({
-    mode: 'onBlur',
+  } = useForm<SignIn>({
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
     defaultValues: {
       email: '',
       password: '',
@@ -44,7 +45,12 @@ export default function SignInField() {
         <FieldInput type="password" placeholder="비밀번호를 입력해주세요" />
       </FormField>
 
-      <Button variant="primary" type="submit">
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={!(isValid && isDirty)}
+        isLoading={isSubmitting}
+      >
         로그인
       </Button>
     </Form>

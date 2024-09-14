@@ -1,5 +1,6 @@
-import '@/src/app/styles/globals.css'
-import Gnb from '@/src/widgets/product/gnb/Gnb'
+import '@app/styles/globals.css'
+import Gnb from '@widgets/product/gnb/Gnb'
+import { KakaoScript } from '@app/provider/KakaoScript'
 
 import type { AppProps } from 'next/app'
 import { useEffect, useState } from 'react'
@@ -16,9 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
     mounted && (
       <>
         <Gnb />
-        <div className="mt-[100px] tablet:mt-[80px] mobile:mt-[70px]">
+        <div className="">
           <Component {...pageProps} />
         </div>
+        <KakaoScript />
       </>
     )
   )

@@ -16,7 +16,6 @@ export function useFormField() {
   }
   return context
 }
-
 export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
   (props, ref) => {
     return (
@@ -28,7 +27,6 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
     )
   },
 )
-
 export function FieldLabel({ children }: LabelProps) {
   const { name } = useFormField()
   return (
@@ -41,7 +39,6 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     const { name, onChange, onBlur, errors } = useFormField()
     const error = errors[name]
-
     const focusClassName = error
       ? ''
       : 'focus:ring-1 focus:ring-indigo focus:border-indigo'

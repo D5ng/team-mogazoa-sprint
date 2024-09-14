@@ -13,7 +13,6 @@ import {
   passwordConfirmationValidation,
 } from '@/src/widgets/auth/lib/form-validation'
 import type { SignUpFieldData } from '@/src/widgets/auth/types/auth.type'
-
 export default function SignUpField() {
   const {
     register,
@@ -29,10 +28,8 @@ export default function SignUpField() {
       passwordConfirmation: '',
     },
   })
-
   const { signUpSubmit } = useAuth()
   const onSubmit = signUpSubmit(setError)
-
   return (
     <Form
       onSubmit={handleSubmit(onSubmit)}
