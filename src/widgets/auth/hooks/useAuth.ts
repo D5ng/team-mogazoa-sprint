@@ -1,49 +1,41 @@
 import { useRouter } from 'next/navigation'
-import { UseFormSetError } from 'react-hook-form'
-import { postSignUp, postSignIn } from '@/src/widgets/auth/api'
-import type {
-  SignUpFieldData,
-  SignInFieldData,
-} from '@/src/widgets/auth/types/auth.type'
+import { signUp, signIn } from '@shared/api'
+import { processAuth } from '@widgets/auth/api/auth.api'
+import type { UseFormSetError } from 'react-hook-form'
+import type { SignUp, SignIn, User } from '@shared/types'
+import useAuthStore from '@shared/store/authStore'
 
 export default function useAuth() {
   const router = useRouter()
 
-  const signUp = async (
-    data: SignUpFieldData,
-    setError: UseFormSetError<SignUpFieldData>,
-  ) => {
-    try {
-      await postSignUp(data, setError)
-      router.push('/')
-    } catch (error) {
-      console.error(error)
-    }
+  const storeToken = (accessToken: string, user: User) => {
+    document.cookie = `accessToken=${accessToken}; path=/`
+    useAuthStore.getState().setUser(user)
+    router.push('/')
   }
 
-  const signIn = async (
-    data: SignInFieldData,
-    setError: UseFormSetError<SignInFieldData>,
-  ) => {
-    try {
-      await postSignIn(data, setError)
-      router.push('/')
-    } catch (error) {
-      console.error(error)
+  const signUpSubmit =
+    (setError: UseFormSetError<SignUp>) => async (data: SignUp) => {
+      const signUpAndSignIn = async (signUpData: SignUp) => {
+        await signUp(signUpData)
+        const { email, password } = signUpData
+        return signIn({ email, password })
+      }
+
+      await processAuth(signUpAndSignIn, data, setError, storeToken)
     }
+
+  const signInSubmit =
+    (setError: UseFormSetError<SignIn>) => async (data: SignIn) => {
+      await processAuth(signIn, data, setError, storeToken)
+    }
+
+  const logout = () => {
+    document.cookie =
+      'accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+    useAuthStore.getState().setUser(undefined as unknown as User)
+    router.push('/')
   }
 
-  const signUpSubmit = (setError: UseFormSetError<SignUpFieldData>) => {
-    return async (data: SignUpFieldData) => {
-      await signUp(data, setError)
-    }
-  }
-
-  const signInSubmit = (setError: UseFormSetError<SignInFieldData>) => {
-    return async (data: SignInFieldData) => {
-      await signIn(data, setError)
-    }
-  }
-
-  return { signUpSubmit, signInSubmit }
+  return { signUpSubmit, signInSubmit, logout }
 }
