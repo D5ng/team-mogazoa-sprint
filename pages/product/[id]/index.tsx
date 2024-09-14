@@ -1,7 +1,8 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
-import { fetchProductDetail, fetchProductsReviews } from '@shared/api'
+import { fetchProductDetail } from '@shared/api'
 import { ProductDetail } from '@/src/pages'
+import { axiosInstance } from '@/src/shared/config'
 
 export default function ProductDetailPage({
   productId,
@@ -10,6 +11,12 @@ export default function ProductDetailPage({
 }
 
 export const getServerSideProps = (async (context) => {
+  const token = context.req.cookies.token!
+  token
+    ? (axiosInstance.defaults.headers.common['Authorization'] =
+        `Bearer ${token}`)
+    : (axiosInstance.defaults.headers.common['Authorization'] = ``)
+
   const productId = +context.params?.id!
   if (!productId) return { notFound: true }
 
