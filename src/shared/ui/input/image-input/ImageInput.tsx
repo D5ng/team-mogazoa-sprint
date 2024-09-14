@@ -1,42 +1,44 @@
 import Image from 'next/image'
-import { close, addImage } from '@shared/icons/index'
-import { forwardRef, useRef, useState } from 'react'
-import type { ImageInputProps } from './ImageInput.type'
+import { Loading } from '@shared/ui'
+import { close, addImage } from '@shared/icons'
+import { useImageUpload } from '@shared/hooks'
+import { twMerge } from 'tailwind-merge'
 
-const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
-  ({ setValue, name, onChange, ...props }, ref) => {
-    const [preview, setPreview] = useState<string | null>(null)
-    const fileInputRef = useRef<HTMLInputElement>(null)
+interface ImageInputProps {
+  onCancel: (imageIndex: number) => void
+  onSuccess: (file: File, index: number) => Promise<void>
+  onFailed?: () => void
+  className?: string
+  imageIndex?: number
+  previewImage?: string
+}
 
-    const handleImageClick = () => {
-      fileInputRef.current?.click()
-    }
+export default function ImageInput({
+  onSuccess,
+  className,
+  onCancel,
+  imageIndex = 0,
+  previewImage,
+}: ImageInputProps) {
+  const { ref, preview, isLoading, onChange, onClick, onReset } =
+    useImageUpload({ onSuccess, onCancel, imageIndex, previewImage })
 
-    const handleFileChange: React.ChangeEventHandler<HTMLInputElement> = (
-      e,
-    ) => {
-      const file = e.target.files?.[0]
-      if (file?.type.startsWith('image/')) {
-        setPreview(URL.createObjectURL(file))
-        setValue(name, file)
-      }
-    }
+  return (
+    <div
+      onClick={onClick}
+      className={twMerge(
+        `relative flex items-center justify-center input-base cursor-pointer w-[160px] h-[160px] tablet:w-[135px] mobile:w-[140px]`,
+        className || '',
+      )}
+    >
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Image src={addImage} alt="이미지 업로드" width={24} height={24} />
+      )}
 
-    const handleReset: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-      e.stopPropagation()
-      setPreview(null)
-      setValue(name, null)
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ''
-      }
-    }
-
-    return (
-      <div
-        onClick={handleImageClick}
-        className={`relative flex items-center justify-center input-base cursor-pointer w-[160px] h-[160px] tablet:w-[135px] mobile:w-[140px] ${props.className || ''}`}
-      >
-        {preview ? (
+      {!isLoading && preview && (
+        <>
           <Image
             src={preview}
             alt="업로드된 이미지"
@@ -44,32 +46,16 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
             className="object-cover w-full h-full rounded-lg"
             sizes="100%"
           />
-        ) : (
-          <Image src={addImage} alt="이미지 업로드" width={24} height={24} />
-        )}
-        {preview && (
           <button
             type="button"
-            onClick={handleReset}
+            onClick={onReset}
             className="absolute top-2 right-2 p-1 bg-black-80 opacity-50 rounded-lg"
           >
             <Image src={close} alt="이미지 제거 버튼" width={20} height={20} />
           </button>
-        )}
-        <input
-          type="file"
-          className="hidden"
-          ref={fileInputRef}
-          onChange={(e) => {
-            onChange(e)
-            handleFileChange(e)
-          }}
-        />
-      </div>
-    )
-  },
-)
-
-ImageInput.displayName = 'ImageInput'
-
-export default ImageInput
+        </>
+      )}
+      <input type="file" className="hidden" ref={ref} onChange={onChange} />
+    </div>
+  )
+}

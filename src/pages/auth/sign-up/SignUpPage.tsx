@@ -1,13 +1,9 @@
-import { SignUpField } from '@/src/widgets/auth/components'
-import Gnb from '@widgets/product/gnb/Gnb'
+import { SignUpField } from '@widgets/auth/components'
 
 export default function SingUpPage() {
   return (
-    <div className="h-screen">
-      <Gnb />
-      <main className="w-full h-full flex justify-center items-center bg-black-80">
-        <SignUpField />
-      </main>
-    </div>
+    <main className="flex justify-center items-center mt-28 tablet:my-48 mobile:mt-20 bg-black-80">
+      <SignUpField />
+    </main>
   )
 }

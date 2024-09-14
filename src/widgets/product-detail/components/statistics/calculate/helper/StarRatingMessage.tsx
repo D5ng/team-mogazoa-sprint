@@ -5,7 +5,7 @@ export default function StarRatingMessage({
   isHigher,
   isSame,
 }: CompareWithProductMessage) {
-  if (isSame) return `같은 카테고리의 제품들과<br /> 별점이 같아요!`
+  if (isSame) return `같은 카테고리의 제품들과 별점이 같아요!`
 
   return (
     <>
