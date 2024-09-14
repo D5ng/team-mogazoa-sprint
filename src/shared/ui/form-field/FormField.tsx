@@ -13,7 +13,14 @@ import ErrorMessage from '@shared/ui/error-message/ErrorMessage'
 
 const FormFieldContext = createContext<FormFieldContextValue | null>(null)
 
-	@@ -20,7 +25,7 @@ export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
+export function useFormField() {
+  const context = useContext(FormFieldContext)
+  if (!context) {
+    throw new Error('FormField 컴포넌트 내에서만 사용해야 합니다.')
+  }
+  return context
+}
+export const FormField = forwardRef<HTMLDivElement, FormFieldProps>(
   (props, ref) => {
     return (
       <FormFieldContext.Provider value={props}>
@@ -21,7 +28,14 @@ const FormFieldContext = createContext<FormFieldContextValue | null>(null)
           {props.children}
         </div>
       </FormFieldContext.Provider>
-	@@ -36,34 +41,47 @@ export function FieldLabel({ children }: LabelProps) {
+    )
+  },
+)
+export function FieldLabel({ children }: LabelProps) {
+  const { name } = useFormField()
+  return (
+    <label htmlFor={name} className="text-[16px] text-white">
+      {children}
     </label>
   )
 }
