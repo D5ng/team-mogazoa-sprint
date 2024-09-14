@@ -1,6 +1,10 @@
 import { twMerge } from 'tailwind-merge'
-import { ProfileImageSection, ProfileStats } from '@widgets/profile/components'
-import { Button } from '@shared/ui'
+import {
+  ProfileButton,
+  MyProfileButton,
+  ProfileImageSection,
+  ProfileStats,
+} from '@widgets/profile/components'
 import useAuthStore from '@app/provider/authStore'
 import {
   useFetchMyProfile,
@@ -31,7 +35,11 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
     >
       <ProfileImageSection {...userData} />
       <ProfileStats {...userData} />
-      <Button variant="primary">팔로우</Button>
+      {isMyProfile ? (
+        <MyProfileButton />
+      ) : (
+        <ProfileButton isFollowing={userData.isFollowing} />
+      )}
     </section>
   )
 }

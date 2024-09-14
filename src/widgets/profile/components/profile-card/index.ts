@@ -1,3 +1,5 @@
 export { default as ProfileCard } from './ProfileCard'
 export { default as ProfileStats } from './stats/ProfileStats'
 export { default as ProfileImageSection } from './image-section/ProfileImageSection'
+export { default as ProfileButton } from './profile-button/ProfileButton'
+export { default as MyProfileButton } from './my-profile-button/MyProfileButton'
