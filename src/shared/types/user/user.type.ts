@@ -64,3 +64,8 @@ export type UserProfileUpdateResponse = Omit<
 export interface CursorParams {
   cursor?: number
 }
+
+export interface FetchFollows {
+  userId: number
+  cursor?: number
+}
