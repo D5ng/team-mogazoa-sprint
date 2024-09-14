@@ -10,7 +10,7 @@ import {
   useFetchUserProfile,
 } from '@/src/shared/hooks/query/user.query'
 
-export interface ProfileProps {
+interface ProfileProps {
   userId: number | undefined
   className?: string
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { createContext, PropsWithChildren, useContext } from 'react'
 import { createPortal } from 'react-dom'
+import { twMerge } from 'tailwind-merge'
 import { close } from '@shared/icons'
 import type { ModalContextType, ModalProps } from './Modal.type'
 
@@ -18,7 +19,12 @@ export function Modal(props: ModalProps) {
   const portalElement = document.getElementById('modal')!
   return createPortal(
     <ModalContext.Provider value={{ onCloseModal: props.onCloseModal }}>
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl tablet:w-[590px] mobile:w-[calc(100%-40px)] mobile:px-5 ">
+      <div
+        className={twMerge(
+          'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl tablet:w-[590px] mobile:w-[calc(100%-40px)] mobile:px-5',
+          props.className,
+        )}
+      >
         <ModalBackdrop />
         <ModalExit />
         {props.children}

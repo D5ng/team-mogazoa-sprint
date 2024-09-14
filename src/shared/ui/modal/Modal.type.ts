@@ -7,6 +7,7 @@ export type ModalContextType = {
 export interface ModalProps {
   children: ReactNode
   onCloseModal: () => void
+  className?: string
 }
 
 export interface TitleProps {
