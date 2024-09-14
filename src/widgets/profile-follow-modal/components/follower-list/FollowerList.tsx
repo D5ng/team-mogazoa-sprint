@@ -247,7 +247,11 @@ export default function FollowerList() {
   return (
     <ul className="flex flex-col gap-6 mt-10 tablet:gap-5 mobile:mt-5">
       {MOCK.map(({ id, follower }) => (
-        <Follower key={id} nickname={follower.nickname} />
+        <Follower
+          key={id}
+          nickname={follower.nickname}
+          image={follower.image}
+        />
       ))}
     </ul>
   )
