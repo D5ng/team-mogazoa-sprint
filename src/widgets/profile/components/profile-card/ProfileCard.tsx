@@ -1,9 +1,19 @@
-import ProfileStats from './stats/ProfileStats'
-import ProfileImageSection from './image-section/ProfileImageSection'
-import { Button } from '@shared/ui'
 import { twMerge } from 'tailwind-merge'
+import { ProfileImageSection, ProfileStats } from '@widgets/profile/components'
+import { Button } from '@shared/ui'
+import type { UserItem } from '@shared/types'
 
-export default function ProfileCard({ ...props }) {
+export interface ProfileProps {
+  profileData: UserItem
+  isMyProfile: boolean
+  className?: string
+}
+
+export default function ProfileCard({
+  profileData,
+  isMyProfile,
+  ...props
+}: ProfileProps) {
   return (
     <section
       className={twMerge(
@@ -11,7 +21,7 @@ export default function ProfileCard({ ...props }) {
         props.className || '',
       )}
     >
-      <ProfileImageSection />
+      <ProfileImageSection profileData={profileData} />
       <ProfileStats />
       <Button variant="primary">팔로우</Button>
     </section>

@@ -1,10 +1,10 @@
+import { UserItem } from '@shared/types'
 import ProfileImage from '@shared/ui/profile-image/ProfileImage'
-import TestImage from 'public/test/review-profile.jpg'
 
-export default function ProfileImageSection() {
+export default function ProfileImageSection({ profileData }: UserItem) {
   return (
     <div className="flex flex-col justify-center items-center gap-[30px]">
-      <ProfileImage url={TestImage} className="w-[180px] tablet:w-[120px]" />
+      <ProfileImage url={image} className="w-[180px] tablet:w-[120px]" />
       <div className="flex flex-col items-center gap-2.5">
         <h2 className="text-white text-xl">surisuri마수리</h2>
         <p className="text-black-30 text-sm">

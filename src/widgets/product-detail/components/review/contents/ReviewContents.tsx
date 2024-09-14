@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import { ProductReviewItem } from '@shared/types'
 import ThumbsButton from './thumbs-button/ThumbsButton'
 import ReviewImages from './review-images/ReviewImages'
-import useAuthStore from '@/src/shared/store/authStore'
+import useAuthStore from '@/src/app/provider/authStore'
 import ReviewDeleteButton from './delete-button/ReviewDeleteButton'
 import ReviewUpdateButton from './update-button/ReviewUpdateButton'
 
