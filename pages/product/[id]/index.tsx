@@ -1,6 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
-import { fetchProductDetail } from '@shared/api'
+import { fetchProductDetail, fetchProductsReviews } from '@shared/api'
 import { ProductDetail } from '@/src/pages'
 
 export default function ProductDetailPage({
@@ -15,11 +15,14 @@ export const getServerSideProps = (async (context) => {
 
   try {
     const queryClient = new QueryClient()
+
     await queryClient.prefetchQuery({
       queryKey: ['product-detail', productId],
       queryFn: () => fetchProductDetail({ productId: +productId }),
     })
+
     const data = queryClient.getQueryData(['product-detail', productId])
+
     if (!data) return { notFound: true }
 
     return {

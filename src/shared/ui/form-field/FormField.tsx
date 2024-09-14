@@ -41,6 +41,7 @@ export const FieldInput = forwardRef<HTMLInputElement, InputProps>(
       ? ''
       : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
     const borderClassName = error ? 'border-red' : 'border-black-70'
+
     return (
       <>
         <input

@@ -41,8 +41,8 @@ export async function deleteProduct({ productId }: ProductId) {
 }
 export async function fetchProductsReviews({
   productId,
-  order,
-  cursor,
+  order = 'recent',
+  cursor = 0,
 }: FetchProductsReviews) {
   return (
     await axiosInstance.get<ProductReviewsResponse>(

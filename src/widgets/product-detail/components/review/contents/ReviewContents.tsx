@@ -24,11 +24,7 @@ export default function ReviewContents(props: ProductReviewItem) {
             <ReviewDeleteButton reviewId={props.id} />
           </div>
         )}
-        <ThumbsButton
-          isLiked={props.isLiked}
-          likeCount={props.likeCount}
-          id={props.id}
-        />
+        <ThumbsButton {...props} />
       </div>
     </div>
   )

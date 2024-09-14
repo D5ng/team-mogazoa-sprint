@@ -1,3 +1,4 @@
+import { useReviewOptionStore } from '@/src/shared/store'
 import {
   Dropdown,
   DropdownMenu,
@@ -9,13 +10,10 @@ import {
   ReviewSortOptions,
 } from '@widgets/product-detail/constants'
 
-interface LatestDropdownProps {
-  onSelectedOption: (option: ReviewSortOptions) => void
-}
-
-export default function LatestDropdown({
-  onSelectedOption,
-}: LatestDropdownProps) {
+export default function LatestDropdown() {
+  const onSelectedOption = useReviewOptionStore(
+    (state) => state.onSelectedOption,
+  )
   return (
     <Dropdown variant="none">
       <DropdownTrigger className="tablet:text-sm">최신순</DropdownTrigger>
