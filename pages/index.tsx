@@ -1,4 +1,4 @@
-import { useProductStore } from '@/src/app/provider/productStore'
+import { useProductStore } from '@/src/shared/store/productStore'
 import useProduct from '@/src/shared/hooks/useProduct'
 import useWindowResize from '@/src/shared/hooks/useWindowResize'
 import ProductAddButton from '@/src/widgets/product-add-button/ProductAddButton'

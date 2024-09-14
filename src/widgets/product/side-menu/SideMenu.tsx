@@ -1,6 +1,6 @@
 import MenuTaps from './MenuTaps'
 import { CATEGORY_CHIPS } from '../category-chip/CategoryChip.constants'
-import { useProductStore } from '@/src/app/provider/productStore'
+import { useProductStore } from '@/src/shared/store/productStore'
 import useProduct from '@/src/shared/hooks/useProduct'
 
 export default function SideMenu() {
