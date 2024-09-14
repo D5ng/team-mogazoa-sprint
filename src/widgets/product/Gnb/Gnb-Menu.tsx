@@ -1,7 +1,11 @@
 import Link from 'next/link'
+import getCookies from '../../auth/lib/getCookies'
 
-export default function GnbMenu({ isSigned = false }: { isSigned?: boolean }) {
-  // 로그인 여부 받아오는 로직은 후에 로그인 구현 되면 수정 하겠습니다
+export default function GnbMenu() {
+  const cookies = getCookies()
+  const isSigned = cookies && cookies['accessToken']
+  console.log(isSigned)
+
   const MENU_DEFAULT_STYLE =
     'hover:text-blue mobile:text-black-20 rounded-xl font-semibold mobile:px-[10px] mobile:py-[2px] mobile:text-[3vw] mobile:hover:border-blue  mobile:border-black-20'
   return (

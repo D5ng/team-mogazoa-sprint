@@ -7,10 +7,10 @@ export type RankingChipProps = {
 
 export interface RankingItem {
   rank: number
-  profileImg: string
-  nickName: string
-  folower: number
-  review: number
+  image: string
+  nickname: string
+  followersCount: number
+  reviewCount: number
   variant: Variant
   id: number
 }
