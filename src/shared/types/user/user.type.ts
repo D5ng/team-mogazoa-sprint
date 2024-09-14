@@ -66,6 +66,6 @@ export interface CursorParams {
 }
 
 export interface FetchFollows {
-  userId: number
+  userId: number | undefined
   cursor?: number
 }
