@@ -1,11 +1,11 @@
-import { ProfileImage } from '@/src/shared/ui'
+import { ProfileImage } from '@shared/ui'
 
-interface FollowerProps {
+interface FollowProps {
   nickname: string
   image: string | null
 }
 
-export default function Follower({ nickname, image }: FollowerProps) {
+export default function Follow({ nickname, image }: FollowProps) {
   return (
     <div className="flex items-center gap-5">
       <ProfileImage url={image} size={52} />

@@ -1,4 +1,4 @@
-import FollowerList from '@/src/widgets/profile-follow-modal/components/follower-list/FollowerList'
+import { FollowerList } from '@widgets/profile-follow-modal/components'
 import { Modal, ModalTitle } from '@shared/ui'
 
 export interface ReviewCreateModalProps {

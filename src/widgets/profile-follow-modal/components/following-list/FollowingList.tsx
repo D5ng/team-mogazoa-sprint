@@ -243,7 +243,7 @@ const MOCK = [
   },
 ]
 
-export default function FollowerList() {
+export default function FollowingList() {
   return (
     <ul className="flex flex-col gap-6 mt-10 tablet:gap-5 mobile:mt-5">
       {MOCK.map(({ id, follower }) => (
