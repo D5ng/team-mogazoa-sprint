@@ -29,8 +29,8 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
         props.className || '',
       )}
     >
-      <ProfileImageSection userData={userData} />
-      <ProfileStats userData={userData} />
+      <ProfileImageSection {...userData} />
+      <ProfileStats {...userData} />
       <Button variant="primary">팔로우</Button>
     </section>
   )

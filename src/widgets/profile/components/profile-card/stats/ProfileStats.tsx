@@ -1,9 +1,9 @@
 import type { ProfileStatsProps } from './ProfileStats.type'
-import type { UserItem } from '@shared/types'
 
-export default function ProfileStats({ userData }: ProfileStatsProps) {
-  const { followersCount, followeesCount } = userData
-
+export default function ProfileStats({
+  followersCount,
+  followeesCount,
+}: ProfileStatsProps) {
   return (
     <div className="flex gap-[100px] tablet:gap-40 mobile:gap-[120px]">
       <div className="flex flex-col items-center text-white text-xl">

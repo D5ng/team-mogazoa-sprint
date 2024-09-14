@@ -2,10 +2,10 @@ import { ProfileImage } from '@shared/ui'
 import { ProfileImageSectionProps } from './ProfileImageSection.type'
 
 export default function ProfileImageSection({
-  userData,
+  image,
+  description,
+  nickname,
 }: ProfileImageSectionProps) {
-  const { image, description, nickname } = userData
-
   return (
     <div className="flex flex-col justify-center items-center gap-[30px]">
       <ProfileImage url={image} className="w-[180px] tablet:w-[120px]" />
