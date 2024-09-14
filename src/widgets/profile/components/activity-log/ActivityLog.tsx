@@ -1,6 +1,5 @@
 import { LogList } from '@widgets/profile/components/activity-log'
 import { ProfileLayout } from '@widgets/profile/components/layout'
-import useAuthStore from '@app/provider/authStore'
 import {
   useFetchMyProfile,
   useFetchUserProfile,
@@ -11,8 +10,7 @@ interface ActivityLogProps {
 }
 
 export default function ActivityLog({ userId }: ActivityLogProps) {
-  const user = useAuthStore((state) => state.user)
-  const isMyProfile = userId === user?.id
+  const isMyProfile = !userId
   const { data: userData } = isMyProfile
     ? useFetchMyProfile()
     : useFetchUserProfile(userId)

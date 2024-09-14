@@ -5,7 +5,6 @@ import {
   ProfileImageSection,
   ProfileStats,
 } from '@widgets/profile/components'
-import useAuthStore from '@app/provider/authStore'
 import {
   useFetchMyProfile,
   useFetchUserProfile,
@@ -17,13 +16,12 @@ export interface ProfileProps {
 }
 
 export default function ProfileCard({ userId, ...props }: ProfileProps) {
-  const user = useAuthStore((state) => state.user)
-  const isMyProfile = userId === user?.id
+  const isMyProfile = !userId
   const { data: userData } = isMyProfile
     ? useFetchMyProfile()
     : useFetchUserProfile(userId)
 
-  if (!userData || userId === undefined) return null
+  if (!userData) return null
   //ErrorBoundary
 
   return (

@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   } catch (error) {
-    console.error('Failed to fetch user profile:', error)
+    console.error(error)
     return { notFound: true }
   }
 }

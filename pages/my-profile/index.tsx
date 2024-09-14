@@ -1,11 +1,9 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { GetServerSideProps } from 'next'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import Profile from '@/src/pages/profile/Profile'
 import { fetchMyProfile } from '@shared/api'
 
-export default function MyProfilePage({}: InferGetServerSidePropsType<
-  typeof getServerSideProps
->) {
+export default function MyProfilePage() {
   return <Profile />
 }
 
@@ -24,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       },
     }
   } catch (error) {
-    console.error('Failed to fetch my profile:', error)
+    console.error(error)
     return { notFound: true }
   }
 }
