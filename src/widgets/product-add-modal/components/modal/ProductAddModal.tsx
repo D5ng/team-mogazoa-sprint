@@ -10,6 +10,10 @@ import {
   ModalTitle,
 } from '@shared/ui'
 import { CategoryDropdown } from '@widgets/product-add-modal/components'
+import {
+  nameValidation,
+  descriptionValidation,
+} from '@shared/lib/input-validation'
 
 interface ProductAddModalProps {
   onCloseToggle: () => void
@@ -25,7 +29,12 @@ export default function ProductAddModal({
     watch,
     setValue,
     control,
-  } = useForm<SendProductType>()
+  } = useForm<SendProductType>({
+    mode: 'onBlur',
+    defaultValues: {
+      name: '',
+    },
+  })
 
   const description = watch('description')
 
@@ -44,7 +53,8 @@ export default function ProductAddModal({
               placeholder="상품명 (상품 등록 여부를 확인해 주세요)"
               className="h-[70px] tablet:h-[60px] mobile:w-full"
               setValue={setValue}
-              {...register('name')}
+              {...register('name', nameValidation)}
+              errors={errors}
             />
 
             <Controller
@@ -63,9 +73,10 @@ export default function ProductAddModal({
           />
         </div>
         <TextareaInput
-          {...register('description')}
+          {...register('description', descriptionValidation)}
           value={description}
           placeholder="상품 설명을 입력해주세요"
+          errors={errors}
         />
       </Form>
       <Button variant="primary">추가하기</Button>
