@@ -5,19 +5,24 @@ import {
   DropdownMenuItem,
   DropdownTrigger,
 } from '@shared/ui'
+import { Control, useController } from 'react-hook-form'
+import type { ProductPayload } from '@shared/types'
 
 interface CategoryDropdownProps {
-  onChange: (...event: any[]) => void
+  control: Control<ProductPayload>
 }
 
-export default function CategoryDropdown({ onChange }: CategoryDropdownProps) {
+export default function CategoryDropdown({ control }: CategoryDropdownProps) {
+  const {
+    field: { onChange },
+  } = useController({ name: 'categoryId', control: control })
   return (
     <Dropdown className="w-[360px] mobile:w-full">
       <DropdownTrigger>카테고리 선택</DropdownTrigger>
       <DropdownMenu>
         {CATEGORY_CHIPS.map((category) => (
           <DropdownMenuItem
-            onClick={() => onChange(category.id)}
+            onClick={onChange.bind(null, category.id)}
             key={category.id}
           >
             {category.name}

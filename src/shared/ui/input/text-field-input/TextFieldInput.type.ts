@@ -1,14 +1,10 @@
-import { UseFormSetValue, ChangeHandler } from 'react-hook-form'
-import type { SendProductType } from '@shared/types'
-
-// UseFormSetValue<ProductAddType> | UseFormSetValue<ProductAddType> |
-type SetValueTypes = UseFormSetValue<SendProductType>
-
-export interface TextFieldInputProps {
-  placeholder: string
-  setValue: SetValueTypes
-  onBlur: ChangeHandler
-  name: keyof SendProductType
+export interface TextareaInputProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  name: string
+  value: string
   errors: Record<string, any>
+  placeholder?: string
+  rows?: number
+  maxLength?: number
   className?: string
 }

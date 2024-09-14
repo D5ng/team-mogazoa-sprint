@@ -5,7 +5,7 @@ import type {
   ProductDetailResponse,
   ProductId,
   ProductResponse,
-  SendProductType,
+  ProductPayload,
 } from '@shared/types'
 
 export async function fetchProducts({
@@ -23,16 +23,16 @@ export async function fetchProductDetail({ productId }: ProductId) {
   ).data
 }
 
-export async function createProduct(data: SendProductType) {
+export async function createProduct(data: ProductPayload) {
   return (await axiosInstance.post(`/products`, data)).data
 }
 
 export async function updateProduct({
   productId,
   ...data
-}: SendProductType & ProductId) {
+}: ProductPayload & ProductId) {
   return (
-    await axiosInstance.patch<SendProductType>(`/products/${productId}`, data)
+    await axiosInstance.patch<ProductPayload>(`/products/${productId}`, data)
   ).data
 }
 
