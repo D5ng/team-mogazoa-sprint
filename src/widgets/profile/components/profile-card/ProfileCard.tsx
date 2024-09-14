@@ -23,7 +23,7 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
     ? useFetchMyProfile()
     : useFetchUserProfile(userId)
 
-  if (!userData) return null
+  if (!userData || userId === undefined) return null
   //ErrorBoundary
 
   return (
@@ -38,7 +38,7 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
       {isMyProfile ? (
         <MyProfileButton />
       ) : (
-        <ProfileButton isFollowing={userData.isFollowing} />
+        <ProfileButton isFollowing={userData.isFollowing} userId={userId} />
       )}
     </section>
   )
