@@ -5,14 +5,16 @@ interface UseImageUpload {
   onCancel: (imageIndex: number) => void
   onFailed?: () => void
   imageIndex: number
+  previewImage?: string
 }
 
 export default function useImageUpload({
   onSuccess,
   onCancel,
   imageIndex,
+  previewImage,
 }: UseImageUpload) {
-  const [preview, setPreview] = useState('')
+  const [preview, setPreview] = useState(previewImage || '')
   const [isLoading, setIsLoading] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 

@@ -1,5 +1,6 @@
 import { forwardRef } from 'react'
 import { TextareaInputProps } from './TextareaInput.type'
+import { twMerge } from 'tailwind-merge'
 import ErrorMessage from '@/src/shared/ui/error-message/ErrorMessage'
 
 const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
@@ -12,21 +13,21 @@ const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
       ? ''
       : 'focus:ring-1 focus:ring-indigo focus:border-indigo'
     const borderClassName = error ? 'border-red' : 'border-black-70'
-
+    26
     return (
-      <div
-        className={`relative w-full h-[160px] mobile:h-[120px] ${props.className || ''}`}
-      >
+      <div className={twMerge('relative w-full ', props.className)}>
         <textarea
           id={name}
           name={name}
           placeholder={placeholder}
           maxLength={maxLength}
-          className={`input-base resize-none overflow-y-auto ${focusClassName} ${borderClassName} ${props.className || ''}`}
+          className={`block input-base resize-none overflow-y-auto h-[160px] tablet:text-sm mobile:h-[120px] ${focusClassName} ${borderClassName} ${props.className || ''}`}
           ref={ref}
           {...props}
         />
-        <span className="absolute right-5 bottom-5 text-sm text-black-30">
+        <span
+          className={`absolute right-5 text-sm text-black-30 ${error ? 'bottom-[calc(36px)]' : 'bottom-5'}`}
+        >
           {textLength}/{maxLength}
         </span>
         <ErrorMessage error={error} />

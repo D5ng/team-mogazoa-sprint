@@ -1,19 +1,46 @@
 import { ReviewListItem } from '@widgets/product-detail/components'
-import type { ProductReviewItem } from '@shared/types'
+import { useFetchProductReview, useIntersect } from '@shared/hooks'
+import { ReviewSortOptions } from '@widgets/product-detail/constants'
 import ReviewEmptyList from './ReviewEmptyList'
 
 interface ReviewListProps {
-  reviews: ProductReviewItem[]
+  productId: number
+  reviewSortOption: ReviewSortOptions
 }
 
-export default function ReviewList({ reviews }: ReviewListProps) {
+export default function ReviewList({
+  productId,
+  reviewSortOption,
+}: ReviewListProps) {
+  const {
+    data: reviews,
+    isFetching,
+    hasNextPage,
+    fetchNextPage,
+    error,
+  } = useFetchProductReview({
+    productId,
+    order: reviewSortOption,
+  })
+
+  if (error && !isFetching) throw error
+
+  const onIntersect = () => {
+    if (hasNextPage && !isFetching) fetchNextPage()
+  }
+
+  const ref = useIntersect<HTMLDivElement>(onIntersect)
+
   if (reviews.length === 0) return <ReviewEmptyList />
 
   return (
-    <ul className="flex flex-col gap-y-5">
-      {reviews.map((review) => (
-        <ReviewListItem key={review.productId} {...review} />
-      ))}
-    </ul>
+    <>
+      <ul className="flex flex-col gap-y-5">
+        {reviews.map((review) => (
+          <ReviewListItem key={review.id} {...review} />
+        ))}
+      </ul>
+      <div className="w-[1px] h-2.5" ref={ref}></div>
+    </>
   )
 }

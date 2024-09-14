@@ -1,6 +1,8 @@
 export { default as Button } from './button/Button'
 export { default as Loading } from './loading/Loading'
 export { default as Form } from './form/Form'
+export { default as ErrorBoundary } from './error/ErrorBoundary'
+export { default as ErrorFallback } from './error/ErrorFallback'
 
 export * from './input'
 export * from './autocomplete-field/AutocompleteField'

@@ -1,3 +1,6 @@
-export { default as ProductReviewModal } from './modal/ProductReviewModal'
-export { default as ProductReviewForm } from './form/ProductReviewForm'
+export { default as ReviewCreateForm } from './form/ReviewCreateForm'
+export { default as ReviewUpdateForm } from './form/ReviewUpdateForm'
+export { default as ReviewCreateModal } from './modal/ReviewCreateModal'
+export { default as ReviewUpdateModal } from './modal/ReviewUpdateModal'
+export { default as ReviewImageUpload } from './image-upload/ReviewImageUpload'
 export * from './rating'

@@ -6,6 +6,7 @@ import type {
   ProductId,
   ProductResponse,
   ProductPayload,
+  ProductReviewsResponse,
 } from '@shared/types'
 
 export async function fetchProducts({
@@ -14,16 +15,8 @@ export async function fetchProducts({
   order,
   cursor,
 }: FetchProducts) {
-  const params: Record<string, any> = {}
-
-  if (keyword) params.keyword = keyword
-  if (category) params.category = category
-  if (order) params.order = order
-  if (cursor) params.cursor = cursor
-  return (await axiosInstance.get<ProductResponse>('/products', { params }))
-    .data
+  return (await axiosInstance.get<ProductResponse>(`/products`)).data
 }
-
 export async function fetchProductDetail({ productId }: ProductId) {
   return (
     await axiosInstance.get<ProductDetailResponse>(`/products/${productId}`)
@@ -46,19 +39,21 @@ export async function updateProduct({
 export async function deleteProduct({ productId }: ProductId) {
   return (await axiosInstance.delete(`/products/${productId}`)).data
 }
-
 export async function fetchProductsReviews({
   productId,
   order,
   cursor,
 }: FetchProductsReviews) {
-  return (await axiosInstance.get(`/products/${productId}/reviews`)).data
+  return (
+    await axiosInstance.get<ProductReviewsResponse>(
+      `/products/${productId}/reviews?cursor=${cursor}&order=${order}`,
+    )
+  ).data
 }
 
 export async function favoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.post(`/products/${productId}/favorite`)).data
 }
-
 export async function deleteFavoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.delete(`/products/${productId}/favorite`)).data
 }

@@ -1,9 +1,9 @@
-import { createReview } from '@shared/api'
+import { useCreateReview } from '@shared/hooks'
 import type { CreateReview } from '@shared/types'
 import { isAxiosError } from 'axios'
 
 interface UseCreateReviewForm {
-  onSuccess?: () => void
+  onSuccess: () => void
   onFailed?: (field: keyof CreateReview, errorMessage: string) => void
 }
 
@@ -11,17 +11,20 @@ export default function useCreateReviewForm({
   onSuccess,
   onFailed,
 }: UseCreateReviewForm) {
+  const { mutateAsync, isPending } = useCreateReview()
+
   const onSubmit = async (data: CreateReview) => {
     if (!data.images) return
 
     try {
       const images = data.images.map((image) => image.url)
-      await createReview({
+      await mutateAsync({
         productId: data.productId,
         content: data.content,
         rating: data.rating,
         images: images,
       })
+      onSuccess()
     } catch (error) {
       // if (isAxiosError(error) && error.response) {
       //   const field = Object.keys(
@@ -35,5 +38,8 @@ export default function useCreateReviewForm({
     }
   }
 
-  return onSubmit
+  return {
+    onSubmit,
+    isPending,
+  }
 }

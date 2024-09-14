@@ -11,7 +11,7 @@ export default function ProductAddModal({
   return (
     <Modal onCloseModal={onCloseToggle}>
       <ModalTitle>상품 추가</ModalTitle>
-      <ProductAddForm />
+      <ProductAddForm onCloseToggle={onCloseToggle} />
     </Modal>
   )
 }

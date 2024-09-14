@@ -4,15 +4,29 @@ import {
   DropdownMenuItem,
   DropdownTrigger,
 } from '@shared/ui/dropdown/Dropdown'
-import { LATEST_DROPDOWN_ITEMS } from '@widgets/product-detail/constants'
+import {
+  LATEST_DROPDOWN_ITEMS,
+  ReviewSortOptions,
+} from '@widgets/product-detail/constants'
 
-export default function LatestDropdown() {
+interface LatestDropdownProps {
+  onSelectedOption: (option: ReviewSortOptions) => void
+}
+
+export default function LatestDropdown({
+  onSelectedOption,
+}: LatestDropdownProps) {
   return (
     <Dropdown variant="none">
       <DropdownTrigger className="tablet:text-sm">최신순</DropdownTrigger>
       <DropdownMenu>
-        {LATEST_DROPDOWN_ITEMS.map((title) => (
-          <DropdownMenuItem key={title}>{title}</DropdownMenuItem>
+        {LATEST_DROPDOWN_ITEMS.map((option) => (
+          <DropdownMenuItem
+            key={option.value}
+            onClick={() => onSelectedOption(option.value)}
+          >
+            {option.name}
+          </DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>

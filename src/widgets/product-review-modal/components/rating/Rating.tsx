@@ -1,10 +1,10 @@
 import { useRating } from '@widgets/product-review-modal/hooks'
 import RatingListItem from './RatingListItem'
 import type { Control } from 'react-hook-form'
-import type { CreateReview } from '@shared/types'
+import type { CreateReview, UpdateReview } from '@shared/types'
 
 interface RatingProps {
-  control: Control<CreateReview>
+  control: Control<CreateReview> | Control<UpdateReview>
 }
 
 export default function Rating({ control }: RatingProps) {

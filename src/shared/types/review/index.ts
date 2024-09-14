@@ -20,7 +20,16 @@ export interface CreateReviewPayload {
 }
 
 export interface UpdateReview extends ReviewId {
-  images: { id: number } | { source: string }[]
+  images: {
+    url: string
+    index: number
+  }[]
+  content: string
+  rating: number
+}
+
+export interface UpdateReviewPayload {
+  images: ({ id: number } | { source: string })[]
   content: string
   rating: number
 }
