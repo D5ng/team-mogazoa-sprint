@@ -1,25 +1,26 @@
 import { useForm } from 'react-hook-form'
-import { useAuth } from '@/src/widgets/auth/hooks'
+import { useAuth } from '@widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
   FormField,
   FieldLabel,
   FieldInput,
-} from '@/src/shared/ui/form-field/FormField'
+} from '@shared/ui/form-field/FormField'
 import {
   emailValidation,
   nicknameValidation,
   passwordValidation,
   passwordConfirmationValidation,
-} from '@/src/widgets/auth/lib/form-validation'
-import type { SignUpFieldData } from '@/src/widgets/auth/types/auth.type'
+} from '@widgets/auth/lib/form-validation'
+import { SignUp } from '@shared/types'
+
 export default function SignUpField() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<SignUpFieldData>({
+  } = useForm<SignUp>({
     mode: 'onBlur',
     defaultValues: {
       email: '',
