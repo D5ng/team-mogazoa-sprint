@@ -10,7 +10,7 @@ export default function useAutocomplete(
 ) {
   const [searchTerm, setSearchTerm] = useState('')
   const [suggestions, setSuggestions] = useState<string[]>([])
-  const { setInputValue } = useProductStore()
+  const { handleInputValue } = useProductStore()
 
   const debounceFilter = debounce((term: string) => {
     if (!term) {
@@ -34,7 +34,7 @@ export default function useAutocomplete(
     setSearchTerm(value)
     setValue('autocompleteInput', value)
     debounceFilter(value)
-    setInputValue(value)
+    handleInputValue(value)
   }
 
   const handleSuggestionSelect = (suggestion: string) => {

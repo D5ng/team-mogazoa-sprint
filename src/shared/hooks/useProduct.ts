@@ -7,34 +7,33 @@ import { fetchProducts } from '../api'
 export default function useProduct() {
   const {
     inputValue,
-    selectedKey,
-    setInputValue,
-    setSelectedKey,
-    setSelectedName,
-    selectedName,
+    selectedCategoryKey,
+    handleInputValue,
+    handleSelectedCategoryKey,
+    handleSelectedCategoryName,
+    selectedCategoryName,
   } = useProductStore()
   const [searchTitle, setSearchTitle] = useState<string>('')
-  // const { data, isLoading, error } = useQuery<ProductResponse, Error>({
-  //   queryKey: ['fetchProductCard', selectedKey, inputValue],
-  //   queryFn: () =>
-  //     fetchProducts({ keyword: inputValue, category: selectedKey }),
-  // })
 
   const updateInputValue = useCallback(
     debounce((value: string) => {
-      setInputValue(value)
+      handleInputValue(value)
     }, 300),
     [],
   )
 
   const handleCategory = (id: number, name: string) => {
-    setSelectedKey(id)
-    setSelectedName(name)
+    if (id === selectedCategoryKey) {
+      handleSelectedCategoryKey(undefined)
+      return
+    }
+    handleSelectedCategoryKey(id)
+    handleSelectedCategoryName(name)
   }
 
   const resetProducts = () => {
-    setInputValue('')
-    setSelectedKey(undefined)
+    handleInputValue('')
+    handleSelectedCategoryKey(undefined)
   }
 
   const { data: hotProducts } = useQuery({
@@ -44,7 +43,7 @@ export default function useProduct() {
         order: 'reviewCount',
         cursor: 0,
       }),
-    enabled: !inputValue && !selectedKey,
+    enabled: !inputValue && !selectedCategoryKey,
     select: (data) => data?.list.slice(0, 6),
   })
 
@@ -55,58 +54,39 @@ export default function useProduct() {
         order: 'rating',
         cursor: 0,
       }),
-    enabled: !inputValue && !selectedKey,
+    enabled: !inputValue && !selectedCategoryKey,
     select: (data) => data?.list.slice(0, 6),
   })
 
   const { data: filteredProducts } = useQuery({
-    queryKey: ['fetchProducts', selectedKey, inputValue],
+    queryKey: ['fetchProducts', selectedCategoryKey, inputValue],
     queryFn: () =>
       fetchProducts({
         order: 'reviewCount',
         cursor: 0,
         keyword: inputValue,
-        category: selectedKey,
+        category: selectedCategoryKey,
       }),
     select: (data) => data?.list,
   })
 
-  //   // 최신순 데이터 요청 (무한스크롤 적용)
-  //   const {
-  //     data: recentProducts,
-  //     fetchNextPage: fetchNextRecentPage,
-  //     hasNextPage: hasNextRecentPage,
-  //   } = useInfiniteQuery<
-  //   AxiosResponse,
-  //   AxiosError,
-  //   ProductResponse
-  // >(
-  //     ['fetchProducts', 'recent'],
-  //     ({ pageParam = 0 }) =>
-  //       fetchProducts({
-  //         order: 'recent',
-  //         cursor: pageParam, // 무한스크롤을 위한 cursor 값 사용
-  //       }),
-  //     }
-  //   );
-
   useEffect(() => {
-    if (selectedKey && !inputValue) {
-      setSearchTitle(`${selectedName}의 모든상품`)
+    if (selectedCategoryKey && !inputValue) {
+      setSearchTitle(`${selectedCategoryName}의 모든상품`)
     }
-    if (!selectedKey && inputValue) {
+    if (!selectedCategoryKey && inputValue) {
       setSearchTitle(`'${inputValue}'로 검색한 상품`)
     }
-    if (selectedKey && inputValue) {
-      setSearchTitle(`${selectedName}의 ${inputValue}로 검색한 상품`)
+    if (selectedCategoryKey && inputValue) {
+      setSearchTitle(`${selectedCategoryName}의 ${inputValue}로 검색한 상품`)
     }
-  }, [selectedKey, inputValue])
+  }, [selectedCategoryKey, inputValue])
 
   return {
     hotProducts,
     ratedProducts,
     updateInputValue,
-    selectedKey,
+    selectedCategoryKey,
     filteredProducts,
     inputValue,
     searchTitle,

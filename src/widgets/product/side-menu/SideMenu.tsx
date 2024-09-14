@@ -4,7 +4,7 @@ import { useProductStore } from '@/src/shared/store/productStore'
 import useProduct from '@/src/shared/hooks/useProduct'
 
 export default function SideMenu() {
-  const { setSelectedKey, selectedKey } = useProductStore()
+  const { selectedCategoryKey } = useProductStore()
   const { handleCategory } = useProduct()
 
   return (
@@ -16,8 +16,8 @@ export default function SideMenu() {
         {CATEGORY_CHIPS.map((data) => (
           <li key={data.id}>
             <MenuTaps
-              checked={selectedKey === data.id}
-              onChange={() => handleCategory(data.id, data.name)}
+              checked={selectedCategoryKey === data.id}
+              handleClick={() => handleCategory(data.id, data.name)}
             >
               {data.name}
             </MenuTaps>
