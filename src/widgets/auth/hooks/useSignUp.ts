@@ -11,7 +11,7 @@ export default function useSignUp(setError: UseFormSetError<SignUp>) {
   return async (data: SignUp) => {
     try {
       const result = await signUp(data)
-      setCookie('token', result.accessToken)
+      setCookie('auth', result)
       router.push('/')
     } catch (error) {
       if (isAxiosError(error) && error.response?.data?.details) {

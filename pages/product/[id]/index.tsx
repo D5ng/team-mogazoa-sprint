@@ -11,11 +11,14 @@ export default function ProductDetailPage({
 }
 
 export const getServerSideProps = (async (context) => {
-  const token = context.req.cookies.token!
-  token
-    ? (axiosInstance.defaults.headers.common['Authorization'] =
-        `Bearer ${token}`)
-    : (axiosInstance.defaults.headers.common['Authorization'] = ``)
+  const cookie = context.req.cookies.auth
+
+  if (cookie) {
+    const token = JSON.parse(cookie).accessToken
+    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
+  } else {
+    axiosInstance.defaults.headers.common['Authorization'] = ``
+  }
 
   const productId = +context.params?.id!
   if (!productId) return { notFound: true }

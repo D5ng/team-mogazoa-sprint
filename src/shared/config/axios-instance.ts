@@ -7,10 +7,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = getCookie('token')
-    if (!token) return config
+    const cookie = getCookie('auth')
 
-    config.headers.Authorization = `Bearer ${token}`
+    if (!cookie) return config
+    const parseCookie = JSON.parse(cookie!)
+    config.headers.Authorization = `Bearer ${parseCookie.accessToken}`
     return config
   },
   (error) => {
