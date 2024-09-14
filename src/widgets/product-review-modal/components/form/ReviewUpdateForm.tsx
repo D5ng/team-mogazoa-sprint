@@ -16,6 +16,7 @@ export interface ReviewUpdateFormProps extends ProductReviewItem {
 
 export default function ReviewUpdateForm({
   onCloseToggle,
+  productId,
   ...props
 }: ReviewUpdateFormProps) {
   const {
@@ -41,6 +42,7 @@ export default function ReviewUpdateForm({
   const content = watch('content')
   const images = watch('images')
   const { onSubmit, isPending } = useUpdateReviewForm({
+    productId,
     existingImage: props.reviewImages,
     onSuccess: () => onCloseToggle(),
   })

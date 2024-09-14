@@ -1,15 +1,26 @@
 import Image from 'next/image'
 import { ProductReviewItem } from '@shared/types'
-import { thumb, emptyThumb } from '@shared/icons'
+import { thumb, emptyThumb, review } from '@shared/icons'
 import { useReviewCancelLike, useReviewLike } from '@shared/hooks'
+import { useReviewOptionStore } from '@/src/shared/store'
 
 export default function ThumbsButton({
   id: reviewId,
   isLiked,
   likeCount,
-}: Pick<ProductReviewItem, 'isLiked' | 'likeCount' | 'id'>) {
-  const { mutateAsync: likeMutate } = useReviewLike()
-  const { mutateAsync: cancelLikeMutate } = useReviewCancelLike()
+  productId,
+}: ProductReviewItem) {
+  const option = useReviewOptionStore((state) => state.option)
+  const { mutateAsync: likeMutate } = useReviewLike({
+    productId,
+    order: option,
+  })
+
+  const { mutateAsync: cancelLikeMutate } = useReviewCancelLike({
+    productId,
+    order: option,
+  })
+
   const isLikedClassName = isLiked ? 'text-indigo' : 'text-black-20'
 
   const handleLikeClick = async () =>

@@ -37,6 +37,7 @@ export default function ReviewCreateForm({
   const content = watch('content')
   const images = watch('images')
   const { onSubmit, isPending } = useCreateReviewForm({
+    productId: productId,
     onSuccess: () => onCloseToggle(),
   })
 

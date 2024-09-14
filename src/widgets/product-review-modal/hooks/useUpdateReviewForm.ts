@@ -1,19 +1,26 @@
+import { useReviewOptionStore } from '@/src/shared/store'
 import { useUpdateReview } from '@shared/hooks'
 import type { UpdateReview } from '@shared/types'
 import { isAxiosError } from 'axios'
 
 interface UseCreateReviewForm {
+  productId: number
   existingImage: { id: number; source: string }[]
   onSuccess: () => void
   onFailed?: (field: keyof UpdateReview, errorMessage: string) => void
 }
 
 export default function useUpdateReviewForm({
+  productId,
   existingImage,
   onSuccess,
   onFailed,
 }: UseCreateReviewForm) {
-  const { mutateAsync, isPending } = useUpdateReview()
+  const option = useReviewOptionStore((state) => state.option)
+  const { mutateAsync, isPending } = useUpdateReview({
+    productId,
+    order: option,
+  })
 
   const onSubmit = async (data: UpdateReview) => {
     try {
