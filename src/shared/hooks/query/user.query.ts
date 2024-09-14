@@ -9,7 +9,7 @@ export function useFetchMyProfile() {
   })
 }
 
-export function useFetchUserProfile(userId: number) {
+export function useFetchUserProfile(userId: number | undefined) {
   return useQuery<UserItem>({
     queryKey: ['user-profile', userId],
     queryFn: () => fetchUserProfile({ userId }),

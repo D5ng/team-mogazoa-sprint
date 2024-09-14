@@ -1,7 +1,7 @@
 import { Variant } from '@/src/widgets/product/ranking/Ranking.types'
 
 export interface UserId {
-  userId: number
+  userId: number | undefined
 }
 
 export interface FavoriteCategory {

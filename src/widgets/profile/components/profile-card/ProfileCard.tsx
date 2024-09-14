@@ -1,19 +1,27 @@
 import { twMerge } from 'tailwind-merge'
 import { ProfileImageSection, ProfileStats } from '@widgets/profile/components'
 import { Button } from '@shared/ui'
-import type { UserItem } from '@shared/types'
+import useAuthStore from '@app/provider/authStore'
+import {
+  useFetchMyProfile,
+  useFetchUserProfile,
+} from '@/src/shared/hooks/query/user.query'
 
 export interface ProfileProps {
-  profileData: UserItem
-  isMyProfile: boolean
+  userId: number | undefined
   className?: string
 }
 
-export default function ProfileCard({
-  profileData,
-  isMyProfile,
-  ...props
-}: ProfileProps) {
+export default function ProfileCard({ userId, ...props }: ProfileProps) {
+  const user = useAuthStore((state) => state.user)
+  const isMyProfile = userId === user?.id
+  const { data: userData } = isMyProfile
+    ? useFetchMyProfile()
+    : useFetchUserProfile(userId)
+
+  if (!userData) return null
+  //ErrorBoundary
+
   return (
     <section
       className={twMerge(
@@ -21,8 +29,8 @@ export default function ProfileCard({
         props.className || '',
       )}
     >
-      <ProfileImageSection profileData={profileData} />
-      <ProfileStats />
+      <ProfileImageSection userData={userData} />
+      <ProfileStats userData={userData} />
       <Button variant="primary">팔로우</Button>
     </section>
   )

@@ -1,8 +1,8 @@
 import Image from 'next/image'
+import defaultImage from 'public/images/default-profile.webp'
 import { ProfileImgProps } from './ProfileImage.type'
 
 export default function ProfileImage({ size, url, ...props }: ProfileImgProps) {
-  const defaultUrl = `https://pbs.twimg.com/media/EFHWmyXUEAASe0o.jpg`
   return (
     <div style={{ width: size, height: size }} className={` rounded-full `}>
       <div
@@ -10,7 +10,7 @@ export default function ProfileImage({ size, url, ...props }: ProfileImgProps) {
         className={`overflow-hidden rounded-full ${props.className || ''}`}
       >
         <Image
-          src={url || defaultUrl}
+          src={url || defaultImage}
           layout="responsive"
           width={size}
           height={size}
