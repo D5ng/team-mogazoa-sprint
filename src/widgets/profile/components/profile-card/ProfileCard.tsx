@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge'
+import { useEffect, useState } from 'react'
 import {
   ProfileButton,
   MyProfileButton,
@@ -9,20 +10,21 @@ import {
   useFetchMyProfile,
   useFetchUserProfile,
 } from '@/src/shared/hooks/query/user.query'
+import { useUserStore } from '@shared/store'
 
 interface ProfileProps {
-  userId: number | undefined
+  userId: number
   className?: string
 }
 
 export default function ProfileCard({ userId, ...props }: ProfileProps) {
-  const isMyProfile = !userId
-  const { data: userData } = isMyProfile
-    ? useFetchMyProfile()
-    : useFetchUserProfile(userId)
+  const { user } = useUserStore()
+  const isMyProfile = user?.id === userId
 
+  const { data: userData } = useFetchUserProfile(userId)
   if (!userData) return null
   //ErrorBoundary
+  //TODO: 페이지끼리 연결 됐을 때, myProfile에 해당하는 userId로 url 접근 시 접근하지 못하도록 막아야함
 
   return (
     <section
@@ -32,9 +34,9 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
       )}
     >
       <ProfileImageSection {...userData} />
-      <ProfileStats {...userData} />
+      <ProfileStats userId={userId} {...userData} />
       {isMyProfile ? (
-        <MyProfileButton />
+        <MyProfileButton userId={userId} />
       ) : (
         <ProfileButton isFollowing={userData.isFollowing} userId={userId} />
       )}
