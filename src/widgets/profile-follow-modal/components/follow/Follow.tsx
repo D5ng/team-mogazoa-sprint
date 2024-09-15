@@ -5,11 +5,11 @@ interface FollowProps {
   image: string | null
 }
 
-export default function Follow(props: FollowProps) {
+export default function Follow({ nickname, image }: FollowProps) {
   return (
     <div className="flex items-center gap-5">
-      <ProfileImage url={props.image} size={52} />
-      <span>{props.nickname}</span>
+      <ProfileImage url={image} size={52} />
+      <span>{nickname}</span>
     </div>
   )
 }

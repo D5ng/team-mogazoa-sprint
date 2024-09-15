@@ -40,7 +40,7 @@ export interface UserItem extends UserCommon {
   isFollowing: boolean
 }
 
-export interface UsersProduct extends UserCommon {
+export interface Follower extends UserCommon {
   writerId: number
   categoryId: number
   rating: number
@@ -48,9 +48,19 @@ export interface UsersProduct extends UserCommon {
   name: string
 }
 
+export interface FollowerItem extends UserCommon {
+  id: number
+  follower: Follower
+}
+
+export interface FolloweesItem extends UserCommon {
+  id: number
+  followees: Follower
+}
+
 export interface UsersProductResponse {
   nextCursor: number
-  list: UsersProduct[]
+  list: FollowerItem[]
 }
 
 export interface UpdateMyProfile
