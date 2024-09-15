@@ -1,17 +1,14 @@
 import { ReviewListItem } from '@widgets/product-detail/components'
 import { useFetchProductReview, useIntersect } from '@shared/hooks'
-import { ReviewSortOptions } from '@widgets/product-detail/constants'
 import ReviewEmptyList from './ReviewEmptyList'
+import { useReviewOptionStore } from '@/src/shared/store'
 
 interface ReviewListProps {
   productId: number
-  reviewSortOption: ReviewSortOptions
 }
 
-export default function ReviewList({
-  productId,
-  reviewSortOption,
-}: ReviewListProps) {
+export default function ReviewList({ productId }: ReviewListProps) {
+  const option = useReviewOptionStore((state) => state.option)
   const {
     data: reviews,
     isFetching,
@@ -20,7 +17,7 @@ export default function ReviewList({
     error,
   } = useFetchProductReview({
     productId,
-    order: reviewSortOption,
+    order: option || 'recent',
   })
 
   if (error && !isFetching) throw error

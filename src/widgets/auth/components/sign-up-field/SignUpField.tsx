@@ -1,12 +1,11 @@
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useAuth } from '@widgets/auth/hooks'
+import { useSignUp } from '@widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
   FormField,
   FieldLabel,
   FieldInput,
-} from '@/src/shared/ui/form-field/FormField'
+} from '@shared/ui/form-field/FormField'
 import {
   emailValidation,
   nicknameValidation,
@@ -19,13 +18,10 @@ export default function SignUpField() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors },
     setError,
-    watch,
-    trigger,
   } = useForm<SignUp>({
-    mode: 'onTouched',
-    reValidateMode: 'onChange',
+    mode: 'onBlur',
     defaultValues: {
       email: '',
       nickname: '',
@@ -33,17 +29,7 @@ export default function SignUpField() {
       passwordConfirmation: '',
     },
   })
-
-  const { signUpSubmit } = useAuth()
-  const onSubmit = signUpSubmit(setError)
-
-  const password = watch('password')
-
-  useEffect(() => {
-    if (password) {
-      trigger('passwordConfirmation')
-    }
-  }, [password, trigger])
+  const onSubmit = useSignUp(setError)
 
   return (
     <Form
@@ -66,11 +52,7 @@ export default function SignUpField() {
       </FormField>
 
       <FormField
-        {...register('passwordConfirmation', {
-          ...passwordConfirmationValidation,
-          validate: (value) =>
-            value === password || '비밀번호가 일치하지 않습니다.',
-        })}
+        {...register('passwordConfirmation', passwordConfirmationValidation)}
         errors={errors}
       >
         <FieldLabel>비밀번호 확인</FieldLabel>
@@ -80,13 +62,7 @@ export default function SignUpField() {
         />
       </FormField>
 
-      <Button
-        variant="primary"
-        type="submit"
-        disabled={!(isValid && isDirty)}
-        isLoading={isSubmitting}
-        className="mobile:mt-20"
-      >
+      <Button variant="primary" type="submit">
         회원가입
       </Button>
     </Form>

@@ -18,7 +18,7 @@ export function useFetchProductReview({
   order = 'recent',
 }: FetchProductsReviews) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['product-detail-review', order],
+    queryKey: ['product-detail-review', productId, order],
     queryFn: ({ pageParam }) =>
       fetchProductsReviews({ productId, cursor: pageParam, order }),
     initialPageParam: 0,

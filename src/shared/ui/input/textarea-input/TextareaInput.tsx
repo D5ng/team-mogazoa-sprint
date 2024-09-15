@@ -35,7 +35,5 @@ const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
     )
   },
 )
-
 TextareaInput.displayName = 'TextareaInput'
-
 export default TextareaInput

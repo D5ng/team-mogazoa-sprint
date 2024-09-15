@@ -15,16 +15,8 @@ export async function fetchProducts({
   order,
   cursor,
 }: FetchProducts) {
-  const params: Record<string, any> = {}
-
-  if (keyword) params.keyword = keyword
-  if (category) params.category = category
-  if (order) params.order = order
-  if (cursor) params.cursor = cursor
-  return (await axiosInstance.get<ProductResponse>('/products', { params }))
-    .data
+  return (await axiosInstance.get<ProductResponse>(`/products`)).data
 }
-
 export async function fetchProductDetail({ productId }: ProductId) {
   return (
     await axiosInstance.get<ProductDetailResponse>(`/products/${productId}`)
@@ -47,11 +39,10 @@ export async function updateProduct({
 export async function deleteProduct({ productId }: ProductId) {
   return (await axiosInstance.delete(`/products/${productId}`)).data
 }
-
 export async function fetchProductsReviews({
   productId,
-  order,
-  cursor,
+  order = 'recent',
+  cursor = 0,
 }: FetchProductsReviews) {
   return (
     await axiosInstance.get<ProductReviewsResponse>(
@@ -63,7 +54,6 @@ export async function fetchProductsReviews({
 export async function favoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.post(`/products/${productId}/favorite`)).data
 }
-
 export async function deleteFavoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.delete(`/products/${productId}/favorite`)).data
 }
