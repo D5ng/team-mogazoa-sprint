@@ -21,7 +21,7 @@ export default function useOAuth() {
   }
 
   const kakaoSignIn = () => {
-    const KAKAO_REDIRECT_URI = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI
+    const KAKAO_REDIRECT_URI = 'http://localhost:3000/api/kakao/signIn'
 
     if (!KAKAO_REDIRECT_URI) {
       console.error('Kakao OAuth 구성이 누락되었습니다.')
@@ -30,7 +30,7 @@ export default function useOAuth() {
 
     if (typeof window !== 'undefined' && window.Kakao) {
       window.Kakao.Auth.authorize({
-        redirectUri: KAKAO_REDIRECT_URI,
+        redirectUri: 'http://localhost:3000/api/kakao/signIn',
       })
     } else {
       console.error('Kakao SDK가 로드되지 않았습니다.')
