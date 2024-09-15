@@ -32,7 +32,7 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
       <ProfileImageSection {...userData} />
       <ProfileStats userId={userId} userData={userData} />
       {isMyProfile ? (
-        <MyProfileButton userId={userId} />
+        <MyProfileButton />
       ) : (
         <ProfileButton isFollowing={userData.isFollowing} userId={userId} />
       )}

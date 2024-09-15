@@ -89,3 +89,9 @@ export interface FetchFollows {
   userId: number | undefined
   cursor?: number
 }
+
+export type UserPayload = {
+  image: string
+  description: string
+  nickname: string
+}
