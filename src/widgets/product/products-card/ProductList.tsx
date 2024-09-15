@@ -17,6 +17,7 @@ export default function ProductList({ children }: listProps) {
   }
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
+  console.log(hasNextPage)
 
   //   if (reviews.length === 0) return <noProducts />
 

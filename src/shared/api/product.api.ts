@@ -15,8 +15,11 @@ export async function fetchProducts({
   order,
   cursor,
 }: FetchProducts) {
-  return (await axiosInstance.get<ProductResponse>(`/products`)).data
+  const params = { keyword, category, order, cursor }
+  return (await axiosInstance.get<ProductResponse>('/products', { params }))
+    .data
 }
+
 export async function fetchProductDetail({ productId }: ProductId) {
   return (
     await axiosInstance.get<ProductDetailResponse>(`/products/${productId}`)

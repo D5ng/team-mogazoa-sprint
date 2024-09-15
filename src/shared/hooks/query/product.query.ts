@@ -1,8 +1,4 @@
-import {
-  useInfiniteQuery,
-  useQuery,
-  useSuspenseInfiniteQuery,
-} from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { fetchProducts } from '../../api'
 import { useProductStore } from '../../store/productStore'
 import { FetchProducts } from '../../types'
@@ -25,7 +21,7 @@ export default function fetchProductsByQuery() {
     queryFn: () =>
       fetchProducts({
         order: 'rating',
-        cursor: 0,
+        cursor: 6,
       }),
     enabled: !inputValue && !selectedCategoryKey,
     // select: (data) => data?.list.slice(0, 6),

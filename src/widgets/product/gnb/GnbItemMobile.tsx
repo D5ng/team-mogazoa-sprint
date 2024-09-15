@@ -5,12 +5,12 @@ import GnbInput from './GnbProductSearchInput'
 import { hamburger, search } from '@shared/icons'
 import { useOutsideClick, useToggle } from '@shared/hooks'
 import SideMenuMobile from '../side-menu/SideMenuMobile'
-import useProduct from '@shared/hooks/useProduct'
+import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 
 export default function GnbMenu() {
   const { isToggle: searchVisible, onToggle: toggleSearchInput } = useToggle()
   const { isToggle: sideMenuVisible, onToggle: toggleSideMenu } = useToggle()
-  const { resetProducts } = useProduct()
+  const { resetProducts } = useSearchProduct()
   const inputRef = useOutsideClick<HTMLDivElement>({
     onCloseToggle: () => toggleSearchInput(),
     callback: (element) => {

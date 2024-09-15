@@ -1,11 +1,11 @@
 import MenuTaps from './MenuTaps'
 import { CATEGORY_CHIPS } from '../category-chip/CategoryChip.constants'
 import { useProductStore } from '@/src/shared/store/productStore'
-import useProduct from '@/src/shared/hooks/useProduct'
+import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 
 export default function SideMenu() {
   const { selectedCategoryKey } = useProductStore()
-  const { handleCategory } = useProduct()
+  const { handleCategory } = useSearchProduct()
 
   return (
     <article>
