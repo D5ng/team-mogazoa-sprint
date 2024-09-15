@@ -1,4 +1,3 @@
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, Form, TextareaInput, TextFieldInput } from '@shared/ui'
 import { descriptionValidation } from '@shared/utils'

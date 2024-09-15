@@ -1,6 +1,6 @@
 import { isAxiosError } from 'axios'
-import { updateMyProfile } from '@shared/api'
 import type { UserPayload } from '@shared/types'
+import { useUpdateProfile } from '@/src/shared/hooks/mutate/user.mutate'
 
 interface useProfileEditForm {
   onSuccess: () => void
@@ -11,9 +11,11 @@ export default function useProfileEditForm({
   onSuccess,
   onFailed,
 }: useProfileEditForm) {
+  const updateProfileMutation = useUpdateProfile()
+
   const onSubmit = async (data: UserPayload) => {
     try {
-      await updateMyProfile({
+      await updateProfileMutation.mutateAsync({
         description: data.description,
         nickname: data.nickname,
         image: data.image,
