@@ -16,7 +16,7 @@ export interface UserCommon {
   image: string | null
   description: string
   nickname: string
-  id: number
+  id: number | undefined
   reviewCount: number
   followersCount: number
 }
@@ -54,8 +54,8 @@ export interface FollowerItem extends UserCommon {
 }
 
 export interface FolloweesItem extends UserCommon {
-  id: number
-  followees: Follower
+  id: number | undefined
+  followee: Follower
 }
 
 export interface followerProductResponse {

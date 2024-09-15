@@ -1,5 +1,5 @@
 import { LogList } from '@widgets/profile/components/activity-log'
-import { ProfileLayout } from '@widgets/profile/components/layout'
+import { ProfileLayout } from '@widgets/profile/components'
 import {
   useFetchMyProfile,
   useFetchUserProfile,

@@ -1,16 +1,16 @@
+import { ProfileFollowerModal } from '@widgets/profile-follow-modal/components'
 import { useToggle } from '@shared/hooks'
-import { ProfileFolloweesModal } from '@widgets/profile-follow-modal/components'
 
 interface FollowerButtonProps {
-  userId: number
+  userId: number | undefined
+  followersCount: number
   nickname: string
-  followeesCount: number
 }
 
-export default function FolloweesButton({
+export default function FollowerButton({
   userId,
+  followersCount,
   nickname,
-  followeesCount,
 }: FollowerButtonProps) {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
 
@@ -18,12 +18,12 @@ export default function FolloweesButton({
     <>
       <button type="button" onClick={onOpenToggle}>
         <div className="flex flex-col items-center text-white text-xl">
-          <div>{followeesCount}</div>
-          <span className="text-black-20 text-base">팔로잉</span>
+          <div>{followersCount}</div>
+          <span className="text-black-20 text-base">팔로워</span>
         </div>
       </button>
       {isToggle && (
-        <ProfileFolloweesModal
+        <ProfileFollowerModal
           userId={userId}
           nickname={nickname}
           onCloseToggle={onCloseToggle}

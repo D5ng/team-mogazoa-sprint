@@ -1,4 +1,4 @@
-export interface ProfileButtonProps {
+export interface UserProfileButtonProps {
   isFollowing: boolean
   userId: number
 }

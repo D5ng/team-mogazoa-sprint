@@ -1,14 +1,14 @@
 import { Button } from '@shared/ui'
-import type { ProfileButtonProps } from './ProfileButton.type'
+import type { UserProfileButtonProps } from './UserProfileButton.type'
 import {
   useFollowUser,
   useUnFollowUser,
 } from '@shared/hooks/mutate/follow.mutate'
 
-export default function ProfileButton({
+export default function UserProfileButton({
   isFollowing,
   userId,
-}: ProfileButtonProps) {
+}: UserProfileButtonProps) {
   const followMutation = useFollowUser()
   const unFollowMutation = useUnFollowUser()
 

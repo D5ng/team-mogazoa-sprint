@@ -1,22 +1,21 @@
 import { twMerge } from 'tailwind-merge'
+
+import { useFetchUserProfile } from '@/src/shared/hooks/query/user.query'
 import {
-  ProfileButton,
-  MyProfileButton,
   ProfileImageSection,
   ProfileStats,
-} from '@widgets/profile/components'
-import { useFetchUserProfile } from '@/src/shared/hooks/query/user.query'
-import { useUserStore } from '@shared/store'
+  ProfileButton,
+} from '@/src/widgets/profile/components'
 
-interface ProfileProps {
+interface UserProfileProps {
   userId: number
   className?: string
 }
 
-export default function ProfileCard({ userId, ...props }: ProfileProps) {
-  const { user } = useUserStore()
-  const isMyProfile = user?.id === userId
-
+export default function UserProfileCard({
+  userId,
+  ...props
+}: UserProfileProps) {
   const { data: userData } = useFetchUserProfile(userId)
   if (!userData) return null
   //ErrorBoundary
@@ -31,11 +30,7 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
     >
       <ProfileImageSection {...userData} />
       <ProfileStats userId={userId} userData={userData} />
-      {isMyProfile ? (
-        <MyProfileButton />
-      ) : (
-        <ProfileButton isFollowing={userData.isFollowing} userId={userId} />
-      )}
+      <ProfileButton isFollowing={userData.isFollowing} userId={userId} />
     </section>
   )
 }

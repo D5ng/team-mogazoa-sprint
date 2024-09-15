@@ -65,7 +65,7 @@ export async function fetchUsersFollowees({
   cursor,
 }: CursorParams & UserId) {
   return (
-    await axiosInstance.get<followerProductResponse>(
+    await axiosInstance.get<followeesProductResponse>(
       `/users/${userId}/followees?cursor=${cursor}`,
     )
   ).data
@@ -76,7 +76,7 @@ export async function fetchUsersFollowers({
   cursor,
 }: CursorParams & UserId) {
   return (
-    await axiosInstance.get<followeesProductResponse>(
+    await axiosInstance.get<followerProductResponse>(
       `/users/${userId}/followers?cursor=${cursor}`,
     )
   ).data

@@ -3,7 +3,7 @@ import { Modal, ModalTitle } from '@shared/ui'
 import { Suspense } from 'react'
 
 export interface ReviewCreateModalProps {
-  userId: number
+  userId: number | undefined
   nickname: string
   onCloseToggle: () => void
 }
