@@ -1,15 +1,11 @@
 import { twMerge } from 'tailwind-merge'
-import { useEffect, useState } from 'react'
 import {
   ProfileButton,
   MyProfileButton,
   ProfileImageSection,
   ProfileStats,
 } from '@widgets/profile/components'
-import {
-  useFetchMyProfile,
-  useFetchUserProfile,
-} from '@/src/shared/hooks/query/user.query'
+import { useFetchUserProfile } from '@/src/shared/hooks/query/user.query'
 import { useUserStore } from '@shared/store'
 
 interface ProfileProps {
@@ -34,7 +30,7 @@ export default function ProfileCard({ userId, ...props }: ProfileProps) {
       )}
     >
       <ProfileImageSection {...userData} />
-      <ProfileStats userId={userId} {...userData} />
+      <ProfileStats userId={userId} userData={userData} />
       {isMyProfile ? (
         <MyProfileButton userId={userId} />
       ) : (

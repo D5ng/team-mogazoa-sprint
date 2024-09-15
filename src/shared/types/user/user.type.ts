@@ -58,9 +58,19 @@ export interface FolloweesItem extends UserCommon {
   followees: Follower
 }
 
-export interface UsersProductResponse {
+export interface followerProductResponse {
   nextCursor: number
   list: FollowerItem[]
+}
+
+export interface followeesProductResponse {
+  nextCursor: number
+  list: FolloweesItem[]
+}
+
+export interface UsersProductResponse {
+  nextCursor: number
+  list: UserItem[]
 }
 
 export interface UpdateMyProfile

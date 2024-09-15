@@ -1,5 +1,5 @@
+import { UserItem } from '@shared/types'
 export interface ProfileStatsProps {
   userId: number
-  followersCount: number
-  followeesCount: number
+  userData: UserItem
 }

@@ -34,7 +34,7 @@ export function useFetchFollowers({ userId }: FetchFollows) {
 
 export function useFetchFollowees({ userId }: FetchFollows) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['followers', userId],
+    queryKey: ['followees', userId],
     queryFn: ({ pageParam }) =>
       fetchUsersFollowees({ userId, cursor: pageParam }),
     initialPageParam: 0,
