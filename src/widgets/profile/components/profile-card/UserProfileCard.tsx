@@ -2,9 +2,9 @@ import { twMerge } from 'tailwind-merge'
 
 import { useFetchUserProfile } from '@/src/shared/hooks/query/user.query'
 import {
-  ProfileImageSection,
+  ProfileHeader,
   ProfileStats,
-  ProfileButton,
+  UserProfileButton,
 } from '@/src/widgets/profile/components'
 
 interface UserProfileProps {
@@ -28,9 +28,9 @@ export default function UserProfileCard({
         props.className || '',
       )}
     >
-      <ProfileImageSection {...userData} />
+      <ProfileHeader {...userData} />
       <ProfileStats userId={userId} userData={userData} />
-      <ProfileButton isFollowing={userData.isFollowing} userId={userId} />
+      <UserProfileButton isFollowing={userData.isFollowing} userId={userId} />
     </section>
   )
 }

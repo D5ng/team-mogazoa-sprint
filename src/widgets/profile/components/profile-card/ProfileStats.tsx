@@ -1,5 +1,10 @@
-import type { ProfileStatsProps } from './ProfileStats.type'
+import { UserItem } from '@shared/types'
 import { FolloweesButton, FollowerButton } from '@widgets/profile/components'
+
+interface ProfileStatsProps {
+  userId: number | undefined
+  userData: UserItem
+}
 
 export default function ProfileStats({ userId, userData }: ProfileStatsProps) {
   return (

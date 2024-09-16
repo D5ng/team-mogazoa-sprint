@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import Profile from '@/src/pages/profile/Profile'
 import { useUserStore } from '@shared/store'
 import { useFetchMyProfile } from '@shared/hooks/query/user.query'

@@ -1,3 +1,3 @@
-export { default as LogList } from './list/LogList'
-export { default as LogListItem } from './item/LogListItem'
-export { default as ActivityLog } from './ActivityLogSection'
+export { default as LogList } from './LogList'
+export { default as LogListItem } from './LogListItem'
+export { default as ActivityLogSection } from './ActivityLogSection'

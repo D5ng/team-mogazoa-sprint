@@ -1,11 +1,11 @@
 import { twMerge } from 'tailwind-merge'
-import { useFetchMyProfile } from '@/src/shared/hooks/query/user.query'
+import { useFetchMyProfile } from '@shared/hooks/query/user.query'
 import {
-  ProfileImageSection,
+  ProfileHeader,
   ProfileStats,
   MyProfileButton,
-} from '@/src/widgets/profile/components'
-import { useUserStore } from '@/src/shared/store'
+} from '@widgets/profile/components'
+import { useUserStore } from '@shared/store'
 
 export default function MyProfileCard({ ...props }) {
   const { data: myData } = useFetchMyProfile()
@@ -22,7 +22,7 @@ export default function MyProfileCard({ ...props }) {
         props.className || '',
       )}
     >
-      <ProfileImageSection {...myData} />
+      <ProfileHeader {...myData} />
       <ProfileStats userId={userId} userData={myData} />
       <MyProfileButton />
     </section>

@@ -1,9 +1,13 @@
 import { Button } from '@shared/ui'
-import type { UserProfileButtonProps } from './UserProfileButton.type'
 import {
   useFollowUser,
   useUnFollowUser,
 } from '@shared/hooks/mutate/follow.mutate'
+
+interface UserProfileButtonProps {
+  isFollowing: boolean
+  userId: number
+}
 
 export default function UserProfileButton({
   isFollowing,

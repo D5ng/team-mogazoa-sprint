@@ -1,5 +1,10 @@
 import { ProfileImage } from '@shared/ui'
-import { ProfileHeaderProps } from './ProfileHeader.type'
+
+interface ProfileHeaderProps {
+  image: string | null
+  description: string
+  nickname: string
+}
 
 export default function ProfileHeader({
   image,

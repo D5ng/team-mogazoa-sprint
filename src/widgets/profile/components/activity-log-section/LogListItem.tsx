@@ -1,6 +1,12 @@
 import Image from 'next/image'
 import CategoryChip from '@widgets/product/category-chip/CategoryChip'
-import { LogListItemProps } from './LogListItem.type'
+
+interface LogListItemProps {
+  title: string
+  image?: string
+  name: string
+  value: any
+}
 
 export default function LogListItem({
   title,

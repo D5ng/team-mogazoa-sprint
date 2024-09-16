@@ -1,4 +1,7 @@
-import { ActivityLogSection } from '@widgets/profile/components'
+import {
+  ActivityLogSection,
+  ProductCardSection,
+} from '@widgets/profile/components'
 import { ProfileProps } from './Profile.type'
 import {
   MyProfileCard,
@@ -13,7 +16,7 @@ export default function Profile({ userId }: ProfileProps) {
       {isMyProfile ? <MyProfileCard /> : <UserProfileCard userId={userId} />}
       <div className="flex flex-col gap-[60px]">
         <ActivityLogSection userId={userId} />
-        <section className="col-start-2 tablet:col-start-1">카드자리</section>
+        <ProductCardSection />
       </div>
     </main>
   )

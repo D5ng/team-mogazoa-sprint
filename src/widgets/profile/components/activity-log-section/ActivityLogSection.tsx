@@ -1,5 +1,4 @@
-import { LogList } from '@widgets/profile/components/activity-log-section'
-import { ProfileLayout } from '@widgets/profile/components'
+import { LogList } from '@widgets/profile/components'
 import {
   useFetchMyProfile,
   useFetchUserProfile,
@@ -20,8 +19,13 @@ export default function ActivityLogSection({
   if (!userData) return null
 
   return (
-    <ProfileLayout title="활동 내역">
+    <section className="text-xl font-normal flex flex-col gap-y-[30px] text-white">
+      <div className="flex justify-between items-center">
+        <h2 className="text-xl text-white tablet:text-base mobile:text-lg">
+          활동 내역
+        </h2>
+      </div>
       <LogList {...userData} />
-    </ProfileLayout>
+    </section>
   )
 }
