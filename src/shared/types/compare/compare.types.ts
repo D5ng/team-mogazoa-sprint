@@ -1,13 +1,18 @@
 export interface Product {
+  name: string
   rating: number
   reviewCount: number
   favoriteCount: number
 }
 
 export interface ComparisonResult {
-  rating: '상품1 우세' | '상품2 우세' | '무승부'
-  reviewCount: '상품1 우세' | '상품2 우세' | '무승부'
-  favoriteCount: '상품1 우세' | '상품2 우세' | '무승부'
+  rating: string 
+  reviewCount: string 
+  favoriteCount: string 
+  finalResult: {
+    productName: string
+    winCount: number
+  } | '무승부입니다!'
 }
 
 export interface ComparisonTableProps {

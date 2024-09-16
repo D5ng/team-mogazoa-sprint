@@ -13,14 +13,13 @@ export default function SelectedProduct({
   setViewCompareSheet: (arg: boolean) => void
   children: ReactNode
 }) {
-  const TAG_STYLE =
-    id === 'input1' ? 'text-green bg-green' : 'text-pink bg-pink'
+  const TAG_STYLE = id === '상품1' ? 'text-green bg-green' : 'text-pink bg-pink'
   const handleClickTag = () => {
     setViewCompareSheet(false)
     deleteSelectedProduct()
   }
   return (
-    <div className="input-base p-[15px] w-[252px]">
+    <div className="input-base p-[13px] w-full">
       <div
         onClick={handleClickTag}
         className={`flex justify-between rounded-lg w-2/3 bg-opacity-20 ${TAG_STYLE} text-[12px] p-[8px] cursor-pointer`}

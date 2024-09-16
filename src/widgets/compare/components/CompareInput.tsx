@@ -1,6 +1,7 @@
 import { useOutsideClick, useToggle } from '@/src/shared/hooks'
 import useProductAutocomplete from '../hooks/useProductAutocomplete'
 import SelectedProduct from './SelectedProduct'
+import { twMerge } from 'tailwind-merge'
 
 export default function CompareInput({
   id,
@@ -19,11 +20,13 @@ export default function CompareInput({
     deleteSelectedProduct,
   } = useProductAutocomplete(id, onCloseToggle)
   const ref = useOutsideClick<HTMLUListElement>({ onCloseToggle })
+
   return (
-    <div className="relative mt-[200px]">
+    <div className="relative w-full mt-[200px]">
+      <span className="text-white">{id}</span>
       {!selectedProduct ? (
         <input
-          className="input-base"
+          className={`input-base`}
           value={inputValue}
           onChange={(e) => handleInputChange(e.target.value)}
           placeholder="상품명을 입력하세요"
