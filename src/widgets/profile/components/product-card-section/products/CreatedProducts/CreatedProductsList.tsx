@@ -11,7 +11,6 @@ export default function CreatedProductsList({ userId }: UserId) {
     fetchNextPage,
     error,
   } = useFetchCreatedProducts({ userId })
-  console.log(userId)
 
   if (error && !isFetching) throw error
 

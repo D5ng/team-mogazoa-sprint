@@ -11,7 +11,6 @@ export default function FavoriteProductsList({ userId }: UserId) {
     fetchNextPage,
     error,
   } = useFetchFavoriteProducts({ userId })
-  console.log(userId)
 
   if (error && !isFetching) throw error
 

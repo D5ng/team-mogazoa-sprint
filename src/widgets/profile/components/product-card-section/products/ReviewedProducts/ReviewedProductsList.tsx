@@ -11,7 +11,6 @@ export default function ReviewedProductsList({ userId }: UserId) {
     fetchNextPage,
     error,
   } = useFetchReviewedProducts({ userId })
-  console.log(userId)
 
   if (error && !isFetching) throw error
 
