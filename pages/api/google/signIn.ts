@@ -43,7 +43,7 @@ export default async function handler(
     } catch (error) {
       if (isAxiosError(error) && error.response) {
         if (error.response.status === 403)
-          return res.redirect('/auth/social-sign-up/google')
+          return res.redirect('/auth/oauth-sign-up/google')
       }
       res.redirect('/error')
     }

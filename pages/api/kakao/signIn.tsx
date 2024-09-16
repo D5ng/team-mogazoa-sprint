@@ -1,6 +1,5 @@
 import { socialSignIn } from '@/src/shared/api'
-import { getToken, setAuthToken } from '@/src/shared/utils'
-import { setCookie } from 'cookies-next'
+import { setAuthToken } from '@/src/shared/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -27,7 +26,7 @@ export default async function handler(
 
       res.redirect('/')
     } catch (error) {
-      res.redirect('/auth/social-sign-up/kakao')
+      res.redirect('/auth/oauth-sign-up/kakao')
     }
   } catch (error) {
     res.status(500).json('failed to sign up')
