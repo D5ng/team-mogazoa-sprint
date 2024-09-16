@@ -1,11 +1,11 @@
-import { CATEGORY_CHIPS } from '@/src/widgets/product/category-chip/CategoryChip.constants'
+import { CATEGORY_CHIPS } from '@/src/widgets/product/components/category-chip/CategoryChip.constants'
 import {
   Dropdown,
   DropdownMenu,
   DropdownMenuItem,
   DropdownTrigger,
 } from '@shared/ui'
-import { Control, useController, UseFormSetValue } from 'react-hook-form'
+import { Control, useController } from 'react-hook-form'
 import type { ProductPayload } from '@shared/types'
 import { categoryValidation } from '@/src/shared/utils'
 

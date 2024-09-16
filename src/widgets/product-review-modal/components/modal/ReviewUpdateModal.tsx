@@ -1,6 +1,6 @@
 import { ProductReviewItem } from '@shared/types'
 import { Modal, ModalTitle } from '@shared/ui'
-import CategoryChip from '@widgets/product/category-chip/CategoryChip'
+import CategoryChip from '@/src/widgets/product/components/category-chip/CategoryChip'
 import ReviewUpdateForm from '../form/ReviewUpdateForm'
 
 export interface ReviewUpdateModalProps extends ProductReviewItem {

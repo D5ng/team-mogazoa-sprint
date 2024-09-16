@@ -12,7 +12,6 @@ export default function useProductForm({
   onFailed,
 }: UseProductForm) {
   const onSubmit = async (data: ProductPayload) => {
-    console.log(data)
     if (!data.image) return
 
     try {

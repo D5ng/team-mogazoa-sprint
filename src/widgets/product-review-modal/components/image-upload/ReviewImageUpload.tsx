@@ -24,7 +24,6 @@ export default function ReviewImageUpload({
   }
 
   const onCancel = (index: number) => {
-    console.log(index)
     const filteredImage = images.filter((image) => image.index !== index)
     setValue('images', filteredImage)
   }

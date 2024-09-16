@@ -1,4 +1,4 @@
-import { Variant } from '@/src/widgets/product/ranking/Ranking.types'
+import { Variant } from '@/src/widgets/product/components/ranking/Ranking.types'
 
 export interface UserId {
   userId: number | undefined

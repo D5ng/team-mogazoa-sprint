@@ -1,5 +1,5 @@
-import { CARD_MOCK_DATA } from '@/src/widgets/product/products-card/ProductCard.mock'
-import { ProductCardData } from '@/src/widgets/product/products-card/ProductCard.types'
+import { CARD_MOCK_DATA } from '@/src/widgets/product/components/products-card/ProductCard.mock'
+import { ProductCardData } from '@/src/widgets/product/components/products-card/ProductCard.types'
 import { useEffect, useRef, useState } from 'react'
 export default function useProduct() {
   const ref = useRef<HTMLInputElement | null>(null)
@@ -7,7 +7,6 @@ export default function useProduct() {
     useState<ProductCardData>(CARD_MOCK_DATA)
 
   const searchValue = ref.current?.value || ''
-  // console.log(searchValue)
 
   useEffect(() => {
     const filtered = CARD_MOCK_DATA.filter((product) =>
