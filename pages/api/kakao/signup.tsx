@@ -1,4 +1,5 @@
-import { axiosInstance } from '@/src/shared/config'
+import { socialSignUp } from '@shared/api'
+import { setAuthToken } from '@shared/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -9,20 +10,23 @@ export default async function handler(
     const { code, state } = req.query
 
     if (!code) {
-      throw new Error('failed to login to Kakao')
-    }
-    const data = {
-      nickname: state! as string,
-      redirectUri: `http://localhost:3000/api/kakao/signUp`,
-      token: code,
+      throw new Error(
+        '카카오 회원가입에 실패했어요. redirect Uri를 확인해 주세요',
+      )
     }
 
     try {
-      const result = await axiosInstance.post(`/auth/signUp/kakao`, data)
+      const result = await socialSignUp({
+        social: 'kakao',
+        nickname: state! as string,
+        redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI_SIGN_UP,
+        token: code as string,
+      })
 
-      console.log(result)
+      setAuthToken('auth', result, { req, res })
+      res.redirect('/')
     } catch (error) {
-      console.log('회원가입 에러')
+      res.send(error)
     }
   } catch (error) {
     res.status(500).json('failed to sign up')
