@@ -82,6 +82,12 @@ textarea {
     @apply w-full h-full p-5 rounded-lg text-white bg-black-60 border border-black-70 focus:ring-1 focus:ring-indigo focus:border-indigo placeholder:text-black-30 caret-white;
   }
 
+  .none-scrollbar {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   .custom-scrollbar {
     &::-webkit-scrollbar {
       background-color: transparent;
