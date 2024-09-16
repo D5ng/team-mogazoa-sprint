@@ -1,8 +1,15 @@
+import { useRouter } from 'next/navigation'
 import { deleteCookie } from 'cookies-next'
-import { useRouter } from 'next/router'
 
 export default function useLogout() {
   const router = useRouter()
-  deleteCookie('token')
-  router.push('/')
+
+  return async () => {
+    try {
+      deleteCookie('auth')
+      router.push('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }

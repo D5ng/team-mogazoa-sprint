@@ -2,6 +2,8 @@ import { axiosInstance } from '@shared/config'
 import type {
   UserItem,
   UserRanking,
+  followerProductResponse,
+  followeesProductResponse,
   UsersProductResponse,
   UpdateMyProfile,
   UserProfileUpdateResponse,
@@ -63,7 +65,9 @@ export async function fetchUsersFollowees({
   cursor,
 }: CursorParams & UserId) {
   return (
-    await axiosInstance.get<UsersProductResponse>(`/users/${userId}/followees`)
+    await axiosInstance.get<followeesProductResponse>(
+      `/users/${userId}/followees?cursor=${cursor}`,
+    )
   ).data
 }
 
@@ -72,6 +76,8 @@ export async function fetchUsersFollowers({
   cursor,
 }: CursorParams & UserId) {
   return (
-    await axiosInstance.get<UsersProductResponse>(`/users/${userId}/followers`)
+    await axiosInstance.get<followerProductResponse>(
+      `/users/${userId}/followers?cursor=${cursor}`,
+    )
   ).data
 }

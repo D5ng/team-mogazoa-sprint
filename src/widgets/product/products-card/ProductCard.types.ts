@@ -1,14 +1,18 @@
-export interface ProductCardItems {
-  id: number
-  image: string
-  name: string
-  reviewCount: number
-  favoriteCount: number
-  rating: number
-}
+import { ProductListItem } from '@/src/shared/types'
+
+export type ProductCardItems = Omit<
+  ProductListItem,
+  'updatedAt' | 'createdAt' | 'writerId' | 'categoryId'
+>
 
 export type ProductCardProps = {
   data: ProductCardItems
+  children?: React.ReactNode
 }
 
 export type ProductCardData = ProductCardItems[]
+
+export interface ProductCardSectionProps {
+  data: ProductCardItems[] | undefined
+  children?: React.ReactNode
+}

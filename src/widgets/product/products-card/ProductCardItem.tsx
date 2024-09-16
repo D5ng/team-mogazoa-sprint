@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function ProductCardItem({ data }: ProductCardProps) {
   return (
     <article className=" inline-block m-[10px] tablet:m-[8px] gap-[10px] bg-black-60 p-[1vw] tablet:p-[1vw] mobile:p-[2vw] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
-      <Link href={`/product-detail/${data.id}`}>
+      <Link href={`/product/${data.id}`}>
         <div className=" relative w-[13.3vw] h-[200px] tablet:w-[28vw] tablet:h-[200px] mobile:w-[36vw] mobile:h-[15vh] flex overflow-hidden rounded-lg">
           <Image fill src={data.image} alt="상품이미지" />
         </div>

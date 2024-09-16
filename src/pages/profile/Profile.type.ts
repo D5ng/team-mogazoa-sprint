@@ -1,3 +1,3 @@
 export interface ProfileProps {
-  userId?: number | undefined
+  userId?: number
 }
