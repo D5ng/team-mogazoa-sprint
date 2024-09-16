@@ -31,7 +31,7 @@ export default function ReviewCreateForm({
       content: '',
       rating: 1,
     },
-    mode: 'onBlur',
+    mode: 'onTouched',
   })
 
   const content = watch('content')

@@ -36,7 +36,7 @@ export default function ReviewUpdateForm({
         url: image.source,
       })),
     },
-    mode: 'onBlur',
+    mode: 'onTouched',
   })
 
   const content = watch('content')

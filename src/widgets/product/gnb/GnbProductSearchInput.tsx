@@ -5,12 +5,12 @@ import {
   AutocompleteDropdown,
   AutocompleteField,
   AutocompleteInput,
-} from '@/src/shared/ui'
+} from '@shared/ui'
 import { PRODUCT_MOCK } from './Gnb.mock'
 import { twMerge } from 'tailwind-merge'
 import { useForm } from 'react-hook-form'
 
-export default function GnbInput() {
+export default function GnbProductSearchInput() {
   const router = useRouter()
   const { register, setValue } = useForm()
 

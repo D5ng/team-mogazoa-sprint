@@ -9,8 +9,8 @@ const variantLUT: Record<number, Variant> = {
   1: 'second',
 }
 
-export default function useChipVariant(data: RankingItem[] | undefined) {
-  const updatedData = useMemo(() => {
+export default function rankingIndexer(data: RankingItem[] | undefined) {
+  const rankedData = useMemo(() => {
     const result: RankingItem[] = []
     data?.forEach((item, index) => {
       const variant = variantLUT[index] || 'etc'
@@ -21,5 +21,5 @@ export default function useChipVariant(data: RankingItem[] | undefined) {
     return result
   }, [data])
 
-  return updatedData
+  return rankedData
 }

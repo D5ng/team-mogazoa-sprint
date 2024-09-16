@@ -5,9 +5,9 @@ interface UseSelect<T> {
 }
 
 export default function useSelect<T>({ defaultValue }: UseSelect<T>) {
-  const [selectedItem, setSelectedItem] = useState<T>(defaultValue)
-  const onSelect = (select: T) => setSelectedItem(select)
-  const resetSelect = () => setSelectedItem(defaultValue)
+  const [selectedItem, handleSelectedCategoryItem] = useState<T>(defaultValue)
+  const onSelect = (select: T) => handleSelectedCategoryItem(select)
+  const resetSelect = () => handleSelectedCategoryItem(defaultValue)
 
   return {
     selectedItem,
