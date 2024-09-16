@@ -1,10 +1,8 @@
 import Image from 'next/image'
-import { useOAuth } from '@widgets/auth/hooks'
 import { google, kakao } from '@shared/icons'
+import { googleSignIn, kakaoSignIn } from '@app/provider/Oauth'
 
-export default function SnsField() {
-  const { googleSignIn, kakaoSignIn } = useOAuth()
-
+export default function OauthField() {
   return (
     <div className="flex flex-col gap-5 text-black-30">
       <span>SNS로 바로 시작하기</span>
