@@ -1,16 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from 'public/images/logo-mobile.png'
-import GnbInput from './Gnb-Input'
+import GnbInput from './GnbProductSearchInput'
 import { hamburger, search } from '@shared/icons'
-import { useOutsideClick, useToggle } from '@/src/shared/hooks'
+import { useOutsideClick, useToggle } from '@shared/hooks'
 import SideMenuMobile from '../side-menu/SideMenuMobile'
-import useProduct from '@/src/shared/hooks/useProduct'
+import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 
 export default function GnbMenu() {
   const { isToggle: searchVisible, onToggle: toggleSearchInput } = useToggle()
   const { isToggle: sideMenuVisible, onToggle: toggleSideMenu } = useToggle()
-  const { resetProducts } = useProduct()
+  const { resetProducts } = useSearchProduct()
   const inputRef = useOutsideClick<HTMLDivElement>({
     onCloseToggle: () => toggleSearchInput(),
     callback: (element) => {
@@ -35,9 +35,11 @@ export default function GnbMenu() {
             priority
           />
         </button>
-        <Link onClick={resetProducts} href={'/'}>
-          <Image src={logo} width={110} height={80} alt="메인로고" />
-        </Link>
+        <div onClick={resetProducts}>
+          <Link href={'/'}>
+            <Image src={logo} width={110} height={80} alt="메인로고" />
+          </Link>
+        </div>
 
         <button onClick={() => toggleSearchInput()} className="search">
           <Image src={search} width={30} height={10} alt="돋보기버튼" />

@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function RankingUi({ data }: RankingUiProps) {
   return (
     <div className="flex cursor-pointer shrink-0 hover:scale-105 transition-transform duration-200 ease-in-out">
-      <Link className="flex shrink-0" href={`/user/${data.id}`}>
+      <Link className="flex shrink-0" href={`/profile/${data.id}`}>
         <ProfileImage
           className="tablet:w-[38px] tablet:h-[38px]"
           size={42}
