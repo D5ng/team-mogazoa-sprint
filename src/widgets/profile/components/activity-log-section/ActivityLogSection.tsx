@@ -19,11 +19,9 @@ export default function ActivityLogSection({
   if (!userData) return null
 
   return (
-    <section className="text-xl font-normal flex flex-col gap-y-[30px] text-white">
+    <section className="flex flex-col gap-y-[30px] text-white">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl text-white tablet:text-base mobile:text-lg">
-          활동 내역
-        </h2>
+        <h2 className="text-xl text-white tablet:text-lg">활동 내역</h2>
       </div>
       <LogList {...userData} />
     </section>
