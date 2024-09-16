@@ -1,6 +1,6 @@
 export { default as ProductCardSection } from './ProductCardSection'
 export { default as ReviewedProducts } from './products/ReviewedProducts'
-export { default as RegisteredProducts } from './products/RegisteredProducts'
-export { default as WishListedProducts } from './products/WishListedProducts'
+export { default as RegisteredProducts } from './products/CreatedProducts'
+export { default as WishListedProducts } from './products/FavoriteProducts'
 export { default as CategoryPc } from './category/CategoryPc'
 export { default as CategoryTablet } from './category/CategoryTablet'
