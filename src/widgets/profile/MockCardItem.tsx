@@ -1,9 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { star } from '@shared/icons'
-import type { ProductCardProps } from '@widgets/product/products-card/ProductCard.types'
+import { UserData } from '@/src/shared/types'
 
-export default function MockCardItem({ data }: ProductCardProps) {
+interface Prop {
+  data: UserData
+}
+
+export default function MockCardItem({ data }: Prop) {
   return (
     <li className="bg-black-60 p-4 rounded-lg border border-black-70 cursor-pointer hover:bg-black-50 h-[400px] flex flex-col">
       <Link href={`/product/${data.id}`} className="flex flex-col h-full">

@@ -34,7 +34,9 @@ export async function fetchUsersReviewedProduct({
   cursor,
 }: CursorParams & UserId) {
   return (
-    await axiosInstance.get<UserItem>(`/users/${userId}/reviewed-products`)
+    await axiosInstance.get<UsersProductResponse>(
+      `/users/${userId}/reviewed-products?cursor=${cursor}`,
+    )
   ).data
 }
 
@@ -44,7 +46,7 @@ export async function fetchUsersCreatedProduct({
 }: CursorParams & UserId) {
   return (
     await axiosInstance.get<UsersProductResponse>(
-      `/users/${userId}/created-products`,
+      `/users/${userId}/created-products?cursor=${cursor}`,
     )
   ).data
 }
@@ -55,7 +57,7 @@ export async function fetchUsersFavoriteProduct({
 }: CursorParams & UserId) {
   return (
     await axiosInstance.get<UsersProductResponse>(
-      `/users/${userId}/favorite-products`,
+      `/users/${userId}/favorite-products?cursor=${cursor}`,
     )
   ).data
 }

@@ -7,18 +7,19 @@ import {
 } from '@widgets/profile/components'
 import { CategoryPc, CategoryTablet } from '@widgets/profile/components/'
 import { PRODUCT_CATEGORIES } from '@widgets/profile/constants/ProductCategories.constant'
+import type { UserId } from '@shared/types'
 import type { CategoryTitle } from '@widgets/profile/types/Category.type'
 
-export default function ProductCardSection() {
+export default function ProductCardSection({ userId }: UserId) {
   const [activeCategory, setActiveCategory] = useState<CategoryTitle>(
     PRODUCT_CATEGORIES[0].title,
   )
   const windowSize = useWindowResize()
 
   const componentMap = {
-    ReviewedProducts,
-    RegisteredProducts,
-    WishListedProducts,
+    ReviewedProducts: (props: UserId) => <ReviewedProducts {...props} />,
+    RegisteredProducts: (props: UserId) => <RegisteredProducts {...props} />,
+    WishListedProducts: (props: UserId) => <WishListedProducts {...props} />,
   }
 
   const ActiveComponent =
@@ -40,7 +41,7 @@ export default function ProductCardSection() {
           setActiveCategory={setActiveCategory}
         />
       )}
-      <ActiveComponent />
+      <ActiveComponent userId={userId} />
     </section>
   )
 }
