@@ -1,6 +1,5 @@
 import SocialSignUpPage from '@/src/pages/auth/social-sign-up/SocialSignUpPage'
-import React from 'react'
 
-export default function kakao() {
+export default function Google() {
   return <SocialSignUpPage />
 }
