@@ -28,8 +28,8 @@ export default function ProductCardSection() {
     ]
 
   return (
-    <section className="flex flex-col gap-4">
-      {windowSize < 1024 ? (
+    <section className="flex flex-col gap-6 w-full pb-[60px]">
+      {windowSize < 1280 ? (
         <CategoryTablet
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}

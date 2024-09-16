@@ -10,6 +10,7 @@ import {
 
 export default function Profile({ userId }: ProfileProps) {
   const isMyProfile = !userId
+  console.log(isMyProfile)
 
   return (
     <main className="flex justify-center gap-[60px] w-full mt-[160px] tablet:flex-col tablet:px-28 mobile:mt-[130px] mobile:px-4">
