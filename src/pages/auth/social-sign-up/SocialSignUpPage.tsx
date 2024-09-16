@@ -1,4 +1,3 @@
-import { NicknameFieldData } from '@shared/types/auth/auth.type'
 import NicknameField from '@widgets/auth/components/nickname-field/NicknameField'
 
 export default function SocialSignUpPage() {
