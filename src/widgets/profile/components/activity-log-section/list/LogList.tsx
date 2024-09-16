@@ -1,6 +1,6 @@
-import { LogListItem } from '@widgets/profile/components/activity-log'
+import { LogListItem } from '@widgets/profile/components/activity-log-section'
+import { LOG_CARD } from '@widgets/profile/constants/ActivityLog.constants'
 import type { UserItem } from '@shared/types'
-import { LOG_CARD } from '@/src/widgets/profile/constants/ActivityLog.constants'
 
 export default function LogList({
   mostFavoriteCategory,

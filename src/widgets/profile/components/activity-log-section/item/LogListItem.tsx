@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import CategoryChip from '@widgets/product/category-chip/CategoryChip'
-import { LogListItemProps } from '@/src/widgets/profile/components/activity-log/item/LogListItem.type'
+import { LogListItemProps } from './LogListItem.type'
 
 export default function LogListItem({
   title,

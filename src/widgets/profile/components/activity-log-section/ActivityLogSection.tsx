@@ -1,15 +1,17 @@
-import { LogList } from '@widgets/profile/components/activity-log'
+import { LogList } from '@widgets/profile/components/activity-log-section'
 import { ProfileLayout } from '@widgets/profile/components'
 import {
   useFetchMyProfile,
   useFetchUserProfile,
 } from '@shared/hooks/query/user.query'
 
-interface ActivityLogProps {
+interface ActivityLogSectionProps {
   userId: number | undefined
 }
 
-export default function ActivityLog({ userId }: ActivityLogProps) {
+export default function ActivityLogSection({
+  userId,
+}: ActivityLogSectionProps) {
   const isMyProfile = !userId
   const { data: userData } = isMyProfile
     ? useFetchMyProfile()

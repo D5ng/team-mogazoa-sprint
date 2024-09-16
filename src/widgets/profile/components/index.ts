@@ -1,4 +1,4 @@
-export { default as ActivityLog } from './activity-log/ActivityLog'
+export { default as ActivityLogSection } from './activity-log-section/ActivityLogSection'
 export { default as FolloweesButton } from './button/followees-button/followeesButton'
 export { default as FollowerButton } from './button/follower-button/FollowerButton'
 export { default as MyProfileButton } from './button/my-profile-button/MyProfileButton'
@@ -6,6 +6,6 @@ export { default as ProfileButton } from './button/user-profile-button/UserProfi
 export { default as Layout } from './layout/ProfileLayout'
 export { default as UserProfileCard } from './user-profile-card/UserProfileCard'
 export { default as MyProfileCard } from './my-profile-card/MyProfileCard'
-export { default as ProfileImageSection } from './image-section/ProfileImageSection'
+export { default as ProfileImageSection } from './profile-header/ProfileHeader'
 export { default as ProfileStats } from './stats/ProfileStats'
 export { default as ProfileLayout } from './layout/ProfileLayout'

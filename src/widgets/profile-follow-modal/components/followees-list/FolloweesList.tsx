@@ -23,8 +23,6 @@ export default function FolloweesList({ userId }: FolloweesList) {
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
 
-  console.log(followees)
-
   return (
     <>
       <ul className="flex flex-col gap-6 mt-10 tablet:gap-5 mobile:mt-5">

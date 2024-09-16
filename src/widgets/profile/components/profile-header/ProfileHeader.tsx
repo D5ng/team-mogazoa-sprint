@@ -1,11 +1,11 @@
 import { ProfileImage } from '@shared/ui'
-import { ProfileImageSectionProps } from './ProfileImageSection.type'
+import { ProfileHeaderProps } from './ProfileHeader.type'
 
-export default function ProfileImageSection({
+export default function ProfileHeader({
   image,
   description,
   nickname,
-}: ProfileImageSectionProps) {
+}: ProfileHeaderProps) {
   return (
     <div className="flex flex-col justify-center items-center gap-[30px]">
       <ProfileImage
