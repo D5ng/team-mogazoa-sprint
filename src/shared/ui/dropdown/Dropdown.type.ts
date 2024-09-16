@@ -23,6 +23,7 @@ export interface DropdownMenuItemProps {
   id?: number
   onClick?: () => void
   onBlur?: () => void
+  className?: string
 }
 
 export interface DropdownTriggerProps
