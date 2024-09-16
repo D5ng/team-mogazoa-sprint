@@ -11,8 +11,8 @@ import { useFetchMyProfile } from '@/src/shared/hooks/query/user.query'
 
 export default function Profile({ userId }: ProfileProps) {
   const isMyProfile = !userId
-  const { data: myData } = useFetchMyProfile()
-  const id = isMyProfile ? myData?.id : userId
+  const { data: myProfileData } = useFetchMyProfile()
+  const id = isMyProfile ? myProfileData?.id : userId
 
   return (
     <main className="flex justify-center gap-[60px] w-full mt-[160px] tablet:flex-col tablet:px-28 mobile:mt-[130px] mobile:px-4">
