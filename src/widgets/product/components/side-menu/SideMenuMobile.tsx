@@ -1,4 +1,4 @@
-import GnbMenu from '../gnb/Gnb-Menu'
+import GnbMenu from '../gnb/GnbMenu'
 import SideMenu from './SideMenu'
 
 export default function SideMenuMobile() {

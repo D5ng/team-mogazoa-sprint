@@ -28,6 +28,7 @@ export type ProductType = {
   image: File
   description: string
   name: string
+  nickname?: string
 }
 
 export type ProductPayload = {

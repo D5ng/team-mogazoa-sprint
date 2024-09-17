@@ -16,7 +16,7 @@ export interface UserCommon {
   image: string | null
   description: string
   nickname: string
-  id: number
+  id: number | undefined
   reviewCount: number
   followersCount: number
 }
@@ -40,7 +40,7 @@ export interface UserItem extends UserCommon {
   isFollowing: boolean
 }
 
-export interface UsersProduct extends UserCommon {
+export interface Follower extends UserCommon {
   writerId: number
   categoryId: number
   rating: number
@@ -48,9 +48,29 @@ export interface UsersProduct extends UserCommon {
   name: string
 }
 
+export interface FollowerItem extends UserCommon {
+  id: number
+  follower: Follower
+}
+
+export interface FolloweesItem extends UserCommon {
+  id: number | undefined
+  followee: Follower
+}
+
+export interface followerProductResponse {
+  nextCursor: number
+  list: FollowerItem[]
+}
+
+export interface followeesProductResponse {
+  nextCursor: number
+  list: FolloweesItem[]
+}
+
 export interface UsersProductResponse {
   nextCursor: number
-  list: UsersProduct[]
+  list: UserItem[]
 }
 
 export interface UpdateMyProfile
@@ -63,4 +83,15 @@ export type UserProfileUpdateResponse = Omit<
 
 export interface CursorParams {
   cursor?: number
+}
+
+export interface FetchFollows {
+  userId: number | undefined
+  cursor?: number
+}
+
+export type UserPayload = {
+  image: string
+  description: string
+  nickname: string
 }

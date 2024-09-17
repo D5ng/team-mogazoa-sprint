@@ -81,4 +81,36 @@ textarea {
   .input-base {
     @apply w-full h-full p-5 rounded-lg text-white bg-black-60 border border-black-70 focus:ring-1 focus:ring-indigo focus:border-indigo placeholder:text-black-30 caret-white;
   }
+
+  .custom-scrollbar {
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #4a4a4a;
+      border-radius: 16px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #4a4a4a;
+    }
+
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: #2a2a2a;
+    }
+
+    &::-webkit-scrollbar-track:hover {
+      background-color: #7a7a7a;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a #2a2a2a;
+  }
 }

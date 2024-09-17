@@ -19,6 +19,7 @@ export async function fetchProducts({
   return (await axiosInstance.get<ProductResponse>('/products', { params }))
     .data
 }
+
 export async function fetchProductDetail({ productId }: ProductId) {
   return (
     await axiosInstance.get<ProductDetailResponse>(`/products/${productId}`)

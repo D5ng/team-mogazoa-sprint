@@ -1,11 +1,11 @@
 import MenuTaps from './MenuTaps'
 import { CATEGORY_CHIPS } from '../category-chip/CategoryChip.constants'
-import { useProductStore } from '@/src/app/provider/productStore'
-import useProduct from '@/src/shared/hooks/useProduct'
+import { useProductStore } from '@/src/shared/store/productStore'
+import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 
 export default function SideMenu() {
-  const { setSelectedKey, selectedKey } = useProductStore()
-  const { handleCategory } = useProduct()
+  const { selectedCategoryKey } = useProductStore()
+  const { handleCategory } = useSearchProduct()
 
   return (
     <article>
@@ -16,8 +16,8 @@ export default function SideMenu() {
         {CATEGORY_CHIPS.map((data) => (
           <li key={data.id}>
             <MenuTaps
-              checked={selectedKey === data.id}
-              onChange={() => handleCategory(data.id, data.name)}
+              checked={selectedCategoryKey === data.id}
+              handleClick={() => handleCategory(data.id, data.name)}
             >
               {data.name}
             </MenuTaps>
