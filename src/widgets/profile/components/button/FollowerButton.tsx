@@ -1,4 +1,4 @@
-import { ProfileFollowerModal } from '@widgets/profile-follow-modal/components'
+import { ProfileFollowerModal } from '@/src/widgets/profile-follow-modal'
 import { useToggle } from '@shared/hooks'
 
 interface FollowerButtonProps {
