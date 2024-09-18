@@ -31,7 +31,11 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <KakaoScript />
-        <ToastContainer pauseOnFocusLoss={false} />
+        <ToastContainer
+          position="bottom-center"
+          theme="dark"
+          pauseOnFocusLoss={false}
+        />
       </HydrationBoundary>
     </QueryClientProvider>
   )

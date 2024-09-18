@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useSignUp } from '@widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
@@ -18,10 +19,13 @@ export default function SignUpField() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     setError,
+    trigger,
+    watch,
   } = useForm<SignUp>({
-    mode: 'onBlur',
+    mode: 'onTouched',
+    reValidateMode: 'onChange',
     defaultValues: {
       email: '',
       nickname: '',
@@ -29,6 +33,13 @@ export default function SignUpField() {
       passwordConfirmation: '',
     },
   })
+
+  const password = watch('password')
+
+  useEffect(() => {
+    trigger('passwordConfirmation')
+  }, [password, trigger])
+
   const onSubmit = useSignUp(setError)
 
   return (
@@ -62,7 +73,7 @@ export default function SignUpField() {
         />
       </FormField>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" disabled={!isValid}>
         회원가입
       </Button>
     </Form>

@@ -23,10 +23,11 @@ export default function useSignUp(setError: UseFormSetError<SignUp>) {
         const errorMessage = error.response.data.details[field]?.message
         setError(field, { message: errorMessage })
         toast.error(errorMessage)
+      } else {
+        const errorMessage = '알 수 없는 에러가 발생했습니다.'
+        setError('root', { message: errorMessage })
+        toast.error(errorMessage)
       }
-      const errorMessage = '알 수 없는 에러가 발생했습니다.'
-      setError('root', { message: errorMessage })
-      toast.error(errorMessage)
     }
   }
 }
