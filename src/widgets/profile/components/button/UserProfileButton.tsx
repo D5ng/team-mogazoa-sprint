@@ -16,13 +16,10 @@ export default function UserProfileButton({
   const followMutation = useFollowUser()
   const unFollowMutation = useUnFollowUser()
 
-  const handleFollowClick = () => {
-    if (isFollowing) {
-      unFollowMutation.mutate({ userId })
-    } else {
-      followMutation.mutate({ userId })
-    }
-  }
+  const handleFollowClick = () =>
+    isFollowing
+      ? unFollowMutation.mutate({ userId })
+      : followMutation.mutate({ userId })
 
   return (
     <Button

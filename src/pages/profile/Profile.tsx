@@ -1,17 +1,15 @@
 import {
   ActivityLogSection,
   ProductCardSection,
-} from '@widgets/profile/components'
-import { ProfileProps } from './Profile.type'
-import {
   MyProfileCard,
   UserProfileCard,
-} from '@/src/widgets/profile/components'
-import { useFetchMyProfile } from '@/src/shared/hooks/query/user.query'
+} from '@widgets/profile/components'
+import { useFetchMyProfile } from '@shared/hooks/query/user.query'
+import type { ProfileProps } from './Profile.type'
 
 export default function Profile({ userId }: ProfileProps) {
-  const isMyProfile = !userId
   const { data: myProfileData } = useFetchMyProfile()
+  const isMyProfile = !userId
   const id = isMyProfile ? myProfileData?.id : userId
 
   return (

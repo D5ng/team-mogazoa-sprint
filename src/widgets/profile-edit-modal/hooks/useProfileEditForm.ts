@@ -1,6 +1,7 @@
 import { isAxiosError } from 'axios'
 import type { UserPayload } from '@shared/types'
 import { useUpdateProfile } from '@/src/shared/hooks/mutate/user.mutate'
+import { toast } from 'react-toastify'
 
 interface useProfileEditForm {
   onSuccess: () => void
@@ -20,6 +21,7 @@ export default function useProfileEditForm({
         nickname: data.nickname,
         image: data.image,
       })
+      toast.success('프로필이 편집되었습니다')
       onSuccess()
     } catch (error) {
       if (isAxiosError(error) && error.response) {
@@ -27,6 +29,7 @@ export default function useProfileEditForm({
           error.response.data.details,
         )[0] as keyof UserPayload
         const errorMessage = error.response.data.details[field].message
+        toast.error(errorMessage)
 
         if (field.includes('image'))
           return onFailed('image', '이미지를 올려주세요.')
