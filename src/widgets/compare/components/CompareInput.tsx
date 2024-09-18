@@ -44,12 +44,12 @@ export default function CompareInput({
       {isToggle && inputValue.length >= 2 && suggestions.length > 0 && (
         <ul
           ref={ref}
-          className="absolute bg-white border border-gray-300 mt-1 w-full"
+          className="absolute bg-gray-60 border border-black-40 mt-1 w-full rounded-lg"
         >
           {suggestions.map((name, index) => (
             <li
               key={index}
-              className="p-2 hover:bg-gray-200 cursor-pointer"
+              className="p-2  cursor-pointer  text-black-30 hover:bg-gray-70 hover:text-white"
               onClick={() => handleClickList(name)}
             >
               {name}

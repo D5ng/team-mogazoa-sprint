@@ -9,8 +9,7 @@ export default function ComparePage() {
   const { selectedProduct: product1 } = useProductAutocomplete('상품1')
   const { selectedProduct: product2 } = useProductAutocomplete('상품2')
   const isDisabled = !product1 || !product2
-  console.log(product1)
-  console.log(product2)
+  console.log(isDisabled)
   return (
     <div className="flex flex-col w-screen h-screen  items-center">
       <div className="w-[60vw] flex justify-between items-end gap-[20px]">
@@ -20,6 +19,7 @@ export default function ComparePage() {
           className="w-[500px] h-[61px]"
           onClick={() => setViewCompareSheet(true)}
           variant="primary"
+          disabled={isDisabled}
         >
           비교하기
         </Button>

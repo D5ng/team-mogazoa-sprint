@@ -6,19 +6,20 @@ export default function useProductAutocomplete(
   id: string,
   onCloseToggle?: () => void,
 ) {
-  const { inputValues, setInputValues } = useCompareStore()
+  const { inputValues, setInputValues, selectedProducts, setSelectedProducts } =
+    useCompareStore()
   const inputValue = inputValues[id] || ''
+  const selectedProduct = selectedProducts[id] || ''
   const [suggestions, setSuggestions] = useState<{ [key: string]: string[] }>(
     {},
   )
-  const [selectedProduct, setSelectedProduct] = useState('')
 
   const { data } = useFetchProductName(inputValue)
 
   const handleClickList = (name: string) => {
     setInputValues(id, name)
     onCloseToggle && onCloseToggle()
-    setSelectedProduct(name)
+    setSelectedProducts(id, name)
   }
 
   const handleInputChange = (value: string) => {
@@ -26,8 +27,8 @@ export default function useProductAutocomplete(
   }
 
   const deleteSelectedProduct = () => {
-    setSelectedProduct('')
     setInputValues(id, '')
+    setSelectedProducts(id, '')
   }
 
   useEffect(() => {
