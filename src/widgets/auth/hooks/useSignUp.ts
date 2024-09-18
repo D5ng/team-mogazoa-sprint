@@ -1,10 +1,10 @@
 import { useRouter } from 'next/navigation'
-import type { UseFormSetError } from 'react-hook-form'
-import { isAxiosError } from 'axios'
-import { setCookie } from 'cookies-next'
-import type { SignUp } from '@shared/types'
-import { signUp } from '@shared/api'
 import { toast } from 'react-toastify'
+import { setCookie } from 'cookies-next'
+import { isAxiosError } from 'axios'
+import { signUp } from '@shared/api'
+import type { UseFormSetError } from 'react-hook-form'
+import type { SignUp } from '@shared/types'
 
 export default function useSignUp(setError: UseFormSetError<SignUp>) {
   const router = useRouter()
@@ -14,7 +14,7 @@ export default function useSignUp(setError: UseFormSetError<SignUp>) {
       const result = await signUp(data)
       setCookie('auth', result)
       router.push('/')
-      toast.success('회원가입이 완료되었습니다!')
+      toast.success('회원가입이 완료되었습니다.')
     } catch (error) {
       if (isAxiosError(error) && error.response?.data?.details) {
         const field = Object.keys(
