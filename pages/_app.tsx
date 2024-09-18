@@ -32,6 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </div>
         <KakaoScript />
         <ToastContainer
+          autoClose={3000}
           position="bottom-center"
           theme="dark"
           pauseOnFocusLoss={false}

@@ -2,6 +2,7 @@ import { useReviewOptionStore } from '@/src/shared/store'
 import { useCreateReview } from '@shared/hooks'
 import type { CreateReview } from '@shared/types'
 import { isAxiosError } from 'axios'
+import { toast } from 'react-toastify'
 
 interface UseCreateReviewForm {
   productId: number
@@ -32,6 +33,7 @@ export default function useCreateReviewForm({
         images: images,
       })
       onSuccess()
+      toast.success('리뷰가 성공적으로 작성되었습니다.')
     } catch (error) {
       // if (isAxiosError(error) && error.response) {
       //   const field = Object.keys(
