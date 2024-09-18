@@ -33,7 +33,7 @@ export default function useCreateReviewForm({
         images: images,
       })
       onSuccess()
-      toast.success('리뷰가 성공적으로 작성되었습니다.')
+      toast.success('리뷰가 작성되었습니다.')
     } catch (error) {
       // if (isAxiosError(error) && error.response) {
       //   const field = Object.keys(
