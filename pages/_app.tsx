@@ -9,6 +9,7 @@ import '@app/styles/globals.css'
 import Gnb from '@widgets/product/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -30,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <KakaoScript />
-        <ToastContainer />
+        <ToastContainer pauseOnFocusLoss={false} />
       </HydrationBoundary>
     </QueryClientProvider>
   )
