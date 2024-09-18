@@ -4,11 +4,11 @@ import {
   QueryClient,
   QueryClientProvider,
   HydrationBoundary,
-  QueryCache,
 } from '@tanstack/react-query'
 import '@app/styles/globals.css'
 import Gnb from '@widgets/product/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
+import { ToastContainer } from 'react-toastify'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -30,6 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <KakaoScript />
+        <ToastContainer />
       </HydrationBoundary>
     </QueryClientProvider>
   )
