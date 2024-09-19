@@ -1,4 +1,4 @@
-import SelectedProduct from '@/src/widgets/compare/components/SelectedProduct'
+import SelectedProduct from '@widgets/compare/components/SelectedProduct'
 import { create } from 'zustand'
 
 interface CompareState {

@@ -3,10 +3,7 @@ import {
   ProductCardSection,
 } from '@widgets/profile/components'
 import { ProfileProps } from './Profile.type'
-import {
-  MyProfileCard,
-  UserProfileCard,
-} from '@/src/widgets/profile/components'
+import { MyProfileCard, UserProfileCard } from '@widgets/profile/components'
 
 export default function Profile({ userId }: ProfileProps) {
   const isMyProfile = !userId

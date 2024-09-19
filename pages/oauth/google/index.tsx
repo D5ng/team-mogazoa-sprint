@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { socialSignUp } from '@shared/api'
 import { serialize } from 'cookie'
-import SocialSignUpPage from '@/src/pages/auth/social-sign-up/SocialSignUpPage'
+import SocialSignUpPage from '@/src/pages//auth/social-sign-up/SocialSignUpPage'
 
 export default function SocialAuth({ idToken }: { idToken: string }) {
   const router = useRouter()

@@ -1,6 +1,6 @@
 import type { ProductDetailResponse } from '@shared/types'
 import Button from '@shared/ui/button/Button'
-import CategoryChip from '@/src/widgets/product/components/category-chip/CategoryChip'
+import CategoryChip from '@widgets/product/components/category-chip/CategoryChip'
 import LikeButton from './LikeButton'
 import KaKaoShareButton from './KaKaoShareButton'
 import ClipBoardButton from './ClipBoardButton'

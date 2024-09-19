@@ -1,14 +1,14 @@
 import MenuTaps from './MenuTaps'
 import { CATEGORY_CHIPS } from '../category-chip/CategoryChip.constants'
-import { useProductStore } from '@/src/shared/store/productStore'
-import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
+import { useProductStore } from '@shared/store/productStore'
+import useSearchProduct from '@shared/hooks/useSearchProduct'
 
 export default function SideMenu() {
   const { selectedCategoryKey } = useProductStore()
   const { handleCategory } = useSearchProduct()
 
   return (
-    <article>
+    <article className=" top-100">
       <p className="text-[16px] tablet:text-[14px] ml-[20px] text-white mb-[10px]">
         카테고리
       </p>

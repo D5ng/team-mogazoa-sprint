@@ -1,7 +1,7 @@
-import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
+import useSearchProduct from '@shared/hooks/useSearchProduct'
 import ProductCardSection from './ProductCardSection'
-import fetchProductsByQuery from '@/src/shared/hooks/query/product.query'
-import { useProductStore } from '@/src/shared/store/productStore'
+import fetchProductsByQuery from '@shared/hooks/query/product.query'
+import { useProductStore } from '@shared/store/productStore'
 import ProductList from './ProductList'
 
 export default function ProductCard() {
@@ -11,7 +11,7 @@ export default function ProductCard() {
   const { inputValue } = useProductStore()
 
   return (
-    <article className="w-[50vw] tablet:w-[65vw]  mobile:w-[80vw] flex flex-col gap-[2vw] ">
+    <article className=" w-[50vw] tablet:w-[65vw]  mobile:w-[80vw] flex flex-col gap-[2vw] ">
       {inputValue || selectedCategoryKey ? (
         <ProductCardSection data={filteredProducts} />
       ) : (

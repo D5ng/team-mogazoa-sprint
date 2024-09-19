@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { ProductReviewItem } from '@shared/types'
 import { thumb, emptyThumb, review } from '@shared/icons'
 import { useReviewCancelLike, useReviewLike } from '@shared/hooks'
-import { useReviewOptionStore } from '@/src/shared/store'
+import { useReviewOptionStore } from '@shared/store'
 
 export default function ThumbsButton({
   id: reviewId,

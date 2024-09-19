@@ -1,4 +1,4 @@
-import { useProductStore } from '@/src/shared/store/productStore'
+import { useProductStore } from '@shared/store/productStore'
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { debounce } from 'lodash'
 import { useCallback, useEffect, useMemo, useState } from 'react'

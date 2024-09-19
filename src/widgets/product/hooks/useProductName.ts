@@ -1,4 +1,4 @@
-import { fetchProducts } from '@/src/shared/api'
+import { fetchProducts } from '@shared/api'
 import { useQuery } from '@tanstack/react-query'
 
 export function useFetchProductName(productName: string) {

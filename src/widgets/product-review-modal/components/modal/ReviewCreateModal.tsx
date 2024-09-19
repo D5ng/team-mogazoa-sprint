@@ -1,5 +1,5 @@
-import { Modal, ModalTitle } from '@/src/shared/ui'
-import CategoryChip from '@/src/widgets/product/components/category-chip/CategoryChip'
+import { Modal, ModalTitle } from '@shared/ui'
+import CategoryChip from '@widgets/product/components/category-chip/CategoryChip'
 import ProductReviewForm from '../form/ReviewCreateForm'
 
 export interface ReviewCreateModalProps {

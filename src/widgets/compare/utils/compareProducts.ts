@@ -1,7 +1,4 @@
-import {
-  ComparisonResult,
-  Product,
-} from '@/src/shared/types/compare/compare.types'
+import { ComparisonResult, Product } from '@shared/types/compare/compare.types'
 
 const compareProducts = (
   product1: Product,

@@ -1,4 +1,4 @@
-import useWindowResize from '@/src/shared/hooks/useWindowResize'
+import useWindowResize from '@shared/hooks/useWindowResize'
 import GnbPc from './GnbItemPc'
 import GnbMobile from './GnbItemMobile'
 export default function Gnb() {

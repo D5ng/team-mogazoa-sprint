@@ -1,6 +1,6 @@
 import { isAxiosError } from 'axios'
 import type { UserPayload } from '@shared/types'
-import { useUpdateProfile } from '@/src/shared/hooks/mutate/user.mutate'
+import { useUpdateProfile } from '@shared/hooks/mutate/user.mutate'
 
 interface useProfileEditForm {
   onSuccess: () => void

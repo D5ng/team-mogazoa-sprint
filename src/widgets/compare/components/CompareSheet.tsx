@@ -19,6 +19,14 @@ export default function CompareSheet() {
     favoriteCount: data2.list[0].favoriteCount,
   }
   const { finalResult } = compareProducts(product1, product2)
+  const winnerColor =
+    typeof finalResult === 'string'
+      ? ''
+      : finalResult.productName === product1.name
+        ? 'text-green'
+        : finalResult.productName === product2.name
+          ? 'text-pink'
+          : ''
   return (
     <div className="mt-[50px] flex flex-col gap-[50px] items-center">
       {typeof finalResult === 'string' ? (
@@ -26,7 +34,8 @@ export default function CompareSheet() {
       ) : (
         <div>
           <div className="text-[25px] text-white">
-            <span>{finalResult.productName}</span> 상품이 승리하였습니다!
+            <span className={`${winnerColor}`}>{finalResult.productName}</span>{' '}
+            상품이 승리하였습니다!
           </div>
           <p className="text-black-30 text-center text-[15px]">
             3가지 항목중 {finalResult.winCount}가지 항목에서 우세합니다.

@@ -1,4 +1,4 @@
-import { useReviewOptionStore } from '@/src/shared/store'
+import { useReviewOptionStore } from '@shared/store'
 import { useCreateReview } from '@shared/hooks'
 import type { CreateReview } from '@shared/types'
 import { isAxiosError } from 'axios'

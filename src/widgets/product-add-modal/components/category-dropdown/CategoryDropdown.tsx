@@ -1,4 +1,4 @@
-import { CATEGORY_CHIPS } from '@/src/widgets/product/components/category-chip/CategoryChip.constants'
+import { CATEGORY_CHIPS } from '@widgets/product/components/category-chip/CategoryChip.constants'
 import {
   Dropdown,
   DropdownMenu,
@@ -7,7 +7,7 @@ import {
 } from '@shared/ui'
 import { Control, useController } from 'react-hook-form'
 import type { ProductPayload } from '@shared/types'
-import { categoryValidation } from '@/src/shared/utils'
+import { categoryValidation } from '@shared/utils'
 
 interface CategoryDropdownProps {
   error: string | undefined

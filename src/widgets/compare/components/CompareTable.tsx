@@ -1,4 +1,4 @@
-import { ComparisonTableProps } from '@/src/shared/types/compare/compare.types'
+import { ComparisonTableProps } from '@shared/types/compare/compare.types'
 import compareProducts from '../utils/compareProducts'
 
 export default function CompareTable({
@@ -14,51 +14,71 @@ export default function CompareTable({
       : 'text-pink'
 
   return (
-    <div className="w-[60vw] border border-black-40 rounded-lg overflow-hidden">
+    <div className="w-full tablet:w-[80vw] mobile:w-[95vw] border border-black-40 rounded-lg overflow-hidden">
       <table className="w-full table-fixed text-center">
-        <thead className=" bg-black-50 text-black-30">
+        <thead className="bg-black-50 text-black-30">
           <tr>
-            <th className="px-[45px] py-[20px]">기준</th>
-            <th className="px-[45px] py-[20px]">상품1 값</th>
-            <th className="px-[45px] py-[20px]">상품2 값</th>
-            <th className="px-[45px] py-[20px]">비교 결과</th>
+            <th className="px-[45px] py-[20px] mobile:px-[15px] mobile:py-[10px]">
+              기준
+            </th>
+            <th className="px-[45px] py-[20px] mobile:px-[15px] mobile:py-[10px]">
+              상품1 값
+            </th>
+            <th className="px-[45px] py-[20px] mobile:px-[15px] mobile:py-[10px]">
+              상품2 값
+            </th>
+            <th className="px-[45px] py-[20px] mobile:px-[15px] mobile:py-[10px]">
+              비교 결과
+            </th>
           </tr>
         </thead>
 
         <tbody className="bg-black-50">
           <tr className="border-t border-black-40">
-            <td className="px-[45px] py-[40px] text-black-30">별점</td>
-            <td className="px-[45px] py-[40px] text-white">
-              {product1.rating}
+            <td className="px-[45px] py-[40px] text-black-30 mobile:px-[15px] mobile:py-[10px]">
+              별점
             </td>
-            <td className="px-[45px] py-[40px] text-white">
-              {product2.rating}
+            <td className="px-[45px] py-[40px] text-white mobile:px-[15px] mobile:py-[10px]">
+              {product1.rating.toFixed(2)}
             </td>
-            <td className={`px-[45px] py-[40px] ${resultStyle}`}>
+            <td className="px-[45px] py-[40px] text-white mobile:px-[15px] mobile:py-[10px]">
+              {product2.rating.toFixed(2)}
+            </td>
+            <td
+              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] line-clamp-2`}
+            >
               {result.rating}
             </td>
           </tr>
-          <tr className=" border-black-40">
-            <td className="px-[45px] py-[40px] text-black-30">리뷰 개수</td>
-            <td className="px-[45px] py-[40px] text-white">
+          <tr className="border-black-40">
+            <td className="px-[45px] py-[40px] text-black-30 mobile:px-[15px] mobile:py-[10px]">
+              리뷰 개수
+            </td>
+            <td className="px-[45px] py-[40px] text-white mobile:px-[15px] mobile:py-[10px]">
               {product1.reviewCount}
             </td>
-            <td className="px-[45px] py-[40px] text-white">
+            <td className="px-[45px] py-[40px] text-white mobile:px-[15px] mobile:py-[10px]">
               {product2.reviewCount}
             </td>
-            <td className={`px-[45px] py-[40px] ${resultStyle}`}>
+            <td
+              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] line-clamp-2`}
+            >
               {result.reviewCount}
             </td>
           </tr>
-          <tr className=" border-black-40">
-            <td className="px-[45px] py-[40px] text-black-30">찜 개수</td>
-            <td className="px-[45px] py-[40px] text-white">
+          <tr className="border-black-40">
+            <td className="px-[45px] py-[40px] text-black-30 mobile:px-[15px] mobile:py-[10px]">
+              찜 개수
+            </td>
+            <td className="px-[45px] py-[40px] text-white mobile:px-[15px] mobile:py-[10px]">
               {product1.favoriteCount}
             </td>
-            <td className="px-[45px] py-[40px] text-white">
+            <td className="px-[45px] py-[40px] text-white mobile:px-[15px] mobile:py-[10px]">
               {product2.favoriteCount}
             </td>
-            <td className={`px-[45px] py-[40px] ${resultStyle}`}>
+            <td
+              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] line-clamp-2`}
+            >
               {result.favoriteCount}
             </td>
           </tr>

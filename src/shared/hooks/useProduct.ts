@@ -1,5 +1,5 @@
-import { CARD_MOCK_DATA } from '@/src/widgets/product/components/products-card/ProductCard.mock'
-import { ProductCardData } from '@/src/widgets/product/components/products-card/ProductCard.types'
+import { CARD_MOCK_DATA } from '@widgets/product/components/products-card/ProductCard.mock'
+import { ProductCardData } from '@widgets/product/components/products-card/ProductCard.types'
 import { useEffect, useRef, useState } from 'react'
 export default function useProduct() {
   const ref = useRef<HTMLInputElement | null>(null)

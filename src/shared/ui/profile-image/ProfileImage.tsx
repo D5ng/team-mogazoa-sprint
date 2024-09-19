@@ -9,11 +9,12 @@ export default function ProfileImage({
   ...props
 }: ProfileImgProps) {
   return (
-    <div className={`rounded-full overflow-hidden ${className || ''}`}>
+    <div
+      className={`relative w-[${size}px] h-[${size}px] rounded-full overflow-hidden ${className || ''}`}
+    >
       <Image
         src={url || defaultImage}
-        width={size}
-        height={size}
+        fill
         alt="프로필 이미지"
         className="object-cover w-full h-full"
         {...props}

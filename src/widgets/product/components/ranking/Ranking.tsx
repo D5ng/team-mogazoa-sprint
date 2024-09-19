@@ -1,6 +1,6 @@
 import RankingUi from './RankingUi'
-import useRankingData from '@/src/shared/hooks/useRankingData'
-import rankingIndexer from '@/src/shared/utils/rankingIndexer'
+import useRankingData from '@shared/hooks/useRankingData'
+import rankingIndexer from '@shared/utils/rankingIndexer'
 
 export default function Ranking() {
   const { rankingData } = useRankingData()

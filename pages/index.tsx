@@ -1,8 +1,8 @@
-import useWindowResize from '@/src/shared/hooks/useWindowResize'
-import ProductAddButton from '@/src/widgets/product-add-button/ProductAddButton'
-import ProductCard from '@/src/widgets/product/components/products-card/ProductCard'
-import Ranking from '@/src/widgets/product/components/ranking/Ranking'
-import SideMenu from '@/src/widgets/product/components/side-menu/SideMenu'
+import useWindowResize from '@shared/hooks/useWindowResize'
+import ProductAddButton from '@widgets/product-add-button/ProductAddButton'
+import ProductCard from '@widgets/product/components/products-card/ProductCard'
+import Ranking from '@widgets/product/components/ranking/Ranking'
+import SideMenu from '@widgets/product/components/side-menu/SideMenu'
 const home = () => {
   const WINDOW_SIZE = useWindowResize()
 
