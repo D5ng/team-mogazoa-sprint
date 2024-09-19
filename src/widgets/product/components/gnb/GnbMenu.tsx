@@ -6,7 +6,6 @@ export default function GnbMenu() {
   const { user: isSigned } = useAuthStore()
   const router = useRouter()
   const { id: productId } = router.query
-  console.log(productId)
 
   const MENU_DEFAULT_STYLE =
     'hover:text-blue mobile:text-black-20 rounded-xl font-semibold mobile:px-[10px] mobile:py-[2px] mobile:text-[3vw] mobile:hover:border-blue  mobile:border-black-20'
