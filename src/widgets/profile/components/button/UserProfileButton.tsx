@@ -20,10 +20,10 @@ export default function UserProfileButton({
   const unFollowMutation = useUnFollowUser()
 
   const handleFollowClick = () => {
+    if (!user) return toast.error('로그인이 필요합니다')
     isFollowing
       ? unFollowMutation.mutate({ userId })
       : followMutation.mutate({ userId })
-    if (!user) return toast.error('로그인이 필요합니다')
   }
 
   return (
