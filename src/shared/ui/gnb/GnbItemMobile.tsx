@@ -4,7 +4,7 @@ import logo from 'public/images/logo-mobile.png'
 import GnbInput from './GnbProductSearchInput'
 import { hamburger, search } from '@shared/icons'
 import { useOutsideClick, useToggle } from '@shared/hooks'
-import SideMenuMobile from '../side-menu/SideMenuMobile'
+import SideMenuMobile from '../../../widgets/product/components/side-menu/SideMenuMobile'
 import useSearchProduct from '@shared/hooks/useSearchProduct'
 
 export default function GnbMenu() {

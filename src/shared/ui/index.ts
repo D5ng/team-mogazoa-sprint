@@ -4,6 +4,8 @@ export { default as Form } from './form/Form'
 export { default as ErrorBoundary } from './error/ErrorBoundary'
 export { default as ErrorFallback } from './error/ErrorFallback'
 export { default as ProfileImage } from './profile-image/ProfileImage'
+export { default as Gnb } from './gnb/Gnb'
+export { default as CategoryChip } from './category-chip/CategoryChip'
 
 export * from './input'
 export * from './autocomplete-field/AutocompleteField'
