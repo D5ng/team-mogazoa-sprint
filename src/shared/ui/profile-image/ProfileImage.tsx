@@ -6,7 +6,6 @@ export default function ProfileImage({
   size,
   url,
   className,
-  ...props
 }: ProfileImgProps) {
   return (
     <div
@@ -16,8 +15,7 @@ export default function ProfileImage({
         src={url || defaultImage}
         fill
         alt="프로필 이미지"
-        className="object-cover w-full h-full"
-        {...props}
+        className="object-cover object-center"
       />
     </div>
   )

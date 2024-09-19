@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import type { UserId } from '@shared/types'
 import ReviewedProductsList from './ReviewedProductsList'
+import type { UserId } from '@shared/types'
 
 export default function ReviewedProducts({ userId }: UserId) {
   return (

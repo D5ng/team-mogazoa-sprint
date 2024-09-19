@@ -4,10 +4,10 @@ import {
   DropdownMenuItem,
   DropdownTrigger,
 } from '@shared/ui'
-import { PRODUCT_CATEGORIES } from '@widgets/profile/constants/ProductCategories.constant'
-import type { CategorySelectorProps } from '../../../types/Category.type'
+import { PRODUCT_CATEGORIES } from '@widgets/profile/constants'
+import type { CategorySelectorProps } from '@widgets/profile/types'
 
-export default function CategoryDropdown({
+export default function CategoryTablet({
   activeCategory,
   setActiveCategory,
 }: CategorySelectorProps) {

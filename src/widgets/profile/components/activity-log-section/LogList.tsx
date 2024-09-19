@@ -1,4 +1,4 @@
-import { LogListItem } from '@widgets/profile/components'
+import LogListItem from './LogListItem'
 import { LOG_CARD } from '@widgets/profile/constants/ActivityLog.constants'
 import type { UserItem } from '@shared/types'
 

@@ -1,4 +1,4 @@
-import { LogList } from '@widgets/profile/components'
+import LogList from './LogList'
 import {
   useFetchMyProfile,
   useFetchUserProfile,

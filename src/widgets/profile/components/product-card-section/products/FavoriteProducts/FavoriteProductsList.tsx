@@ -1,6 +1,6 @@
 import MockCardItem from '@widgets/profile/MockCardItem'
 import { useIntersect } from '@shared/hooks'
-import { useFetchFavoriteProducts } from '@shared/hooks/query/user.query'
+import { useFetchFavoriteProducts } from '@shared/hooks/query'
 import type { UserId } from '@shared/types'
 
 export default function FavoriteProductsList({ userId }: UserId) {

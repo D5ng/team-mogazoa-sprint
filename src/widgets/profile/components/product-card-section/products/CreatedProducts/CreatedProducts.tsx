@@ -1,6 +1,6 @@
-import CreatedProductsList from './CreatedProductsList'
-import { UserId } from '@shared/types'
 import { Suspense } from 'react'
+import CreatedProductsList from './CreatedProductsList'
+import type { UserId } from '@shared/types'
 
 export default function CreatedProducts({ userId }: UserId) {
   return (

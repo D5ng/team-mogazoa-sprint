@@ -3,31 +3,35 @@ import { fetchProducts } from '../../api'
 import { useProductStore } from '../../store/productStore'
 import { FetchProducts } from '../../types'
 
-export default function fetchProductsByQuery() {
-  const { inputValue, selectedCategoryKey } = useProductStore()
-  const { data: hotProducts } = useQuery({
-    queryKey: ['fetchProducts', 'reviewCount'],
-    queryFn: () =>
-      fetchProducts({
-        order: 'reviewCount',
-        cursor: 0,
-      }),
-    enabled: !inputValue && !selectedCategoryKey,
+export function useFetchProductsRating() {
+  return useQuery({
+    queryKey: ['fetchProducts', 'ratedCount'],
+    queryFn: () => fetchProducts({ order: 'rating' }),
     select: (data) => data?.list.slice(0, 6),
   })
+}
 
-  const { data: ratedProducts } = useQuery({
-    queryKey: ['fetchProducts', 'ratedCount'],
-    queryFn: () =>
-      fetchProducts({
-        order: 'rating',
-        cursor: 6,
-      }),
-    enabled: !inputValue && !selectedCategoryKey,
-    // select: (data) => data?.list.slice(0, 6),
+export function useFetchProductsHot() {
+  return useQuery({
+    queryKey: ['fetchProducts', 'reviewCount'],
+    queryFn: () => fetchProducts({ order: 'reviewCount' }),
+    select: (data) => {
+      const transformedData = data.list ?? []
+      return transformedData.slice(0, 6)
+    },
   })
+}
 
-  const { data: filteredProducts } = useQuery({
+export function useFetchProductName(productName: string) {
+  return useQuery({
+    queryKey: ['product', productName],
+    queryFn: () => fetchProducts({ keyword: productName }),
+  })
+}
+
+export default function useFetchProductsByQuery() {
+  const { inputValue, selectedCategoryKey } = useProductStore()
+  return useQuery({
     queryKey: ['fetchProducts', selectedCategoryKey, inputValue],
     queryFn: () =>
       fetchProducts({
@@ -38,11 +42,9 @@ export default function fetchProductsByQuery() {
       }),
     select: (data) => data?.list,
   })
-
-  return { hotProducts, filteredProducts, ratedProducts }
 }
 
-export function useFetchNextProduct() {
+export function useFetchProducts() {
   return useInfiniteQuery({
     queryKey: ['fetchProducts', 'ratedCount'],
     queryFn: ({ pageParam }) =>

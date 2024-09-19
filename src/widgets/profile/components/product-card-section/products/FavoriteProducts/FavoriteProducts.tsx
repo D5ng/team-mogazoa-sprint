@@ -1,6 +1,6 @@
-import FavoriteProductsList from './FavoriteProductsList'
-import { UserId } from '@shared/types'
 import { Suspense } from 'react'
+import FavoriteProductsList from './FavoriteProductsList'
+import type { UserId } from '@shared/types'
 
 export default function FavoriteProducts({ userId }: UserId) {
   return (

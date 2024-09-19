@@ -7,7 +7,7 @@ import {
   QueryCache,
 } from '@tanstack/react-query'
 import '@app/styles/globals.css'
-import Gnb from '@widgets/product/components/gnb/Gnb'
+import Gnb from '@/src/shared/ui/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -26,9 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={pageProps.dehydratedState}>
         <Gnb />
-        <div className="">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
         <KakaoScript />
       </HydrationBoundary>
     </QueryClientProvider>

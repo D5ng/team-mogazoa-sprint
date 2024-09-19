@@ -11,7 +11,7 @@ import {
   updateReview,
 } from '@shared/api'
 import { ProductReviewsResponse } from '@shared/types'
-import { ReviewSortOptions } from '@widgets/product-detail/constants'
+import { ReviewSortOptions } from '@widgets/product/product-detail/constants'
 
 interface ReviewParams {
   productId: number
