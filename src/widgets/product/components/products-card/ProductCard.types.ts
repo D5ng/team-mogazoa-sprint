@@ -1,4 +1,4 @@
-import { ProductListItem } from '@/src/shared/types'
+import { ProductListItem } from '@shared/types'
 
 export type ProductCardItems = Omit<
   ProductListItem,

@@ -44,4 +44,4 @@ export const getServerSideProps: GetServerSideProps = (async (context) => {
   } catch (error) {
     return { notFound: true }
   }
-})satisfies GetServerSideProps
+}) satisfies GetServerSideProps

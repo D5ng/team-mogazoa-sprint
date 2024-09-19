@@ -1,6 +1,6 @@
 import { Button } from '@shared/ui'
 import { useLogout, useToggle } from '@shared/hooks'
-import { ProfileEditModal } from '@/src/widgets/profile-edit-modal/components'
+import { ProfileEditModal } from '@widgets/profile-edit-modal/components'
 
 export default function MyProfileButton() {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()

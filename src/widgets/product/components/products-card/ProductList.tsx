@@ -1,4 +1,4 @@
-import { useFetchNextProduct, useIntersect } from '@/src/shared/hooks'
+import { useFetchNextProduct, useIntersect } from '@shared/hooks'
 import { ProductCardItems, ProductCardSectionProps } from './ProductCard.types'
 import ProductCardItem from './ProductCardItem'
 
@@ -17,7 +17,6 @@ export default function ProductList({ children }: listProps) {
   }
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
-  console.log(hasNextPage)
 
   //   if (reviews.length === 0) return <noProducts />
 

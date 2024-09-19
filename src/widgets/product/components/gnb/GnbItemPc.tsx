@@ -3,10 +3,11 @@ import Link from 'next/link'
 import logo from 'public/images/logo.png'
 import GnbInput from './GnbProductSearchInput'
 import GnbMenu from './GnbMenu'
-import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
+import useSearchProduct from '@shared/hooks/useSearchProduct'
 
 export default function GnbPc() {
   const { resetProducts } = useSearchProduct()
+
   return (
     <div className="fixed top-0 w-full flex items-center bg-black-80 px-[120px] py-[25px] justify-between tablet:px-[40px] tablet:py-[20px] z-dropdown">
       <div onClick={resetProducts}>

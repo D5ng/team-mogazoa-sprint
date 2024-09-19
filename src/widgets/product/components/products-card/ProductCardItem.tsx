@@ -22,7 +22,7 @@ export default function ProductCardItem({ data }: ProductCardProps) {
             <div className="flex items-center gap-[3px]">
               <Image src={star} width={13} height={13} alt="별점" />
               <p className="text-[1vw] text-black-20 tablet:text-[12px]  mobile:text-[2vw]">
-                {data.rating}
+                {data.rating.toFixed(2)}
               </p>
             </div>
           </div>

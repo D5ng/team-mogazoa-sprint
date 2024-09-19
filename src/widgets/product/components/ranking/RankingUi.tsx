@@ -1,4 +1,4 @@
-import ProfileImage from '@/src/shared/ui/profile-image/ProfileImage'
+import ProfileImage from '@shared/ui/profile-image/ProfileImage'
 import { RankingUiProps } from './Ranking.types'
 import RankingChip from './RankingChip'
 import Link from 'next/link'

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import CategoryChip from '@widgets/product/category-chip/CategoryChip'
+import CategoryChip from '@widgets/product/components/category-chip/CategoryChip'
 
 interface LogListItemProps {
   title: string

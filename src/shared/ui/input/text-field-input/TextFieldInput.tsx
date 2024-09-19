@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import type { TextFieldInputProps } from '@shared/ui/input/text-field-input/TextFieldInput.type'
-import ErrorMessage from '@/src/shared/ui/error-message/ErrorMessage'
+import ErrorMessage from '@shared/ui/error-message/ErrorMessage'
 
 const TextFieldInput = forwardRef<HTMLInputElement, TextFieldInputProps>(
   ({ placeholder, setValue, name, errors, onBlur, ...props }, ref) => {
