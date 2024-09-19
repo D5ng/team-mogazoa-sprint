@@ -1,4 +1,4 @@
-import { FollowerList } from '@widgets/profile-follow-modal/components'
+import { FollowerList } from '@/src/widgets/profile-follow-modal'
 import { Modal, ModalTitle } from '@shared/ui'
 import { Suspense } from 'react'
 

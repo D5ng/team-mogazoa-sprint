@@ -11,14 +11,15 @@ export interface FavoriteCategory {
 
 export interface UserCommon {
   updatedAt: string
+  id: number | undefined
   createdAt: string
   teamId: string
   image: string | null
   description: string
   nickname: string
-  id: number | undefined
   reviewCount: number
   followersCount: number
+  name: string
 }
 
 export interface UserRankingItem {
@@ -38,6 +39,13 @@ export interface UserItem extends UserCommon {
   averageRating: number
   followeesCount: number
   isFollowing: boolean
+}
+
+export interface UserData extends UserCommon {
+  writerId: number
+  favoriteCount: number
+  rating: number
+  image: string
 }
 
 export interface Follower extends UserCommon {
@@ -70,7 +78,7 @@ export interface followeesProductResponse {
 
 export interface UsersProductResponse {
   nextCursor: number
-  list: UserItem[]
+  list: UserData[]
 }
 
 export interface UpdateMyProfile
@@ -85,7 +93,7 @@ export interface CursorParams {
   cursor?: number
 }
 
-export interface FetchFollows {
+export interface UserFetch {
   userId: number | undefined
   cursor?: number
 }

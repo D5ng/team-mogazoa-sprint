@@ -100,6 +100,7 @@ export function DropdownMenu({ children }: PropsWithChildren) {
 
 export function DropdownMenuItem({
   children,
+  className,
   ...props
 }: DropdownMenuItemProps) {
   const { onSelect, onCloseToggle } = useDropdownContext()
@@ -111,7 +112,10 @@ export function DropdownMenuItem({
   }
   return (
     <li
-      className="px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px] overflow-hidden text-ellipsis whitespace-nowrap tablet:text-sm tablet:px-[10px] shrink-0 cursor-pointer"
+      className={twMerge(
+        'px-[20px] py-[6px] hover:bg-black-70 hover:text-black-10 rounded-[6px] overflow-hidden text-ellipsis whitespace-nowrap tablet:text-sm tablet:px-[10px] shrink-0 cursor-pointer',
+        className,
+      )}
       onClick={handleClick}
     >
       {children}

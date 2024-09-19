@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import useAuthStore from '@/src/shared/store/authStore'
+import useAuthStore from '@app/provider/authStore'
 // import getCookies from '../../auth/lib/getCookies'
 
 export default function GnbMenu() {
