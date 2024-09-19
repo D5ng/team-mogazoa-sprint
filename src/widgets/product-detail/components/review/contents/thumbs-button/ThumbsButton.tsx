@@ -1,8 +1,9 @@
 import Image from 'next/image'
-import { ProductReviewItem } from '@shared/types'
+import { toast } from 'react-toastify'
 import { thumb, emptyThumb, review } from '@shared/icons'
 import { useReviewCancelLike, useReviewLike } from '@shared/hooks'
-import { useReviewOptionStore } from '@shared/store'
+import { useReviewOptionStore, useUserStore } from '@shared/store'
+import type { ProductReviewItem } from '@shared/types'
 
 export default function ThumbsButton({
   id: reviewId,
@@ -10,6 +11,7 @@ export default function ThumbsButton({
   likeCount,
   productId,
 }: ProductReviewItem) {
+  const { user } = useUserStore()
   const option = useReviewOptionStore((state) => state.option)
   const { mutateAsync: likeMutate } = useReviewLike({
     productId,
@@ -23,10 +25,12 @@ export default function ThumbsButton({
 
   const isLikedClassName = isLiked ? 'text-indigo' : 'text-black-20'
 
-  const handleLikeClick = async () =>
+  const handleLikeClick = async () => {
+    if (!user) return toast.error('로그인이 필요합니다')
     isLiked
       ? await cancelLikeMutate({ reviewId })
       : await likeMutate({ reviewId })
+  }
 
   return (
     <button
