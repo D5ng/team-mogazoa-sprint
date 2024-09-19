@@ -1,19 +1,19 @@
-import { Follow } from '@widgets/profile-follow-modal/components'
-import { useFetchFollowers } from '@shared/hooks/query/user.query'
+import { Follow } from '@/src/widgets/profile-follow-modal'
+import { useFetchFollowees } from '@shared/hooks/query/user.query'
 import { useIntersect } from '@shared/hooks'
 
-interface FollowerList {
+interface FolloweesList {
   userId: number | undefined
 }
 
-export default function FollowerList({ userId }: FollowerList) {
+export default function FolloweesList({ userId }: FolloweesList) {
   const {
-    data: followers,
+    data: followees,
     isFetching,
     hasNextPage,
     fetchNextPage,
     error,
-  } = useFetchFollowers({ userId })
+  } = useFetchFollowees({ userId })
 
   if (error && !isFetching) throw error
 
@@ -26,8 +26,8 @@ export default function FollowerList({ userId }: FollowerList) {
   return (
     <>
       <ul className="flex flex-col gap-6 mt-10 tablet:gap-5 mobile:mt-5">
-        {followers.map((follower) => (
-          <Follow key={follower.id} {...follower.follower} />
+        {followees.map((followee) => (
+          <Follow key={followee.id} {...followee.followee} />
         ))}
       </ul>
       <div className="w-[1px] h-2.5" ref={ref}></div>

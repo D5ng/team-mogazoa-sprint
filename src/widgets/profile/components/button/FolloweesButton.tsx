@@ -1,5 +1,5 @@
 import { useToggle } from '@shared/hooks'
-import { ProfileFolloweesModal } from '@widgets/profile-follow-modal/components'
+import { ProfileFolloweesModal } from '@/src/widgets/profile-follow-modal'
 
 interface FollowerButtonProps {
   userId: number | undefined

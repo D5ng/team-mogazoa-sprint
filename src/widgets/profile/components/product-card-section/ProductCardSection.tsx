@@ -1,18 +1,25 @@
 import { useState } from 'react'
+import useWindowResize from '@shared/hooks/useWindowResize'
 import {
   ReviewedProducts,
   RegisteredProducts,
   WishListedProducts,
 } from '@widgets/profile/components'
+import { CategoryPc, CategoryTablet } from '@widgets/profile/components/'
 import { PRODUCT_CATEGORIES } from '@widgets/profile/constants/ProductCategories.constant'
+import type { UserId } from '@shared/types'
+import type { CategoryTitle } from '@widgets/profile/types/Category.type'
 
-export default function ProductCardSection() {
-  const [activeCategory, setActiveCategory] = useState('리뷰 남긴 상품')
+export default function ProductCardSection({ userId }: UserId) {
+  const [activeCategory, setActiveCategory] = useState<CategoryTitle>(
+    PRODUCT_CATEGORIES[0].title,
+  )
+  const windowSize = useWindowResize()
 
   const componentMap = {
-    ReviewedProducts,
-    RegisteredProducts,
-    WishListedProducts,
+    ReviewedProducts: (props: UserId) => <ReviewedProducts {...props} />,
+    RegisteredProducts: (props: UserId) => <RegisteredProducts {...props} />,
+    WishListedProducts: (props: UserId) => <WishListedProducts {...props} />,
   }
 
   const ActiveComponent =
@@ -22,21 +29,19 @@ export default function ProductCardSection() {
     ]
 
   return (
-    <section className="flex flex-col gap-4">
-      <div className="flex gap-4">
-        {PRODUCT_CATEGORIES.map(({ title }) => (
-          <button
-            key={title}
-            onClick={() => setActiveCategory(title)}
-            className={`text-xl tablet:text-lg ${
-              activeCategory === title ? 'text-white' : 'text-black-30'
-            }`}
-          >
-            {title}
-          </button>
-        ))}
-      </div>
-      <ActiveComponent />
+    <section className="flex flex-col gap-6 w-full pb-[60px]">
+      {windowSize < 1280 ? (
+        <CategoryTablet
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+      ) : (
+        <CategoryPc
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+      )}
+      <ActiveComponent userId={userId} />
     </section>
   )
 }
