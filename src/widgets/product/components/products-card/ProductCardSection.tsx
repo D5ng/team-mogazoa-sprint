@@ -1,8 +1,8 @@
 import ProductCardItem from './ProductCardItem'
 import { ProductCardItems, ProductCardSectionProps } from './ProductCard.types'
-import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
-import { useProductStore } from '@/src/shared/store/productStore'
-import useProductTitle from '@/src/shared/hooks/useProductsTitle'
+import useSearchProduct from '@shared/hooks/useSearchProduct'
+import { useProductStore } from '@shared/store/productStore'
+import useProductTitle from '@shared/hooks/useProductsTitle'
 
 export default function ProductCardSection({
   data,

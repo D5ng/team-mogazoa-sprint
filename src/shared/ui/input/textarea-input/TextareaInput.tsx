@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { TextareaInputProps } from './TextareaInput.type'
 import { twMerge } from 'tailwind-merge'
-import ErrorMessage from '@/src/shared/ui/error-message/ErrorMessage'
+import ErrorMessage from '@shared/ui/error-message/ErrorMessage'
 
 const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
   ({ placeholder, name, value, maxLength = 500, errors, ...props }, ref) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
 import { debounce } from 'lodash'
-import { useProductStore } from '@/src/shared/store/productStore'
+import { useProductStore } from '@shared/store/productStore'
 
 export default function useAutocomplete(
   suggestionList: string[],

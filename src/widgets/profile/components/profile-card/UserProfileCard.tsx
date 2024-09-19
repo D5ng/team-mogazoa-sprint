@@ -1,11 +1,11 @@
 import { twMerge } from 'tailwind-merge'
 
-import { useFetchUserProfile } from '@/src/shared/hooks/query/user.query'
+import { useFetchUserProfile } from '@shared/hooks/query/user.query'
 import {
   ProfileHeader,
   ProfileStats,
   UserProfileButton,
-} from '@/src/widgets/profile/components'
+} from '@widgets/profile/components'
 
 interface UserProfileProps {
   userId: number

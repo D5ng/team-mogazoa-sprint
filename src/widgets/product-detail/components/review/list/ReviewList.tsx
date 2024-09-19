@@ -1,7 +1,7 @@
 import { ReviewListItem } from '@widgets/product-detail/components'
 import { useFetchProductReview, useIntersect } from '@shared/hooks'
 import ReviewEmptyList from './ReviewEmptyList'
-import { useReviewOptionStore } from '@/src/shared/store'
+import { useReviewOptionStore } from '@shared/store'
 
 interface ReviewListProps {
   productId: number

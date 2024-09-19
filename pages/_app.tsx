@@ -6,7 +6,7 @@ import {
   HydrationBoundary,
 } from '@tanstack/react-query'
 import '@app/styles/globals.css'
-import Gnb from '@widgets/product/gnb/Gnb'
+import Gnb from '@widgets/product/components/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

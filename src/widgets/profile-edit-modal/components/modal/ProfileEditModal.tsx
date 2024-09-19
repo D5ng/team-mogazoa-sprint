@@ -1,4 +1,4 @@
-import { Modal, ModalTitle } from '@/src/shared/ui'
+import { Modal, ModalTitle } from '@shared/ui'
 import { ProfileEditForm } from '@widgets/profile-edit-modal/components'
 
 export interface ReviewCreateModalProps {

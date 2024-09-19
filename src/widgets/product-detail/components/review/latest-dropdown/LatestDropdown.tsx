@@ -1,4 +1,4 @@
-import { useReviewOptionStore } from '@/src/shared/store'
+import { useReviewOptionStore } from '@shared/store'
 import {
   Dropdown,
   DropdownMenu,

@@ -5,7 +5,7 @@ import GnbInput from './GnbProductSearchInput'
 import { hamburger, search } from '@shared/icons'
 import { useOutsideClick, useToggle } from '@shared/hooks'
 import SideMenuMobile from '../side-menu/SideMenuMobile'
-import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
+import useSearchProduct from '@shared/hooks/useSearchProduct'
 
 export default function GnbMenu() {
   const { isToggle: searchVisible, onToggle: toggleSearchInput } = useToggle()
@@ -25,7 +25,7 @@ export default function GnbMenu() {
   })
   return (
     <>
-      <div className="fixed top-0 w-full flex items-center justify-between bg-black-80 px-[30px] py-[20px]">
+      <div className="fixed top-0 w-full flex items-center justify-between bg-black-80 px-[30px] py-[20px] z-dropdown">
         <button className="sideMenu" onClick={() => toggleSideMenu()}>
           <Image
             src={hamburger}
