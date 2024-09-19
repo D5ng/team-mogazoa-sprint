@@ -24,13 +24,13 @@ export default function FollowerList({ userId }: FollowerList) {
   const ref = useIntersect<HTMLDivElement>(onIntersect)
 
   return (
-    <>
+    <div className="w-full h-full overflow-y-auto custom-scrollbar">
       <ul className="flex flex-col gap-6 mt-10 tablet:gap-5 mobile:mt-5">
         {followers.map((follower) => (
           <Follow key={follower.id} {...follower.follower} />
         ))}
       </ul>
       <div className="w-[1px] h-2.5" ref={ref}></div>
-    </>
+    </div>
   )
 }

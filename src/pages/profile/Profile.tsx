@@ -9,7 +9,7 @@ import type { ProfileProps } from './Profile.type'
 
 export default function Profile({ userId }: ProfileProps) {
   const { data: myProfileData } = useFetchMyProfile()
-  const isMyProfile = !userId
+  const isMyProfile = !userId || userId === myProfileData?.id
   const id = isMyProfile ? myProfileData?.id : userId
 
   return (
