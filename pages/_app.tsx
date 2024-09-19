@@ -10,6 +10,7 @@ import Gnb from '@widgets/product/components/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import '@app/styles/toastify-style.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
