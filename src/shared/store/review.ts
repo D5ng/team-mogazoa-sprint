@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import {
   LATEST_DROPDOWN_ITEMS,
   ReviewSortOptions,
-} from '@widgets/product-detail/constants'
+} from '@widgets/product/product-detail/constants'
 
 interface ReviewStore {
   option: ReviewSortOptions

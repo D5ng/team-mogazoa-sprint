@@ -1,13 +1,13 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { fetchProductDetail } from '@shared/api'
-import { ProductDetail } from '@/src/pages/'
+import { ProductDetailPage } from '@/src/pages/'
 import { axiosInstance } from '@shared/config'
 
-export default function ProductDetailPage({
+export default function Index({
   productId,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <ProductDetail productId={productId} />
+  return <ProductDetailPage productId={productId} />
 }
 
 export const getServerSideProps = (async (context) => {

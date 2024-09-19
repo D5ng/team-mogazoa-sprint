@@ -2,13 +2,13 @@ import {
   ProductInfo,
   ReviewWrapper,
   StatisticsList,
-} from '@widgets/product-detail/components'
+} from '@widgets/product/product-detail/components'
 
 interface ProductDetailProps {
   productId: number
 }
 
-export default function ProductDetail({ productId }: ProductDetailProps) {
+export default function ProductDetailPage({ productId }: ProductDetailProps) {
   return (
     <main className="w-[940px] m-auto mt-[60px] tablet:w-full px-[30px] mobile:px-[20px]">
       <ProductInfo productId={productId} />

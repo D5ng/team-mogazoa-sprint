@@ -6,7 +6,7 @@ import {
   HydrationBoundary,
 } from '@tanstack/react-query'
 import '@app/styles/globals.css'
-import Gnb from '@widgets/product/components/gnb/Gnb'
+import Gnb from '@/src/shared/ui/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -28,9 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={pageProps.dehydratedState}>
         <Gnb />
-        <div className="">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
         <KakaoScript />
         <ToastContainer
           autoClose={3000}
