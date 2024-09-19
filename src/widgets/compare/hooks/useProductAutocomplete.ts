@@ -55,5 +55,6 @@ export default function useProductAutocomplete(
     data,
     selectedProduct,
     deleteSelectedProduct,
+    setSelectedProducts,
   }
 }

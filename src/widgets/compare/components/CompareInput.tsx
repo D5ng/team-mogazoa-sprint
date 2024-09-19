@@ -1,14 +1,21 @@
-import { useOutsideClick, useToggle } from '@shared/hooks'
+import {
+  useFetchProductDetail,
+  useOutsideClick,
+  useToggle,
+} from '@shared/hooks'
 import useProductAutocomplete from '../hooks/useProductAutocomplete'
 import SelectedProduct from './SelectedProduct'
 import { twMerge } from 'tailwind-merge'
+import { useEffect } from 'react'
 
 export default function CompareInput({
   id,
   setViewCompareSheet,
+  productId = '',
 }: {
   id: string
   setViewCompareSheet: (arg: boolean) => void
+  productId: number | string | undefined
 }) {
   const { isToggle, onCloseToggle, onOpenToggle } = useToggle()
   const {
@@ -18,10 +25,18 @@ export default function CompareInput({
     handleInputChange,
     selectedProduct,
     deleteSelectedProduct,
+    setSelectedProducts,
   } = useProductAutocomplete(id, onCloseToggle)
   const mobile = twMerge('mobile:h-[60px]')
   const ref = useOutsideClick<HTMLUListElement>({ onCloseToggle })
-  console.log(suggestions)
+  const fetchProductDetail = () => {
+    const { data } = useFetchProductDetail(Number(productId))
+    data && setSelectedProducts(id, data.name)
+  }
+
+  useEffect(() => {
+    productId && fetchProductDetail()
+  }, [productId])
 
   return (
     <div className="relative w-full ">
