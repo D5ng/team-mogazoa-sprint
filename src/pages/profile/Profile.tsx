@@ -8,8 +8,11 @@ import { useFetchMyProfile } from '@shared/hooks/query/user.query'
 import type { ProfileProps } from './Profile.type'
 
 export default function Profile({ userId }: ProfileProps) {
-  const { data: myProfileData } = useFetchMyProfile()
-  const isMyProfile = !userId || userId === myProfileData?.id
+  const isMyProfile = !userId
+  const { data: myProfileData } = isMyProfile
+    ? useFetchMyProfile()
+    : { data: null }
+
   const id = isMyProfile ? myProfileData?.id : userId
 
   return (
