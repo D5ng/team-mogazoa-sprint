@@ -11,11 +11,11 @@ import { useEffect } from 'react'
 export default function CompareInput({
   id,
   setViewCompareSheet,
-  productId = '',
+  productId = undefined,
 }: {
   id: string
   setViewCompareSheet: (arg: boolean) => void
-  productId: number | string | undefined
+  productId?: number | string | undefined
 }) {
   const { isToggle, onCloseToggle, onOpenToggle } = useToggle()
   const {

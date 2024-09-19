@@ -4,7 +4,7 @@ import useProductAutocomplete from '@widgets/compare/hooks/useProductAutocomplet
 import { Button } from '@shared/ui'
 import { useState } from 'react'
 
-export default function ComparePage({ id = '' }) {
+export default function ComparePage({ id = '' }: any) {
   const [viewCompareSheet, setViewCompareSheet] = useState(false)
   const { selectedProduct: product1 } = useProductAutocomplete('상품1')
   const { selectedProduct: product2 } = useProductAutocomplete('상품2')
