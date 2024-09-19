@@ -15,7 +15,9 @@ export default function GnbPc() {
           <Image src={logo} width={160} height={30} alt="메인로고" priority />
         </Link>
       </div>
+      {/* 햄버거 메뉴 */}
       <div className="flex items-center gap-[30px]">
+        {/* 검색 아이콘 */}
         <GnbInput />
         <div className="flex text-white text-[14px] item-center gap-[40px] tablet:gap-[25px]">
           <GnbMenu />

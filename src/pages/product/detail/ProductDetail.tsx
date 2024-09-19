@@ -2,7 +2,7 @@ import {
   ProductInfo,
   ReviewWrapper,
   StatisticsList,
-} from '@widgets/product-detail/components'
+} from '@widgets/product/product-detail/components'
 
 interface ProductDetailProps {
   productId: number

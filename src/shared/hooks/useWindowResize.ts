@@ -6,9 +6,10 @@ export default function useWindowResize() {
   useEffect(() => {
     const handleResize = throttle(() => {
       setWindowSize(window.innerWidth)
-    }, 100)
+    }, 300)
+
     window.addEventListener('resize', handleResize)
-    handleResize()
+
     return () => {
       window.removeEventListener('resize', handleResize)
       handleResize.cancel()

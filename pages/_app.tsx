@@ -7,7 +7,7 @@ import {
   QueryCache,
 } from '@tanstack/react-query'
 import '@app/styles/globals.css'
-import Gnb from '@widgets/product/components/gnb/Gnb'
+import Gnb from '@/src/shared/ui/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
 
 export default function App({ Component, pageProps }: AppProps) {

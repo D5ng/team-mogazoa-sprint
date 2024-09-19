@@ -4,10 +4,11 @@ import logo from 'public/images/logo-mobile.png'
 import GnbInput from './GnbProductSearchInput'
 import { hamburger, search } from '@shared/icons'
 import { useOutsideClick, useToggle } from '@shared/hooks'
-import SideMenuMobile from '../../../widgets/product/components/side-menu/SideMenuMobile'
-import useSearchProduct from '@shared/hooks/useSearchProduct'
 
-export default function GnbMenu() {
+import useSearchProduct from '@shared/hooks/useSearchProduct'
+import { SideMenuMobile } from '@/src/widgets/product/product-home/components'
+
+export default function GnbItemMobile() {
   const { isToggle: searchVisible, onToggle: toggleSearchInput } = useToggle()
   const { isToggle: sideMenuVisible, onToggle: toggleSideMenu } = useToggle()
   const { resetProducts } = useSearchProduct()
