@@ -4,6 +4,8 @@ import { useFetchReviewedProducts } from '@shared/hooks/query'
 import type { UserId } from '@shared/types'
 
 export default function ReviewedProductsList({ userId }: UserId) {
+  if (!userId) return
+
   const {
     data: reviewedProducts,
     isFetching,
