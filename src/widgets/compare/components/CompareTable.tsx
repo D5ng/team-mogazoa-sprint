@@ -14,7 +14,7 @@ export default function CompareTable({
       : 'text-pink'
 
   return (
-    <div className="w-full tablet:w-[80vw] mobile:w-[95vw] border border-black-40 rounded-lg overflow-hidden">
+    <div className="w-[60vw] tablet:w-[80vw] mobile:w-[90vw] border border-black-40 rounded-lg overflow-hidden">
       <table className="w-full table-fixed text-center">
         <thead className="bg-black-50 text-black-30">
           <tr>
@@ -45,7 +45,7 @@ export default function CompareTable({
               {product2.rating.toFixed(2)}
             </td>
             <td
-              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] line-clamp-2`}
+              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] `}
             >
               {result.rating}
             </td>
@@ -61,7 +61,7 @@ export default function CompareTable({
               {product2.reviewCount}
             </td>
             <td
-              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] line-clamp-2`}
+              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] `}
             >
               {result.reviewCount}
             </td>
@@ -77,7 +77,7 @@ export default function CompareTable({
               {product2.favoriteCount}
             </td>
             <td
-              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] line-clamp-2`}
+              className={`px-[45px] py-[40px] ${resultStyle} mobile:px-[15px] mobile:py-[10px] `}
             >
               {result.favoriteCount}
             </td>

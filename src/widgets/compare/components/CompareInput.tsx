@@ -21,6 +21,7 @@ export default function CompareInput({
   } = useProductAutocomplete(id, onCloseToggle)
   const mobile = twMerge('mobile:h-[60px]')
   const ref = useOutsideClick<HTMLUListElement>({ onCloseToggle })
+  console.log(suggestions)
 
   return (
     <div className="relative w-full ">
@@ -45,7 +46,7 @@ export default function CompareInput({
       {isToggle && inputValue.length >= 2 && suggestions.length > 0 && (
         <ul
           ref={ref}
-          className="absolute  z-modal bg-black-60 border border-black-40 mt-1 w-full rounded-lg"
+          className="absolute z-modal bg-black-70 border border-black-40 mt-1 w-full rounded-lg"
         >
           {suggestions.map((name, index) => (
             <li

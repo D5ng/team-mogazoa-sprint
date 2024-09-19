@@ -10,7 +10,7 @@ export default function ComparePage() {
   const { selectedProduct: product2 } = useProductAutocomplete('상품2')
   const isDisabled = !product1 || !product2
   return (
-    <div className="flex flex-col items-center mt-[200px] mobile:pr-[20px] overflow-hidden">
+    <div className="flex flex-col items-center h-[78vh] mt-[200px] mobile:pr-[20px] overflow-hidden">
       <div className="w-[60vw] tablet:w-[80vw] mobile:w-[90vw] mobile:flex-col flex justify-between  items-end gap-[20px] mpbile:gap-[5px]">
         <CompareInput id="상품1" setViewCompareSheet={setViewCompareSheet} />
         <CompareInput id="상품2" setViewCompareSheet={setViewCompareSheet} />
