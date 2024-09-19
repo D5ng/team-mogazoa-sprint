@@ -31,10 +31,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <KakaoScript />
         <ToastContainer
-          autoClose={3000}
+          autoClose={1000}
           position="bottom-center"
           theme="dark"
           pauseOnFocusLoss={false}
+          hideProgressBar={true}
         />
       </HydrationBoundary>
     </QueryClientProvider>
