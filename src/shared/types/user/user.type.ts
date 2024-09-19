@@ -1,5 +1,3 @@
-import { Variant } from '@widgets/product/components/ranking/Ranking.types'
-
 export interface UserId {
   userId: number | undefined
 }
@@ -28,7 +26,7 @@ export interface UserRankingItem {
   nickname: string
   followersCount: number
   reviewCount: number
-  variant: Variant
+  variant: 'first' | 'second' | 'etc'
   id: number
 }
 

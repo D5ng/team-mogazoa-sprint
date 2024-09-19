@@ -1,7 +1,7 @@
-import { PRODUCT_CATEGORIES } from '@widgets/profile/constants/ProductCategories.constant'
-import type { CategorySelectorProps } from '@/src/widgets/profile/types/Category.type'
+import { PRODUCT_CATEGORIES } from '@widgets/profile/constants'
+import type { CategorySelectorProps } from '@widgets/profile/types'
 
-export default function CategoryButtons({
+export default function CategoryPc({
   activeCategory,
   setActiveCategory,
 }: CategorySelectorProps) {

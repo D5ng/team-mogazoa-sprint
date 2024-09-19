@@ -5,7 +5,7 @@ export type RankingChipProps = {
   variant: Variant
 }
 
-export interface RankingItem {
+export interface RankingItems {
   rank: number
   image: string
   nickname: string
@@ -16,9 +16,9 @@ export interface RankingItem {
 }
 
 export interface RankingProps {
-  data: RankingItem[]
+  data: RankingItems[]
 }
 
 export interface RankingUiProps {
-  data: RankingItem
+  data: RankingItems
 }

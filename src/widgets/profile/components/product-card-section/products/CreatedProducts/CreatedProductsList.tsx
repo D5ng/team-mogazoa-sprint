@@ -1,6 +1,6 @@
 import MockCardItem from '@widgets/profile/MockCardItem'
 import { useIntersect } from '@shared/hooks'
-import { useFetchCreatedProducts } from '@shared/hooks/query/user.query'
+import { useFetchCreatedProducts } from '@shared/hooks/query'
 import type { UserId } from '@shared/types'
 
 export default function CreatedProductsList({ userId }: UserId) {

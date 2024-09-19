@@ -1,8 +1,8 @@
 import {
   ActivityLogSection,
-  ProductCardSection,
   MyProfileCard,
   UserProfileCard,
+  ProductCardSection,
 } from '@widgets/profile/components'
 import { useFetchMyProfile } from '@shared/hooks/query/user.query'
 import type { ProfileProps } from './Profile.type'

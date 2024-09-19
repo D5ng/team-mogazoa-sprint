@@ -1,7 +1,6 @@
 import RankingItem from './RankingItem'
-import useRankingData from '@shared/hooks/useRankingData'
-import rankingIndexer from '@shared/utils/rankingIndexer'
-
+import { useRankingData } from '@/src/shared/hooks'
+import { rankingIndexer } from '@widgets/product/product-home/utils'
 export default function Ranking() {
   const { rankingData } = useRankingData()
   const indexedData = rankingIndexer(rankingData)

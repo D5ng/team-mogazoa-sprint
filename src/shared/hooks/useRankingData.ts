@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchUserRanking } from '../api'
-import { RankingItem } from '@widgets/product/components/ranking/Ranking.types'
+import { RankingItems } from '@widgets/product/product-home/components/ranking/Ranking.types'
 
 export default function useRankingData() {
-  const { data: rankingData, error } = useQuery<RankingItem[], Error>({
+  const { data: rankingData, error } = useQuery<RankingItems[], Error>({
     queryKey: ['fetchUserRanking'],
     queryFn: fetchUserRanking,
   })

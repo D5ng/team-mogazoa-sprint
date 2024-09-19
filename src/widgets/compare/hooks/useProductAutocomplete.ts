@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useFetchProductName } from '../../product/hooks/useProductName'
+import { useFetchProductName } from '@/src/shared/hooks'
 import { useCompareStore } from '@app/provider/compareStore'
 
 export default function useProductAutocomplete(

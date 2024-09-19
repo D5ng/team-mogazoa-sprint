@@ -22,6 +22,13 @@ export function useFetchProductsHot() {
   })
 }
 
+export function useFetchProductName(productName: string) {
+  return useQuery({
+    queryKey: ['product', productName],
+    queryFn: () => fetchProducts({ keyword: productName }),
+  })
+}
+
 export default function useFetchProductsByQuery() {
   const { inputValue, selectedCategoryKey } = useProductStore()
   return useQuery({
