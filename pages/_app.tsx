@@ -26,9 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={pageProps.dehydratedState}>
         <Gnb />
-        <div className="">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
         <KakaoScript />
       </HydrationBoundary>
     </QueryClientProvider>
