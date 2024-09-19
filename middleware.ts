@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export const PROTECTED_PAGES = ['/my-profile']
-export const RESTRICT_AUTH_PAGE = ['/sign-in', '/sign-up']
+export const PROTECTED_PAGES = ['/product/my']
+export const RESTRICT_AUTH_PAGE = ['/auth/sign-in', '/auth/sign-up']
 
 export function middleware(request: NextRequest) {
   const isLoggedIn = request.cookies.has('auth')
@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
   )
 
   if (!isLoggedIn && isProtectedPage)
-    return NextResponse.redirect(new URL('/sign-in', request.url))
+    return NextResponse.redirect(new URL('/auth/sign-in', request.url))
 
   if (isLoggedIn && isRestrictAuthPage)
     return NextResponse.redirect(new URL('/', request.url))

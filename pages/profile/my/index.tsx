@@ -14,7 +14,7 @@ export default function MyProfilePage() {
 
   useEffect(() => {
     if (!myProfileData) {
-      router.push('/sign-in')
+      router.push('/auth/sign-in')
     }
   }, [myProfileData, router])
 
@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!cookie) {
     return {
       redirect: {
-        destination: '/sign-in',
+        destination: '/auth/sign-in',
         permanent: false,
       },
     }
@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } catch (error) {
     return {
       redirect: {
-        destination: '/sign-in',
+        destination: '/auth/sign-in',
         permanent: false,
       },
     }
