@@ -19,15 +19,13 @@ export default function CategoryDropdown({
   error,
 }: CategoryDropdownProps) {
   const {
-    field: { onChange, onBlur, value },
+    field: { onChange, onBlur },
   } = useController({
     name: 'categoryId',
     control: control,
     rules: categoryValidation,
     defaultValue: null,
   })
-  const category = CATEGORY_CHIPS.find((category) => category.id === value)
-  if (!category) throw new Error('카테고리 아이디가 잘못되었어요.')
 
   return (
     <Dropdown className={`w-[360px] mobile:w-full`}>
@@ -35,7 +33,7 @@ export default function CategoryDropdown({
         className={error ? 'border-red' : 'border-black-70'}
         onBlur={onBlur}
       >
-        {category.name}
+        카테고리 선택
       </DropdownTrigger>
       <DropdownMenu>
         {CATEGORY_CHIPS.map((category) => (
