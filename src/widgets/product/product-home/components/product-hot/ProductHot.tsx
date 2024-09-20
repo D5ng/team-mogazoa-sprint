@@ -4,10 +4,10 @@ import { ProductCardSection } from '@widgets/product/product-home/layout'
 
 function HotTitle() {
   return (
-    <>
+    <div>
       지금 핫한 상품
-      <span className="font-bold text-gradient">TOP 6</span>
-    </>
+      <span className="font-bold text-gradient ">TOP 6</span>
+    </div>
   )
 }
 

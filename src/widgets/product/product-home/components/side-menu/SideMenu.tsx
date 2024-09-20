@@ -9,7 +9,7 @@ export default function SideMenu() {
   const { handleCategory } = useSearchProduct()
 
   return (
-    <article className=" top-100">
+    <article className=" fixed top-100  tablet:w-full shrink-0 left-[9.5vw] tablet:left-[4vw]">
       <p className="text-[16px] tablet:text-[14px] ml-[20px] text-white mb-[10px]">
         카테고리
       </p>
