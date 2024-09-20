@@ -28,7 +28,7 @@ export default function NotFound() {
         <Link href="/" passHref>
           <Button
             variant="tertiary"
-            className="px-6 py-1 text-base mobile:px-5 mobile:py-2 mobile:text-sm"
+            className="px-6 text-base mobile:px-5 mobile:text-sm"
           >
             홈으로 돌아가기
           </Button>
