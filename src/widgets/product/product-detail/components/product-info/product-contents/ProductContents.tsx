@@ -5,18 +5,22 @@ import LikeButton from './LikeButton'
 import KaKaoShareButton from './KaKaoShareButton'
 import ClipBoardButton from './ClipBoardButton'
 import ReviewButton from './ReviewButton'
+import ProductUpdateButton from './ProductUpdateButton'
 
-interface ProductContentsProps
-  extends Pick<ProductDetailResponse, 'name' | 'category' | 'description'> {
-  productId: number
+interface ProductContentsProps extends ProductDetailResponse {
+  createdProductUserId: number
 }
 
 export default function ProductContents({
   name,
   category,
   description,
-  productId,
+  id,
+  createdProductUserId,
+  writerId,
 }: ProductContentsProps) {
+  const isCreatedProductUser = writerId === createdProductUserId
+
   return (
     <div className="relative w-[calc(100%-355px-40px)] text-white tablet:w-[51.478vw] mobile:w-full mobile:mt-5">
       <CategoryChip name={category.name} />
@@ -35,7 +39,7 @@ export default function ProductContents({
       </p>
       <div className="flex gap-x-5 tablet:gap-x-[15px] mobile:flex-col mobile:gap-x-0 mobile:gap-y-[15px]">
         <ReviewButton
-          productId={productId}
+          productId={id}
           categoryName={category.name}
           productName={name}
         />
@@ -45,6 +49,7 @@ export default function ProductContents({
         >
           비교하기
         </Button>
+        {isCreatedProductUser && <ProductUpdateButton productId={id} />}
       </div>
     </div>
   )
