@@ -1,6 +1,7 @@
 import { isAxiosError } from 'axios'
 import { createProduct } from '@shared/api'
 import type { ProductPayload } from '@shared/types'
+import { useCreateProduct } from '@/src/shared/hooks'
 
 interface UseProductForm {
   onSuccess: () => void
@@ -11,12 +12,13 @@ export default function useProductAddForm({
   onSuccess,
   onFailed,
 }: UseProductForm) {
+  const { mutateAsync, isPending } = useCreateProduct()
   const onSubmit = async (data: ProductPayload) => {
     if (!data.categoryId)
       return onFailed('categoryId', '카테고리를 입력해주세요.')
 
     try {
-      await createProduct({
+      mutateAsync({
         categoryId: data.categoryId,
         description: data.description,
         name: data.name,
@@ -40,5 +42,5 @@ export default function useProductAddForm({
     }
   }
 
-  return onSubmit
+  return { onSubmit, isPending }
 }
