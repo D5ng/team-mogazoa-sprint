@@ -57,6 +57,6 @@ export async function fetchProductsReviews({
 export async function favoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.post(`/products/${productId}/favorite`)).data
 }
-export async function deleteFavoriteProduct({ productId }: ProductId) {
+export async function cancelFavoriteProduct({ productId }: ProductId) {
   return (await axiosInstance.delete(`/products/${productId}/favorite`)).data
 }

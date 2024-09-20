@@ -18,6 +18,7 @@ export default function ProductContents({
   id,
   createdProductUserId,
   writerId,
+  isFavorite,
 }: ProductContentsProps) {
   const isCreatedProductUser = writerId === createdProductUserId
 
@@ -27,7 +28,7 @@ export default function ProductContents({
       <div className="flex justify-between items-center mt-2.5">
         <div className="flex items-center gap-x-[15px] mobile:w-full mobile:justify-between">
           <p className="text-2xl font-semibold tablet:text-xl">{name}</p>
-          <LikeButton />
+          <LikeButton isFavorite={isFavorite} productId={id} />
         </div>
         <div className="flex gap-x-2.5 mobile:absolute mobile:top-0 mobile:right-0">
           <KaKaoShareButton />
