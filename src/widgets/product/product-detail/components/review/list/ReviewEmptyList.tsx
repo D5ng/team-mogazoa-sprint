@@ -12,7 +12,7 @@ export default function ReviewEmptyList() {
         className="tablet:h-[32px]"
       />
       <p className="text-black-30 text-lg tablet:text-base">
-        첫 리뷰를 작성해 보세요!
+        여기는 아직 비어있네요.
       </p>
     </div>
   )
