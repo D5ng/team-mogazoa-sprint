@@ -1,11 +1,11 @@
-import { emptyReview } from '@shared/icons'
+import { emptyMessage } from '@shared/icons'
 import Image from 'next/image'
 
 export default function ReviewEmptyList() {
   return (
     <div className="m-auto flex flex-col items-center gap-y-5 py-[115px]">
       <Image
-        src={emptyReview}
+        src={emptyMessage}
         alt=""
         width={49}
         height={40}
