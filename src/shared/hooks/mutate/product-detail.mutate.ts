@@ -10,8 +10,10 @@ import {
   deleteReview,
   updateReview,
   updateProduct,
+  favoriteProduct,
+  cancelFavoriteProduct,
 } from '@shared/api'
-import { ProductReviewsResponse } from '@shared/types'
+import { ProductDetailResponse, ProductReviewsResponse } from '@shared/types'
 import { ReviewSortOptions } from '@widgets/product/product-detail/constants'
 
 interface ReviewParams {
@@ -160,6 +162,82 @@ export function useDeleteReview() {
     mutationFn: deleteReview,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['product-detail-review'] })
+    },
+  })
+}
+
+export function useProductFavorite({ productId }: ProductId) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: favoriteProduct,
+    onMutate: async ({ productId }) => {
+      await queryClient.cancelQueries({
+        queryKey: ['product-detail', productId],
+      })
+
+      const previousFavorite = queryClient.getQueryData<ProductDetailResponse>([
+        'product-detail',
+        productId,
+      ])!
+
+      const updater: ProductDetailResponse = {
+        ...previousFavorite,
+        isFavorite: true,
+        favoriteCount: previousFavorite.favoriteCount + 1,
+      }
+
+      queryClient.setQueryData(['product-detail', productId], updater)
+
+      console.log('previousFavorite', updater, productId)
+
+      return { previousFavorite }
+    },
+    onError: (err, newTodo, context) => {
+      queryClient.setQueryData(
+        ['product-detail', productId],
+        context?.previousFavorite,
+      )
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['product-detail', productId] })
+    },
+  })
+}
+
+export function useProductCancelFavorite({ productId }: ProductId) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: cancelFavoriteProduct,
+    onMutate: async ({ productId }) => {
+      await queryClient.cancelQueries({
+        queryKey: ['product-detail', productId],
+      })
+
+      const previousFavorite = queryClient.getQueryData<ProductDetailResponse>([
+        'product-detail',
+        productId,
+      ])!
+
+      const updater: ProductDetailResponse = {
+        ...previousFavorite,
+        isFavorite: false,
+        favoriteCount: previousFavorite.favoriteCount - 1,
+      }
+
+      console.log(updater)
+
+      queryClient.setQueryData(['product-detail', productId], updater)
+
+      return { previousFavorite }
+    },
+    onError: (err, newTodo, context) => {
+      queryClient.setQueryData(
+        ['product-detail', productId],
+        context?.previousFavorite,
+      )
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['product-detail', productId] })
     },
   })
 }
