@@ -21,7 +21,7 @@ export default function useUpdateProductForm({
       return onFailed('categoryId', '카테고리를 입력해주세요.')
 
     try {
-      mutateAsync({
+      await mutateAsync({
         productId: productId,
         categoryId: data.categoryId,
         description: data.description,
