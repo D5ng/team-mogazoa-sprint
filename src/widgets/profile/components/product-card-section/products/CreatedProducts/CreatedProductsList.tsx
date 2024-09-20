@@ -1,6 +1,7 @@
 import MockCardItem from '@widgets/profile/MockCardItem'
 import { useIntersect } from '@shared/hooks'
 import { useFetchCreatedProducts } from '@shared/hooks/query'
+import { EmptyProduct } from '@widgets/profile/components'
 import type { UserId } from '@shared/types'
 
 export default function CreatedProductsList({ userId }: UserId) {
@@ -19,6 +20,8 @@ export default function CreatedProductsList({ userId }: UserId) {
   }
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
+
+  if (createdProducts.length === 0) return <EmptyProduct />
 
   return (
     <>

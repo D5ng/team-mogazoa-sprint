@@ -4,3 +4,4 @@ export { default as CreatedProducts } from './products/createdProducts/CreatedPr
 export { default as FavoriteProducts } from './products/favoriteProducts/FavoriteProducts'
 export { default as ReviewedProducts } from './products/reviewedProducts/ReviewedProducts'
 export { default as ProductCardSection } from './section/ProductCardSection'
+export { default as EmptyProduct } from './products/empty-product/EmptyProduct'

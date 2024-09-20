@@ -1,11 +1,12 @@
 import MockCardItem from '@widgets/profile/MockCardItem'
 import { useIntersect } from '@shared/hooks'
 import { useFetchFavoriteProducts } from '@shared/hooks/query'
+import { EmptyProduct } from '@widgets/profile/components'
 import type { UserId } from '@shared/types'
 
 export default function FavoriteProductsList({ userId }: UserId) {
   const {
-    data: createdProducts,
+    data: favoriteProducts,
     isFetching,
     hasNextPage,
     fetchNextPage,
@@ -20,10 +21,12 @@ export default function FavoriteProductsList({ userId }: UserId) {
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
 
+  if (favoriteProducts.length === 0) return <EmptyProduct />
+
   return (
     <>
       <ul className="grid grid-cols-3 gap-5 tablet:grid-cols-2 mobile:grid-cols-2 mobile:gap-3">
-        {createdProducts.map((product) => (
+        {favoriteProducts.map((product) => (
           <MockCardItem key={product.id} data={product} />
         ))}
       </ul>
