@@ -12,7 +12,7 @@ export default function useProductAddForm({
   onSuccess,
   onFailed,
 }: UseProductForm) {
-  const { mutateAsync } = useCreateProduct()
+  const { mutateAsync, isPending } = useCreateProduct()
   const onSubmit = async (data: ProductPayload) => {
     if (!data.categoryId)
       return onFailed('categoryId', '카테고리를 입력해주세요.')
@@ -42,5 +42,5 @@ export default function useProductAddForm({
     }
   }
 
-  return onSubmit
+  return { onSubmit, isPending }
 }
