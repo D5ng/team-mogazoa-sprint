@@ -188,8 +188,6 @@ export function useProductFavorite({ productId }: ProductId) {
 
       queryClient.setQueryData(['product-detail', productId], updater)
 
-      console.log('previousFavorite', updater, productId)
-
       return { previousFavorite }
     },
     onError: (err, newTodo, context) => {
@@ -221,10 +219,11 @@ export function useProductCancelFavorite({ productId }: ProductId) {
       const updater: ProductDetailResponse = {
         ...previousFavorite,
         isFavorite: false,
-        favoriteCount: previousFavorite.favoriteCount - 1,
+        favoriteCount:
+          previousFavorite.favoriteCount === 0
+            ? 0
+            : previousFavorite.favoriteCount - 1,
       }
-
-      console.log(updater)
 
       queryClient.setQueryData(['product-detail', productId], updater)
 
