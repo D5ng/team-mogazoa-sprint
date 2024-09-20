@@ -1,7 +1,8 @@
 import { GetServerSideProps } from 'next'
 import ProductPage from '@/src/pages/product/Product'
 import { axiosInstance } from '@shared/config'
-import { QueryClient } from '@tanstack/react-query'
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+import { fetchProducts } from '@/src/shared/api'
 
 export default function Home() {
   return <ProductPage />
@@ -20,17 +21,26 @@ export const getServerSideProps = (async (context) => {
   try {
     const queryClient = new QueryClient()
 
-    // await queryClient.prefetchQuery({
-    //   queryKey: ['product', productId],
-    //   queryFn: () => useFetchProductsHot({ productId: +productId }),
-    // })
+    await queryClient.prefetchQuery({
+      queryKey: ['product', 'reviewCount'],
+      queryFn: () => fetchProducts({ order: 'reviewCount' }),
+    })
 
-    // const data = queryClient.getQueryData(['product-detail', productId])
+    await queryClient.prefetchQuery({
+      queryKey: ['product', 'ratedCount'],
+      queryFn: () => fetchProducts({ order: 'rating' }),
+    })
 
-    // if (!data) return { notFound: true }
-  } catch (error) {}
+    const hotData = queryClient.getQueryData(['product', 'reviewCount'])
+    const ratedData = queryClient.getQueryData(['product', 'ratedCount'])
 
-  return {
-    props: {},
+    if (!hotData && !ratedData) return { notFound: true }
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+      },
+    }
+  } catch (error) {
+    return { notFound: true }
   }
 }) satisfies GetServerSideProps
