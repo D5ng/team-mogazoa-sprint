@@ -17,6 +17,7 @@ export default function ProductImage({ image }: ProductImageProps) {
         className="object-cover object-center"
         priority
         onError={onError}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 37.634vw, 355px"
       />
     </div>
   )
