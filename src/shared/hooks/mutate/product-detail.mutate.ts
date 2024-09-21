@@ -9,6 +9,7 @@ import {
   cancelLikeReview,
   deleteReview,
   updateReview,
+  updateProduct,
 } from '@shared/api'
 import { ProductReviewsResponse } from '@shared/types'
 import { ReviewSortOptions } from '@widgets/product/product-detail/constants'
@@ -16,6 +17,18 @@ import { ReviewSortOptions } from '@widgets/product/product-detail/constants'
 interface ReviewParams {
   productId: number
   order: ReviewSortOptions
+}
+
+type ProductId = { productId: number }
+
+export function useUpdateProduct({ productId }: ProductId) {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: updateProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['product-detail', productId] })
+    },
+  })
 }
 
 export function useCreateReview({ productId, order }: ReviewParams) {
