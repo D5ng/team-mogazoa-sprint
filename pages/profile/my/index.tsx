@@ -37,6 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
+        cookie: cookie ? cookie : null,
       },
     }
   } catch (error) {
