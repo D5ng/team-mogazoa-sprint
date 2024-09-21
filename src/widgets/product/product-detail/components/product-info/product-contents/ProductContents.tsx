@@ -8,7 +8,7 @@ import ReviewButton from './ReviewButton'
 import ProductUpdateButton from './ProductUpdateButton'
 
 interface ProductContentsProps extends ProductDetailResponse {
-  createdProductUserId: number
+  loggedInUserId: number | null
 }
 
 export default function ProductContents({
@@ -16,11 +16,11 @@ export default function ProductContents({
   category,
   description,
   id,
-  createdProductUserId,
+  loggedInUserId,
   writerId,
   isFavorite,
 }: ProductContentsProps) {
-  const isCreatedProductUser = writerId === createdProductUserId
+  const isCreatedProductUser = writerId === loggedInUserId
 
   return (
     <div className="relative w-[calc(100%-355px-40px)] text-white tablet:w-[51.478vw] mobile:w-full mobile:mt-5">

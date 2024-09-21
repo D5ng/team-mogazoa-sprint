@@ -6,16 +6,16 @@ import {
 } from '@widgets/product/product-detail/components'
 
 interface ProductDetailProps extends ProductDetailResponse {
-  createdProductUserId: number
+  loggedInUserId: number | null
 }
 
 export default function ProductDetailPage({
   id,
-  createdProductUserId,
+  loggedInUserId,
 }: ProductDetailProps) {
   return (
     <main className="w-[940px] m-auto mt-[60px] tablet:w-full px-[30px] mobile:px-[20px]">
-      <ProductInfo productId={id} createdProductUserId={createdProductUserId} />
+      <ProductInfo productId={id} loggedInUserId={loggedInUserId} />
       <StatisticsList productId={id} />
       <ReviewWrapper productId={id} />
     </main>

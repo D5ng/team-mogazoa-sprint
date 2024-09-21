@@ -6,12 +6,12 @@ import {
 
 interface ProductInfoProps {
   productId: number
-  createdProductUserId: number
+  loggedInUserId: number | null
 }
 
 export default function ProductInfo({
   productId,
-  createdProductUserId,
+  loggedInUserId,
 }: ProductInfoProps) {
   const detailQuery = useFetchProductDetail(productId)
   const data = detailQuery.data!
@@ -19,7 +19,7 @@ export default function ProductInfo({
   return (
     <section className="flex justify-between gap-x-[40px] target:gap-x-5 mobile:flex-col">
       <ProductImage image={data.image} />
-      <ProductContents {...data} createdProductUserId={createdProductUserId} />
+      <ProductContents {...data} loggedInUserId={loggedInUserId} />
     </section>
   )
 }
