@@ -29,7 +29,7 @@ export default function ProductAddForm({ onCloseToggle }: ProductAddFormProps) {
 
   const description = watch('description')
 
-  const onSubmit = useProductAddForm({
+  const { onSubmit, isPending } = useProductAddForm({
     onSuccess: () => onCloseToggle(),
     onFailed: (field: keyof ProductPayload, errorMessage: string) =>
       setError(field, { message: errorMessage }),
@@ -66,7 +66,7 @@ export default function ProductAddForm({ onCloseToggle }: ProductAddFormProps) {
         <p className="text-sm text-black-20 pb-2.5">
           모든 입력란은 필수 항목입니다.
         </p>
-        <Button variant="primary" disabled={!isValid}>
+        <Button variant="primary" disabled={!isValid} isLoading={isPending}>
           추가하기
         </Button>
       </div>

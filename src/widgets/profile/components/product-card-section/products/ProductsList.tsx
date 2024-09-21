@@ -1,17 +1,29 @@
 import MockCardItem from '@widgets/profile/MockCardItem'
 import { useIntersect } from '@shared/hooks'
-import { useFetchReviewedProducts } from '@shared/hooks/query'
-import { EmptyProduct } from '@widgets/profile/components'
 import type { UserId } from '@shared/types'
 
-export default function ReviewedProductsList({ userId }: UserId) {
+interface ProductListProps {
+  userId: UserId['userId']
+  useFetchProducts: (params: { userId: UserId['userId'] }) => {
+    data: any[]
+    isFetching: boolean
+    hasNextPage: boolean
+    fetchNextPage: () => void
+    error: any
+  }
+}
+
+export default function ProductList({
+  userId,
+  useFetchProducts,
+}: ProductListProps) {
   const {
-    data: reviewedProducts,
+    data: products,
     isFetching,
     hasNextPage,
     fetchNextPage,
     error,
-  } = useFetchReviewedProducts({ userId })
+  } = useFetchProducts({ userId })
 
   if (error && !isFetching) throw error
 
@@ -21,12 +33,10 @@ export default function ReviewedProductsList({ userId }: UserId) {
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
 
-  if (reviewedProducts.length === 0) return <EmptyProduct />
-  
   return (
     <>
       <ul className="grid grid-cols-3 gap-5 tablet:grid-cols-2 mobile:grid-cols-2 mobile:gap-3">
-        {reviewedProducts.map((product) => (
+        {products.map((product) => (
           <MockCardItem key={product.id} data={product} />
         ))}
       </ul>

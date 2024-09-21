@@ -17,7 +17,11 @@ export default function GnbProductSearchInput() {
     'text-[14px] text-white w-[400px] h-[50px] rounded-[30px] px-[40px] py-[5px] bg-black-70 tablet:w-[300px] tablet:h-[40px] target:text-[12px]',
   )
 
-  if (router.pathname === '/sign-in' || router.pathname === '/sign-up') return
+  if (
+    router.pathname === '/auth/sign-in' ||
+    router.pathname === '/auth/sign-up'
+  )
+    return
 
   return (
     <div className="relative">
