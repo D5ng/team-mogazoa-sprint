@@ -18,14 +18,15 @@ export default function ReviewButton({
   const { user } = useUserStore()
   const { isToggle, onCloseToggle, onOpenToggle } = useToggle()
 
-  const openModal = () =>
+  const handleOpenModal = () =>
     user ? onOpenToggle() : toast.error('로그인이 필요합니다')
+
   return (
     <>
       <Button
         variant="primary"
         className="w-[345px] h-[65px] tablet:w-[33.065vw] tablet:h-[55px] mobile:w-full"
-        onClick={openModal}
+        onClick={handleOpenModal}
       >
         리뷰 작성하기
       </Button>
