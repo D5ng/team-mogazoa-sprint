@@ -19,6 +19,10 @@ export default function GnbProductSearchInput() {
 
   if (router.pathname === '/sign-in' || router.pathname === '/sign-up') return
 
+  // 카테고리 키가 있는지 없는지 판단. => 카테고리에서 검색.
+
+  // 카테고리 키가 없으면 => 전체 상품에서 검색.
+
   return (
     <div className="relative">
       <AutocompleteField

@@ -1,3 +1,5 @@
+import { ReviewSortOptions } from '@/src/widgets/product/product-detail/constants'
+
 export interface ProductReviewsResponse {
   nextCursor: number
   list: ProductReviewItem[]
@@ -30,6 +32,6 @@ export interface ProductReviewItem {
 
 export interface FetchProductsReviews {
   productId: number
-  order?: string
+  order?: ReviewSortOptions
   cursor?: number
 }
