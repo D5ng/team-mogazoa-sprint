@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignIn } from '@widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
@@ -27,7 +27,11 @@ export default function SignInField() {
     },
   })
 
-  const onSubmit = useSignIn(setError)
+  const { mutate } = useSignIn(setError)
+
+  const onSubmit: SubmitHandler<SignIn> = (data) => {
+    mutate(data)
+  }
 
   return (
     <Form

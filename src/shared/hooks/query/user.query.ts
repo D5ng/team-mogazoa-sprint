@@ -39,7 +39,7 @@ export function useFetchReviewedProducts({ userId }: UserFetch) {
   return useSuspenseInfiniteQuery({
     queryKey: ['reviewed-products', userId],
     queryFn: ({ pageParam }) =>
-      fetchUsersReviewedProduct({ userId, cursor: pageParam }),
+      fetchUsersReviewedProduct({ userId: userId!, cursor: pageParam }),
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextCursor || null,
     select: (data) => (data.pages ?? []).flatMap((page) => page.list),

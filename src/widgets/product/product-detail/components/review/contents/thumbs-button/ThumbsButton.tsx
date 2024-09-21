@@ -1,8 +1,9 @@
 import Image from 'next/image'
-import { ProductReviewItem } from '@shared/types'
-import { thumb, emptyThumb, review } from '@shared/icons'
+import { thumb, emptyThumb } from '@shared/icons'
 import { useReviewCancelLike, useReviewLike } from '@shared/hooks'
 import { useReviewOptionStore } from '@shared/store'
+import { toastCheckAuth } from '@shared/utils'
+import type { ProductReviewItem } from '@shared/types'
 
 export default function ThumbsButton({
   id: reviewId,
@@ -23,10 +24,12 @@ export default function ThumbsButton({
 
   const isLikedClassName = isLiked ? 'text-indigo' : 'text-black-20'
 
-  const handleLikeClick = async () =>
-    isLiked
-      ? await cancelLikeMutate({ reviewId })
-      : await likeMutate({ reviewId })
+  const handleLikeClick = async () => {
+    toastCheckAuth() &&
+      (isLiked
+        ? await cancelLikeMutate({ reviewId })
+        : await likeMutate({ reviewId }))
+  }
 
   return (
     <button

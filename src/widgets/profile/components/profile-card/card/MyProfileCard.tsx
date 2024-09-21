@@ -15,7 +15,7 @@ export default function MyProfileCard({ ...props }) {
   return (
     <section
       className={twMerge(
-        'flex flex-col justify-center items-center gap-[30px] w-[340px] h-[600px] px-5 py-[30px] bg-black-60 border border-black-70 rounded-xl tablet:w-full tablet:h-[510px] tablet:px-[30px] mobile:h-[495px] mobile:px-5',
+        'flex flex-col justify-center items-center gap-[30px] w-[340px] h-fit px-5 py-[30px] bg-black-60 border border-black-70 rounded-xl tablet:w-full tablet:px-[30px] mobile:px-5',
         props.className || '',
       )}
     >
