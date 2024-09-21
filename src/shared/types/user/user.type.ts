@@ -1,3 +1,5 @@
+import type { ProductListItem } from '@shared/types/product'
+
 export interface UserId {
   userId: number | undefined
 }
@@ -39,13 +41,6 @@ export interface UserItem extends UserCommon {
   isFollowing: boolean
 }
 
-export interface UserData extends UserCommon {
-  writerId: number
-  favoriteCount: number
-  rating: number
-  image: string
-}
-
 export interface Follower extends UserCommon {
   writerId: number
   categoryId: number
@@ -76,7 +71,7 @@ export interface followeesProductResponse {
 
 export interface UsersProductResponse {
   nextCursor: number
-  list: UserData[]
+  list: ProductListItem[]
 }
 
 export interface UpdateMyProfile

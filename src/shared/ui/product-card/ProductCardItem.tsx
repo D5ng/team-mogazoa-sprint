@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { star } from '@shared/icons'
 import Link from 'next/link'
-import { ProductListItem } from '../../types'
+import { star } from '@shared/icons'
+import type { ProductListItem, UserItem } from '@shared/types'
 
 export default function ProductCardItem({
   id,
