@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { useFetchReviewedProducts } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
 import { ProductCardList } from '@shared/ui'
+import { EmptyProduct } from '@widgets/profile/components'
 import type { UserId } from '@shared/types'
 
 export default function ReviewedProductsList({ userId }: UserId) {
@@ -23,9 +24,9 @@ export default function ReviewedProductsList({ userId }: UserId) {
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
 
+  if (products.length === 0) return <EmptyProduct />
+
   return (
-    <Suspense fallback={<div></div>}>
       <ProductCardList data={products} ref={ref} />
-    </Suspense>
   )
 }
