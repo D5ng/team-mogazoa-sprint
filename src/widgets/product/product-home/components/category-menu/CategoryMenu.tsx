@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import CategoryItems from './CategoryItems'
 
 interface CategoryMenuProps {
-  menuVisible: boolean
+  menuVisible?: boolean
 }
 
 const CategoryMenu = ({ menuVisible }: CategoryMenuProps) => {

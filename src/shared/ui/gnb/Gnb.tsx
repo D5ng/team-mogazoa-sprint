@@ -9,7 +9,7 @@ import GnbHamburger from './GnbHamburgerButton'
 import GnbSearchButton from './GnbSearchButton'
 import GnbMobileSideBar from './GnbMobileSideBar'
 
-export default function Gnb({ cookie }) {
+export default function Gnb({ cookie }: any) {
   const { resetProducts } = useSearchProduct()
 
   const {
@@ -59,6 +59,7 @@ export default function Gnb({ cookie }) {
         ref={closeRef}
         menuVisible={sideMenuVisible}
         closeCategoryMenu={closeCategoryMenu}
+        cookie={cookie}
       />
     </div>
   )

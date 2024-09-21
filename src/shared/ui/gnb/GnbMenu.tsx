@@ -4,11 +4,12 @@ import { useRouter } from 'next/router'
 
 export default function GnbMenu({ cookie }: any) {
   const isSigned = cookie
+  console.log(cookie)
   const router = useRouter()
   const { id: productId } = router.query
 
   const MENU_DEFAULT_STYLE =
-    'hover:text-blue mobile:text-black-20 rounded-xl  font-semibold mobile:px-[10px] mobile:py-[2px] mobile:text-[14px] mobile:hover:border-blue  mobile:border-black-20 mobile:border mobile:'
+    'hover:text-blue mobile:text-black-20 rounded-xl  font-semibold mobile:px-[10px] mobile:py-[2px] mobile:text-[14px] mobile:hover:border-blue  mobile:border-black-20 mobile:border'
 
   return (
     <>
