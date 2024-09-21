@@ -14,12 +14,7 @@ export const setAuthToken = (
   data: AuthResponse,
   options?: OptionsType,
 ) => {
-  const transformedToken = {
-    accessToken: data.accessToken,
-    ...data.user,
-  }
-
-  return setCookie(name, transformedToken, {
+  return setCookie(name, data, {
     ...options,
     maxAge: 60 * 60 * 24,
   })
