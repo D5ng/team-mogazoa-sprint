@@ -8,18 +8,19 @@ import {
   fetchUsersFollowees,
   fetchUsersFollowers,
 } from '@shared/api'
-import type { UserItem, UserFetch } from '@shared/types'
+import type { UserItem, UserFetch, UserId } from '@shared/types'
+import { userKeys } from '@shared/hooks/query-keys'
 
 export function useFetchMyProfile() {
   return useQuery<UserItem>({
-    queryKey: ['my-profile'],
+    queryKey: userKeys.profile.myProfile,
     queryFn: fetchMyProfile,
   })
 }
 
-export function useFetchUserProfile(userId: number | undefined) {
+export function useFetchUserProfile(userId: UserId) {
   return useQuery<UserItem>({
-    queryKey: ['user-profile', userId],
+    queryKey: userKeys.profile.userProfile(userId),
     queryFn: () => fetchUserProfile({ userId }),
   })
 }
