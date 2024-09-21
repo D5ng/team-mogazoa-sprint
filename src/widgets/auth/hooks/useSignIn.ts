@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import { setCookie } from 'cookies-next'
 import { isAxiosError } from 'axios'
+import { useMutation } from '@tanstack/react-query'
 import { signIn } from '@shared/api'
 import { useUserStore } from '@shared/store'
 import type { UseFormSetError } from 'react-hook-form'
@@ -11,14 +12,15 @@ export default function useSignIn(setError: UseFormSetError<SignIn>) {
   const router = useRouter()
   const setUser = useUserStore((state) => state.setUser)
 
-  return async (data: SignIn) => {
-    try {
-      const result = await signIn(data)
+  return useMutation({
+    mutationFn: signIn,
+    onSuccess: (result) => {
       setCookie('auth', JSON.stringify(result))
       setUser(result.user)
       router.push('/')
       toast.success('로그인이 완료되었습니다.')
-    } catch (error) {
+    },
+    onError: (error) => {
       if (isAxiosError(error) && error.response?.data?.details) {
         const field = Object.keys(
           error.response.data.details,
@@ -31,6 +33,6 @@ export default function useSignIn(setError: UseFormSetError<SignIn>) {
         setError('root', { message: errorMessage })
         toast.error(errorMessage)
       }
-    }
-  }
+    },
+  })
 }

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignUp } from '@widgets/auth/hooks'
 import { Button, Form } from '@shared/ui'
 import {
@@ -19,7 +19,7 @@ export default function SignUpField() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isSubmitting },
     setError,
     trigger,
     watch,
@@ -40,7 +40,11 @@ export default function SignUpField() {
     trigger('passwordConfirmation')
   }, [password, trigger])
 
-  const onSubmit = useSignUp(setError)
+  const { mutate } = useSignUp(setError)
+
+  const onSubmit: SubmitHandler<SignUp> = (data) => {
+    mutate(data)
+  }
 
   return (
     <Form
@@ -73,7 +77,12 @@ export default function SignUpField() {
         />
       </FormField>
 
-      <Button variant="primary" type="submit" disabled={!isValid}>
+      <Button
+        variant="primary"
+        type="submit"
+        disabled={!isValid}
+        isLoading={isSubmitting}
+      >
         회원가입
       </Button>
     </Form>

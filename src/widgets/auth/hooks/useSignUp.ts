@@ -2,20 +2,25 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import { setCookie } from 'cookies-next'
 import { isAxiosError } from 'axios'
+import { useMutation } from '@tanstack/react-query'
 import { signUp } from '@shared/api'
 import type { UseFormSetError } from 'react-hook-form'
 import type { SignUp } from '@shared/types'
+import { useUserStore } from '@/src/shared/store'
 
 export default function useSignUp(setError: UseFormSetError<SignUp>) {
   const router = useRouter()
+  const setUser = useUserStore((state) => state.setUser)
 
-  return async (data: SignUp) => {
-    try {
-      const result = await signUp(data)
+  return useMutation({
+    mutationFn: signUp,
+    onSuccess: (result) => {
       setCookie('auth', result)
+      setUser(result.user)
       router.push('/')
       toast.success('회원가입이 완료되었습니다.')
-    } catch (error) {
+    },
+    onError: (error) => {
       if (isAxiosError(error) && error.response?.data?.details) {
         const field = Object.keys(
           error.response.data.details,
@@ -28,6 +33,6 @@ export default function useSignUp(setError: UseFormSetError<SignUp>) {
         setError('root', { message: errorMessage })
         toast.error(errorMessage)
       }
-    }
-  }
+    },
+  })
 }
