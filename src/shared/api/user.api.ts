@@ -7,7 +7,7 @@ import type {
   UsersProductResponse,
   UpdateMyProfile,
   UserProfileUpdateResponse,
-  UserId,
+  UserIdProp,
   CursorParams,
 } from '@shared/types'
 
@@ -25,14 +25,14 @@ export async function fetchUserRanking() {
   return (await axiosInstance.get<UserRanking>(`/users/ranking`)).data
 }
 
-export async function fetchUserProfile({ userId }: UserId) {
+export async function fetchUserProfile({ userId }: UserIdProp) {
   return (await axiosInstance.get<UserItem>(`/users/${userId}`)).data
 }
 
 export async function fetchUsersReviewedProduct({
   userId,
   cursor,
-}: CursorParams & UserId) {
+}: CursorParams & UserIdProp) {
   return (
     await axiosInstance.get<UsersProductResponse>(
       `/users/${userId}/reviewed-products?cursor=${cursor}`,
@@ -43,7 +43,7 @@ export async function fetchUsersReviewedProduct({
 export async function fetchUsersCreatedProduct({
   userId,
   cursor,
-}: CursorParams & UserId) {
+}: CursorParams & UserIdProp) {
   return (
     await axiosInstance.get<UsersProductResponse>(
       `/users/${userId}/created-products?cursor=${cursor}`,
@@ -54,7 +54,7 @@ export async function fetchUsersCreatedProduct({
 export async function fetchUsersFavoriteProduct({
   userId,
   cursor,
-}: CursorParams & UserId) {
+}: CursorParams & UserIdProp) {
   return (
     await axiosInstance.get<UsersProductResponse>(
       `/users/${userId}/favorite-products?cursor=${cursor}`,
@@ -65,7 +65,7 @@ export async function fetchUsersFavoriteProduct({
 export async function fetchUsersFollowees({
   userId,
   cursor,
-}: CursorParams & UserId) {
+}: CursorParams & UserIdProp) {
   return (
     await axiosInstance.get<followeesProductResponse>(
       `/users/${userId}/followees?cursor=${cursor}`,
@@ -76,7 +76,7 @@ export async function fetchUsersFollowees({
 export async function fetchUsersFollowers({
   userId,
   cursor,
-}: CursorParams & UserId) {
+}: CursorParams & UserIdProp) {
   return (
     await axiosInstance.get<followerProductResponse>(
       `/users/${userId}/followers?cursor=${cursor}`,
