@@ -1,5 +1,5 @@
-import { emptyMessage } from '@shared/icons'
 import Image from 'next/image'
+import { emptyMessage } from '@shared/icons'
 
 export default function ReviewEmptyList() {
   return (
@@ -8,8 +8,8 @@ export default function ReviewEmptyList() {
         src={emptyMessage}
         alt=""
         width={49}
-        height={40}
-        className="tablet:h-[32px]"
+        height={41}
+        className="w-auto h-[41px] tablet:h-[32px]"
       />
       <p className="text-black-30 text-lg tablet:text-base">
         첫 리뷰를 작성해 보세요!

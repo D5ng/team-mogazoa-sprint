@@ -1,6 +1,10 @@
 export { default as ProductHot } from './product-hot/ProductHot'
 export { default as ProductRating } from './product-rating/ProductRating'
 export { default as ProductAddButton } from './product-add-button/ProductAddButton'
-export { default as ProductSearced } from './product-searched'
+export { default as ProductSearched } from './product-searched'
 
+
+
+export * from './product-add-modal'
 export * from './ranking'
+export * from './category-menu'

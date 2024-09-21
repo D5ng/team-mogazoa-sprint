@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { FolloweesList } from '@widgets/profile/components'
+import { FolloweesList, FollowListSkeleton } from '@widgets/profile/components'
 import { Modal, ModalTitle } from '@shared/ui'
 import type { UserId } from '@shared/types'
 
@@ -20,7 +20,7 @@ export default function ProfileFolloweesModal({
       className="h-[660px] overflow-y-auto tablet:h-[600px] mobile:h-[550px]"
     >
       <ModalTitle>{nickname}님이 팔로우하는 유저</ModalTitle>
-      <Suspense fallback={<div></div>}>
+      <Suspense fallback={<FollowListSkeleton />}>
         <FolloweesList userId={userId} />
       </Suspense>
     </Modal>

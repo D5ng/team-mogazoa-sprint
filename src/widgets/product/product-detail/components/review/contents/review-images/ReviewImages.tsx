@@ -18,6 +18,7 @@ export default function ReviewImages({ reviewImages }: ReviewImagesProps) {
             alt="이미지 썸네일"
             fill
             className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 37.634vw, 355px"
           />
         </li>
       ))}

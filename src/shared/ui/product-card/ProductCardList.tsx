@@ -1,6 +1,6 @@
 import ProductCardItem from './ProductCardItem'
 import { ForwardedRef, forwardRef } from 'react'
-import type { ProductListItem, UserItem } from '@shared/types'
+import type { ProductListItem } from '@shared/types'
 
 interface ListProps {
   data: ProductListItem[]

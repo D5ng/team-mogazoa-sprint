@@ -3,7 +3,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import Profile from '@/src/pages/profile/Profile'
 import { axiosInstance } from '@shared/config'
 import { fetchMyProfile } from '@shared/api'
-import { useFetchMyProfile } from '@shared/hooks/query/user.query'
+import { useFetchMyProfile } from '@shared/hooks/query'
 
 export default function MyProfilePage() {
   const { data: myProfileData } = useFetchMyProfile()

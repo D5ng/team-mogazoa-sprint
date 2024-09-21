@@ -1,7 +1,6 @@
 import { useProductStore } from '@shared/store/productStore'
 import useSearchProduct from '@shared/hooks/useSearchProduct'
 import { CATEGORY_CHIPS } from '@shared/ui'
-import { useRouter } from 'next/router'
 import CategoryItems from './CategoryItems'
 
 interface CategoryMenuProps {
