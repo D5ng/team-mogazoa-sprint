@@ -2,6 +2,7 @@ import { isAxiosError } from 'axios'
 import { createProduct } from '@shared/api'
 import type { ProductPayload } from '@shared/types'
 import { useCreateProduct } from '@/src/shared/hooks'
+import { toast } from 'react-toastify'
 
 interface UseProductForm {
   onSuccess: () => void
@@ -25,12 +26,14 @@ export default function useProductAddForm({
         image: data.image,
       })
       onSuccess()
+      toast.success('상품이 생성되었습니다')
     } catch (error) {
       if (isAxiosError(error) && error.response) {
         const field = Object.keys(
           error.response.data.details,
         )[0] as keyof ProductPayload
         const errorMessage = error.response.data.details[field].message
+        toast.error(errorMessage)
 
         if (field.includes('image'))
           return onFailed('image', '이미지를 올려주세요.')

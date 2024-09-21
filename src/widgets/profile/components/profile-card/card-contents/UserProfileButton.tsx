@@ -1,4 +1,5 @@
 import { Button } from '@shared/ui'
+import { toastCheckAuth } from '@shared/utils'
 import {
   useFollowUser,
   useUnFollowUser,
@@ -16,13 +17,11 @@ export default function UserProfileButton({
   const followMutation = useFollowUser()
   const unFollowMutation = useUnFollowUser()
 
-  const handleFollowClick = () => {
-    if (isFollowing) {
-      unFollowMutation.mutate({ userId })
-    } else {
-      followMutation.mutate({ userId })
-    }
-  }
+  const handleFollowClick = () =>
+    toastCheckAuth() &&
+    (isFollowing
+      ? unFollowMutation.mutate({ userId })
+      : followMutation.mutate({ userId }))
 
   return (
     <Button
