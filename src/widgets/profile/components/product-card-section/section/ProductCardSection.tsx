@@ -16,7 +16,7 @@ export default function ProductCardSection({ userId }: UserIdProp) {
   const [activeCategory, setActiveCategory] = useState<CategoryTitle>(
     PRODUCT_CATEGORIES[0].title,
   )
-  const windowWidth = useWindowResize(1280)
+  const windowWidth = useWindowResize()
 
   useEffect(() => {
     setIsClient(true)
