@@ -16,7 +16,7 @@ export default function ProfileFollowerModal({
   return (
     <Modal
       onCloseModal={onCloseToggle}
-      className="h-[660px] overflow-y-auto  tablet:h-[600px] mobile:h-[550px] custom-scrollbar"
+      className="h-[660px] tablet:h-[600px] mobile:h-[550px]"
     >
       <ModalTitle>{nickname}님을 팔로우하는 유저</ModalTitle>
       <Suspense fallback={<div></div>}>

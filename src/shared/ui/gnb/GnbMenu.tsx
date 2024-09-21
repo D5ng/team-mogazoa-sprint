@@ -20,16 +20,16 @@ export default function GnbMenu() {
             비교하기
           </Link>
 
-          <Link className={`${MENU_DEFAULT_STYLE}`} href="/my-profile">
+          <Link className={`${MENU_DEFAULT_STYLE}`} href="/profile/my">
             내 프로필
           </Link>
         </div>
       ) : (
         <div className="flex gap-[40px] mobile:gap-[20px] mobile:flex-col">
-          <Link className={`${MENU_DEFAULT_STYLE}`} href="/sign-in">
+          <Link className={`${MENU_DEFAULT_STYLE}`} href="/auth/sign-in">
             로그인
           </Link>
-          <Link className={`${MENU_DEFAULT_STYLE}`} href="/sign-up">
+          <Link className={`${MENU_DEFAULT_STYLE}`} href="/auth/sign-up">
             회원가입
           </Link>
         </div>
