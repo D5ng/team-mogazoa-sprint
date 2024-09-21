@@ -4,7 +4,7 @@ import { descriptionValidation, nameValidation } from '@shared/utils'
 import {
   CategoryDropdown,
   ProductImageUpload,
-} from '@widgets/product/product-home/components/product-add-modal'
+} from '@widgets/product/product-detail/components'
 import type { ProductPayload } from '@shared/types'
 import { useFetchProductDetail } from '@shared/hooks'
 import { useUpdateProductForm } from '@widgets/product/product-detail/hooks'

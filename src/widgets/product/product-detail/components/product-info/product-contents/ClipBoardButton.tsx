@@ -1,13 +1,16 @@
 import Image from 'next/image'
+import { toast } from 'react-toastify'
 import { share } from '@shared/icons'
 
 export default function ClipBoardButton() {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href)
-      alert(`클리보드가 복사되었어요`)
+      toast.success('클립보드가 복사되었어요')
     } catch (err) {
-      console.error('클리보드를 복사하는데 에러가 발생했어요')
+      const errorMessage = '클립보드를 복사하는데 에러가 발생했어요'
+      console.error(errorMessage)
+      toast.error(errorMessage)
     }
   }
 
