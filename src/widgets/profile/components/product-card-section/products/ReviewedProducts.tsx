@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { useFetchReviewedProducts } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
 import { ProductCardList } from '@shared/ui'
@@ -26,7 +25,5 @@ export default function ReviewedProductsList({ userId }: UserId) {
 
   if (products.length === 0) return <EmptyProduct />
 
-  return (
-      <ProductCardList data={products} ref={ref} />
-  )
+  return <ProductCardList data={products} ref={ref} />
 }

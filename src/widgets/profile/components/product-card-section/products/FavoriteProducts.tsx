@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { useFetchFavoriteProducts } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
 import { ProductCardList } from '@shared/ui'
