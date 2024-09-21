@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export const PROTECTED_PAGES = ['/product/my']
+export const PROTECTED_PAGES = ['/profile/my']
 export const RESTRICT_AUTH_PAGE = ['/auth/sign-in', '/auth/sign-up']
 
 export function middleware(request: NextRequest) {
