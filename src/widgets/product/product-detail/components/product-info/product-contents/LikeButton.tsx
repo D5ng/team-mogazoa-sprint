@@ -8,10 +8,8 @@ interface LikeButtonProps extends Pick<ProductDetailResponse, 'isFavorite'> {
 }
 
 export default function LikeButton({ isFavorite, productId }: LikeButtonProps) {
-  const { mutate: favoriteMutate } = useProductFavorite({ productId })
-  const { mutate: cancelFavoriteMutate } = useProductCancelFavorite({
-    productId,
-  })
+  const { mutate: favoriteMutate } = useProductFavorite()
+  const { mutate: cancelFavoriteMutate } = useProductCancelFavorite()
 
   const handleFavoriteClick = () =>
     isFavorite
