@@ -27,6 +27,7 @@ const GnbProductSearchInput = forwardRef<
   if (router.pathname === '/sign-in' || router.pathname === '/sign-up')
     return null
 
+
   return (
     <div
       ref={ref}

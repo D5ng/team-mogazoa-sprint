@@ -3,21 +3,26 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { fetchProductDetail } from '@shared/api'
 import { ProductDetailPage } from '@/src/pages/'
 import { axiosInstance } from '@shared/config'
+import type { AuthResponse, ProductDetailResponse } from '@shared/types'
 
 export default function Index({
-  productId,
+  product,
+  createdProductUserId,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <ProductDetailPage productId={productId} />
+  return (
+    <ProductDetailPage
+      {...product}
+      createdProductUserId={createdProductUserId}
+    />
+  )
 }
 
 export const getServerSideProps = (async (context) => {
   const cookie = context.req.cookies.auth
-
-  if (cookie) {
-    const token = JSON.parse(cookie).accessToken
+  const parseCookie: AuthResponse = cookie ? JSON.parse(cookie) : ''
+  const token = parseCookie.accessToken
+  if (token) {
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-  } else {
-    axiosInstance.defaults.headers.common['Authorization'] = ``
   }
 
   const productId = +context.params?.id!
@@ -31,14 +36,18 @@ export const getServerSideProps = (async (context) => {
       queryFn: () => fetchProductDetail({ productId: +productId }),
     })
 
-    const data = queryClient.getQueryData(['product-detail', productId])
+    const data = queryClient.getQueryData<ProductDetailResponse>([
+      'product-detail',
+      productId,
+    ])
 
     if (!data) return { notFound: true }
 
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
-        productId: +productId,
+        product: data,
+        createdProductUserId: parseCookie.user.id,
       },
     }
   } catch (error) {

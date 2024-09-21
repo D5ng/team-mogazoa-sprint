@@ -6,21 +6,20 @@ import {
 
 interface ProductInfoProps {
   productId: number
+  createdProductUserId: number
 }
 
-export default function ProductInfo({ productId }: ProductInfoProps) {
+export default function ProductInfo({
+  productId,
+  createdProductUserId,
+}: ProductInfoProps) {
   const detailQuery = useFetchProductDetail(productId)
-  const { image, category, description, name } = detailQuery.data!
+  const data = detailQuery.data!
 
   return (
     <section className="flex justify-between gap-x-[40px] target:gap-x-5 mobile:flex-col">
-      <ProductImage image={image} />
-      <ProductContents
-        name={name}
-        category={category}
-        description={description}
-        productId={productId}
-      />
+      <ProductImage image={data.image} />
+      <ProductContents {...data} createdProductUserId={createdProductUserId} />
     </section>
   )
 }
