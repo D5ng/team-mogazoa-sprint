@@ -3,14 +3,11 @@ import {
   useFetchMyProfile,
   useFetchUserProfile,
 } from '@shared/hooks/query/user.query'
-
-interface ActivityLogSectionProps {
-  userId: number | undefined
-}
+import type {UserIdProp } from '@shared/types'
 
 export default function ActivityLogSection({
   userId,
-}: ActivityLogSectionProps) {
+}: UserIdProp) {
   const isMyProfile = !userId
   const { data: userData } = isMyProfile
     ? useFetchMyProfile()

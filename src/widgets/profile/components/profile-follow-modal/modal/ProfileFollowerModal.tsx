@@ -1,9 +1,10 @@
 import { Suspense } from 'react'
 import { FollowerList } from '@widgets/profile/components'
 import { Modal, ModalTitle } from '@shared/ui'
+import type { UserId } from '@shared/types'
 
 export interface ReviewCreateModalProps {
-  userId: number | undefined
+  userId: UserId
   nickname: string
   onCloseToggle: () => void
 }
