@@ -2,9 +2,9 @@ import { useFetchFavoriteProducts } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
 import { ProductCardList } from '@shared/ui'
 import { EmptyProduct } from '@widgets/profile/components'
-import type { UserId } from '@shared/types'
+import type { UserIdProp } from '@shared/types'
 
-export default function FavoriteProductsList({ userId }: UserId) {
+export default function FavoriteProductsList({ userId }: UserIdProp) {
   const {
     data: products,
     isFetching,

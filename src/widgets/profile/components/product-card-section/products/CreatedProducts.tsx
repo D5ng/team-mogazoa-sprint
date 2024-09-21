@@ -2,9 +2,9 @@ import { useIntersect } from '@shared/hooks'
 import { useFetchCreatedProducts } from '@shared/hooks/query'
 import { ProductCardList } from '@shared/ui'
 import { EmptyProduct } from '@widgets/profile/components'
-import type { UserId } from '@shared/types'
+import type { UserIdProp } from '@shared/types'
 
-export default function CreatedProductsList({ userId }: UserId) {
+export default function CreatedProductsList({ userId }: UserIdProp) {
   const {
     data: products,
     isFetching,

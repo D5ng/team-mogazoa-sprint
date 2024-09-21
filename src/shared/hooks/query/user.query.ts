@@ -8,25 +8,26 @@ import {
   fetchUsersFollowees,
   fetchUsersFollowers,
 } from '@shared/api'
-import type { UserItem, UserFetch } from '@shared/types'
+import type { UserItem, UserFetch, UserId } from '@shared/types'
+import { userKeys } from '@shared/hooks/query-keys'
 
 export function useFetchMyProfile() {
   return useQuery<UserItem>({
-    queryKey: ['my-profile'],
+    queryKey: userKeys.profile.myProfile,
     queryFn: fetchMyProfile,
   })
 }
 
-export function useFetchUserProfile(userId: number | undefined) {
+export function useFetchUserProfile(userId: UserId) {
   return useQuery<UserItem>({
-    queryKey: ['user-profile', userId],
+    queryKey: userKeys.profile.userProfile(userId),
     queryFn: () => fetchUserProfile({ userId }),
   })
 }
 
 export function useFetchCreatedProducts({ userId }: UserFetch) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['created-products', userId],
+    queryKey: userKeys.products.created(userId),
     queryFn: ({ pageParam }) =>
       fetchUsersCreatedProduct({ userId, cursor: pageParam }),
     initialPageParam: 0,
@@ -37,7 +38,7 @@ export function useFetchCreatedProducts({ userId }: UserFetch) {
 
 export function useFetchReviewedProducts({ userId }: UserFetch) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['reviewed-products', userId],
+    queryKey: userKeys.products.reviewed(userId),
     queryFn: ({ pageParam }) =>
       fetchUsersReviewedProduct({ userId: userId!, cursor: pageParam }),
     initialPageParam: 0,
@@ -48,7 +49,7 @@ export function useFetchReviewedProducts({ userId }: UserFetch) {
 
 export function useFetchFavoriteProducts({ userId }: UserFetch) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['favorite-products', userId],
+    queryKey: userKeys.products.favorite(userId),
     queryFn: ({ pageParam }) =>
       fetchUsersFavoriteProduct({ userId, cursor: pageParam }),
     initialPageParam: 0,
@@ -59,7 +60,7 @@ export function useFetchFavoriteProducts({ userId }: UserFetch) {
 
 export function useFetchFollowers({ userId }: UserFetch) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['followers', userId],
+    queryKey: userKeys.follow.followers(userId),
     queryFn: ({ pageParam }) =>
       fetchUsersFollowers({ userId, cursor: pageParam }),
     initialPageParam: 0,
@@ -70,7 +71,7 @@ export function useFetchFollowers({ userId }: UserFetch) {
 
 export function useFetchFollowees({ userId }: UserFetch) {
   return useSuspenseInfiniteQuery({
-    queryKey: ['followees', userId],
+    queryKey: userKeys.follow.followees(userId),
     queryFn: ({ pageParam }) =>
       fetchUsersFollowees({ userId, cursor: pageParam }),
     initialPageParam: 0,

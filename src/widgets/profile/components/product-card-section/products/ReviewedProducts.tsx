@@ -2,9 +2,9 @@ import { useFetchReviewedProducts } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
 import { ProductCardList } from '@shared/ui'
 import { EmptyProduct } from '@widgets/profile/components'
-import type { UserId } from '@shared/types'
+import type { UserIdProp } from '@shared/types'
 
-export default function ReviewedProductsList({ userId }: UserId) {
+export default function ReviewedProductsList({ userId }: UserIdProp) {
   if (!userId) return null
 
   const {
