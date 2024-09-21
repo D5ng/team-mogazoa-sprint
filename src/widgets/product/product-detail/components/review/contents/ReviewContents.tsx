@@ -21,7 +21,10 @@ export default function ReviewContents(props: ProductReviewItem) {
         {props.userId === user?.id && (
           <div className="flex gap-x-2 text-black-20">
             <ReviewUpdateButton {...props} />
-            <ReviewDeleteButton reviewId={props.id} />
+            <ReviewDeleteButton
+              reviewId={props.id}
+              productId={props.productId}
+            />
           </div>
         )}
         <ThumbsButton {...props} />

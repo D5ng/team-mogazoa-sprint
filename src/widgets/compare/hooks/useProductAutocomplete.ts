@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useFetchProductName } from '@/src/shared/hooks'
+import { useFetchProductSearch } from '@/src/shared/hooks'
 import { useCompareStore } from '@app/provider/compareStore'
 
 export default function useProductAutocomplete(
@@ -14,8 +14,8 @@ export default function useProductAutocomplete(
     {},
   )
 
-  const { data } = useFetchProductName(inputValue)
-  const { data: productData1 } = useFetchProductName(inputValues['상품1'])
+  const { data } = useFetchProductSearch(inputValue)
+  const { data: productData1 } = useFetchProductSearch(inputValues['상품1'])
 
   const handleClickList = (name: string) => {
     // if (

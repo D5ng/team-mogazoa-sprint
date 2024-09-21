@@ -1,14 +1,10 @@
-import {
-  useFetchProducts,
-  useFetchProductsRating,
-  useIntersect,
-} from '@shared/hooks'
+import { useFetchProductsRating, useIntersect } from '@shared/hooks'
 import { ProductCardList } from '@shared/ui'
 import { ProductCardSection } from '@widgets/product/product-home/layout'
 
 export default function ProductRating() {
   const { data, isFetching, hasNextPage, fetchNextPage, error, isLoading } =
-    useFetchProducts()
+    useFetchProductsRating()
 
   if (error && !isFetching) throw error
 
