@@ -1,10 +1,10 @@
 import MockCardItem from '@widgets/profile/MockCardItem'
 import { useIntersect } from '@shared/hooks'
-import type { UserId } from '@shared/types'
+import type { UserIdProp } from '@shared/types'
 
 interface ProductListProps {
-  userId: UserId['userId']
-  useFetchProducts: (params: { userId: UserId['userId'] }) => {
+  userId: UserIdProp['userId']
+  useFetchProducts: (params: { userId: UserIdProp['userId'] }) => {
     data: any[]
     isFetching: boolean
     hasNextPage: boolean

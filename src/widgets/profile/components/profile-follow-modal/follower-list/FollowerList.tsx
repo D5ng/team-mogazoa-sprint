@@ -1,12 +1,9 @@
 import { Follow } from '@widgets/profile/components'
 import { useFetchFollowers } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
+import type { UserIdProp } from '@shared/types'
 
-interface FollowerList {
-  userId: number | undefined
-}
-
-export default function FollowerList({ userId }: FollowerList) {
+export default function FollowerList({ userId }: UserIdProp) {
   const {
     data: followers,
     isFetching,

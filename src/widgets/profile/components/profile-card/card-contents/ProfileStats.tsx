@@ -1,8 +1,9 @@
 import { UserItem } from '@shared/types'
 import { FolloweesButton, FollowerButton } from '@widgets/profile/components'
+import type { UserId } from '@shared/types'
 
 interface ProfileStatsProps {
-  userId: number | undefined
+  userId: UserId
   userData: UserItem
 }
 

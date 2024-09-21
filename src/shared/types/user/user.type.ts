@@ -1,5 +1,7 @@
-export interface UserId {
-  userId: number | undefined
+export type UserId = number | undefined
+
+export interface UserIdProp {
+  userId: UserId
 }
 
 export interface FavoriteCategory {
@@ -9,7 +11,7 @@ export interface FavoriteCategory {
 
 export interface UserCommon {
   updatedAt: string
-  id: number | undefined
+  id: UserId
   createdAt: string
   teamId: string
   image: string | null
@@ -60,7 +62,7 @@ export interface FollowerItem extends UserCommon {
 }
 
 export interface FolloweesItem extends UserCommon {
-  id: number | undefined
+  id: UserId
   followee: Follower
 }
 
@@ -92,7 +94,7 @@ export interface CursorParams {
 }
 
 export interface UserFetch {
-  userId: number | undefined
+  userId: UserId
   cursor?: number
 }
 
