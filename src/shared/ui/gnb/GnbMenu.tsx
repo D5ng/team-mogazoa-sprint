@@ -2,9 +2,8 @@ import useAuthStore from '@app/provider/authStore'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export default function GnbMenu() {
-  const { user: isSigned } = useAuthStore()
-
+export default function GnbMenu(cookie: any) {
+  const isSigned = cookie
   const router = useRouter()
   const { id: productId } = router.query
 
@@ -32,7 +31,6 @@ export default function GnbMenu() {
         <div
           className={`flex gap-[40px] mobile:gap-[20px] mobile:flex-col  mobile:text-center justify-center shrink-0`}
         >
-
           <Link className={`${MENU_DEFAULT_STYLE}`} href="/auth/sign-in">
             로그인
           </Link>

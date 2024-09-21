@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import ProductPage from '@/src/pages/product/Product'
 import { axiosInstance } from '@shared/config'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
@@ -38,6 +38,7 @@ export const getServerSideProps = (async (context) => {
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
+        cookie,
       },
     }
   } catch (error) {
