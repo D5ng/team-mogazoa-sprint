@@ -39,6 +39,8 @@ export const getServerSideProps = (async (context) => {
 
     if (!data) return { notFound: true }
 
+    console.log(parseCookie)
+
     return {
       props: {
         dehydratedState: dehydrate(queryClient),

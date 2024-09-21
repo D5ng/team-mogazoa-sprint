@@ -1,5 +1,9 @@
-export interface UserId {
-  userId: number | undefined
+import type { ProductListItem } from '@shared/types/product'
+
+export type UserId = number | undefined
+
+export interface UserIdProp {
+  userId: UserId
 }
 
 export interface FavoriteCategory {
@@ -9,7 +13,7 @@ export interface FavoriteCategory {
 
 export interface UserCommon {
   updatedAt: string
-  id: number | undefined
+  id: UserId
   createdAt: string
   teamId: string
   image: string | null
@@ -39,13 +43,6 @@ export interface UserItem extends UserCommon {
   isFollowing: boolean
 }
 
-export interface UserData extends UserCommon {
-  writerId: number
-  favoriteCount: number
-  rating: number
-  image: string
-}
-
 export interface Follower extends UserCommon {
   writerId: number
   categoryId: number
@@ -60,7 +57,7 @@ export interface FollowerItem extends UserCommon {
 }
 
 export interface FolloweesItem extends UserCommon {
-  id: number | undefined
+  id: UserId
   followee: Follower
 }
 
@@ -76,7 +73,7 @@ export interface followeesProductResponse {
 
 export interface UsersProductResponse {
   nextCursor: number
-  list: UserData[]
+  list: ProductListItem[]
 }
 
 export interface UpdateMyProfile
@@ -92,7 +89,7 @@ export interface CursorParams {
 }
 
 export interface UserFetch {
-  userId: number | undefined
+  userId: UserId
   cursor?: number
 }
 

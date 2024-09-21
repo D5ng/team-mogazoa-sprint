@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Loading from 'public/images/loading.svg'
 import { Button } from '@shared/ui'
+import { emptyMessage } from '@shared/icons'
 
 export default function NotFound() {
   return (
@@ -9,7 +9,7 @@ export default function NotFound() {
       <div className="flex flex-col items-center max-w-md w-full">
         <div className="relative w-[160px] h-[160px] mobile:w-[120px] mobile:h-[120px] mb-8 mobile:mb-6">
           <Image
-            src={Loading}
+            src={emptyMessage}
             alt="Loading"
             fill
             style={{ objectFit: 'contain' }}

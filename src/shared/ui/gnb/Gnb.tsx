@@ -9,8 +9,9 @@ import GnbHamburger from './GnbHamburgerButton'
 import GnbSearchButton from './GnbSearchButton'
 import GnbMobileSideBar from './GnbMobileSideBar'
 
-export default function Gnb() {
+export default function Gnb({ cookie }: any) {
   const { resetProducts } = useSearchProduct()
+
   const {
     isToggle: searchVisible,
     onToggle: toggleSearchInput,
@@ -50,7 +51,7 @@ export default function Gnb() {
           <GnbSearchButton toggleSearchInput={toggleSearchInput} />
           <GnbInput ref={inputRef} searchVisible={searchVisible} />
           <div className="flex text-white text-[14px] item-center gap-[40px] tablet:gap-[25px] mobile:hidden">
-            <GnbMenu />
+            <GnbMenu cookie={cookie} />
           </div>
         </div>
       </div>
@@ -58,6 +59,7 @@ export default function Gnb() {
         ref={closeRef}
         menuVisible={sideMenuVisible}
         closeCategoryMenu={closeCategoryMenu}
+        cookie={cookie}
       />
     </div>
   )
