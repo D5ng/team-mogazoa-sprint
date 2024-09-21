@@ -7,21 +7,17 @@ import type { AuthResponse, ProductDetailResponse } from '@shared/types'
 
 export default function Index({
   product,
-  createdProductUserId,
+  loggedInUserId,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return (
-    <ProductDetailPage
-      {...product}
-      createdProductUserId={createdProductUserId}
-    />
-  )
+  return <ProductDetailPage {...product} loggedInUserId={loggedInUserId} />
 }
 
 export const getServerSideProps = (async (context) => {
   const cookie = context.req.cookies.auth
-  const parseCookie: AuthResponse = cookie ? JSON.parse(cookie) : ''
-  const token = parseCookie.accessToken
-  if (token) {
+  const parseCookie: AuthResponse | null = cookie ? JSON.parse(cookie) : null
+
+  if (parseCookie) {
+    const token = parseCookie.accessToken
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
   }
 
@@ -47,7 +43,7 @@ export const getServerSideProps = (async (context) => {
       props: {
         dehydratedState: dehydrate(queryClient),
         product: data,
-        createdProductUserId: parseCookie.user.id,
+        loggedInUserId: parseCookie && parseCookie.user.id,
       },
     }
   } catch (error) {
