@@ -1,6 +1,4 @@
 import { GetServerSideProps } from 'next'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import Profile from '@/src/pages/profile/Profile'
 import { axiosInstance } from '@shared/config'
@@ -8,15 +6,7 @@ import { fetchMyProfile } from '@shared/api'
 import { useFetchMyProfile } from '@shared/hooks/query/user.query'
 
 export default function MyProfilePage() {
-  const router = useRouter()
-
   const { data: myProfileData } = useFetchMyProfile()
-
-  useEffect(() => {
-    if (!myProfileData) {
-      router.push('/auth/sign-in')
-    }
-  }, [myProfileData, router])
 
   if (!myProfileData) return null
 
@@ -26,17 +16,15 @@ export default function MyProfilePage() {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookie = context.req.cookies.auth
 
-  if (!cookie) {
-    return {
-      redirect: {
-        destination: '/auth/sign-in',
-        permanent: false,
-      },
-    }
-  }
+  if (!cookie) return { props: {} }
 
   try {
-    const token = JSON.parse(cookie).accessToken
+    const parsedCookie = JSON.parse(cookie)
+    if (typeof parsedCookie !== 'object' || !parsedCookie.accessToken) {
+      throw new Error('Invalid cookie format')
+    }
+
+    const token = parsedCookie.accessToken
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
     const queryClient = new QueryClient()
@@ -52,11 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   } catch (error) {
-    return {
-      redirect: {
-        destination: '/auth/sign-in',
-        permanent: false,
-      },
-    }
+    console.error(error)
+    return { props: {} }
   }
 }
