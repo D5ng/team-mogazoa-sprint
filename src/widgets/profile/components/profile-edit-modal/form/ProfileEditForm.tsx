@@ -4,7 +4,7 @@ import { descriptionValidation } from '@shared/utils'
 import { nicknameValidation } from '@widgets/auth/lib/form-validation'
 import { useProfileEditForm } from '@widgets/profile/hooks'
 import { ProfileImageUpload } from '@widgets/profile/components'
-import { defaultValues } from './defaultValues'
+import { useFetchMyProfile } from '@shared/hooks/query'
 import type { UserPayload } from '@shared/types'
 
 interface ProfileEditFormProps {
@@ -14,6 +14,9 @@ interface ProfileEditFormProps {
 export default function ProfileEditForm({
   onCloseToggle,
 }: ProfileEditFormProps) {
+  const profileQuery = useFetchMyProfile()
+  const profileData = profileQuery.data!
+
   const {
     formState: { errors },
     register,
@@ -23,7 +26,11 @@ export default function ProfileEditForm({
     control,
     setError,
   } = useForm<UserPayload>({
-    defaultValues,
+    defaultValues: {
+      nickname: profileData.nickname,
+      description: profileData.description,
+      image: profileData.image || undefined,
+    },
     mode: 'all',
   })
 
