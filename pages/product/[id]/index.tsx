@@ -44,6 +44,7 @@ export const getServerSideProps = (async (context) => {
         dehydratedState: dehydrate(queryClient),
         product: data,
         loggedInUserId: parseCookie && parseCookie.user.id,
+        cookie: cookie ? cookie : null,
       },
     }
   } catch (error) {

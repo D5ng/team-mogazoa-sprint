@@ -6,6 +6,7 @@ import type {
   AutocompleteInputProps,
   AutocompleteDropdownItemProps,
 } from './AutocompleteField.type'
+import { useProductStore } from '../../store/productStore'
 
 const AutoCompleteInputContext = createContext<AutocompleteContextType | null>(
   null,
@@ -94,12 +95,14 @@ export function AutocompleteDropdownItem({
   isHighlighted,
 }: AutocompleteDropdownItemProps) {
   const { handleSuggestionSelect } = useAutocompleteContext()
+  const { handleInputValue } = useProductStore()
   const highlightClassName = isHighlighted
     ? 'bg-gray-70 text-white'
     : 'text-black-30'
 
   const handleClick = () => {
     handleSuggestionSelect(suggestion)
+    handleInputValue(suggestion)
   }
 
   return (

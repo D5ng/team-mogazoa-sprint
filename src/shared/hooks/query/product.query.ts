@@ -42,8 +42,10 @@ export function useFetchProductCategory(categoryId: CategoryId) {
 }
 
 // 아직 보류.
-export default function useFetchProductsByQuery() {
-  const { inputValue, selectedCategoryKey } = useProductStore()
+export default function useFetchProductsByQuery(
+  inputValue: string,
+  selectedCategoryKey: number | undefined,
+) {
   return useQuery({
     queryKey: ['fetchProducts', selectedCategoryKey, inputValue],
     queryFn: () =>

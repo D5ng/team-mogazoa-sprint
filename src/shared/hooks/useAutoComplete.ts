@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
 import { debounce } from 'lodash'
 import { useProductStore } from '@shared/store/productStore'
+import useSearchProduct from './useSearchProduct'
 
 export default function useAutocomplete(
   suggestionList: string[],
@@ -9,7 +10,7 @@ export default function useAutocomplete(
 ) {
   const [searchTerm, setSearchTerm] = useState('')
   const [suggestions, setSuggestions] = useState<string[]>([])
-  const { handleInputValue } = useProductStore()
+  const { updateInputValue } = useSearchProduct()
 
   const debounceFilter = debounce((term: string) => {
     if (!term) {
@@ -33,7 +34,7 @@ export default function useAutocomplete(
     setSearchTerm(value)
     setValue('autocompleteInput', value)
     debounceFilter(value)
-    handleInputValue(value)
+    updateInputValue(value)
   }
 
   const handleSuggestionSelect = (suggestion: string) => {
