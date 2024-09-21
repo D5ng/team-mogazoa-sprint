@@ -12,10 +12,11 @@ import {
 } from '@shared/api'
 import { ProductReviewsResponse } from '@shared/types'
 import { ReviewSortOptions } from '@widgets/product/product-detail/constants'
+import { productKeys } from '@shared/hooks/query-keys'
 
 interface ReviewParams {
   productId: number
-  order: ReviewSortOptions
+  order?: ReviewSortOptions
 }
 
 export function useCreateReview({ productId, order }: ReviewParams) {
@@ -23,9 +24,9 @@ export function useCreateReview({ productId, order }: ReviewParams) {
   return useMutation({
     mutationFn: createReview,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['product-detail', productId] })
+      queryClient.invalidateQueries({ queryKey: productKeys.detail(productId) })
       queryClient.invalidateQueries({
-        queryKey: ['product-detail-review', productId, order],
+        queryKey: productKeys.reviews(productId, order),
       })
     },
   })
@@ -35,9 +36,9 @@ export function useUpdateReview({ productId, order }: ReviewParams) {
   return useMutation({
     mutationFn: updateReview,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['product-detail', productId] })
+      queryClient.invalidateQueries({ queryKey: productKeys.detail(productId) })
       queryClient.invalidateQueries({
-        queryKey: ['product-detail-review', productId, order],
+        queryKey: productKeys.reviews(productId, order),
       })
     },
   })
@@ -49,12 +50,12 @@ export function useReviewLike({ productId, order }: ReviewParams) {
     mutationFn: likeReview,
     onMutate: async ({ reviewId }) => {
       await queryClient.cancelQueries({
-        queryKey: ['product-detail-review', productId],
+        queryKey: productKeys.reviews(productId, order),
       })
 
       const previousLike = queryClient.getQueryData<
         InfiniteData<ProductReviewsResponse, number>
-      >(['product-detail-review', productId, order])
+      >(productKeys.reviews(productId, order))
 
       const updatePage = previousLike?.pages.map((page) => ({
         ...page,
@@ -70,22 +71,19 @@ export function useReviewLike({ productId, order }: ReviewParams) {
         pages: updatePage,
       }
 
-      queryClient.setQueryData(
-        ['product-detail-review', productId, order],
-        updater,
-      )
+      queryClient.setQueryData(productKeys.reviews(productId, order), updater)
 
       return { previousLike }
     },
     onError: (err, newTodo, context) => {
       queryClient.setQueryData(
-        ['product-detail-review', productId, order],
+        productKeys.reviews(productId, order),
         context?.previousLike,
       )
     },
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ['product-detail-review', productId, order],
+        queryKey: productKeys.reviews(productId, order),
       })
     },
   })
@@ -97,12 +95,12 @@ export function useReviewCancelLike({ productId, order }: ReviewParams) {
     mutationFn: cancelLikeReview,
     onMutate: async ({ reviewId }) => {
       await queryClient.cancelQueries({
-        queryKey: ['product-detail-review', productId],
+        queryKey: productKeys.reviews(productId, order),
       })
 
       const previousLike = queryClient.getQueryData<
         InfiniteData<ProductReviewsResponse, number>
-      >(['product-detail-review', productId, order])
+      >(productKeys.reviews(productId, order))
 
       const updatePage = previousLike?.pages.map((page) => ({
         ...page,
@@ -118,35 +116,34 @@ export function useReviewCancelLike({ productId, order }: ReviewParams) {
         pages: updatePage,
       }
 
-      queryClient.setQueryData(
-        ['product-detail-review', productId, order],
-        updater,
-      )
+      queryClient.setQueryData(productKeys.reviews(productId, order), updater)
 
       return { previousLike }
     },
 
     onError: (err, newTodo, context) => {
       queryClient.setQueryData(
-        ['product-detail-review', productId, order],
+        productKeys.reviews(productId, order),
         context?.previousLike,
       )
     },
 
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ['product-detail-review', productId, order],
+        queryKey: productKeys.reviews(productId, order),
       })
     },
   })
 }
 
-export function useDeleteReview() {
+export function useDeleteReview({ productId }: ReviewParams) {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: deleteReview,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['product-detail-review'] })
+      queryClient.invalidateQueries({
+        queryKey: productKeys.reviews(productId),
+      })
     },
   })
 }

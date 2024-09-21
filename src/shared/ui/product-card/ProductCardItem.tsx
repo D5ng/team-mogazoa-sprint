@@ -12,10 +12,10 @@ export default function ProductCardItem({
   rating,
 }: ProductListItem) {
   return (
-    <li>
-      <article className="inline-block m-[10px] tablet:m-[8px] gap-[10px] bg-black-60 p-[1vw] tablet:p-[1vw] mobile:p-[2vw] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
+    <li className=" bg-black-60 p-[0.4vw] tablet:p-[10px] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
+      <article className="flex flex-col gap-[25px] tablet:gap-[20px] mobile:gap-[20px]">
         <Link href={`/product/${id}`}>
-          <div className=" relative w-[13.3vw] h-[200px] tablet:w-[28vw] tablet:h-[200px] mobile:w-[36vw] mobile:h-[15vh] flex overflow-hidden rounded-lg">
+          <div className="relative w-[14.79vw] h-[10.4vw] tablet:w-[30vw] mobile:w-[34.3vw] tablet:h-[21.5vw] mobile:h-[26.1vw] flex overflow-hidden rounded-lg">
             <Image
               fill
               src={image}
@@ -24,18 +24,18 @@ export default function ProductCardItem({
               sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%"
             />
           </div>
-          <div className="mt-[20px] flex flex-col">
-            <span className="text-[1.1vw]  tablet:text-[16px]  mobile:text-[3vw] text-white">
+          <div className="flex flex-col gap-[0.52vw] tablet:gap-[1.3vw] w-full p-[0.625vw] tablet:p-[10px] mobile:p-0 mobile: ">
+            <span className="text-[0.9375vw] tablet:text-[16px] mobile:text-[14px] text-white whitespace-nowrap overflow-hidden text-ellipsis">
               {name}
             </span>
-            <div className="flex items-center mobile:inline justify-between">
-              <div className=" flex gap-[10px] mobile:gap-[7px] text-[1vw] text-black-30 tablet:text-[12px]  mobile:text-[2vw]">
+            <div className="flex mobile:flex-col items-center mobile:items-start justify-between">
+              <div className="flex gap-[0.781vw] text-[0.833vw] tablet:text-[16px] mobile:text-[14px] text-black-30">
                 <p>리뷰 {reviewCount}</p>
                 <p>찜 {favoriteCount}</p>
               </div>
-              <div className="flex items-center gap-[3px]">
-                <Image src={star} width={13} height={13} alt="별점" priority />
-                <p className="text-[1vw] text-black-20 tablet:text-[12px]  mobile:text-[2vw]">
+              <div className="flex items-center gap-[0.156vw] ">
+                <Image src={star} width={16} height={16} alt="별점" priority />
+                <p className="text-[0.833vw] tablet:text-[14px] mobile:text-[12px] tablet: mobile: text-black-20">
                   {rating.toFixed(2)}
                 </p>
               </div>

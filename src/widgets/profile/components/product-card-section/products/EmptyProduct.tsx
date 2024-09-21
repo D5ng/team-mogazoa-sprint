@@ -1,7 +1,7 @@
-import { emptyMessage } from '@shared/icons'
 import Image from 'next/image'
+import { emptyMessage } from '@shared/icons'
 
-export default function ReviewEmptyList() {
+export default function EmptyProduct() {
   return (
     <div className="m-auto flex flex-col items-center gap-y-5 py-[115px]">
       <Image
@@ -12,7 +12,7 @@ export default function ReviewEmptyList() {
         className="tablet:h-[32px]"
       />
       <p className="text-black-30 text-lg tablet:text-base">
-        첫 리뷰를 작성해 보세요!
+        아직 활동 내역이 없어요
       </p>
     </div>
   )
