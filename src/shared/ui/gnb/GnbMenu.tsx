@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 
 export default function GnbMenu({ cookie }: any) {
   const isSigned = cookie
-  console.log(cookie)
   const router = useRouter()
   const { id: productId } = router.query
 

@@ -1,30 +1,29 @@
 import { useState, useEffect, useCallback } from 'react'
 import debounce from 'lodash/debounce'
 
-export default function useWindowResize(breakpoint: number = 1280) {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+export default function useWindowResize() {
+  const [windowWidth, setWindowWidth] = useState<number>(() =>
+    typeof window !== 'undefined' ? window.innerWidth : 1280,
+  )
 
   const handleResize = useCallback(
     debounce(() => {
-      const newWidth = window.innerWidth
-      setWindowWidth((prev) => {
-        if (
-          (prev < breakpoint && newWidth >= breakpoint) ||
-          (prev >= breakpoint && newWidth < breakpoint)
-        ) {
-          return newWidth
-        }
-        return prev
-      })
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth)
+      }
     }, 100),
-    [breakpoint],
+    [],
   )
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      handleResize.cancel()
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize)
+      handleResize()
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+        handleResize.cancel()
+      }
     }
   }, [handleResize])
 

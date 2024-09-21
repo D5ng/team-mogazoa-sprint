@@ -39,7 +39,6 @@ export default async function handler(
       })
 
       setAuthToken('auth', result, { req, res })
-
       res.redirect('/')
     } catch (error) {
       res.redirect('/error')
