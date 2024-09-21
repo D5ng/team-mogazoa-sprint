@@ -1,5 +1,3 @@
 export { default as Gnb } from './Gnb'
-export { default as GnbItemMobile } from './GnbItemMobile'
 export { default as GnbMenu } from './Gnb'
-export { default as GnbItemPc } from './GnbItemPc'
 export { default as GnbProductSearchInput } from './GnbProductSearchInput'

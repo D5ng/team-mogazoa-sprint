@@ -1,30 +1,38 @@
+import { forwardRef } from 'react'
 import Image from 'next/image'
-import { search } from '@shared/icons'
 import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
+import { twMerge } from 'tailwind-merge'
+import { search } from '@shared/icons'
 import {
   AutocompleteDropdown,
   AutocompleteField,
   AutocompleteInput,
-} from '@shared/ui'
-import { twMerge } from 'tailwind-merge'
-import { useForm } from 'react-hook-form'
+} from '../autocomplete-field/AutocompleteField'
 
-export default function GnbProductSearchInput() {
+interface GnbProductSearchInputProps {
+  searchVisible: boolean
+}
+
+const GnbProductSearchInput = forwardRef<
+  HTMLDivElement,
+  GnbProductSearchInputProps
+>(({ searchVisible }, ref) => {
   const router = useRouter()
   const { register, setValue } = useForm()
-
   const INPUT_STYLE = twMerge(
     'text-[14px] text-white w-[400px] h-[50px] rounded-[30px] px-[40px] py-[5px] bg-black-70 tablet:w-[300px] tablet:h-[40px] target:text-[12px]',
   )
 
-  if (
-    router.pathname === '/auth/sign-in' ||
-    router.pathname === '/auth/sign-up'
-  )
-    return
+  if (router.pathname === '/sign-in' || router.pathname === '/sign-up')
+    return null
+
 
   return (
-    <div className="relative">
+    <div
+      ref={ref}
+      className={`relative ${searchVisible ? '' : 'mobile:hidden'} mobile:absolute mobile:left-1/2 mobile:top-1/2 mobile:translate-x-[-50%] mobile:translate-y-[120%]`}
+    >
       <AutocompleteField
         suggestionList={[]}
         {...register('autocompleteInput')}
@@ -37,7 +45,7 @@ export default function GnbProductSearchInput() {
         <AutocompleteDropdown />
       </AutocompleteField>
       <Image
-        className="absolute left-[13px] top-[16Px] tablet:top-[11px]"
+        className="absolute left-[13px] top-[16px] tablet:top-[11px]"
         src={search}
         width={20}
         height={20}
@@ -45,4 +53,8 @@ export default function GnbProductSearchInput() {
       />
     </div>
   )
-}
+})
+
+GnbProductSearchInput.displayName = 'GnbProductSearchInput'
+
+export default GnbProductSearchInput
