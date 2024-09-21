@@ -19,7 +19,7 @@ export default function Index({
 
 export const getServerSideProps = (async (context) => {
   const cookie = context.req.cookies.auth
-  const parseCookie: AuthResponse = cookie ? JSON.parse(cookie) : ''
+  const parseCookie = cookie ? JSON.parse(cookie) : ''
   const token = parseCookie.accessToken
   if (token) {
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -43,11 +43,13 @@ export const getServerSideProps = (async (context) => {
 
     if (!data) return { notFound: true }
 
+    console.log(parseCookie)
+
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
         product: data,
-        createdProductUserId: parseCookie.user.id,
+        createdProductUserId: parseCookie ? parseCookie.user.id : null,
       },
     }
   } catch (error) {

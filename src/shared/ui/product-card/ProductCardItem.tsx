@@ -15,7 +15,7 @@ export default function ProductCardItem({
     <li className=" bg-black-60 p-[0.4vw] tablet:p-[10px] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
       <article className="flex flex-col gap-[25px] tablet:gap-[20px] mobile:gap-[20px]">
         <Link href={`/product/${id}`}>
-          <div className="relative w-[14.79vw] h-[10.4vw] tablet:w-[30vw] mobile:w-[34.3vw] tablet:h-[21.5vw] mobile:h-[26.1vw] flex overflow-hidden rounded-lg">
+          <div className="relative w-full h-[10.4vw] tablet:h-[21.5vw] mobile:h-[26.1vw] flex overflow-hidden rounded-lg">
             <Image
               fill
               src={image}
