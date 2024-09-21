@@ -15,7 +15,7 @@ const CategoryMenu = ({ menuVisible }: CategoryMenuProps) => {
   if (router.pathname !== '/' && router.pathname !== `/category/[id]`) return
   return (
     <article
-      className={`fixed top-105 mt-[20px] mobile:mt-[50px]  shrink-0 left-[9.5vw]  tablet:left-[4vw] ${menuVisible ? '' : 'mobile:hidden'} mobile:w-2/5 mobile:left-0 mobile:bg-black-50 mobile:z-dropdown`}
+      className={`fixed top-105 mt-[20px] mobile:mt-[50px]  shrink-0 left-[9vw]  tablet:left-[40px] ${menuVisible ? '' : 'mobile:hidden'} mobile:w-2/5 mobile:left-0 mobile:bg-black-50 mobile:z-dropdown`}
     >
       <p className="text-[16px] tablet:text-[14px] mobile:mt-[20px] ml-[20px] text-white mb-[10px]">
         카테고리

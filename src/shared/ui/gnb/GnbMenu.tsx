@@ -2,7 +2,7 @@ import useAuthStore from '@app/provider/authStore'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export default function GnbMenu(cookie: any) {
+export default function GnbMenu({ cookie }: any) {
   const isSigned = cookie
   const router = useRouter()
   const { id: productId } = router.query

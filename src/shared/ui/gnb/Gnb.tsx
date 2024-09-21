@@ -8,14 +8,9 @@ import { useOutsideClick, useToggle } from '../../hooks'
 import GnbHamburger from './GnbHamburgerButton'
 import GnbSearchButton from './GnbSearchButton'
 import GnbMobileSideBar from './GnbMobileSideBar'
-import { InferGetServerSidePropsType } from 'next'
-import { getServerSideProps } from '@/pages'
 
-export default function Gnb(
-  state: InferGetServerSidePropsType<typeof getServerSideProps>,
-) {
+export default function Gnb({ cookie }) {
   const { resetProducts } = useSearchProduct()
-  const cookie = state?.cookie
 
   const {
     isToggle: searchVisible,
