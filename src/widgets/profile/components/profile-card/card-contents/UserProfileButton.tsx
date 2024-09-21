@@ -1,10 +1,10 @@
-import { toast } from 'react-toastify'
 import { Button } from '@shared/ui'
+import { toastCheckAuth } from '@shared/utils'
 import {
   useFollowUser,
   useUnFollowUser,
 } from '@shared/hooks/mutate/follow.mutate'
-import { useUserStore } from '@shared/store'
+
 interface UserProfileButtonProps {
   isFollowing: boolean
   userId: number
@@ -14,17 +14,14 @@ export default function UserProfileButton({
   isFollowing,
   userId,
 }: UserProfileButtonProps) {
-  const { user } = useUserStore()
-
   const followMutation = useFollowUser()
   const unFollowMutation = useUnFollowUser()
 
-  const handleFollowClick = () => {
-    if (!user) return toast.error('로그인이 필요합니다')
-    isFollowing
+  const handleFollowClick = () =>
+    toastCheckAuth() &&
+    (isFollowing
       ? unFollowMutation.mutate({ userId })
-      : followMutation.mutate({ userId })
-  }
+      : followMutation.mutate({ userId }))
 
   return (
     <Button

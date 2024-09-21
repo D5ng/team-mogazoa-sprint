@@ -1,8 +1,7 @@
-import { toast } from 'react-toastify'
 import { useToggle } from '@shared/hooks'
-import { useUserStore } from '@shared/store'
 import { Button } from '@shared/ui'
 import { ReviewCreateModal } from '@widgets/product/product-detail/components'
+import { toastCheckAuth } from '@shared/utils'
 
 interface ReviewButtonProps {
   productId: number
@@ -15,11 +14,9 @@ export default function ReviewButton({
   categoryName,
   productName,
 }: ReviewButtonProps) {
-  const { user } = useUserStore()
   const { isToggle, onCloseToggle, onOpenToggle } = useToggle()
 
-  const handleOpenModal = () =>
-    user ? onOpenToggle() : toast.error('로그인이 필요합니다')
+  const handleOpenModal = () => toastCheckAuth() && onOpenToggle()
 
   return (
     <>

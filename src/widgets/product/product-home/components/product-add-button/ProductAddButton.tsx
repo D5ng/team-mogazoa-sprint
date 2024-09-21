@@ -1,16 +1,13 @@
 import Image from 'next/image'
-import { toast } from 'react-toastify'
 import { add } from '@shared/icons'
 import { useToggle } from '@shared/hooks'
-import { useUserStore } from '@shared/store'
+import { toastCheckAuth } from '@shared/utils'
 import { ProductAddModal } from '@widgets/product/product-home/components/product-add-modal'
 
 export default function ProductAddButton() {
-  const { user } = useUserStore()
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
 
-  const handleOpenModal = () =>
-    user ? onOpenToggle() : toast.error('로그인이 필요합니다')
+  const handleOpenModal = () => toastCheckAuth() && onOpenToggle()
 
   return (
     <>
