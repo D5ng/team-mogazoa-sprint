@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import SideMenu from './SideMenu'
+import SideMenu from './CategoryMenu'
 
 type Story = StoryObj
 

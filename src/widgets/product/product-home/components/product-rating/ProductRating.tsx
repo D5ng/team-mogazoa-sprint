@@ -1,4 +1,8 @@
-import { useFetchProducts, useIntersect } from '@shared/hooks'
+import {
+  useFetchProducts,
+  useFetchProductsRating,
+  useIntersect,
+} from '@shared/hooks'
 import { ProductCardList } from '@shared/ui'
 import { ProductCardSection } from '@widgets/product/product-home/layout'
 
