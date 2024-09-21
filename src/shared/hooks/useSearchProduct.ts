@@ -1,8 +1,6 @@
 import { useProductStore } from '@shared/store/productStore'
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { debounce } from 'lodash'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { fetchProducts } from '../api'
+import { useCallback, useState } from 'react'
 
 export default function useSearchProduct() {
   const {
