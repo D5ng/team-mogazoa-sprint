@@ -4,6 +4,7 @@ import { fetchProductDetail } from '@shared/api'
 import { ProductDetailPage } from '@/src/pages/'
 import { axiosInstance } from '@shared/config'
 import type { AuthResponse, ProductDetailResponse } from '@shared/types'
+import { productKeys } from '@/src/shared/hooks/query-keys'
 
 export default function Index({
   product,
@@ -28,18 +29,15 @@ export const getServerSideProps = (async (context) => {
     const queryClient = new QueryClient()
 
     await queryClient.prefetchQuery({
-      queryKey: ['product-detail', productId],
+      queryKey: productKeys.detail(productId),
       queryFn: () => fetchProductDetail({ productId: +productId }),
     })
 
-    const data = queryClient.getQueryData<ProductDetailResponse>([
-      'product-detail',
-      productId,
-    ])
+    const data = queryClient.getQueryData<ProductDetailResponse>(
+      productKeys.detail(productId),
+    )
 
     if (!data) return { notFound: true }
-
-    console.log(parseCookie)
 
     return {
       props: {
