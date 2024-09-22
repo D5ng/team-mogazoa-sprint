@@ -1,4 +1,5 @@
 import { ProfileImage } from '@shared/ui'
+import { NextSeo } from 'next-seo'
 
 interface ProfileHeaderProps {
   image: string | null
@@ -13,6 +14,7 @@ export default function ProfileHeader({
 }: ProfileHeaderProps) {
   return (
     <div className="flex flex-col justify-center items-center gap-[30px]">
+      <NextSeo title={`모가조아 - ${nickname} 프로필`} />
       <ProfileImage
         url={image}
         size={180}

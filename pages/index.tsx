@@ -3,9 +3,15 @@ import ProductPage from '@/src/pages/product/Product'
 import { axiosInstance } from '@shared/config'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { fetchProducts } from '@/src/shared/api'
+import { NextSeo } from 'next-seo'
 
 export default function Home() {
-  return <ProductPage />
+  return (
+    <>
+      <NextSeo title="모가조아 - 모든 상품을 확인하고 리뷰를 달아보세요." />
+      <ProductPage />
+    </>
+  )
 }
 
 export const getServerSideProps = (async (context) => {
