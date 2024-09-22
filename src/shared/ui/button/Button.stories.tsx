@@ -49,6 +49,11 @@ export const ButtonExample: Story = {
     children: '회원가입',
     isLoading: false,
   },
+  render: () => (
+    <Button variant="primary" className="w-[250px]">
+      회원가입
+    </Button>
+  ),
 }
 
 export const ButtonVariants: Story = {
