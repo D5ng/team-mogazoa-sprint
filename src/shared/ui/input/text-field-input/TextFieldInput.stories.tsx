@@ -5,15 +5,14 @@ import {
   UseFormSetValue,
 } from 'react-hook-form'
 import TextFieldInput from './TextFieldInput'
+import { nameValidation } from '@shared/utils'
 import type { InputHTMLAttributes } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { nameValidation } from '@/src/shared/utils'
 
 type Story = StoryObj<typeof TextFieldInput>
 
 export interface TextFieldInputProps
   extends InputHTMLAttributes<HTMLInputElement> {
-  name: string
   placeholder?: string
   register: UseFormRegister<any>
   errors: FieldErrors
@@ -21,16 +20,9 @@ export interface TextFieldInputProps
 }
 
 const meta: Meta<typeof TextFieldInput> = {
-  title: 'Components/TextFieldInput',
+  title: 'shared/ui/input/TextFieldInput',
   component: TextFieldInput,
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ maxWidth: '300px', margin: '0 auto' }}>
-        <Story />
-      </div>
-    ),
-  ],
 }
 
 const TextFieldInputWrapper = (

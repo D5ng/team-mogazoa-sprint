@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 type Story = StoryObj<typeof ImageInput>
 
 const meta: Meta<typeof ImageInput> = {
-  title: 'Components/ImageInput',
+  title: 'shared/ui/input/ImageInput',
   component: ImageInput,
   tags: ['autodocs'],
   argTypes: {

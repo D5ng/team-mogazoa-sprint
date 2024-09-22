@@ -19,7 +19,7 @@ type FormData = {
 type Story = StoryObj<typeof FormField>
 
 const meta: Meta<typeof FormField> = {
-  title: 'form-field',
+  title: 'shared/ui/FormField',
   component: FormField,
   tags: ['autodocs'],
 }
