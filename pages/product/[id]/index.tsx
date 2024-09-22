@@ -5,12 +5,21 @@ import { ProductDetailPage } from '@/src/pages/'
 import { axiosInstance } from '@shared/config'
 import type { AuthResponse, ProductDetailResponse } from '@shared/types'
 import { productKeys } from '@/src/shared/hooks/query-keys'
+import { NextSeo } from 'next-seo'
 
 export default function Index({
   product,
   loggedInUserId,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <ProductDetailPage {...product} loggedInUserId={loggedInUserId} />
+  return (
+    <>
+      <NextSeo
+        title={`모가조아 - ${product.name} 상품`}
+        description={`${product.name}의 비교하고 리뷰 달아보세요.`}
+      />
+      <ProductDetailPage {...product} loggedInUserId={loggedInUserId} />
+    </>
+  )
 }
 
 export const getServerSideProps = (async (context) => {

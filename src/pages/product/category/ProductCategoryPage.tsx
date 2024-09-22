@@ -7,6 +7,7 @@ import {
   ProductEmpty,
   Ranking,
 } from '@widgets/product/product-home/components'
+import { NextSeo } from 'next-seo'
 
 interface ProductCategoryPageProps {
   category: Categories
