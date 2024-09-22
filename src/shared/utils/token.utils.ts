@@ -6,7 +6,8 @@ export const getAuthUser = () => {
   const token = getCookie('auth')
   if (!token) return null
   const parseToken = JSON.parse(token)
-  return parseToken
+  const user = parseToken.user
+  return user
 }
 
 export const setAuthUser = (

@@ -5,10 +5,10 @@ import {
   UserProfileCard,
 } from '@widgets/profile/components'
 import type { ProfileProps } from './Profile.type'
-import { useUserStore } from '@shared/store'
+import { getAuthUser } from '@shared/utils'
 
 export default function Profile({ userId }: ProfileProps) {
-  const { user } = useUserStore()
+  const user = getAuthUser()
   const isMyProfile = !userId || user?.id === userId
   const id = isMyProfile ? user?.id : userId
 
