@@ -1,6 +1,6 @@
-import '@/src/app/styles/globals.css'
+import '@/src/app/styles/stories.css'
 
-import { Canvas, Meta, Markdown, Primary, Controls } from '@storybook/blocks'
+import { Canvas, Meta, Controls, Primary } from '@storybook/blocks'
 
 import * as ButtonStories from './Button.stories'
 
@@ -8,58 +8,29 @@ import * as ButtonStories from './Button.stories'
 
 # Button
 
-버튼 컴포넌트는 총 3가지의 타입을 받아 스타일들을 적용할 수 있습니다.
+버튼 컴포넌트는 총 3가지의 스타일들을 사용할 수 있습니다.
 
-`isLoading` 및 `disabled`를 사용해 사용자한테 로딩중인지, 버튼의 클릭이 활성화 되어있는지 인지할 수 있도록 사용해주는것이 좋습니다.
+- **`primary`**
+- **`secondary`**
+- **`tertiary`**
 
-- Primary
-- Secondary
-- Tertiary
+유연한 사용성을 위해 `className`으로 스타일을 오버라이딩 할 수 있습니다. 또한 버튼의 기본 타입을 확장시켰기 때문에 버튼의 기본 타입들을 `props`로 전달해 사용할 수 있습니다. `isLoading` 및 `disabled`를 사용해 사용자한테 로딩중인지, 버튼의 클릭이 활성화 되어있는지 인지할 수 있도록 사용해주는 것이 좋습니다.
 
-유연한 사용성을 위해 `className`을 받아서 원하는대로 적용할 수 있습니다.
+**❗️프로젝트 특성상 버튼의 사이즈가 부모 태그의 너비를 기반으로 하기 때문에 사이즈 속성은 없습니다.**
 
-❗️프로젝트 특성상 버튼의 사이즈가 부모 태그의 너비를 기반으로 하기 때문에 사이즈 속성은 없습니다.
+# Example
 
 <Primary />
-<Controls />
+<Controls exclude={['style']} />
 
-# Getting Started
+### Buttons Variant
 
-Welcome! Whether you're a designer or a developer, this guide will help you get started and connect you to the essential resources you need.
+<Canvas of={ButtonStories.ButtonVariants} />
 
-## Table of Contents
+### Buttons Disabled
 
-- [Design Resources](#design-resources)
+<Canvas of={ButtonStories.ButtonDisabled} />
 
-  - [Figma](#figma)
-  - [UI/UX Design Guidelines](#uiux-design-guidelines)
-  - [Design Assets](#design-assets)
+### Buttons Loading
 
-- [Development Resources](#development-resources)
-  - [Coding Standards](#coding-standards)
-  - [Version Control](#version-control)
-  - [Development Tools](#development-tools)
-
----
-
-## Design Resources
-
-### Figma
-
-[Figma](https://www.figma.com/) is a collaborative design and prototyping tool. It's the heart of the design process, allowing designers to work together seamlessly.
-
-- **Get Access**: If you're not already part of the Figma project, request access from the project lead or manager.
-
-### UI/UX Design Guidelines
-
-Before you dive into designing, familiarize yourself with our UI/UX design guidelines. They provide valuable insights into our design philosophy and standards.
-
-- [UI/UX Guidelines Document](https://your-design-guidelines-link.com)
-
-### Design Assets
-
-All the essential design assets like logos, icons, and brand guidelines can be found in the Figma project. Ensure you have access and familiarize yourself with these assets for consistency.
-
----
-
-## Development Resources
+<Canvas of={ButtonStories.ButtonLoading} />
