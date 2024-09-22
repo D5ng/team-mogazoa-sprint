@@ -12,6 +12,7 @@ import * as DropdownStories from './Dropdown.stories'
 - **`border가 없는 드롭다운`**
 
 드롭다운 컴포넌트는 `className`을 통해 유연한 스타일을 적용할 수 있습니다. 드롭다운의 타이틀은 항목의 기본값으로도 설정할 수 있으며, 플레이스홀더로도 사용할 수 있습니다.
+내부적으로 드롭다운의 상태가 관리되어있고, 외부에서 이 값을 참조하려면 `DropdownMenuItem`에 `onClick`을 사용해야 합니다.
 
 **❗️드롭다운의 기본 스타일은 `border`가 없는 스타일입니다.**
 
@@ -19,3 +20,9 @@ import * as DropdownStories from './Dropdown.stories'
 
 <Primary />
 <Controls />
+
+### Dropdown Variants
+
+<Canvas of={DropdownStories.DropdownBorderType} />
+
+<Canvas of={DropdownStories.DropdownBorderNoneType} />
