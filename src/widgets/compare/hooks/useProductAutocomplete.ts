@@ -18,8 +18,6 @@ export default function useProductAutocomplete(
 
   const { data } = useFetchProductSearch(inputValue)
 
-  console.log(inputValue)
-
   const { data: productData1 } = useFetchProductSearch(inputValues['상품1'])
 
   const handleClickList = (name: string) => {
