@@ -6,24 +6,22 @@ import {
   DropdownMenuItem,
 } from './Dropdown'
 import type { DropdownVariantType } from './Dropdown.type'
+import { CATEGORY_CHIPS } from '../category-chip'
+
+const SORT_DROPDOWN_TYPE = ['최신순', '별점 높은순', '별점 낮은순', '좋아요순']
 
 interface DropdownProps {
-  menuItems: string[]
   title: string
   variant?: DropdownVariantType
 }
 
-function DropdownStoryComponent({
-  menuItems,
-  variant = 'border',
-  title,
-}: DropdownProps) {
+function DropdownStoryComponent({ variant = 'border', title }: DropdownProps) {
   return (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
-        {menuItems.map((menu) => (
-          <DropdownMenuItem key={menu}>{menu}</DropdownMenuItem>
+        {CATEGORY_CHIPS.map((menu) => (
+          <DropdownMenuItem key={menu.id}>{menu.name}</DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>
@@ -54,11 +52,6 @@ const meta: Meta<typeof DropdownStoryComponent> = {
         },
       },
     },
-    menuItems: {
-      control: 'object',
-      description:
-        '드롭다운 아이템 설정입니다. 배열 형태로 전달해 주어야합니다.',
-    },
   },
   component: DropdownStoryComponent,
 }
@@ -66,35 +59,55 @@ const meta: Meta<typeof DropdownStoryComponent> = {
 export const DropdownExample: Story = {
   name: 'Dropdown Example',
   args: {
-    menuItems: ['카테고리1', '카테고리2', '카테고리3', '카테고리4'],
     title: '카테고리 선택',
     variant: 'border',
   },
-  render: () => (
-    <DropdownStoryComponent
-      menuItems={['카테고리1', '카테고리2', '카테고리3', '카테고리4']}
-      title="카테고리 선택"
-      variant="border"
-    />
+  render: ({ variant, title }) => (
+    <Dropdown variant={variant}>
+      <DropdownTrigger>{title}</DropdownTrigger>
+      <DropdownMenu>
+        {CATEGORY_CHIPS.map((menu) => (
+          <DropdownMenuItem key={menu.id}>{menu.name}</DropdownMenuItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
   ),
 }
 
 export const DropdownBorderType: Story = {
   name: 'Dropdown Border Type',
   args: {
-    menuItems: ['카테고리1', '카테고리2', '카테고리3', '카테고리4'],
     title: '카테고리 선택',
     variant: 'border',
   },
+  render: ({ variant, title }) => (
+    <Dropdown variant={variant}>
+      <DropdownTrigger>{title}</DropdownTrigger>
+      <DropdownMenu>
+        {CATEGORY_CHIPS.map((menu) => (
+          <DropdownMenuItem key={menu.id}>{menu.name}</DropdownMenuItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
+  ),
 }
 
 export const DropdownBorderNoneType: Story = {
   name: 'Dropdown Border None Type',
   args: {
-    menuItems: ['카테고리1', '카테고리2', '카테고리3', '카테고리4'],
-    title: '카테고리1',
+    title: SORT_DROPDOWN_TYPE[0],
     variant: 'none',
   },
+  render: ({ variant, title }) => (
+    <Dropdown variant={variant}>
+      <DropdownTrigger>{title}</DropdownTrigger>
+      <DropdownMenu>
+        {SORT_DROPDOWN_TYPE.map((menu) => (
+          <DropdownMenuItem key={menu}>{menu}</DropdownMenuItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
+  ),
 }
 
 export default meta
