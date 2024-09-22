@@ -8697,6 +8697,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.8.0"
     lodash: "npm:^4.17.21"
     next: "npm:14.2.7"
+    next-seo: "npm:^6.6.0"
     postcss: "npm:^8"
     prettier: "npm:^3.2.5"
     react: "npm:^18"
@@ -8763,6 +8764,17 @@ __metadata:
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: 10c0/c2f5a604a54a8ec5438a342e1f356dff4bc33ccccdb6dc668d94fe8e5eccfc9d2c2eea6064b0967a767ba63b33763f51ccf2cd2441b461a7322656c1f06b3f5d
+  languageName: node
+  linkType: hard
+
+"next-seo@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "next-seo@npm:6.6.0"
+  peerDependencies:
+    next: ^8.1.1-canary.54 || >=9.0.0
+    react: ">=16.0.0"
+    react-dom: ">=16.0.0"
+  checksum: 10c0/60eff5b6fdd83306d26968dfc23b5df502bf014b771b0910bf6cfec944de6f262d7d872ae3155717a31a1dd51ae48db007ce4c0f78f8b435deff37bdc63beb76
   languageName: node
   linkType: hard
 
