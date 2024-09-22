@@ -6,11 +6,20 @@ import { productKeys } from '@shared/hooks/query-keys'
 import { AuthResponse, ProductResponse } from '@shared/types'
 import { CATEGORY_CHIPS } from '@/src/shared/ui'
 import { ProductCategoryPage } from '@/src/pages'
+import { NextSeo } from 'next-seo'
 
 export default function Index({
   category,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <ProductCategoryPage category={category} />
+  return (
+    <>
+      <NextSeo
+        title={`모가조아 - ${category.name}의 모든 상품`}
+        description={`${category.name}의 모든 상품을 확인하고 리뷰 달아보세요.`}
+      />
+      <ProductCategoryPage category={category} />
+    </>
+  )
 }
 
 export const getServerSideProps = (async (context) => {

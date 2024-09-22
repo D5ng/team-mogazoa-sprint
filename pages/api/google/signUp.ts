@@ -1,6 +1,6 @@
 import { socialSignUp } from '@shared/api'
 import { axiosInstance } from '@shared/config'
-import { setAuthToken } from '@shared/utils'
+import { setAuthUser } from '@shared/utils'
 import { isAxiosError } from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -38,7 +38,7 @@ export default async function handler(
         token: id_token as string,
       })
 
-      setAuthToken('auth', result, { req, res })
+      setAuthUser('auth', result, { req, res })
       res.redirect('/')
     } catch (error) {
       res.redirect('/error')
