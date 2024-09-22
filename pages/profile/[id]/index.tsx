@@ -35,12 +35,11 @@ export const getServerSideProps: GetServerSideProps = (async (context) => {
 
     if (!data) return { notFound: true }
 
-    console.log(userId)
-
     return {
       props: {
         dehydratedState: dehydrate(queryClient),
         userId: +userId,
+        cookie: cookie ? cookie : null,
       },
     }
   } catch (error) {

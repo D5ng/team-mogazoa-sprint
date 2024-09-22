@@ -1,8 +1,9 @@
 import { useToggle } from '@shared/hooks'
 import { ProfileFolloweesModal } from '@widgets/profile/components'
+import type { UserId } from '@shared/types'
 
 interface FollowerButtonProps {
-  userId: number | undefined
+  userId: UserId
   nickname: string
   followeesCount: number
 }

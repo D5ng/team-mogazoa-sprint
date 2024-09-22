@@ -1,20 +1,31 @@
-import { useEffect, useState } from 'react'
-import throttle from 'lodash/throttle'
+import { useState, useEffect, useCallback } from 'react'
+import debounce from 'lodash/debounce'
 
 export default function useWindowResize() {
-  const [windowSize, setWindowSize] = useState<number>(1440)
+  const [windowWidth, setWindowWidth] = useState<number>(() =>
+    typeof window !== 'undefined' ? window.innerWidth : 1280,
+  )
+
+  const handleResize = useCallback(
+    debounce(() => {
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth)
+      }
+    }, 100),
+    [],
+  )
+
   useEffect(() => {
-    const handleResize = throttle(() => {
-      setWindowSize(window.innerWidth)
-    }, 300)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize)
+      handleResize()
 
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      handleResize.cancel()
+      return () => {
+        window.removeEventListener('resize', handleResize)
+        handleResize.cancel()
+      }
     }
-  }, [])
+  }, [handleResize])
 
-  return windowSize
+  return windowWidth
 }

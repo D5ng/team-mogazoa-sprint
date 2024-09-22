@@ -8,8 +8,8 @@ export default function EmptyProduct() {
         src={emptyMessage}
         alt=""
         width={49}
-        height={40}
-        className="tablet:h-[32px]"
+        height={41}
+        className="w-auto h-[41px] tablet:h-[32px]"
       />
       <p className="text-black-30 text-lg tablet:text-base">
         아직 활동 내역이 없어요

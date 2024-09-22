@@ -9,12 +9,13 @@ import GnbHamburger from './GnbHamburgerButton'
 import GnbSearchButton from './GnbSearchButton'
 import GnbMobileSideBar from './GnbMobileSideBar'
 
-export default function Gnb() {
+export default function Gnb({ cookie }: any) {
   const { resetProducts } = useSearchProduct()
+
   const {
     isToggle: searchVisible,
     onToggle: toggleSearchInput,
-    onCloseToggle: closeSeachInput,
+    onCloseToggle: closeSearchInput,
   } = useToggle()
   const {
     isToggle: sideMenuVisible,
@@ -22,7 +23,7 @@ export default function Gnb() {
     onCloseToggle: closeCategoryMenu,
   } = useToggle()
   const inputRef = useOutsideClick<HTMLDivElement>({
-    onCloseToggle: () => closeSeachInput(),
+    onCloseToggle: () => closeSearchInput(),
     callback: (element) => {
       return element.closest('.search')
     },
@@ -42,7 +43,7 @@ export default function Gnb() {
           onClick={resetProducts}
         >
           <Link href={'/'}>
-            <Image src={logo} width={160} height={30} alt="메인로고" priority />
+            <Image src={logo} width={160} alt="메인로고" priority />
           </Link>
         </div>
         <GnbHamburger toggleSideMenu={toggleSideMenu} />
@@ -50,7 +51,7 @@ export default function Gnb() {
           <GnbSearchButton toggleSearchInput={toggleSearchInput} />
           <GnbInput ref={inputRef} searchVisible={searchVisible} />
           <div className="flex text-white text-[14px] item-center gap-[40px] tablet:gap-[25px] mobile:hidden">
-            <GnbMenu />
+            <GnbMenu cookie={cookie} />
           </div>
         </div>
       </div>
@@ -58,6 +59,7 @@ export default function Gnb() {
         ref={closeRef}
         menuVisible={sideMenuVisible}
         closeCategoryMenu={closeCategoryMenu}
+        cookie={cookie}
       />
     </div>
   )

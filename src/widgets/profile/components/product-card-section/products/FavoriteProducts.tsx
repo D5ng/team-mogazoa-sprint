@@ -1,15 +1,27 @@
-import { Suspense } from 'react'
-import ProductList from './ProductsList'
 import { useFetchFavoriteProducts } from '@shared/hooks/query'
-import type { UserId } from '@shared/types'
+import { useIntersect } from '@shared/hooks'
+import { ProductCardList } from '@shared/ui'
+import { EmptyProduct } from '@widgets/profile/components'
+import type { UserIdProp } from '@shared/types'
 
-export default function FavoriteProductsList({ userId }: UserId) {
-  return (
-    <Suspense fallback={<div></div>}>
-      <ProductList
-        userId={userId}
-        useFetchProducts={useFetchFavoriteProducts}
-      />
-    </Suspense>
-  )
+export default function FavoriteProductsList({ userId }: UserIdProp) {
+  const {
+    data: products,
+    isFetching,
+    hasNextPage,
+    fetchNextPage,
+    error,
+  } = useFetchFavoriteProducts({ userId })
+
+  if (error && !isFetching) throw error
+
+  const onIntersect = () => {
+    if (hasNextPage && !isFetching) fetchNextPage()
+  }
+
+  const ref = useIntersect<HTMLDivElement>(onIntersect)
+
+  if (products.length === 0) return <EmptyProduct />
+
+  return <ProductCardList data={products} ref={ref} />
 }

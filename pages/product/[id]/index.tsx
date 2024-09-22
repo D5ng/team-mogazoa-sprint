@@ -4,24 +4,21 @@ import { fetchProductDetail } from '@shared/api'
 import { ProductDetailPage } from '@/src/pages/'
 import { axiosInstance } from '@shared/config'
 import type { AuthResponse, ProductDetailResponse } from '@shared/types'
+import { productKeys } from '@/src/shared/hooks/query-keys'
 
 export default function Index({
   product,
-  createdProductUserId,
+  loggedInUserId,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return (
-    <ProductDetailPage
-      {...product}
-      createdProductUserId={createdProductUserId}
-    />
-  )
+  return <ProductDetailPage {...product} loggedInUserId={loggedInUserId} />
 }
 
 export const getServerSideProps = (async (context) => {
   const cookie = context.req.cookies.auth
-  const parseCookie: AuthResponse = cookie ? JSON.parse(cookie) : ''
-  const token = parseCookie.accessToken
-  if (token) {
+  const parseCookie: AuthResponse | null = cookie ? JSON.parse(cookie) : null
+
+  if (parseCookie) {
+    const token = parseCookie.accessToken
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
   }
 
@@ -32,14 +29,13 @@ export const getServerSideProps = (async (context) => {
     const queryClient = new QueryClient()
 
     await queryClient.prefetchQuery({
-      queryKey: ['product-detail', productId],
+      queryKey: productKeys.detail(productId),
       queryFn: () => fetchProductDetail({ productId: +productId }),
     })
 
-    const data = queryClient.getQueryData<ProductDetailResponse>([
-      'product-detail',
-      productId,
-    ])
+    const data = queryClient.getQueryData<ProductDetailResponse>(
+      productKeys.detail(productId),
+    )
 
     if (!data) return { notFound: true }
 
@@ -47,7 +43,8 @@ export const getServerSideProps = (async (context) => {
       props: {
         dehydratedState: dehydrate(queryClient),
         product: data,
-        createdProductUserId: parseCookie.user.id,
+        loggedInUserId: parseCookie && parseCookie.user.id,
+        cookie: cookie ? cookie : null,
       },
     }
   } catch (error) {

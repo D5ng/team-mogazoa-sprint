@@ -1,35 +1,37 @@
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import { followUser, unFollowUser } from '@shared/api'
-import type { FollowUser } from '@shared/types'
+import { userKeys } from '@/src/shared/hooks/query-keys'
+import type { FollowUser, UserItem } from '@shared/types'
+
+const getUserProfileKey = userKeys.profile.userProfile
 
 export function useFollowUser() {
   const queryClient = useQueryClient()
 
   return useMutation<void, Error, FollowUser>({
     mutationFn: followUser,
-    onMutate: async (newUser) => {
+    onMutate: async ({ userId }) => {
       await queryClient.cancelQueries({
-        queryKey: ['user-profile', newUser.userId],
+        queryKey: getUserProfileKey(userId),
       })
 
-      const previousUserData = queryClient.getQueryData([
-        'user-profile',
-        newUser.userId,
-      ])
+      const previousUserData = queryClient.getQueryData<UserItem>(
+        getUserProfileKey(userId),
+      )
 
-      queryClient.setQueryData(
-        ['user-profile', newUser.userId],
-        (oldData: any) => ({
-          ...oldData,
+      queryClient.setQueryData<UserItem>(
+        getUserProfileKey(userId),
+        (oldData) => ({
+          ...oldData!,
           isFollowing: true,
         }),
       )
 
       return { previousUserData }
     },
-    onSettled: (_, __, variables) => {
+    onSettled: (_, __, { userId }) => {
       queryClient.invalidateQueries({
-        queryKey: ['user-profile', variables.userId],
+        queryKey: getUserProfileKey(userId),
       })
     },
   })
@@ -40,29 +42,28 @@ export function useUnFollowUser() {
 
   return useMutation<void, Error, FollowUser>({
     mutationFn: unFollowUser,
-    onMutate: async (userToRemove) => {
+    onMutate: async ({ userId }) => {
       await queryClient.cancelQueries({
-        queryKey: ['user-profile', userToRemove.userId],
+        queryKey: getUserProfileKey(userId),
       })
 
-      const previousUserData = queryClient.getQueryData([
-        'user-profile',
-        userToRemove.userId,
-      ])
+      const previousUserData = queryClient.getQueryData<UserItem>(
+        getUserProfileKey(userId),
+      )
 
-      queryClient.setQueryData(
-        ['user-profile', userToRemove.userId],
-        (oldData: any) => ({
-          ...oldData,
+      queryClient.setQueryData<UserItem>(
+        getUserProfileKey(userId),
+        (oldData) => ({
+          ...oldData!,
           isFollowing: false,
         }),
       )
 
       return { previousUserData }
     },
-    onSettled: (_, __, variables) => {
+    onSettled: (_, __, { userId }) => {
       queryClient.invalidateQueries({
-        queryKey: ['user-profile', variables.userId],
+        queryKey: getUserProfileKey(userId),
       })
     },
   })

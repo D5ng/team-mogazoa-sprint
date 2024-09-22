@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useFetchProductSearch } from '@/src/shared/hooks'
 import { useCompareStore } from '@app/provider/compareStore'
+import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 
 export default function useProductAutocomplete(
   id: string,
@@ -13,26 +14,24 @@ export default function useProductAutocomplete(
   const [suggestions, setSuggestions] = useState<{ [key: string]: string[] }>(
     {},
   )
+  const { updateInputValue } = useSearchProduct()
 
   const { data } = useFetchProductSearch(inputValue)
+
+  console.log(inputValue)
+
   const { data: productData1 } = useFetchProductSearch(inputValues['상품1'])
 
   const handleClickList = (name: string) => {
-    // if (
-    //   productData1 &&
-    //   productData1.list[0].categoryId !== data?.list[0]?.categoryId
-    // ) {
-    //   setInputValues(id, '')
-    //   console.log('카테고리가 일치하지 않습니다.')
-    //   return
-    // }
     setInputValues(id, name)
     onCloseToggle && onCloseToggle()
     setSelectedProducts(id, name)
+    updateInputValue(name)
   }
 
   const handleInputChange = (value: string) => {
     setInputValues(id, value)
+    updateInputValue(value)
   }
 
   const deleteSelectedProduct = () => {
