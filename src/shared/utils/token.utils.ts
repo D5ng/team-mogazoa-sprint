@@ -2,14 +2,14 @@ import { deleteCookie, getCookie, setCookie } from 'cookies-next'
 import type { OptionsType } from 'cookies-next/lib/types'
 import type { AuthResponse } from '@shared/types'
 
-export const getAuthToken = () => {
+export const getAuthUser = () => {
   const token = getCookie('auth')
   if (!token) return null
   const parseToken = JSON.parse(token)
   return parseToken
 }
 
-export const setAuthToken = (
+export const setAuthUser = (
   name: string,
   data: AuthResponse,
   options?: OptionsType,
