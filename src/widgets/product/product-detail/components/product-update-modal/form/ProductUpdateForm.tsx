@@ -1,10 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { Button, Form, TextareaInput, TextFieldInput } from '@shared/ui'
 import { descriptionValidation, nameValidation } from '@shared/utils'
-import {
-  CategoryDropdown,
-  ProductImageUpload,
-} from '@widgets/product/product-detail/components'
+import { ProductImageUpload } from '@widgets/product/common'
+import { CategoryDropdown } from '@widgets/product/common'
 import type { ProductPayload } from '@shared/types'
 import { useFetchProductDetail } from '@shared/hooks'
 import { useUpdateProductForm } from '@widgets/product/product-detail/hooks'

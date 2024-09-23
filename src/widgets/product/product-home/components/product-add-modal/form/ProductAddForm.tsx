@@ -1,10 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { Button, Form, TextareaInput, TextFieldInput } from '@shared/ui'
 import { descriptionValidation, nameValidation } from '@shared/utils'
-import {
-  CategoryDropdown,
-  ProductImageUpload,
-} from '@widgets/product/product-home/components/product-add-modal'
+import { ProductImageUpload } from '@widgets/product/common'
+import { CategoryDropdown } from '@widgets/product/common'
 import type { ProductPayload } from '@shared/types'
 import { useProductAddForm } from '@widgets/product/product-home/hooks'
 import { defaultValues } from './defaultValues'
