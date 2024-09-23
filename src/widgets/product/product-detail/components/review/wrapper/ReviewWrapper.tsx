@@ -1,8 +1,9 @@
 import { Suspense } from 'react'
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
+import { useReviewOptionStore } from '@shared/store'
 import { ErrorFallback, ErrorBoundary } from '@shared/ui'
+import { SortDropdown } from '@widgets/product/common'
 import {
-  LatestDropdown,
   ReviewList,
   ReviewSkeleton,
 } from '@widgets/product/product-detail/components'
@@ -13,11 +14,15 @@ interface ReviewWrapperProps {
 }
 
 export default function ReviewWrapper({ productId }: ReviewWrapperProps) {
+  const onSelectedOption = useReviewOptionStore(
+    (state) => state.onSelectedOption,
+  )
+
   return (
     <ProductDetailLayout
       className="mt-[80px] tablet:mt-[60px] mobile:mt-[60px]"
       title="상품 리뷰"
-      renderDropdown={<LatestDropdown />}
+      renderDropdown={<SortDropdown onChange={onSelectedOption} />}
     >
       <QueryErrorResetBoundary>
         {({ reset }) => (
