@@ -1,0 +1,25 @@
+import { Canvas, Meta, Controls, Primary } from '@storybook/blocks'
+import * as CategoryDropdownStories from './CategoryDropdown.stories'
+
+<Meta of={CategoryDropdownStories} />
+
+# CategoryDropdown
+
+카테고리 드롭다운은 내부적으로 상태를 관리하고 있는 제어 컴포넌트 입니다. React Hook Form과 사용하기 위해서 useController를 내부적으로 사용하고 있습니다. 따라서 React Hook Form을 사용할 때에는 control과 errors 객체를 넘겨주어 사용해야 합니다.
+
+# Example
+
+<Primary />
+<Controls />
+
+### CategoryDropdown Selected
+
+카테고리가 선택되었을 때의 UI입니다.
+
+<Canvas of={CategoryDropdownStories.CategoryDropdownSelected} />
+
+### CategoryDropdown Error
+
+에러가 발생하면 에러 메세지는 보여주지 않고, 빨간색 테두리가 생깁니다. (코드는 예시입니다.)
+
+<Canvas of={CategoryDropdownStories.CategoryDropdownError} />
