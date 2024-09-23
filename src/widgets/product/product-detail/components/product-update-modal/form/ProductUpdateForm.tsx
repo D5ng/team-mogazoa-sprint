@@ -34,7 +34,7 @@ export default function ProductUpdateForm({
       categoryId: detailData.categoryId,
       image: detailData.image,
     },
-    mode: 'all',
+    mode: 'onTouched',
   })
 
   const description = watch('description')

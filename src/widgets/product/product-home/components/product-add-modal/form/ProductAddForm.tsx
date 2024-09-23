@@ -22,7 +22,7 @@ export default function ProductAddForm({ onCloseToggle }: ProductAddFormProps) {
     setError,
   } = useForm<ProductPayload>({
     defaultValues,
-    mode: 'all',
+    mode: 'onTouched',
   })
 
   const description = watch('description')
