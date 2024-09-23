@@ -16,10 +16,10 @@ export function useCreateProduct() {
     mutationFn: createProduct,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['fetchProducts', 'ratedCount'],
+        queryKey: productKeys.productsByRating,
       })
       queryClient.invalidateQueries({
-        queryKey: ['fetchProducts', 'reviewCount'],
+        queryKey: productKeys.productsByReview,
       })
     },
   })
