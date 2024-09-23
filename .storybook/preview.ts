@@ -4,6 +4,7 @@ import { themes } from '@storybook/theming'
 
 const preview: Preview = {
   parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       themes: themes.light,
     },
