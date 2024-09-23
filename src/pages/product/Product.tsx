@@ -2,6 +2,7 @@ import { useProductStore } from '@/src/shared/store/productStore'
 import { ProductCardSectionSkeleton } from '@/src/shared/ui/product-card/ProductCardSkeleton'
 import { CategoryMenu } from '@/src/widgets/product/product-home/components/category-menu'
 import ProductSearched from '@/src/widgets/product/product-home/components/product-searched'
+import { ProductWrapper } from '@/src/widgets/profile/components'
 import {
   ProductHot,
   ProductRating,
@@ -27,8 +28,12 @@ export default function ProductPage() {
             </Suspense>
           ) : (
             <>
-              <ProductHot />
-              <ProductRating />
+              <ProductWrapper>
+                <ProductHot />
+              </ProductWrapper>
+              <ProductWrapper>
+                <ProductRating />
+              </ProductWrapper>
             </>
           )}
         </div>
