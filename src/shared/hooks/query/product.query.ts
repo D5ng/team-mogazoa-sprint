@@ -1,4 +1,8 @@
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
+import {
+  useInfiniteQuery,
+  useQuery,
+  useSuspenseQuery,
+} from '@tanstack/react-query'
 import { fetchProductDetail, fetchProducts } from '@shared/api'
 import { useProductStore } from '@shared/store/productStore'
 import { ProductDetailResponse } from '@shared/types'
@@ -43,10 +47,10 @@ export function useFetchProductCategory(categoryId: CategoryId) {
 
 // 아직 보류.
 export default function useFetchProductsByQuery(
-  inputValue: string,
   selectedCategoryKey: number | undefined,
+  inputValue?: string,
 ) {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: ['fetchProducts', selectedCategoryKey, inputValue],
     queryFn: () =>
       fetchProducts({
