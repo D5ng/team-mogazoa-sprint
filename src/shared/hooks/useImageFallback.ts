@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { defaultProduct } from '@shared/icons'
 
 export function useImageFallback(src: string) {
@@ -7,6 +7,10 @@ export function useImageFallback(src: string) {
   const onError = () => {
     setImageSrc(defaultProduct)
   }
+
+  useEffect(() => {
+    setImageSrc(src)
+  }, [src])
 
   return { imageSrc, onError }
 }
