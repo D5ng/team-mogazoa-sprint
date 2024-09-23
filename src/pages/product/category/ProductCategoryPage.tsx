@@ -6,9 +6,13 @@ import {
   ProductAddButton,
   Ranking,
 } from '@widgets/product/product-home/components'
+
 import ProductEmpty from '@/src/widgets/product/product-home/components/product-empty/ProductEmpty'
 import { useProductStore } from '@/src/shared/store/productStore'
 import useFetchProductsByQuery from '@/src/shared/hooks/query/product.query'
+
+import { NextSeo } from 'next-seo'
+
 
 interface ProductCategoryPageProps {
   category: Categories

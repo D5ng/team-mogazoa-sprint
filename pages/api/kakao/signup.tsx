@@ -1,5 +1,5 @@
 import { socialSignUp } from '@shared/api'
-import { setAuthToken } from '@shared/utils'
+import { setAuthUser } from '@shared/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -23,7 +23,7 @@ export default async function handler(
         token: code as string,
       })
 
-      setAuthToken('auth', result, { req, res })
+      setAuthUser('auth', result, { req, res })
       res.redirect('/')
     } catch (error) {
       res.send(error)
