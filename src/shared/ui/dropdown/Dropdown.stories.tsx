@@ -13,15 +13,22 @@ const SORT_DROPDOWN_TYPE = ['최신순', '별점 높은순', '별점 낮은순',
 interface DropdownProps {
   title: string
   variant?: DropdownVariantType
+  onClick?: () => void
 }
 
-function DropdownStoryComponent({ variant = 'border', title }: DropdownProps) {
+function DropdownStoryComponent({
+  variant = 'border',
+  title,
+  onClick,
+}: DropdownProps) {
   return (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
         {CATEGORY_CHIPS.map((menu) => (
-          <DropdownMenuItem key={menu.id}>{menu.name}</DropdownMenuItem>
+          <DropdownMenuItem key={menu.id} onClick={onClick}>
+            {menu.name}
+          </DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>
@@ -52,6 +59,10 @@ const meta: Meta<typeof DropdownStoryComponent> = {
         },
       },
     },
+    onClick: {
+      description:
+        'DropdownMenuItem에 클릭 이벤트를 사용해 내부의 상태를 참조할 수 있습니다.',
+    },
   },
   component: DropdownStoryComponent,
 }
@@ -62,12 +73,14 @@ export const DropdownExample: Story = {
     title: '카테고리 선택',
     variant: 'border',
   },
-  render: ({ variant, title }) => (
+  render: ({ variant, title, onClick }) => (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
         {CATEGORY_CHIPS.map((menu) => (
-          <DropdownMenuItem key={menu.id}>{menu.name}</DropdownMenuItem>
+          <DropdownMenuItem key={menu.id} onClick={onClick}>
+            {menu.name}
+          </DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>
@@ -80,12 +93,14 @@ export const DropdownBorderType: Story = {
     title: '카테고리 선택',
     variant: 'border',
   },
-  render: ({ variant, title }) => (
+  render: ({ variant, title, onClick }) => (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
         {CATEGORY_CHIPS.map((menu) => (
-          <DropdownMenuItem key={menu.id}>{menu.name}</DropdownMenuItem>
+          <DropdownMenuItem key={menu.id} onClick={onClick}>
+            {menu.name}
+          </DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>
@@ -98,12 +113,14 @@ export const DropdownBorderNoneType: Story = {
     title: SORT_DROPDOWN_TYPE[0],
     variant: 'none',
   },
-  render: ({ variant, title }) => (
+  render: ({ variant, title, onClick }) => (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
         {SORT_DROPDOWN_TYPE.map((menu) => (
-          <DropdownMenuItem key={menu}>{menu}</DropdownMenuItem>
+          <DropdownMenuItem key={menu} onClick={onClick}>
+            {menu}
+          </DropdownMenuItem>
         ))}
       </DropdownMenu>
     </Dropdown>
