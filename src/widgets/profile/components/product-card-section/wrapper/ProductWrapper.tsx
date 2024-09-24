@@ -7,7 +7,7 @@ export default function ProductWrapper({ children }: PropsWithChildren) {
     <QueryErrorResetBoundary>
       {({ reset }) => (
         <ErrorBoundary onReset={reset} fallback={ErrorFallback}>
-          <Suspense fallback={<div></div>}>{children}</Suspense>)
+          <Suspense fallback={<div></div>}>{children}</Suspense>
         </ErrorBoundary>
       )}
     </QueryErrorResetBoundary>

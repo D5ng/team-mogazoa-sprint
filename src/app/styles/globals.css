@@ -24,7 +24,8 @@ textarea {
     font-family: 'Pretendard', sans-serif !important;
   }
 
-  #storybook-docs ul {
+  #storybook-docs ul,
+  #storybook-docs li {
     list-style: initial;
   }
 

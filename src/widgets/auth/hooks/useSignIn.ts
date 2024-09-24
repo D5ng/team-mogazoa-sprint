@@ -4,19 +4,16 @@ import { setCookie } from 'cookies-next'
 import { isAxiosError } from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import { signIn } from '@shared/api'
-import { useUserStore } from '@shared/store'
 import type { UseFormSetError } from 'react-hook-form'
 import type { SignIn } from '@shared/types'
 
 export default function useSignIn(setError: UseFormSetError<SignIn>) {
   const router = useRouter()
-  const setUser = useUserStore((state) => state.setUser)
 
   return useMutation({
     mutationFn: signIn,
     onSuccess: (result) => {
       setCookie('auth', JSON.stringify(result))
-      setUser(result.user)
       router.push('/')
       toast.success('로그인이 완료되었습니다.')
     },

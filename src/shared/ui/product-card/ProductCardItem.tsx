@@ -25,9 +25,7 @@ export default function ProductCardItem({
               alt="상품이미지"
               priority
               sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%"
-
-              objectFit="cover"
-
+              className="object-cover"
             />
           </div>
           <div className="flex flex-col gap-[0.52vw] tablet:gap-[1.3vw] w-full p-[0.625vw] tablet:p-[10px] mobile:p-0 mobile: ">
@@ -42,7 +40,7 @@ export default function ProductCardItem({
               <div className="flex items-center gap-[0.156vw] ">
                 <Image src={star} width={16} height={16} alt="별점" priority />
                 <p className="text-[0.833vw] tablet:text-[14px] mobile:text-[12px] tablet: mobile: text-black-20">
-                  {rating.toFixed(2)}
+                  {rating.toFixed(1)}
                 </p>
               </div>
             </div>
