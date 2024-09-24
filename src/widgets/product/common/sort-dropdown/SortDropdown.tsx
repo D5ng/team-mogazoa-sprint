@@ -1,4 +1,3 @@
-import { useReviewOptionStore } from '@shared/store'
 import {
   Dropdown,
   DropdownMenu,
@@ -10,10 +9,11 @@ import {
   ReviewSortOptions,
 } from '@widgets/product/product-detail/constants'
 
-export default function LatestDropdown() {
-  const onSelectedOption = useReviewOptionStore(
-    (state) => state.onSelectedOption,
-  )
+interface SortDropdownProps {
+  onChange: (value: ReviewSortOptions) => void
+}
+
+export default function SortDropdown({ onChange }: SortDropdownProps) {
   return (
     <Dropdown variant="none">
       <DropdownTrigger className="tablet:text-sm">최신순</DropdownTrigger>
@@ -21,7 +21,7 @@ export default function LatestDropdown() {
         {LATEST_DROPDOWN_ITEMS.map((option) => (
           <DropdownMenuItem
             key={option.value}
-            onClick={() => onSelectedOption(option.value)}
+            onClick={onChange.bind(null, option.value)}
           >
             {option.name}
           </DropdownMenuItem>

@@ -1,0 +1,15 @@
+import { Canvas, Meta, Controls, Primary } from '@storybook/blocks'
+import * as SortDropdownStories from './SortDropdown.stories'
+
+<Meta of={SortDropdownStories} />
+
+# SortDropdown
+
+정렬 드롭다운은 내부적으로 상태를 관리하고 있는 제어 컴포넌트 입니다. 외부에서 드롭다운 항목을 클릭하여 값을 변경 시키려면 `onChange` props로 전달해 사용하면 됩니다.
+
+❗️ 외부에서 상태 관리를 할 때 초깃값(ReviewSortOptions[0])을 미리 설정하는 것이 안전합니다.
+
+# Example
+
+<Primary />
+<Controls />
