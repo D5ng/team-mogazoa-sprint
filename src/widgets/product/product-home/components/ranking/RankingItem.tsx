@@ -3,7 +3,8 @@ import { RankingUiProps } from './Ranking.types'
 import RankingChip from './RankingChip'
 import Link from 'next/link'
 
-export default function RankingItem({ data }: RankingUiProps) {
+export default function RankingItem({ data }: Partial<RankingUiProps>) {
+  if (!data) return
   return (
     <li className="flex shrink-0">
       <div className="flex cursor-pointer shrink-0 hover:scale-105 transition-transform duration-200 ease-in-out">

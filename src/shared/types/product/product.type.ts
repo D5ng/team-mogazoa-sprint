@@ -11,9 +11,10 @@ export interface ProductListItem {
   favoriteCount: number
   reviewCount: number
   rating: number
-  image: string
+  image: string | undefined
   name: string
   id: number
+  isLoading?: boolean
 }
 
 export interface FetchProducts {
