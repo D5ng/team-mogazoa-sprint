@@ -20,6 +20,20 @@ textarea {
 }
 
 @layer utilities {
+  #storybook-docs * {
+    font-family: 'Pretendard', sans-serif !important;
+  }
+
+  #storybook-docs ul {
+    list-style: initial;
+  }
+
+  #storybook-docs h1,
+  #storybook-docs h2,
+  #storybook-docs h3 {
+    font-weight: 700;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
