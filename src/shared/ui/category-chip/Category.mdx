@@ -1,0 +1,18 @@
+import { Canvas, Meta, Controls, Primary } from '@storybook/blocks'
+
+import * as CategoryChipStories from './CategoryChip.stories'
+
+<Meta of={CategoryChipStories} />
+
+# CategoryChip
+
+카테고리 칩은 상수로 정의되어 있고, 총 10개의 카테고리가 있습니다. `<CategoryChip name={카테고리 이름} />`으로 사용해야 하며, 잘못된 카테고리 이름이 들어올 경우 에러를 던지도록 되어있습니다.
+
+# Example
+
+<Primary />
+<Controls />
+
+### CategoryChip Variant
+
+<Canvas of={CategoryChipStories.CategoryVariants} />
