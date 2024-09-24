@@ -14,7 +14,7 @@ export default function ProductDetailPage({
   loggedInUserId,
 }: ProductDetailProps) {
   return (
-    <main className="w-[940px] m-auto mt-[60px] tablet:w-full px-[30px] mobile:px-[20px]">
+    <main className="w-[940px] m-auto mt-[160px] px-[30px] tablet:w-full tablet:mt-[140px] mobile:px-[20px] mobile:mt-[130px]">
       <ProductInfo productId={id} loggedInUserId={loggedInUserId} />
       <StatisticsList productId={id} />
       <ReviewWrapper productId={id} />
