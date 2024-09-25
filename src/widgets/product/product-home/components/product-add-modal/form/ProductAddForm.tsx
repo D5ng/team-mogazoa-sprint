@@ -64,7 +64,11 @@ export default function ProductAddForm({ onCloseToggle }: ProductAddFormProps) {
         <p className="text-sm text-black-20 pb-2.5">
           모든 입력란은 필수 항목입니다.
         </p>
-        <Button variant="primary" disabled={!isValid} isLoading={isPending}>
+        <Button
+          variant="primary"
+          disabled={!isValid || isPending}
+          isLoading={isPending}
+        >
           추가하기
         </Button>
       </div>
