@@ -1,17 +1,17 @@
 import { Modal, ModalTitle } from '@shared/ui'
-import ProductAddForm from '../form/ProductAddForm'
+import ProductCreateForm from '../form/ProductCreateForm'
 
 export interface ProductAddModalProps {
   onCloseToggle: () => void
 }
 
-export default function ProductAddModal({
+export default function ProductCreateModal({
   onCloseToggle,
 }: ProductAddModalProps) {
   return (
     <Modal onCloseModal={onCloseToggle}>
       <ModalTitle>상품 추가</ModalTitle>
-      <ProductAddForm onCloseToggle={onCloseToggle} />
+      <ProductCreateForm onCloseToggle={onCloseToggle} />
     </Modal>
   )
 }

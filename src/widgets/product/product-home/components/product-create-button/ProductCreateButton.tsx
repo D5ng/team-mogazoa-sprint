@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { add } from '@shared/icons'
 import { useToggle } from '@shared/hooks'
 import { toastCheckAuth } from '@shared/utils'
-import { ProductAddModal } from '@widgets/product/product-home/components/product-add-modal'
+import { ProductCreateModal } from '@widgets/product/product-home/components'
 
-export default function ProductAddButton() {
+export default function ProductCreateButton() {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
 
   const handleOpenModal = () => toastCheckAuth() && onOpenToggle()
@@ -18,7 +18,7 @@ export default function ProductAddButton() {
       >
         <Image src={add} alt="제품 추가하기" width={40} height={40} />
       </button>
-      {isToggle && <ProductAddModal onCloseToggle={onCloseToggle} />}
+      {isToggle && <ProductCreateModal onCloseToggle={onCloseToggle} />}
     </>
   )
 }
