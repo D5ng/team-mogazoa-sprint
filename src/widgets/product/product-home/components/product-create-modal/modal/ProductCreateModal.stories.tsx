@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { http, HttpResponse } from 'msw'
+import { delay, http, HttpResponse, PathParams } from 'msw'
 import { useToggle } from '@shared/hooks'
 import ProductCreateModal from './ProductCreateModal'
+import { ProductPayload } from '@shared/types'
 
 function ProductCreateModalWrapper() {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
@@ -16,19 +17,20 @@ const meta: Meta<typeof ProductCreateModalWrapper> = {
         http.post(
           `${process.env.NEXT_PUBLIC_BASE_URL}/images/upload`,
           async () => {
-            await new Promise((resolve) => setTimeout(() => resolve(1), 1000))
+            await delay(1500)
             return HttpResponse.json({ url: '성공적인 url 반환' })
           },
         ),
-        http.post(
+        http.post<PathParams, ProductPayload>(
           `${process.env.NEXT_PUBLIC_BASE_URL}/products`,
-          async (data) => {
-            await new Promise((resolve) => setTimeout(() => resolve(1), 1000))
+          async ({ request }) => {
+            const data = await request.json()
+            await delay(1500)
             return HttpResponse.json({
               categoryId: 1,
-              image: 'https://example.com/...',
-              description: '상품 설명, 최소 10자 이상, 최대 500자 이하',
-              name: '상품 이름',
+              image: data.image,
+              description: data.description,
+              name: data.name,
             })
           },
         ),
