@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { defaultProduct } from '@shared/icons'
 
-export function useImageFallback(src: string) {
-  const [imageSrc, setImageSrc] = useState(src)
+import { StaticImageData } from 'next/image'
+
+export function useImageFallback(src: string, defaultImage: StaticImageData) {
+  const [imageSrc, setImageSrc] = useState<StaticImageData | string>(src)
 
   const onError = () => {
-    setImageSrc(defaultProduct)
+    setImageSrc(defaultImage)
   }
 
   useEffect(() => {

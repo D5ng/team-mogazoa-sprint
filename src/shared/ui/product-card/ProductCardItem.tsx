@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { defaultProduct, star } from '@shared/icons'
+import { star } from '@shared/icons'
 import type { ProductListItem } from '@shared/types'
 import { useImageFallback } from '@/src/shared/hooks/useImageFallback'
+import { defaultProduct } from '@shared/icons'
 
 export default function ProductCardItem({
   id,
@@ -11,8 +12,8 @@ export default function ProductCardItem({
   reviewCount,
   favoriteCount,
   rating,
-}: ProductListItem) {
-  const { imageSrc, onError } = useImageFallback(image)
+}: Partial<ProductListItem>) {
+  const { imageSrc, onError } = useImageFallback(image!, defaultProduct)
 
   return (
     <li className=" bg-black-60 p-[0.4vw] tablet:p-[10px] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
@@ -25,6 +26,8 @@ export default function ProductCardItem({
               alt="상품이미지"
               priority
               sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%"
+              objectFit="cover"
+              onError={onError}
               className="object-cover"
             />
           </div>
@@ -40,7 +43,7 @@ export default function ProductCardItem({
               <div className="flex items-center gap-[0.156vw] ">
                 <Image src={star} width={16} height={16} alt="별점" priority />
                 <p className="text-[0.833vw] tablet:text-[14px] mobile:text-[12px] tablet: mobile: text-black-20">
-                  {rating.toFixed(1)}
+                  {rating?.toFixed(1)}
                 </p>
               </div>
             </div>

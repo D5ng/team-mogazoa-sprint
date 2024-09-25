@@ -10,7 +10,7 @@ export default function Ranking() {
       <h3 className="text-white text-[16px] tablet:text-[14px]">리뷰어 랭킹</h3>
       <ul className=" flex-col flex tablet:flex-row gap-[30px] tablet:overflow-x-auto tablet:gap-[20px] mobile:gap-[15px]">
         {indexedData.map((data) => (
-          <RankingItem data={data} key={data.id} />
+          <RankingItem {...data} key={data.id} />
         ))}
       </ul>
     </div>
