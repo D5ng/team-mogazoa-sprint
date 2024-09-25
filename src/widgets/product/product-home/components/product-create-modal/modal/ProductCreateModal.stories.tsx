@@ -1,15 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { http, HttpResponse } from 'msw'
 import { useToggle } from '@shared/hooks'
-import ProductAddModal from './ProductAddModal'
+import ProductCreateModal from './ProductCreateModal'
 
-function ProductAddModalWrapper() {
+function ProductCreateModalWrapper() {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
-  return <ProductAddModal onCloseToggle={onCloseToggle} />
+  return <ProductCreateModal onCloseToggle={onCloseToggle} />
 }
 
-const meta: Meta<typeof ProductAddModalWrapper> = {
-  title: 'Components/Modal/ProductAddModal',
+const meta: Meta<typeof ProductCreateModalWrapper> = {
+  title: 'Components/Modal/ProductCreateModal',
   parameters: {
     msw: {
       handlers: [
@@ -35,16 +35,16 @@ const meta: Meta<typeof ProductAddModalWrapper> = {
       ],
     },
   },
-  component: ProductAddModalWrapper,
+  component: ProductCreateModalWrapper,
 }
 
-type Story = StoryObj<typeof ProductAddModalWrapper>
+type Story = StoryObj<typeof ProductCreateModalWrapper>
 
 export const ProductAddModalExample: Story = {
-  name: 'ProductAddModalExample',
+  name: 'ProductCreateModalExample',
   render: () => {
     const { onCloseToggle } = useToggle()
-    return <ProductAddModal onCloseToggle={onCloseToggle} />
+    return <ProductCreateModal onCloseToggle={onCloseToggle} />
   },
 }
 

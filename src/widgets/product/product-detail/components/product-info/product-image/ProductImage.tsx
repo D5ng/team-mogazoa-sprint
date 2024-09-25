@@ -1,4 +1,6 @@
+import { defaultProduct } from '@shared/icons'
 import { useImageFallback } from '@shared/hooks/useImageFallback'
+
 import Image from 'next/image'
 
 interface ProductImageProps {
@@ -6,7 +8,7 @@ interface ProductImageProps {
 }
 
 export default function ProductImage({ image }: ProductImageProps) {
-  const { imageSrc, onError } = useImageFallback(image)
+  const { imageSrc, onError } = useImageFallback(image, defaultProduct)
   return (
     <div className="relative w-[355px] tablet:w-[37.634vw] mobile:w-full mobile:h-[62.933vw]">
       <Image
