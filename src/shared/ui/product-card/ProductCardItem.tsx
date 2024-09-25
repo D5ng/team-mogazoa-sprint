@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { star } from '@shared/icons'
 import type { ProductListItem } from '@shared/types'
 import { useImageFallback } from '@/src/shared/hooks/useImageFallback'
+import { defaultProduct } from '@shared/icons'
 
 export default function ProductCardItem({
   id,
@@ -12,7 +13,7 @@ export default function ProductCardItem({
   favoriteCount,
   rating,
 }: Partial<ProductListItem>) {
-  const { imageSrc, onError } = useImageFallback(image!)
+  const { imageSrc, onError } = useImageFallback(image!, defaultProduct)
 
   return (
     <li className=" bg-black-60 p-[0.4vw] tablet:p-[10px] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
@@ -25,12 +26,9 @@ export default function ProductCardItem({
               alt="상품이미지"
               priority
               sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%"
-<<<<<<< Updated upstream
-              className="object-cover"
-=======
               objectFit="cover"
               onError={onError}
->>>>>>> Stashed changes
+              className="object-cover"
             />
           </div>
           <div className="flex flex-col gap-[0.52vw] tablet:gap-[1.3vw] w-full p-[0.625vw] tablet:p-[10px] mobile:p-0 mobile: ">

@@ -1,0 +1,31 @@
+import { Canvas, Meta, Controls, Primary, Story } from '@storybook/blocks'
+import * as ProductCardItem from './ProductCardItem.stories'
+import * as CardListExample from '@widgets/product/product-home/components/product-hot/ProductListExample.stories'
+import ProductHot from '@widgets/product/product-home/components/product-hot/ProductHot'
+
+<Meta of={ProductCardItem} />
+
+export const Template = (args) => <Avatar {...args} />
+
+# ProductCard
+
+메인 페이지와 프로필 페이지에서 사용되는 상품 카드 컴포넌트 입니다.
+
+**❗️프로젝트 특성상 버튼의 사이즈가 부모 태그의 너비를 기반으로 하기 때문에 사이즈 속성은 없습니다.**
+
+# Example
+
+<Primary />
+<Controls />
+
+# Skeleton
+
+데이터 페칭시 해당 UI가 표기됩니다.
+
+<Canvas of={ProductCardItem.ProductCardSkeletonItemExample} />
+
+# Example For Use
+
+실제 프로덕트카드는 다음과 같이 카드 섹션에서 매핑됩니다.
+
+<Canvas className="items-start" of={ProductCardItem.CardListExample} />
