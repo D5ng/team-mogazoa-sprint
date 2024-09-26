@@ -42,7 +42,7 @@ const meta: Meta<typeof ProductCreateModalWrapper> = {
 
 type Story = StoryObj<typeof ProductCreateModalWrapper>
 
-export const ProductAddModalExample: Story = {
+export const ProductCreateModalExample: Story = {
   name: 'ProductCreateModalExample',
   render: () => {
     const { onCloseToggle } = useToggle()
