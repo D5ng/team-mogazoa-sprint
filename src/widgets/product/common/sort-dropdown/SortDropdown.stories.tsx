@@ -8,7 +8,7 @@ interface SortDropdownProps {
 }
 
 const meta: Meta<typeof SortDropdown> = {
-  title: 'UI/SortDropdown',
+  title: 'Components/Dropdown/SortDropdown',
   args: {
     onChange: fn(),
   },

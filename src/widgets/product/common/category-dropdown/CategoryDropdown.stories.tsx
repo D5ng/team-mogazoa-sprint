@@ -20,7 +20,7 @@ function CategoryDropdownWrapper() {
 }
 
 const meta: Meta<typeof CategoryDropdownWrapper> = {
-  title: 'UI/CategoryDropdown',
+  title: 'Components/Dropdown/CategoryDropdown',
   component: CategoryDropdownWrapper,
 }
 
