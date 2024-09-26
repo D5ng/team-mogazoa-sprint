@@ -91,7 +91,7 @@ export function DropdownMenu({ children }: PropsWithChildren) {
   if (hasError) return null
   return (
     isToggle && (
-      <ul className="absolute top-[calc(100%+5px)] w-full p-[10px] flex flex-col gap-y-[5px] bg-black-60 border border-black-70 rounded-lg text-black-30 z-[100] max-h-[300px] overflow-y-scroll">
+      <ul className="custom-scrollbar absolute top-[calc(100%+5px)] w-full p-[10px] flex flex-col gap-y-[5px] bg-black-60 border border-black-70 rounded-lg text-black-30 z-[100] max-h-[300px] overflow-y-scroll">
         {children}
       </ul>
     )
