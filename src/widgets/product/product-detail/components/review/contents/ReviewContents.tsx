@@ -9,7 +9,7 @@ import ReviewUpdateButton from './update-button/ReviewUpdateButton'
 export default function ReviewContents(props: ProductReviewItem) {
   const user = useAuthStore().user
   return (
-    <div className="relative w-[calc(100%-150px-80px)] flex flex-col gap-y-5 text-base tablet:text-xs mobile:w-full">
+    <div className="relative w-[calc(100%-150px-80px)] flex flex-col gap-y-5 text-base tablet:text-sm mobile:text-xs mobile:w-full">
       <p>{props.content}</p>
       {!!props.reviewImages.length && (
         <ReviewImages reviewImages={props.reviewImages} />

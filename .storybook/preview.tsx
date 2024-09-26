@@ -20,9 +20,6 @@ const preview: Preview = {
   ],
   parameters: {
     actions: { fn: '^on[A-Z].*' },
-    docs: {
-      themes: themes.light,
-    },
     layout: 'centered',
     controls: {
       matchers: {
