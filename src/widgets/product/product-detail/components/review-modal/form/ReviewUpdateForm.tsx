@@ -59,7 +59,7 @@ export default function ReviewUpdateForm({
         errors={errors}
       />
 
-      <div className="flex gap-x-2.5 overflow-x-scroll">
+      <div className="flex gap-x-2.5 overflow-x-scroll none-scrollbar">
         {props.reviewImages.map((reviewImage) => (
           <ReviewImageUpload
             key={reviewImage.id}
