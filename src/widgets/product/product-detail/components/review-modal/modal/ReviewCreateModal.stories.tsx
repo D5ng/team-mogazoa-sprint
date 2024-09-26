@@ -4,10 +4,6 @@ import { useToggle } from '@shared/hooks'
 import ReviewCreateModal from './ReviewCreateModal'
 import { CreateReviewPayload, Upload } from '@shared/types'
 
-export interface ReviewCreateParams {
-  productId: number
-}
-
 function ReviewCreateModalWrapper() {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
   return (
