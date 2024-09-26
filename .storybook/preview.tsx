@@ -19,7 +19,7 @@ const preview: Preview = {
     ),
   ],
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    actions: { fn: '^on[A-Z].*' },
     docs: {
       themes: themes.light,
     },

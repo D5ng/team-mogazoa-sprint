@@ -7,7 +7,7 @@ import {
   ProductHot,
   ProductRating,
   Ranking,
-  ProductAddButton,
+  ProductCreateButton,
 } from '@widgets/product/product-home/components'
 import { Suspense } from 'react'
 
@@ -38,7 +38,7 @@ export default function ProductPage() {
           )}
         </div>
       </div>
-      <ProductAddButton />
+      <ProductCreateButton />
     </>
   )
 }

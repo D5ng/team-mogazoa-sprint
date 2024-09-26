@@ -1,7 +1,7 @@
 import { useToggle } from '@shared/hooks'
 import { Button, CategoryName } from '@shared/ui'
 import { toastCheckAuth } from '@shared/utils'
-import { ProductAddModal } from '@widgets/product/product-home/components'
+import { ProductCreateModal } from '@widgets/product/product-home/components'
 
 interface ProductEmptyProps {
   categoryName?: CategoryName
@@ -26,7 +26,7 @@ export default function ProductEmpty({ categoryName }: ProductEmptyProps) {
       >
         상품 추가하기
       </Button>
-      {isToggle && <ProductAddModal onCloseToggle={onCloseToggle} />}
+      {isToggle && <ProductCreateModal onCloseToggle={onCloseToggle} />}
     </div>
   )
 }
