@@ -3,7 +3,6 @@ import { initialize, mswLoader } from 'msw-storybook-addon'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { Preview } from '@storybook/react'
 import '../src/app/styles/globals.css'
-import { themes } from '@storybook/theming'
 
 initialize({
   onUnhandledRequest: 'bypass',
@@ -20,9 +19,6 @@ const preview: Preview = {
   ],
   parameters: {
     actions: { fn: '^on[A-Z].*' },
-    docs: {
-      themes: themes.light,
-    },
     layout: 'centered',
     controls: {
       matchers: {
