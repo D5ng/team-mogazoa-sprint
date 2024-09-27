@@ -8,7 +8,7 @@ export default function Loading() {
           cy="50"
           r="20"
           fill="none"
-          stroke="#5363FF"
+          stroke="#6E6E82"
           strokeWidth="4"
           strokeMiterlimit="10"
         />

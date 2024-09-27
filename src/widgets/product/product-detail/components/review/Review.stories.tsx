@@ -9,7 +9,6 @@ const meta: Meta<typeof ReviewWrapper> = {
   parameters: {
     msw: { handlers: [fetchReviewsHandler] },
     layout: 'padded',
-    backgrounds: { default: 'dark' },
   },
   component: ReviewWrapper,
 }
