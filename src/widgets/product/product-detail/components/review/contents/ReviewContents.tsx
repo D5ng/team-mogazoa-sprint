@@ -2,12 +2,15 @@ import dayjs from 'dayjs'
 import { ProductReviewItem } from '@shared/types'
 import ThumbsButton from './thumbs-button/ThumbsButton'
 import ReviewImages from './review-images/ReviewImages'
-import useAuthStore from '@app/provider/authStore'
 import ReviewDeleteButton from './delete-button/ReviewDeleteButton'
 import ReviewUpdateButton from './update-button/ReviewUpdateButton'
+import { useClientSide } from '@shared/hooks'
+import { getAuthUser } from '@/src/shared/utils'
 
 export default function ReviewContents(props: ProductReviewItem) {
-  const user = useAuthStore().user
+  const isClient = useClientSide()
+  const user = isClient && getAuthUser()
+
   return (
     <div className="relative w-[calc(100%-150px-80px)] flex flex-col gap-y-5 text-base tablet:text-sm mobile:text-xs mobile:w-full">
       <p>{props.content}</p>

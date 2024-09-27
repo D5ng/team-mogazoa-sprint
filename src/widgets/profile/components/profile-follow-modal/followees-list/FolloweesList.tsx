@@ -3,7 +3,7 @@ import { useFetchFollowees } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
 import type { UserIdProp } from '@shared/types'
 
-export default function FolloweesList({ userId }: UserIdProp) {
+export default function FolloweesList({ userId, onCloseToggle }: UserIdProp) {
   const {
     data: followees,
     isFetching,
@@ -24,7 +24,11 @@ export default function FolloweesList({ userId }: UserIdProp) {
     <>
       <ul className="flex flex-col gap-6 mt-10 tablet:gap-5 mobile:mt-5">
         {followees.map((followee) => (
-          <Follow key={followee.id} {...followee.followee} />
+          <Follow
+            key={followee.id}
+            {...followee.followee}
+            onCloseToggle={onCloseToggle}
+          />
         ))}
       </ul>
       <div className="w-[1px] h-2.5" ref={ref}></div>
