@@ -9,8 +9,6 @@ import {
 export default function MyProfileCard({ ...props }) {
   const { data: myData } = useFetchMyProfile()
   if (!myData) return null
-  //ErrorBoundary
-  //TODO: 페이지끼리 연결 됐을 때, myProfile에 해당하는 userId로 url 접근 시 접근하지 못하도록 막아야함
 
   return (
     <section

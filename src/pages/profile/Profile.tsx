@@ -4,9 +4,9 @@ import {
   MyProfileCard,
   UserProfileCard,
 } from '@widgets/profile/components'
-import type { ProfileProps } from './Profile.type'
 import { getAuthUser } from '@shared/utils'
 import { useClientSide } from '@shared/hooks'
+import type { ProfileProps } from './Profile.type'
 
 export default function Profile({ userId }: ProfileProps) {
   const isClient = useClientSide()
