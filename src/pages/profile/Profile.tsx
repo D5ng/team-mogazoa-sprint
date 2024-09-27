@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import {
   ActivityLogSection,
   ProductCardSection,
@@ -7,14 +6,10 @@ import {
 } from '@widgets/profile/components'
 import type { ProfileProps } from './Profile.type'
 import { getAuthUser } from '@shared/utils'
+import { useClientSide } from '@shared/hooks'
 
 export default function Profile({ userId }: ProfileProps) {
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
+  const isClient = useClientSide()
   const user = isClient ? getAuthUser() : null
   const isMyProfile = !userId || userId === user?.id
 
