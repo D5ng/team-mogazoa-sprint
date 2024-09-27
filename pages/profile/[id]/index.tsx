@@ -3,7 +3,6 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import Profile from '@/src/pages/profile/Profile'
 import { fetchUserProfile } from '@shared/api'
 import { axiosInstance } from '@shared/config'
-import { NextSeo } from 'next-seo'
 
 export default function ProfilePage({
   userId,
