@@ -1,0 +1,41 @@
+import { Canvas, Meta, Controls, Primary } from '@storybook/blocks'
+import * as ButtonStories from './Button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+버튼 컴포넌트는 총 3가지의 스타일들을 사용할 수 있습니다.
+
+- **`primary`**
+- **`secondary`**
+- **`tertiary`**
+
+유연한 사용성을 위해 `className`으로 스타일을 오버라이딩 할 수 있습니다. 또한 버튼의 기본 타입을 확장시켰기 때문에 버튼의 기본 타입들을 `props`로 전달해 사용할 수 있습니다. `isLoading` 및 `disabled`를 사용해 사용자한테 로딩중인지, 버튼의 클릭이 활성화 되어있는지 인지할 수 있도록 사용해주는 것이 좋습니다.
+
+**❗️프로젝트 특성상 버튼의 사이즈가 부모 태그의 너비를 기반으로 하기 때문에 사이즈 속성은 없습니다.**
+
+# Example
+
+<Primary />
+<Controls exclude={['style']} />
+
+### Buttons Variant
+
+<Canvas of={ButtonStories.ButtonVariants} />
+
+### Buttons Hover
+
+<Canvas of={ButtonStories.ButtonHover} />
+
+### Buttons Press
+
+<Canvas of={ButtonStories.ButtonPress} />
+
+### Buttons Disabled
+
+<Canvas of={ButtonStories.ButtonDisabled} />
+
+### Buttons Loading
+
+<Canvas of={ButtonStories.ButtonLoading} />

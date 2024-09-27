@@ -1,0 +1,46 @@
+import { Canvas, Meta, Controls, Primary } from '@storybook/blocks'
+
+import * as DropdownStories from './Dropdown.stories'
+
+<Meta of={DropdownStories} />
+
+# Dropdown
+
+드롭다운 컴포넌트는 2가지의 스타일을 사용할 수 있습니다.
+
+- **`border가 있는 드롭다운`**
+- **`border가 없는 드롭다운`**
+
+드롭다운 컴포넌트는 `className`을 통해 유연한 스타일을 적용할 수 있습니다. 드롭다운의 타이틀은 항목의 기본값으로도 설정할 수 있으며, 플레이스홀더로도 사용할 수 있습니다.
+내부적으로 드롭다운의 상태가 관리되어있고, 외부에서 이 값을 참조하려면 `DropdownMenuItem`에 `onClick`을 사용해야 합니다.
+
+```tsx
+<Dropdown variant={variant}>
+  <DropdownTrigger>{title}</DropdownTrigger>
+  <DropdownMenu>
+    // 사용부에서 DropdownMenuItem 항목을 렌더링 하세요.
+    {CATEGORY_CHIPS.map((menu) => (
+      <DropdownMenuItem key={menu.id} onClick={onClick}>
+        {menu.name}
+      </DropdownMenuItem>
+    ))}
+  </DropdownMenu>
+</Dropdown>
+```
+
+**❗️드롭다운의 기본 스타일은 `border`가 없는 스타일입니다.**
+
+# Example
+
+<Primary />
+<Controls />
+
+### Dropdown Variants
+
+#### 카테고리 드롭다운
+
+<Canvas of={DropdownStories.DropdownBorderType} />
+
+#### 포스트 정렬 드롭다운
+
+<Canvas of={DropdownStories.DropdownBorderNoneType} />
