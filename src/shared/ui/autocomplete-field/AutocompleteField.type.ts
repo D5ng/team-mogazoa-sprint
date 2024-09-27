@@ -1,7 +1,6 @@
 import { InputHTMLAttributes, ReactNode } from 'react'
 import { UseFormSetValue } from 'react-hook-form'
 
-//TODO: 우혁님 여기 UseFormSetValue 제네릭과 name의 any값에 setValue이용하는 타입 넣어주시면 됩니다!
 export interface AutocompleteFieldProps {
   suggestionList: string[]
   setValue: UseFormSetValue<any>
