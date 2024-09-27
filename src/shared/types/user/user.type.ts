@@ -4,7 +4,6 @@ export type UserId = number | undefined
 
 export interface UserIdProp {
   userId: UserId
-  onCloseToggle: () => void
 }
 
 export interface FavoriteCategory {
