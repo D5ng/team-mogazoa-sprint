@@ -1,9 +1,17 @@
 import { Follow } from '@widgets/profile/components'
 import { useFetchFollowees } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
-import type { UserIdProp } from '@shared/types'
+import type { UserId } from '@shared/types'
 
-export default function FolloweesList({ userId, onCloseToggle }: UserIdProp) {
+interface FolloweesListProp {
+  userId: UserId
+  onCloseToggle: () => void
+}
+
+export default function FolloweesList({
+  userId,
+  onCloseToggle,
+}: FolloweesListProp) {
   const {
     data: followees,
     isFetching,
