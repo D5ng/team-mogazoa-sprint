@@ -15,7 +15,6 @@ export default function ProductHot() {
   const { data, isLoading } = useFetchProductsHot()
 
   if (isLoading) return null
-
   return (
     <ProductCardSection renderTitle={<HotTitle />}>
       <ProductCardList data={data!} />

@@ -9,6 +9,7 @@ import {
   Ranking,
   ProductAddButton,
 } from '@widgets/product/product-home/components'
+import { error } from 'console'
 import { Suspense } from 'react'
 
 export default function ProductPage() {
