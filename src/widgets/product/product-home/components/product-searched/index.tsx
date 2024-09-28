@@ -4,6 +4,7 @@ import { useProductStore } from '@/src/shared/store/productStore'
 import useFetchProductsByQuery from '@/src/shared/hooks/query/product.query'
 import useProductTitle from '@/src/shared/hooks/useProductsTitle'
 import ProductEmpty from '../product-empty/ProductEmpty'
+import CategoryDropDown from '../category-menu/CategoryDropDown'
 
 export default function ProductSearched() {
   const { inputValue, selectedCategoryKey } = useProductStore()
