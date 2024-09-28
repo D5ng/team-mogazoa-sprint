@@ -11,11 +11,11 @@ import { useEffect } from 'react'
 export default function CompareInput({
   id,
   setViewCompareSheet,
-  productId = undefined,
+  productName,
 }: {
   id: string
   setViewCompareSheet: (arg: boolean) => void
-  productId?: number | string | undefined
+  productName?: string
 }) {
   const { isToggle, onCloseToggle, onOpenToggle } = useToggle()
   const {
@@ -29,14 +29,10 @@ export default function CompareInput({
   } = useProductAutocomplete(id, onCloseToggle)
   const mobile = twMerge('mobile:h-[60px]')
   const ref = useOutsideClick<HTMLUListElement>({ onCloseToggle })
-  const fetchProductDetail = () => {
-    const { data } = useFetchProductDetail(Number(productId))
-    data && setSelectedProducts(id, data.name)
-  }
 
   useEffect(() => {
-    productId && fetchProductDetail()
-  }, [productId])
+    if (productName) setSelectedProducts(id, productName!)
+  }, [productName])
 
   return (
     <div className="relative w-full ">
