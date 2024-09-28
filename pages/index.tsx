@@ -24,36 +24,30 @@ export const getServerSideProps = (async (context) => {
     axiosInstance.defaults.headers.common['Authorization'] = ``
   }
 
-  return {
-    props: {
-      cookie: cookie ? cookie : null,
-    },
+  try {
+    const queryClient = new QueryClient()
+
+    await queryClient.prefetchQuery({
+      queryKey: ['product', 'reviewCount'],
+      queryFn: () => fetchProducts({ order: 'reviewCount' }),
+    })
+
+    await queryClient.prefetchQuery({
+      queryKey: ['product', 'ratedCount'],
+      queryFn: () => fetchProducts({ order: 'rating' }),
+    })
+
+    const hotData = queryClient.getQueryData(['product', 'reviewCount'])
+    const ratedData = queryClient.getQueryData(['product', 'ratedCount'])
+
+    if (!hotData && !ratedData) return { notFound: true }
+    return {
+      props: {
+        dehydratedState: dehydrate(queryClient),
+        cookie: cookie ? cookie : null,
+      },
+    }
+  } catch (error) {
+    return { notFound: true }
   }
-
-  // try {
-  //   const queryClient = new QueryClient()
-
-  //   await queryClient.prefetchQuery({
-  //     queryKey: ['product', 'reviewCount'],
-  //     queryFn: () => fetchProducts({ order: 'reviewCount' }),
-  //   })
-
-  //   await queryClient.prefetchQuery({
-  //     queryKey: ['product', 'ratedCount'],
-  //     queryFn: () => fetchProducts({ order: 'rating' }),
-  //   })
-
-  //   const hotData = queryClient.getQueryData(['product', 'reviewCount'])
-  //   const ratedData = queryClient.getQueryData(['product', 'ratedCount'])
-
-  //   if (!hotData && !ratedData) return { notFound: true }
-  //   return {
-  //     props: {
-  //       dehydratedState: dehydrate(queryClient),
-  //       cookie: cookie ? cookie : null,
-  //     },
-  //   }
-  // } catch (error) {
-  //   return { notFound: true }
-  // }
 }) satisfies GetServerSideProps
