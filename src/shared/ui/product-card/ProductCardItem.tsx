@@ -4,6 +4,7 @@ import { star } from '@shared/icons'
 import type { ProductListItem } from '@shared/types'
 import { useImageFallback } from '@/src/shared/hooks/useImageFallback'
 import { defaultProduct } from '@shared/icons'
+import kIndexer from '../../utils/kIndexet'
 
 export default function ProductCardItem({
   id,
@@ -30,14 +31,14 @@ export default function ProductCardItem({
               className="object-cover"
             />
           </div>
-          <div className="flex flex-col gap-[0.52vw] tablet:gap-[1.3vw] w-full p-[0.625vw] tablet:p-[10px] mobile:p-0 mobile: ">
+          <div className="flex flex-col gap-[0.52vw] tablet:gap-[1.3vw] w-full p-[0.625vw] tablet:p-[10px]  mobile: ">
             <span className="text-[0.9375vw] tablet:text-[16px] mobile:text-[14px] text-white whitespace-nowrap overflow-hidden text-ellipsis">
               {name}
             </span>
             <div className="flex mobile:flex-col items-center mobile:items-start justify-between">
               <div className="flex gap-[0.781vw] text-[0.833vw] tablet:text-[16px] mobile:text-[14px] text-black-30">
-                <p>리뷰 {reviewCount}</p>
-                <p>찜 {favoriteCount}</p>
+                <p>리뷰 {kIndexer(reviewCount)}</p>
+                <p>찜 {kIndexer(favoriteCount)}</p>
               </div>
               <div className="flex items-center gap-[0.156vw] ">
                 <Image src={star} width={16} height={16} alt="별점" priority />

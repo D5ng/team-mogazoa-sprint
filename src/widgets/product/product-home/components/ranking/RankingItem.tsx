@@ -2,6 +2,7 @@ import ProfileImage from '@shared/ui/profile-image/ProfileImage'
 import { RankingItems } from './Ranking.types'
 import RankingChip from './RankingChip'
 import Link from 'next/link'
+import kIndexer from '@/src/shared/utils/kIndexet'
 
 export default function RankingItem({
   id,
@@ -29,8 +30,8 @@ export default function RankingItem({
               </p>
             </div>
             <div className="flex text-[12px] tablet:text-[10px] tablet:gap-[6px] gap-[8px] text-black-30 mt-[4px]">
-              <p>팔로워 {followersCount}</p>
-              <p>리뷰 {reviewCount}</p>
+              <p>팔로워 {kIndexer(followersCount)}</p>
+              <p>리뷰 {kIndexer(reviewCount)}</p>
             </div>
           </div>
         </Link>

@@ -16,11 +16,10 @@ export default function ProductSearched() {
   )
 
   if (error && !isFetching) throw error
-  if (!data?.length) return <ProductEmpty />
 
   return (
     <ProductCardSection renderTitle={searchTitle}>
-      <ProductCardList data={data!} />
+      {!data?.length ? <ProductEmpty /> : <ProductCardList data={data!} />}
     </ProductCardSection>
   )
 }

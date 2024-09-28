@@ -1,6 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
-import { fetchProducts } from '@shared/api'
+import { fetchProducts, fetchUserRanking } from '@shared/api'
 import { axiosInstance } from '@shared/config'
 import { productKeys } from '@shared/hooks/query-keys'
 import { AuthResponse, ProductResponse } from '@shared/types'
@@ -45,11 +45,19 @@ export const getServerSideProps = (async (context) => {
       queryFn: () => fetchProducts({ category: category.id }),
     })
 
+    await queryClient.prefetchQuery({
+      queryKey: ['fetchUserRanking'],
+      queryFn: fetchUserRanking,
+    })
+
     const data = queryClient.getQueryData<ProductResponse>(
       productKeys.productsByCategory(category.id),
     )
+    const rankingData = queryClient.getQueryData<ProductResponse>([
+      'fetchUserRanking',
+    ])
 
-    if (!data) return { notFound: true }
+    if (!data && !rankingData) return { notFound: true }
 
     return {
       props: {

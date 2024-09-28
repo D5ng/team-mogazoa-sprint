@@ -15,7 +15,6 @@ export default function ComparePage() {
   const router = useRouter()
   const { id } = router.query
   const { data, isError } = useFetchProductDetail(Number(id))
-  console.log(isError)
   return (
     <div className="flex flex-col items-center h-[78vh] mt-[200px] mobile:pr-[20px] overflow-hidden">
       <div className="w-[60vw] tablet:w-[80vw] mobile:w-[90vw] mobile:flex-col flex justify-between  items-end gap-[20px] mpbile:gap-[5px]">
