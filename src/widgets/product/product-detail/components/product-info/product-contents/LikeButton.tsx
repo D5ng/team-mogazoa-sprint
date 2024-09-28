@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { emptyHeart, heart } from '@shared/icons'
 import type { ProductDetailResponse } from '@shared/types'
 import { useProductCancelFavorite, useProductFavorite } from '@shared/hooks'
+import { toastCheckAuth } from '@shared/utils'
 
 interface LikeButtonProps extends Pick<ProductDetailResponse, 'isFavorite'> {
   productId: number
@@ -12,9 +13,10 @@ export default function LikeButton({ isFavorite, productId }: LikeButtonProps) {
   const { mutate: cancelFavoriteMutate } = useProductCancelFavorite()
 
   const handleFavoriteClick = () =>
-    isFavorite
+    toastCheckAuth() &&
+    (isFavorite
       ? cancelFavoriteMutate({ productId })
-      : favoriteMutate({ productId })
+      : favoriteMutate({ productId }))
 
   return (
     <button

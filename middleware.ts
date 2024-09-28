@@ -22,5 +22,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: PROTECTED_PAGES,
+  matcher: ['/profile/my'],
 }

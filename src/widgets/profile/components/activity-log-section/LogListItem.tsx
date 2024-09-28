@@ -5,7 +5,7 @@ interface LogListItemProps {
   title: string
   image?: string
   name: string
-  value: any
+  value: string | number | null
 }
 
 export default function LogListItem({
@@ -32,11 +32,11 @@ export default function LogListItem({
               className="tablet:w-5 tablet:h-5"
             />
           )}
-          {isCategoryItem ? (
-            <CategoryChip name={value} />
+          {isCategoryItem && value ? (
+            <CategoryChip name={String(value)} />
           ) : (
             <span className="text-2xl font-light text-black-20 tablet:text-xl mobile:text-base">
-              {value}
+              {isCategoryItem ? '없음' : value}
             </span>
           )}
         </div>

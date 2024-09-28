@@ -11,7 +11,7 @@ export default function ProductCardSection({
 }: ProductCardSectionProps) {
   return (
     <section>
-      <div className="ml-[10px] mb-[10px] text-[24px] tablet:text-[20px] mobile:text-[16px] text-white">
+      <div className="mb-[30px] text-[24px] tablet:text-[20px] mobile:text-[16px] text-white">
         {renderTitle}
       </div>
       {children}

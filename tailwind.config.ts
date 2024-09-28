@@ -10,6 +10,8 @@ module.exports = {
       },
       indigo: {
         DEFAULT: '#5363FF',
+        hover: '#6A77FF',
+        active: '#424FCC',
       },
 
       black: {
@@ -22,6 +24,8 @@ module.exports = {
         70: '#353542',
         80: '#1C1C22',
         90: '#17171C',
+        hover: '#B0B6C2',
+        active: '#858B97',
       },
       white: '#F1F1F5',
       red: '#FF0000',

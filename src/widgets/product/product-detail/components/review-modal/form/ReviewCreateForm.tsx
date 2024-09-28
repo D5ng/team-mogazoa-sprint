@@ -50,7 +50,7 @@ export default function ReviewCreateForm({
         {...register('content', descriptionValidation)}
         errors={errors}
       />
-      <div className="flex gap-x-2.5 overflow-x-scroll">
+      <div className="flex gap-x-2.5 overflow-x-scroll none-scrollbar">
         {[1, 2, 3].map((order) => (
           <ReviewImageUpload
             key={order}

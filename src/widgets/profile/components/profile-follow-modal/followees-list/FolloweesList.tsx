@@ -1,9 +1,17 @@
 import { Follow } from '@widgets/profile/components'
 import { useFetchFollowees } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
-import type { UserIdProp } from '@shared/types'
+import type { UserId } from '@shared/types'
 
-export default function FolloweesList({ userId }: UserIdProp) {
+interface FolloweesListProp {
+  userId: UserId
+  onCloseToggle: () => void
+}
+
+export default function FolloweesList({
+  userId,
+  onCloseToggle,
+}: FolloweesListProp) {
   const {
     data: followees,
     isFetching,
@@ -24,7 +32,11 @@ export default function FolloweesList({ userId }: UserIdProp) {
     <>
       <ul className="flex flex-col gap-6 mt-10 tablet:gap-5 mobile:mt-5">
         {followees.map((followee) => (
-          <Follow key={followee.id} {...followee.followee} />
+          <Follow
+            key={followee.id}
+            {...followee.followee}
+            onCloseToggle={onCloseToggle}
+          />
         ))}
       </ul>
       <div className="w-[1px] h-2.5" ref={ref}></div>

@@ -26,7 +26,6 @@ export default function ProductCardItem({
               alt="상품이미지"
               priority
               sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%"
-              objectFit="cover"
               onError={onError}
               className="object-cover"
             />

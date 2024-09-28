@@ -3,7 +3,7 @@ import { useFetchProductCategory } from '@shared/hooks'
 import { ProductCardSection } from '@widgets/product/product-home/layout'
 import {
   CategoryMenu,
-  ProductAddButton,
+  ProductCreateButton,
   Ranking,
 } from '@widgets/product/product-home/components'
 
@@ -41,7 +41,7 @@ export default function ProductCategoryPage({
           </ProductCardSection>
         </div>
       </div>
-      <ProductAddButton />
+      <ProductCreateButton />
     </>
   )
 }

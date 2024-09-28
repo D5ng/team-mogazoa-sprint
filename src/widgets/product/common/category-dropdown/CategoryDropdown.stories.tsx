@@ -1,9 +1,9 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Meta, StoryObj } from '@storybook/react'
 import { ProductPayload } from '@shared/types'
 import CategoryDropdown from './CategoryDropdown'
-import { defaultValues } from '@widgets/product/product-home/components/product-add-modal/form/defaultValues'
-import { useEffect } from 'react'
+import { defaultValues } from '@widgets/product/product-home/components/product-create-modal/form/defaultValues'
 
 function CategoryDropdownWrapper() {
   const {
@@ -20,7 +20,7 @@ function CategoryDropdownWrapper() {
 }
 
 const meta: Meta<typeof CategoryDropdownWrapper> = {
-  title: 'UI/CategoryDropdown',
+  title: 'Components/Dropdown/CategoryDropdown',
   component: CategoryDropdownWrapper,
 }
 

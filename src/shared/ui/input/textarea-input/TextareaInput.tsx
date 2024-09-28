@@ -21,7 +21,7 @@ const TextareaInput = forwardRef<HTMLTextAreaElement, TextareaInputProps>(
           name={name}
           placeholder={placeholder}
           maxLength={maxLength}
-          className={`block input-base resize-none overflow-y-auto h-[160px] tablet:text-sm mobile:h-[120px] ${focusClassName} ${borderClassName} ${props.className || ''}`}
+          className={`custom-scrollbar block input-base resize-none overflow-y-auto h-[160px] tablet:text-sm mobile:h-[120px] ${focusClassName} ${borderClassName} ${props.className || ''}`}
           ref={ref}
           {...props}
         />

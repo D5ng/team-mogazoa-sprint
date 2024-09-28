@@ -112,3 +112,53 @@ export const ButtonLoading: Story = {
     </>
   ),
 }
+
+export const ButtonHover: Story = {
+  name: 'Buttons Hover',
+  render: () => (
+    <>
+      <div className="flex gap-x-2.5">
+        <Button variant="primary" className="w-[250px] gradient-hover">
+          회원가입
+        </Button>
+        <Button
+          variant="secondary"
+          className="w-[250px] border-indigo-hover text-graidnet-hover"
+        >
+          회원가입
+        </Button>
+        <Button
+          variant="tertiary"
+          className="w-[250px] border-black-hover text-black-hover"
+        >
+          회원가입
+        </Button>
+      </div>
+    </>
+  ),
+}
+
+export const ButtonPress: Story = {
+  name: 'Buttons Press',
+  render: () => (
+    <>
+      <div className="flex gap-x-2.5">
+        <Button variant="primary" className="w-[250px] gradient-active">
+          회원가입
+        </Button>
+        <Button
+          variant="secondary"
+          className="w-[250px] border-indigo-active text-graidnet-active"
+        >
+          회원가입
+        </Button>
+        <Button
+          variant="tertiary"
+          className="w-[250px] border-black-active text-black-active"
+        >
+          회원가입
+        </Button>
+      </div>
+    </>
+  ),
+}

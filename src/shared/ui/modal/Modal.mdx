@@ -1,0 +1,59 @@
+import { Canvas, Meta, Controls, Primary } from '@storybook/blocks'
+import * as ModalStories from './Modal.stories'
+
+<Meta of={ModalStories} />
+
+# Modal
+
+모달 컴포넌트는 Compound Pattern으로 만들어진 합성 컴포넌트 입니다. 모달 컴포넌트는 공통적인 요소들을 기본적으로 포함하고 있습니다. 따라서 모달의 스타일이 다르지 않다면 어디서든 사용할 수 있습니다.
+
+모달의 구성요소들은 다음과 같습니다.
+
+- **`ModalTitle`** 모달의 타이틀을 정해주는 컴포넌트 입니다. 모달을 사용할 때 필수 컴포넌트입니다.
+- **`ModalExit`** 모달을 닫는 역할을 하는 닫기버튼 입니다. 모달을 사용할 때 기본적으로 포함되어 있습니다.
+- **`ModalBackdrop`** 모달 레이어 뒤에 위치한 투명도 있는 검은색 배경입니다. 모달을 사용할 때 기본적으로 포함되어 있습니다.
+
+모달의 닫기버튼을 사용하기 위해서는 모달의 `onCloseModal`을 전달해 주어야 합니다. 모달을 열고 닫는건 모달 자체가 아닌 외부에서 영향을 받기 때문입니다.
+
+다음은 모달의 내부 코드입니다. 모달을 사용할 때 기본적으로 `ModalBackdrop`, `ModalExit`는 따로 불러오지 않아도 기본적으로 사용됩니다.
+
+```tsx
+export function Modal(props: ModalProps) {
+  const portalElement = document.getElementById('modal')!
+  return createPortal(
+    <ModalContext.Provider value={{ onCloseModal: props.onCloseModal }}>
+      <div
+        className={twMerge(
+          'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl tablet:w-[590px] mobile:w-[calc(100%-40px)] mobile:px-5',
+          props.className,
+        )}
+      >
+        <ModalBackdrop />
+        <ModalExit />
+        {props.children}
+      </div>
+    </ModalContext.Provider>,
+    portalElement,
+  )
+}
+```
+
+# Example
+
+다음 예시는 버튼을 눌렀을 때 나오는 모달의 기본적인 형태입니다. 여기에 다양한 `Input`들을 추가할 수 있습니다. 아래의 show code를 눌러 코드를 볼 수 있습니다.
+
+<Primary />
+
+# Use Case
+
+### 상품 생성 모달
+
+다음은 Modal 컴포넌트를 사용해 만든 상품 추가 모달입니다.
+
+<Canvas of={ModalStories.ProductCreateModalExample} />
+
+### 상품 리뷰 생성 모달
+
+다음은 Modal 컴포넌트를 사용해 만든 상품 리뷰 생성 모달입니다.
+
+<Canvas of={ModalStories.ReviewCreateModalExample} />

@@ -4,14 +4,7 @@ export default function Document() {
   return (
     <Html lang="ko">
       <Head>
-        <link
-          rel="shortcut icon"
-          href={`${process.env.NEXT_PUBLIC_URL}/images/favicon.ico`}
-        />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.css"
-          rel="stylesheet"
-        />
+        <link rel="shortcut icon" href="/assets/images/favicon.ico" />
       </Head>
       <body>
         <div id="backdrop"></div>
