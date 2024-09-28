@@ -14,7 +14,7 @@ export default function RankingItem({
 }: RankingItems) {
   return (
     <li className="flex shrink-0">
-      <div className="flex cursor-pointer shrink-0 hover:scale-105 transition-transform duration-200 ease-in-out">
+      <div className="flex cursor-pointer shrink-0 hover:scale-105 tablet:scale-102 transition-transform duration-200 ease-in-out">
         <Link className="flex shrink-0" href={`/profile/${id}`}>
           <ProfileImage
             className="tablet:w-[38px] tablet:h-[38px]"
