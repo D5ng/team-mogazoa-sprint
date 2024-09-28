@@ -1,4 +1,4 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { GetServerSideProps } from 'next'
 import ProductPage from '@/src/pages/product/Product'
 import { axiosInstance } from '@shared/config'
 import { dehydrate, QueryClient } from '@tanstack/react-query'

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('./reset.css');
+@import url('./fonts.css');
 
 :root {
   --default-bg: #1c1c22;
