@@ -45,7 +45,6 @@ export function useFetchProductCategory(categoryId: CategoryId) {
   })
 }
 
-// 아직 보류.
 export default function useFetchProductsByQuery(
   selectedCategoryKey: number | undefined,
   inputValue?: string,
@@ -71,5 +70,6 @@ export function useFetchProductDetail(
     queryKey: productKeys.detail(productId),
     queryFn: () => fetchProductDetail({ productId }),
     initialData,
+    enabled: !!productId,
   })
 }

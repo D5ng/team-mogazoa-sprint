@@ -23,7 +23,7 @@ export default function ProductPage() {
         <div className="w-[46vw] tablet:w-[68vw] ml-[24.5vw] tablet:ml-[220px] mobile:w-[89vw] mobile:ml-[30px] flex flex-col gap-[40px] overflow-hidden">
           <Ranking />
           {inputValue || selectedCategoryKey ? (
-            <Suspense fallback={<ProductCardSectionSkeleton count={9} />}>
+            <Suspense fallback={<ProductCardSectionSkeleton count={6} />}>
               <ProductSearched />
             </Suspense>
           ) : (

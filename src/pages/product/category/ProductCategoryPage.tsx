@@ -13,7 +13,6 @@ import useFetchProductsByQuery from '@/src/shared/hooks/query/product.query'
 
 import { NextSeo } from 'next-seo'
 
-
 interface ProductCategoryPageProps {
   category: Categories
 }
@@ -24,7 +23,6 @@ export default function ProductCategoryPage({
   const { inputValue } = useProductStore()
   const { data } = useFetchProductsByQuery(category.id, inputValue)
   const productList = data!
-  console.log(data)
 
   return (
     <>
