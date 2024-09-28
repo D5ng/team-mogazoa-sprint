@@ -9,7 +9,6 @@ import {
   Ranking,
   ProductCreateButton,
 } from '@widgets/product/product-home/components'
-import { error } from 'console'
 import { Suspense } from 'react'
 
 export default function ProductPage() {
@@ -17,7 +16,7 @@ export default function ProductPage() {
 
   return (
     <>
-      <div className=" mt-[100px] tablet:mt-[80px] mobile:mt-[70px] ">
+      <div className=" mt-[100px] tablet:mt-[80px] mobile:mt-[70px]">
         <div className="mobile:hidden">
           <CategoryMenu />
         </div>

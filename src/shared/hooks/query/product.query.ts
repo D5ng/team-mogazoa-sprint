@@ -35,6 +35,7 @@ export function useFetchProductSearch(keyword: string) {
   return useQuery({
     queryKey: productKeys.productsBySearch(keyword),
     queryFn: () => fetchProducts({ keyword: keyword }),
+    enabled: !!keyword,
   })
 }
 
