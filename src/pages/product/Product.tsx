@@ -9,10 +9,18 @@ import {
   Ranking,
   ProductCreateButton,
 } from '@widgets/product/product-home/components'
-import { Suspense } from 'react'
+import { useRouter } from 'next/router'
+import { Suspense, useEffect } from 'react'
 
 export default function ProductPage() {
-  const { inputValue, selectedCategoryKey } = useProductStore()
+  const { inputValue, selectedCategoryKey, handleInputValue } =
+    useProductStore()
+  const router = useRouter()
+  const { product } = router.query
+
+  useEffect(() => {
+    if (product) handleInputValue(product)
+  }, [])
 
   return (
     <>

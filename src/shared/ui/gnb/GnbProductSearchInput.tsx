@@ -6,6 +6,7 @@ import { search } from '@shared/icons'
 import { useOutsideClick, useToggle } from '../../hooks'
 import useProductAutocomplete from '@/src/widgets/compare/hooks/useProductAutocomplete'
 import handleListByKeyboard from './utils/handleListByKeyboard'
+import Link from 'next/link'
 
 interface GnbProductSearchInputProps {
   searchVisible: boolean
@@ -51,16 +52,18 @@ const GnbProductSearchInput = forwardRef<
           ref={clickRef}
           className="absolute z-modal bg-black-70 border border-black-40 mt-1 w-full rounded-lg"
         >
-          {suggestions.map((name: string, index: number) => (
-            <li
-              key={index}
-              className={`p-2 cursor-pointer text-black-30 hover:bg-gray-70 hover:text-white ${
-                highlightedIndex === index ? 'bg-gray-70 text-white' : ''
-              }`}
-              onClick={() => handleClickList(name)}
-            >
-              {name}
-            </li>
+          {suggestions.map((name, index) => (
+            <Link href={`/?product=${name}`}>
+              <li
+                key={index}
+                className={`p-2 cursor-pointer text-black-30 hover:bg-gray-70 hover:text-white ${
+                  highlightedIndex === index ? 'bg-gray-70 text-white' : ''
+                }`}
+                onClick={() => handleClickList(name)}
+              >
+                {name}
+              </li>
+            </Link>
           ))}
         </ul>
       )}

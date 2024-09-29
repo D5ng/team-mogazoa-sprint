@@ -8,10 +8,12 @@ import GnbHamburger from './GnbHamburgerButton'
 import GnbSearchButton from './GnbSearchButton'
 import GnbMobileSideBar from './GnbMobileSideBar'
 import { logo } from '@shared/icons'
+import CategoryDropDown from '@/src/widgets/product/product-home/components/category-menu/CategoryDropDown'
+import { useRouter } from 'next/router'
 
 export default function Gnb({ cookie }: any) {
   const { resetProducts } = useSearchProduct()
-
+  const router = useRouter()
   const {
     isToggle: searchVisible,
     onToggle: toggleSearchInput,
@@ -49,6 +51,7 @@ export default function Gnb({ cookie }: any) {
         <GnbHamburger toggleSideMenu={toggleSideMenu} />
         <div className="flex items-center gap-[30px]">
           <GnbSearchButton toggleSearchInput={toggleSearchInput} />
+
           <GnbInput ref={inputRef} searchVisible={searchVisible} />
           <div className="flex text-white text-[14px] item-center gap-[40px] tablet:gap-[25px] mobile:hidden">
             <GnbMenu cookie={cookie} />

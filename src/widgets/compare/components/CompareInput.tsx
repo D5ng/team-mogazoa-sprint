@@ -29,7 +29,6 @@ export default function CompareInput({
   } = useProductAutocomplete(id, onCloseToggle)
   const mobile = twMerge('mobile:h-[60px]')
   const ref = useOutsideClick<HTMLUListElement>({ onCloseToggle })
-  console.log(inputValue)
 
   useEffect(() => {
     if (productName) {

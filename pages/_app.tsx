@@ -58,13 +58,13 @@ export default function App({ Component, pageProps }: AppProps) {
           <Gnb cookie={pageProps.cookie} />
           <Component {...pageProps} />
           <KakaoScript />
-          <ToastContainer
+          {/* <ToastContainer
             autoClose={1000}
             position="bottom-center"
             theme="dark"
             pauseOnFocusLoss={false}
             hideProgressBar={true}
-          />
+          /> */}
         </HydrationBoundary>
       </QueryClientProvider>
     </>
