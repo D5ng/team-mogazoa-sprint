@@ -19,7 +19,7 @@ export default function ReviewContents(props: ProductReviewItem) {
       )}
       <div className="flex items-end gap-x-5 mobile:gap-x-3">
         <span className="text-black-30">
-          {dayjs(props.updatedAt).format('YYYY-MM-DD')}
+          {dayjs(props.createdAt).format('YYYY-MM-DD')}
         </span>
         {props.userId === user?.id && (
           <div className="flex gap-x-2 text-black-20">
