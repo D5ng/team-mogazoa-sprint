@@ -18,6 +18,10 @@ const meta: Meta<typeof ImageInput> = {
       control: 'text',
       description: '미리보기 이미지의 URL입니다.',
     },
+    isUpdated: {
+      control: 'boolean',
+      description: '이미지가 업데이트되었는지 여부를 나타냅니다.',
+    },
   },
 }
 
@@ -39,7 +43,6 @@ export const ImageInputExample: Story = {
       await new Promise((resolve) => setTimeout(resolve, 1000))
       return Promise.resolve()
     },
-    className: 'w-[135px] h-[135px]',
   },
 }
 
@@ -49,4 +52,32 @@ export const WithPreviewImage: Story = {
     ...ImageInputExample.args,
     previewImage: defaultProduct,
   },
+}
+
+export const WithUpdatedImage: Story = {
+  ...Template,
+  args: {
+    ...ImageInputExample.args,
+    previewImage: defaultProduct,
+    isUpdated: true,
+  },
+}
+
+export const MultipleImageInputs: Story = {
+  render: () => (
+    <div className="flex gap-x-2.5 overflow-x-scroll none-scrollbar">
+      {[1, 2, 3].map((index) => (
+        <ImageInput
+          key={index}
+          imageIndex={index}
+          onCancel={action('onCancel')}
+          onSuccess={async (file: File, index: number) => {
+            action('onSuccess')(file, index)
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+            return Promise.resolve()
+          }}
+        />
+      ))}
+    </div>
+  ),
 }
