@@ -6,6 +6,7 @@ import KaKaoShareButton from './KaKaoShareButton'
 import ClipBoardButton from './ClipBoardButton'
 import ReviewButton from './ReviewButton'
 import ProductUpdateButton from './ProductUpdateButton'
+import Link from 'next/link'
 
 interface ProductContentsProps extends ProductDetailResponse {
   loggedInUserId: number | null
@@ -48,8 +49,9 @@ export default function ProductContents({
           variant="secondary"
           className="w-[180px] h-[65px] tablet:w-[16.532vw] tablet:h-[55px] mobile:w-full"
         >
-          비교하기
+          <Link href={`/compare?id=${id}`}>비교하기</Link>
         </Button>
+
         {isCreatedProductUser && <ProductUpdateButton productId={id} />}
       </div>
     </div>

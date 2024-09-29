@@ -1,3 +1,4 @@
+import kIndexer from '@/src/shared/utils/kIndexet'
 import type { CompareWithProductMessage } from '../ProductComparisonMessage.type'
 
 export default function StarRatingMessage({
@@ -12,7 +13,7 @@ export default function StarRatingMessage({
       같은 카테고리의 제품들보다&nbsp;
       <br className="mobile:hidden" />
       &nbsp;
-      <strong className="text-white">{count}</strong>&nbsp;개&nbsp;
+      <strong className="text-white">{kIndexer(count)}</strong>&nbsp;개&nbsp;
       {isHigher ? '더 높아요!' : '더 낮아요!'}
     </>
   )

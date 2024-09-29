@@ -4,7 +4,6 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query'
 import { fetchProductDetail, fetchProducts } from '@shared/api'
-import { useProductStore } from '@shared/store/productStore'
 import { ProductDetailResponse } from '@shared/types'
 import { CategoryId } from '@shared/ui'
 import { productKeys } from '@shared/hooks/query-keys'
@@ -35,6 +34,7 @@ export function useFetchProductSearch(keyword: string) {
   return useQuery({
     queryKey: productKeys.productsBySearch(keyword),
     queryFn: () => fetchProducts({ keyword: keyword }),
+    enabled: !!keyword,
   })
 }
 
@@ -45,10 +45,9 @@ export function useFetchProductCategory(categoryId: CategoryId) {
   })
 }
 
-// 아직 보류.
 export default function useFetchProductsByQuery(
   selectedCategoryKey: number | undefined,
-  inputValue?: string,
+  inputValue?: any,
 ) {
   return useSuspenseQuery({
     queryKey: ['fetchProducts', selectedCategoryKey, inputValue],
@@ -71,5 +70,6 @@ export function useFetchProductDetail(
     queryKey: productKeys.detail(productId),
     queryFn: () => fetchProductDetail({ productId }),
     initialData,
+    enabled: !!productId,
   })
 }

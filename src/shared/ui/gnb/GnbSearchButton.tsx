@@ -10,7 +10,7 @@ export default function GnbSearchButton({
 }: GnbSearchButtonProps) {
   return (
     <div
-      className={`hidden    mobile:absolute mobile:block mobile:right-[10%] mobile:translate-y-[50%] mobile:translate-x-[120%]`}
+      className={`hidden    mobile:absolute mobile:block mobile:right-[10%] mobile:translate-y-[50%] mobile:translate-x-[200%]`}
     >
       <button onClick={() => toggleSearchInput()} className="search">
         <Image src={search} width={30} height={10} alt="돋보기버튼" />
