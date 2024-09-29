@@ -17,7 +17,7 @@ export default function Index({
         title={`모가조아 - ${category.name}의 모든 상품`}
         description={`${category.name}의 모든 상품을 확인하고 리뷰 달아보세요.`}
       />
-      <ProductCategoryPage category={category} />
+      <ProductCategoryPage category={+category} />
     </>
   )
 }
@@ -41,12 +41,12 @@ export const getServerSideProps = (async (context) => {
     const queryClient = new QueryClient()
 
     await queryClient.prefetchQuery({
-      queryKey: productKeys.productsByCategory(category.id),
+      queryKey: productKeys.productsByCategory(category.id, ''),
       queryFn: () => fetchProducts({ category: category.id }),
     })
 
     const data = queryClient.getQueryData<ProductResponse>(
-      productKeys.productsByCategory(category.id),
+      productKeys.productsByCategory(category.id, ''),
     )
 
     if (!data) return { notFound: true }

@@ -4,10 +4,10 @@ import { useCallback, useState } from 'react'
 
 export default function useSearchProduct() {
   const {
-    selectedCategoryKey,
+    // selectedCategoryKey,
     handleInputValue,
-    handleSelectedCategoryKey,
-    handleSelectedCategoryName,
+    // handleSelectedCategoryKey,
+    // handleSelectedCategoryName,
   } = useProductStore()
 
   const updateInputValue = useCallback(
@@ -17,24 +17,12 @@ export default function useSearchProduct() {
     [],
   )
 
-  const handleCategory = (id: number, name: string) => {
-    if (id === selectedCategoryKey) {
-      handleSelectedCategoryKey(undefined)
-      return
-    }
-    handleSelectedCategoryKey(id)
-    handleSelectedCategoryName(name)
-  }
-
   const resetProducts = () => {
     handleInputValue('')
-    handleSelectedCategoryKey(undefined)
   }
 
   return {
     updateInputValue,
-    selectedCategoryKey,
     resetProducts,
-    handleCategory,
   }
 }

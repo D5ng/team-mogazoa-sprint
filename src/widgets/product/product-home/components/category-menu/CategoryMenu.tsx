@@ -1,15 +1,21 @@
 import { useProductStore } from '@shared/store/productStore'
-import useSearchProduct from '@shared/hooks/useSearchProduct'
-import { CATEGORY_CHIPS } from '@shared/ui'
-import CategoryItems from './CategoryItems'
+import { useCategoryQuery } from '@shared/hooks'
+import { Categories, CATEGORY_CHIPS } from '@shared/ui'
+import CategoryItem from './CategoryItem'
+import { useState } from 'react'
 
 interface CategoryMenuProps {
   menuVisible?: boolean
 }
 
 const CategoryMenu = ({ menuVisible }: CategoryMenuProps) => {
-  const { selectedCategoryKey } = useProductStore()
-  const { handleCategory } = useSearchProduct()
+  const { category: defaultValue } = useCategoryQuery()
+
+  const [selectedCategory, setSelectedCategory] = useState<Categories | null>(
+    defaultValue || null,
+  )
+  const handleSelectedCategory = (category: Categories) =>
+    setSelectedCategory(category)
 
   return (
     <article
@@ -19,15 +25,15 @@ const CategoryMenu = ({ menuVisible }: CategoryMenuProps) => {
         카테고리
       </p>
       <ul className="flex flex-col gap-[8px] mobile:mt-[20px] w-[200px] mobile:w-[180px]">
-        {CATEGORY_CHIPS.map((data) => (
-          <CategoryItems
-            key={data.id}
-            query={data.id}
-            checked={selectedCategoryKey === data.id}
-            handleClick={() => handleCategory(data.id, data.name)}
+        {CATEGORY_CHIPS.map((category) => (
+          <CategoryItem
+            key={category.id}
+            category={category}
+            selectedCategory={selectedCategory === category}
+            onSelectedCategory={handleSelectedCategory}
           >
-            {data.name}
-          </CategoryItems>
+            {category.name}
+          </CategoryItem>
         ))}
       </ul>
     </article>

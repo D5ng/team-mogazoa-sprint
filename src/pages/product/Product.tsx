@@ -9,10 +9,26 @@ import {
   Ranking,
   ProductCreateButton,
 } from '@widgets/product/product-home/components'
+import { useRouter } from 'next/router'
 import { Suspense } from 'react'
+import ProductCategoryPage from './category/ProductCategoryPage'
+import { Categories, CATEGORY_CHIPS } from '@shared/ui'
+import { useSearchParams } from 'next/navigation'
 
 export default function ProductPage() {
-  const { inputValue, selectedCategoryKey } = useProductStore()
+  const _searchParams = useSearchParams()
+  const searchParams = new URLSearchParams(_searchParams?.toString())
+  const queryValue = searchParams.get('query')
+
+  const router = useRouter()
+  const categoryId = router.query?.category
+
+  let category: Categories | null = null
+
+  if (categoryId) {
+    category =
+      CATEGORY_CHIPS.find((category) => category.id === +categoryId) || null
+  }
 
   return (
     <>
@@ -22,11 +38,8 @@ export default function ProductPage() {
         </div>
         <div className="w-[46vw] tablet:w-[68vw] ml-[24.5vw] tablet:ml-[220px] mobile:w-[89vw] mobile:ml-[30px] flex flex-col gap-[80px] tablet:gap-[60px] overflow-hidden">
           <Ranking />
-          {inputValue || selectedCategoryKey ? (
-            <Suspense fallback={<ProductCardSectionSkeleton count={6} />}>
-              <ProductSearched />
-            </Suspense>
-          ) : (
+          {category && <ProductCategoryPage category={category} />}
+          {!category && !queryValue && (
             <>
               <ProductWrapper>
                 <ProductHot />
@@ -35,6 +48,11 @@ export default function ProductPage() {
                 <ProductRating />
               </ProductWrapper>
             </>
+          )}
+          {!category && queryValue && (
+            <Suspense fallback={<ProductCardSectionSkeleton count={6} />}>
+              <ProductSearched />
+            </Suspense>
           )}
         </div>
       </div>

@@ -1,10 +1,11 @@
-import { forwardRef } from 'react'
+import { ChangeEventHandler, forwardRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { twMerge } from 'tailwind-merge'
 import { search } from '@shared/icons'
 import { useOutsideClick, useToggle } from '../../hooks'
 import useProductAutocomplete from '@/src/widgets/compare/hooks/useProductAutocomplete'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 interface GnbProductSearchInputProps {
   searchVisible: boolean
@@ -22,6 +23,22 @@ const GnbProductSearchInput = forwardRef<
   const { inputValue, handleInputChange, suggestions, handleClickList } =
     useProductAutocomplete('suggestions', onCloseToggle)
 
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams?.toString())
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    handleInputChange(event.target.value)
+
+    if (event.target.value) {
+      params.set('query', event.target.value)
+    } else {
+      params.delete('query')
+    }
+
+    router.replace(`${pathname}?${params.toString()}`)
+  }
+
   const clickRef = useOutsideClick<HTMLUListElement>({ onCloseToggle })
   if (router.pathname === '/sign-in' || router.pathname === '/sign-up')
     return null
@@ -35,7 +52,7 @@ const GnbProductSearchInput = forwardRef<
         onClick={onOpenToggle}
         className={INPUT_STYLE}
         placeholder="상품 이름을 검색해 보세요"
-        onChange={(e) => handleInputChange(e.target.value)}
+        onChange={handleChange}
         value={inputValue}
       />
       {isToggle && inputValue.length >= 2 && suggestions.length > 0 && (

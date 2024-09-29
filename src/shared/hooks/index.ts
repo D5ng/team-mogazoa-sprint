@@ -8,6 +8,7 @@ export { default as useImageUpload } from './useImageUpload'
 export { default as useLogout } from './useLogout'
 export { default as useWindowResize } from './useWindowResize'
 export { default as useClientSide } from './useClientSide'
+export { default as useCategoryQuery } from './useCategoryQuery'
 
 export * from './query'
 export * from './mutate'

@@ -31,35 +31,47 @@ export function useFetchProductsRating() {
   })
 }
 
-export function useFetchProductSearch(keyword: string) {
-  return useQuery({
-    queryKey: productKeys.productsBySearch(keyword),
-    queryFn: () => fetchProducts({ keyword: keyword }),
-    enabled: !!keyword,
-  })
-}
+// export function useFetchProductSearch(keyword: string) {
+//   return useQuery({
+//     queryKey: productKeys.productsBySearch(keyword),
+//     queryFn: () => fetchProducts({ keyword: keyword }),
+//     enabled: !!keyword,
+//   })
+// }
 
-export function useFetchProductCategory(categoryId: CategoryId) {
-  return useQuery({
-    queryKey: productKeys.productsByCategory(categoryId),
-    queryFn: () => fetchProducts({ category: categoryId }),
-  })
-}
-
-export default function useFetchProductsByQuery(
-  selectedCategoryKey: number | undefined,
-  inputValue?: string,
+export default function useFetchProductSearch(
+  keyword: string,
+  categoryId: CategoryId | null,
 ) {
+  const queryFn = categoryId
+    ? fetchProducts({ keyword: keyword, category: categoryId })
+    : fetchProducts({ keyword: keyword })
+  return useQuery({
+    queryKey: productKeys.productsBySearch(keyword, categoryId),
+    queryFn: () => queryFn,
+  })
+}
+
+export function useFetchProductCategory(
+  categoryId: CategoryId,
+  inputValue: string,
+) {
+  return useQuery({
+    queryKey: productKeys.productsByCategory(categoryId, inputValue),
+    queryFn: () => fetchProducts({ category: categoryId, keyword: inputValue }),
+  })
+}
+
+export function useFetchProductsByQuery(
+  keyword: string,
+  categoryId: CategoryId | null,
+) {
+  const queryFn = categoryId
+    ? fetchProducts({ keyword: keyword, category: categoryId })
+    : fetchProducts({ keyword: keyword })
   return useSuspenseQuery({
-    queryKey: ['fetchProducts', selectedCategoryKey, inputValue],
-    queryFn: () =>
-      fetchProducts({
-        order: 'reviewCount',
-        cursor: 0,
-        keyword: inputValue,
-        category: selectedCategoryKey,
-      }),
-    select: (data) => data?.list,
+    queryKey: productKeys.productsBySearch(keyword, categoryId),
+    queryFn: () => queryFn,
   })
 }
 
