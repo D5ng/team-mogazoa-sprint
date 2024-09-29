@@ -11,7 +11,7 @@ interface ImageInputProps {
   className?: string
   imageIndex?: number
   previewImage?: string
-  isUpdated: boolean
+  isUpdated?: boolean
 }
 
 export default function ImageInput({
