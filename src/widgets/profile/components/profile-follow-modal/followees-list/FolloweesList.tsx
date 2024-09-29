@@ -1,4 +1,4 @@
-import { Follow } from '@widgets/profile/components'
+import { EmptyProduct, Follow } from '@widgets/profile/components'
 import { useFetchFollowees } from '@shared/hooks/query'
 import { useIntersect } from '@shared/hooks'
 import type { UserId } from '@shared/types'
@@ -27,6 +27,8 @@ export default function FolloweesList({
   }
 
   const ref = useIntersect<HTMLDivElement>(onIntersect)
+
+  if (followees.length === 0) return <EmptyProduct />
 
   return (
     <>
