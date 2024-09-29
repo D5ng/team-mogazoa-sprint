@@ -17,7 +17,7 @@ export default function GnbMenu({ cookie }: any) {
           className={` flex gap-[40px] mobile:gap-[20px] mobile:flex-col  mobile:text-center justify-center shrink-0`}
         >
           <Link
-            href={`${!productId ? '/compare' : `/product-compare/${productId}`}`}
+            href={`${!productId ? '/compare' : `/compare?id=${productId}`}`}
             className={`${MENU_DEFAULT_STYLE}`}
           >
             비교하기

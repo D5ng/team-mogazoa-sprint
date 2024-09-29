@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useFetchProductSearch } from '@/src/shared/hooks'
 import { useCompareStore } from '@app/provider/compareStore'
 import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
+import { useProductStore } from '@/src/shared/store/productStore'
 
 export default function useProductAutocomplete(
   id: string,
@@ -9,14 +10,16 @@ export default function useProductAutocomplete(
 ) {
   const { inputValues, setInputValues, selectedProducts, setSelectedProducts } =
     useCompareStore()
+  const { inputValue: valueTest } = useProductStore()
   const inputValue = inputValues[id] || ''
   const selectedProduct = selectedProducts[id] || ''
   const [suggestions, setSuggestions] = useState<{ [key: string]: string[] }>(
     {},
   )
+
   const { updateInputValue } = useSearchProduct()
 
-  const { data } = useFetchProductSearch(inputValue)
+  const { data } = useFetchProductSearch(valueTest)
 
   const handleClickList = (name: string) => {
     setInputValues(id, name)
@@ -38,6 +41,7 @@ export default function useProductAutocomplete(
   useEffect(() => {
     if (data && data.list) {
       const productNames = data.list.map((product) => product.name)
+
       setSuggestions((prev) => ({ ...prev, [id]: productNames }))
     }
   }, [data, id])

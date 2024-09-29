@@ -31,7 +31,10 @@ export default function CompareInput({
   const ref = useOutsideClick<HTMLUListElement>({ onCloseToggle })
 
   useEffect(() => {
-    if (productName) setSelectedProducts(id, productName!)
+    if (productName) {
+      setSelectedProducts(id, productName!)
+      handleInputChange(productName)
+    }
   }, [productName])
 
   return (

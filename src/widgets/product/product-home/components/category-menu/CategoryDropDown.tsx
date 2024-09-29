@@ -1,6 +1,6 @@
 import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 import { useProductStore } from '@/src/shared/store/productStore'
-import { CATEGORY_CHIPS, CategoryChip } from '@/src/shared/ui'
+import { CATEGORY_CHIPS } from '@/src/shared/ui'
 import {
   Dropdown,
   DropdownMenu,
@@ -12,7 +12,7 @@ export default function CategoryDropDown() {
   const { selectedCategoryName } = useProductStore()
   const { handleCategory } = useSearchProduct()
   return (
-    <Dropdown className="hidden mobile:block" variant="none">
+    <Dropdown className={`hidden mobile:block`} variant="none">
       <DropdownTrigger className="tablet:text-sm">
         {selectedCategoryName ? selectedCategoryName : '카테고리 없음'}
       </DropdownTrigger>
