@@ -26,7 +26,6 @@ export default async function handler(
       setAuthUser('auth', result, { req, res })
       res.redirect('/')
     } catch (error) {
-      console.log(error)
       res.send(error)
     }
   } catch (error) {
