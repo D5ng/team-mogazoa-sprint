@@ -1,6 +1,7 @@
 import { ProfileFollowerModal } from '@widgets/profile/components'
 import { useToggle } from '@shared/hooks'
 import type { UserId } from '@shared/types'
+import kIndexer from '@/src/shared/utils/kIndexet'
 
 interface FollowerButtonProps {
   userId: UserId
@@ -19,7 +20,7 @@ export default function FollowerButton({
     <>
       <button type="button" onClick={onOpenToggle}>
         <div className="flex flex-col items-center text-white text-xl">
-          <div>{followersCount}</div>
+          <div>{kIndexer(followersCount)}</div>
           <span className="text-black-20 text-base">팔로워</span>
         </div>
       </button>

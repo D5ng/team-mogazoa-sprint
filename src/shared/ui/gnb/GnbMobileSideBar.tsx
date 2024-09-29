@@ -14,13 +14,13 @@ const GnbMobileSideBar = forwardRef<HTMLDivElement, GnbMobileSideBarProps>(
     const router = useRouter()
     const isMainPage = router.pathname !== '/' ? 'top-[70px]' : ''
     return (
-      <div className="hidden mobile:flex flex-col shrink-0" ref={ref}>
-        <div>
-          <CategoryMenu menuVisible={menuVisible} />
-        </div>
+      <div
+        className={`hidden mobile:flex flex-col  shrink-0 fixed w-full  top-[70px] opacity-90 left-0`}
+      >
         <div
-          className={` w-2/5 px-[20px] py-[30px] hidden ${menuVisible ? 'mobile:block' : ''} z-dropdown bg-black-50 fixed bottom-[70px] left-0 border-t border-black-30  ${isMainPage}`}
+          className={`px-[20px] py-[30px] hidden ${menuVisible ? 'mobile:block' : ''} z-dropdown bg-black-60  ${isMainPage}`}
           onClick={closeCategoryMenu}
+          ref={ref}
         >
           <GnbMenu cookie={cookie} />
         </div>

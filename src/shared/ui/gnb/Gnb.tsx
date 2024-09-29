@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from 'public/images/logo.png'
 import GnbInput from './GnbProductSearchInput'
 import GnbMenu from './GnbMenu'
 import useSearchProduct from '@shared/hooks/useSearchProduct'
@@ -8,6 +7,7 @@ import { useOutsideClick, useToggle } from '../../hooks'
 import GnbHamburger from './GnbHamburgerButton'
 import GnbSearchButton from './GnbSearchButton'
 import GnbMobileSideBar from './GnbMobileSideBar'
+import { logo } from '@shared/icons'
 
 export default function Gnb({ cookie }: any) {
   const { resetProducts } = useSearchProduct()

@@ -6,7 +6,7 @@ function HotTitle() {
   return (
     <div>
       지금 핫한 상품
-      <span className="font-bold text-gradient ">TOP 6</span>
+      <span className="font-bold text-gradient ml-2.5">TOP 6</span>
     </div>
   )
 }
@@ -15,7 +15,6 @@ export default function ProductHot() {
   const { data, isLoading } = useFetchProductsHot()
 
   if (isLoading) return null
-
   return (
     <ProductCardSection renderTitle={<HotTitle />}>
       <ProductCardList data={data!} />

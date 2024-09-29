@@ -21,7 +21,7 @@ export default function ProfileFollowerModal({
     >
       <ModalTitle>{nickname}님을 팔로우하는 유저</ModalTitle>
       <Suspense fallback={<FollowListSkeleton />}>
-        <FollowerList userId={userId} />
+        <FollowerList userId={userId} onCloseToggle={onCloseToggle} />
       </Suspense>
     </Modal>
   )
