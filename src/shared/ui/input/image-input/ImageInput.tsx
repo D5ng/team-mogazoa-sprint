@@ -11,6 +11,7 @@ interface ImageInputProps {
   className?: string
   imageIndex?: number
   previewImage?: string
+  isUpdated?: boolean
 }
 
 export default function ImageInput({
@@ -19,6 +20,7 @@ export default function ImageInput({
   onCancel,
   imageIndex = 0,
   previewImage,
+  isUpdated,
 }: ImageInputProps) {
   const { ref, preview, isLoading, onChange, onClick, onReset } =
     useImageUpload({ onSuccess, onCancel, imageIndex, previewImage })
@@ -46,13 +48,20 @@ export default function ImageInput({
             className="object-cover w-full h-full rounded-lg"
             sizes="100%"
           />
-          <button
-            type="button"
-            onClick={onReset}
-            className="absolute top-2 right-2 p-1 bg-black-80 opacity-50 rounded-lg"
-          >
-            <Image src={close} alt="이미지 제거 버튼" width={20} height={20} />
-          </button>
+          {isUpdated && (
+            <button
+              type="button"
+              onClick={onReset}
+              className="absolute top-2 right-2 p-1 bg-black-80 opacity-50 rounded-lg"
+            >
+              <Image
+                src={close}
+                alt="이미지 제거 버튼"
+                width={20}
+                height={20}
+              />
+            </button>
+          )}
         </>
       )}
       <input type="file" className="hidden" ref={ref} onChange={onChange} />

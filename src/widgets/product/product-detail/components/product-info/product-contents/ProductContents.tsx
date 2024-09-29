@@ -32,7 +32,7 @@ export default function ProductContents({
           <LikeButton isFavorite={isFavorite} productId={id} />
         </div>
         <div className="flex gap-x-2.5 mobile:absolute mobile:top-0 mobile:right-0">
-          <KaKaoShareButton />
+          <KaKaoShareButton productId={id} />
           <ClipBoardButton />
         </div>
       </div>

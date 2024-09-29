@@ -19,7 +19,7 @@ export default function SignUpField() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitting },
+    formState: { errors, isValid },
     setError,
     trigger,
     watch,
@@ -40,7 +40,7 @@ export default function SignUpField() {
     trigger('passwordConfirmation')
   }, [password, trigger])
 
-  const { mutate } = useSignUp(setError)
+  const { mutate, isPending } = useSignUp(setError)
 
   const onSubmit: SubmitHandler<SignUp> = (data) => {
     mutate(data)
@@ -81,7 +81,7 @@ export default function SignUpField() {
         variant="primary"
         type="submit"
         disabled={!isValid}
-        isLoading={isSubmitting}
+        isLoading={isPending}
       >
         회원가입
       </Button>
