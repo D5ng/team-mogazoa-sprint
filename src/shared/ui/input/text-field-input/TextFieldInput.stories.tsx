@@ -6,7 +6,6 @@ import { nameValidation } from '@shared/utils'
 const meta: Meta<typeof TextFieldInput> = {
   title: 'UI/TextFieldInput',
   component: TextFieldInput,
-  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       control: 'text',
