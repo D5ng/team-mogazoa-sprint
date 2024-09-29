@@ -8,7 +8,6 @@ export default async function handler(
 ) {
   try {
     const { code, state } = req.query
-    //
     if (!code) {
       throw new Error(
         '카카오 회원가입에 실패했어요. redirect Uri를 확인해 주세요',
