@@ -5,6 +5,8 @@ import CompareTable from './CompareTable'
 export default function CompareSheet() {
   const { data: data1 } = useProductAutocomplete('상품1')
   const { data: data2 } = useProductAutocomplete('상품2')
+  console.log(data1)
+  console.log(data2)
   if (!data1 || !data2) return
   const product1 = {
     name: data1.list[0].name,
