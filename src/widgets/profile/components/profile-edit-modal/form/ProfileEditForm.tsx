@@ -59,7 +59,7 @@ export default function ProfileEditForm({
           />
         </div>
         <TextareaInput
-          {...register('description', descriptionValidation)}
+          {...register('description')}
           value={description}
           placeholder="프로필 소개를 입력해주세요"
           errors={errors}
