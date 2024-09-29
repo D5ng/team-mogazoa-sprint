@@ -6,7 +6,6 @@ import { descriptionValidation } from '@shared/utils'
 const meta: Meta<typeof TextareaInput> = {
   title: 'UI/TextareaInput',
   component: TextareaInput,
-  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       control: 'text',
