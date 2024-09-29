@@ -1,27 +1,41 @@
-import ImageInput from './ImageInput'
 import { Meta, StoryObj } from '@storybook/react'
+import ImageInput from './ImageInput'
 import { action } from '@storybook/addon-actions'
 import { defaultProduct } from '@shared/icons'
+import Loading from '@/src/shared/ui/loading/Loading'
 
 const meta: Meta<typeof ImageInput> = {
   title: 'UI/ImageInput',
   component: ImageInput,
-  tags: ['autodocs'],
   argTypes: {
     imageIndex: {
-      control: 'number',
       description: '이미지의 인덱스를 나타냅니다.',
     },
-    onCancel: { action: 'cancelled' },
-    onSuccess: { action: 'succeeded' },
     previewImage: {
-      control: 'text',
       description: '미리보기 이미지의 URL입니다.',
+      control: 'text',
     },
     isUpdated: {
-      control: 'boolean',
       description: '이미지가 업데이트되었는지 여부를 나타냅니다.',
+      control: 'boolean',
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
+    onCancel: {
+      description: '이미지 업로드 취소 시 호출됩니다.',
+      action: 'cancelled',
+    },
+    onSuccess: {
+      description: '이미지 업로드 성공 시 호출됩니다.',
+      action: 'succeeded',
+    },
+  },
+  args: {
+    imageIndex: 1,
+    isUpdated: false,
   },
 }
 
@@ -29,12 +43,8 @@ export default meta
 
 type Story = StoryObj<typeof ImageInput>
 
-const Template: Story = {
-  render: (args) => <ImageInput {...args} />,
-}
-
 export const ImageInputExample: Story = {
-  ...Template,
+  name: 'ImageInput Example',
   args: {
     imageIndex: 1,
     onCancel: action('onCancel'),
@@ -44,26 +54,39 @@ export const ImageInputExample: Story = {
       return Promise.resolve()
     },
   },
+  render: (args) => <ImageInput {...args} />,
 }
 
 export const WithPreviewImage: Story = {
-  ...Template,
+  name: 'With Preview Image',
   args: {
     ...ImageInputExample.args,
     previewImage: defaultProduct,
   },
+  render: (args) => <ImageInput {...args} />,
 }
 
 export const WithUpdatedImage: Story = {
-  ...Template,
+  name: 'With Updated Image',
   args: {
     ...ImageInputExample.args,
     previewImage: defaultProduct,
     isUpdated: true,
   },
+  render: (args) => <ImageInput {...args} />,
+}
+
+export const ImageInputLoading: Story = {
+  name: 'Loading State',
+  render: () => (
+    <div className="relative flex items-center justify-center input-base w-[160px] h-[160px] tablet:w-[135px] mobile:w-[140px]">
+      <Loading />
+    </div>
+  ),
 }
 
 export const MultipleImageInputs: Story = {
+  name: 'Multiple Image Inputs',
   render: () => (
     <div className="flex gap-x-2.5 overflow-x-scroll none-scrollbar">
       {[1, 2, 3].map((index) => (
