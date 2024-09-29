@@ -1,17 +1,17 @@
+import { DefaultSeo } from 'next-seo'
 import { useState } from 'react'
-import type { AppProps } from 'next/app'
+import { ToastContainer, Slide } from 'react-toastify'
 import {
   QueryClient,
   QueryClientProvider,
   HydrationBoundary,
 } from '@tanstack/react-query'
-import '@app/styles/globals.css'
-import Gnb from '@/src/shared/ui/gnb/Gnb'
 import { KakaoScript } from '@app/provider/KakaoScript'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import Gnb from '@shared/ui/gnb/Gnb'
+import '@app/styles/globals.css'
 import '@app/styles/toastify-style.css'
-import { DefaultSeo } from 'next-seo'
+import 'react-toastify/dist/ReactToastify.css'
+import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -58,13 +58,14 @@ export default function App({ Component, pageProps }: AppProps) {
           <Gnb cookie={pageProps.cookie} />
           <Component {...pageProps} />
           <KakaoScript />
-          <ToastContainer
+            <ToastContainer
             autoClose={1000}
             position="bottom-center"
             theme="dark"
             pauseOnFocusLoss={false}
             hideProgressBar={true}
-          />
+            transition={Slide}/>
+
         </HydrationBoundary>
       </QueryClientProvider>
     </>

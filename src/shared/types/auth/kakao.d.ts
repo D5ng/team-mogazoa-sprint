@@ -6,6 +6,7 @@ interface KakaoAuthStatic {
 interface KakaoStatic {
   init: (apiKey: string) => void
   Auth: KakaoAuthStatic
+  Share: any
   // 필요한 다른 Kakao SDK 메서드들을 여기에 추가
 }
 

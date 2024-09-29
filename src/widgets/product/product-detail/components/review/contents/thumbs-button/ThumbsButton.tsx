@@ -4,6 +4,7 @@ import { useReviewCancelLike, useReviewLike } from '@shared/hooks'
 import { useReviewOptionStore } from '@shared/store'
 import { toastCheckAuth } from '@shared/utils'
 import type { ProductReviewItem } from '@shared/types'
+import kIndexer from '@/src/shared/utils/kIndexet'
 
 export default function ThumbsButton({
   id: reviewId,
@@ -44,7 +45,7 @@ export default function ThumbsButton({
         className="tablet:w-3 tablet:h-3"
       />
       <span className={`${isLikedClassName} text-base tablet:text-xs`}>
-        {likeCount}
+        {kIndexer(likeCount)}
       </span>
     </button>
   )

@@ -19,7 +19,7 @@ export default function ProductRating() {
 
   return (
     <>
-      <ProductCardSection renderTitle="별점이 높은 상품">
+      <ProductCardSection showCategory={false} renderTitle="별점이 높은 상품">
         <ProductCardList data={data!} ref={ref} />
         {isFetching && <ProductCardSectionSkeleton count={6} />}
       </ProductCardSection>

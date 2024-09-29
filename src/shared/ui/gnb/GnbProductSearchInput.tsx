@@ -1,10 +1,12 @@
-import { forwardRef } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { twMerge } from 'tailwind-merge'
 import { search } from '@shared/icons'
 import { useOutsideClick, useToggle } from '../../hooks'
 import useProductAutocomplete from '@/src/widgets/compare/hooks/useProductAutocomplete'
+import handleListByKeyboard from './utils/handleListByKeyboard'
+import Link from 'next/link'
 
 interface GnbProductSearchInputProps {
   searchVisible: boolean
@@ -26,6 +28,12 @@ const GnbProductSearchInput = forwardRef<
   if (router.pathname === '/sign-in' || router.pathname === '/sign-up')
     return null
 
+  const { handleKeyDown, highlightedIndex } = handleListByKeyboard({
+    suggestions,
+    isToggle,
+    handleClickList,
+  })
+
   return (
     <div
       ref={ref}
@@ -37,20 +45,25 @@ const GnbProductSearchInput = forwardRef<
         placeholder="상품 이름을 검색해 보세요"
         onChange={(e) => handleInputChange(e.target.value)}
         value={inputValue}
+        onKeyDown={handleKeyDown}
       />
       {isToggle && inputValue.length >= 2 && suggestions.length > 0 && (
         <ul
           ref={clickRef}
           className="absolute z-modal bg-black-70 border border-black-40 mt-1 w-full rounded-lg"
         >
-          {suggestions.map((name: string, index: number) => (
-            <li
-              key={index}
-              className="p-2  cursor-pointer  text-black-30 hover:bg-gray-70 hover:text-white"
-              onClick={() => handleClickList(name)}
-            >
-              {name}
-            </li>
+          {suggestions.map((name, index) => (
+            <Link href={`/?product=${name}`}>
+              <li
+                key={index}
+                className={`p-2 cursor-pointer text-black-30 hover:bg-gray-70 hover:text-white ${
+                  highlightedIndex === index ? 'bg-gray-70 text-white' : ''
+                }`}
+                onClick={() => handleClickList(name)}
+              >
+                {name}
+              </li>
+            </Link>
           ))}
         </ul>
       )}

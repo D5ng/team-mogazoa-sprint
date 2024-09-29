@@ -4,7 +4,6 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query'
 import { fetchProductDetail, fetchProducts } from '@shared/api'
-import { useProductStore } from '@shared/store/productStore'
 import { ProductDetailResponse } from '@shared/types'
 import { CategoryId } from '@shared/ui'
 import { productKeys } from '@shared/hooks/query-keys'
@@ -48,7 +47,7 @@ export function useFetchProductCategory(categoryId: CategoryId) {
 
 export default function useFetchProductsByQuery(
   selectedCategoryKey: number | undefined,
-  inputValue?: string,
+  inputValue?: any,
 ) {
   return useSuspenseQuery({
     queryKey: ['fetchProducts', selectedCategoryKey, inputValue],
