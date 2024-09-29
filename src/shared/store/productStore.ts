@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 
 interface ProductState {
-  inputValue: string | string[]
+  inputValue: string
   selectedCategoryKey: number | undefined
   selectedCategoryName: string
-  handleInputValue: (value: string | string[] | undefined) => void
+  handleInputValue: (value: any) => void
   handleSelectedCategoryKey: (key: number | undefined) => void
   handleSelectedCategoryName: (name: string) => void
 }
