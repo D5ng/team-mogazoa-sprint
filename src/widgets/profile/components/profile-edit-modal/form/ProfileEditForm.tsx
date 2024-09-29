@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form'
 import { Button, Form, TextareaInput, TextFieldInput } from '@shared/ui'
-import { descriptionValidation } from '@shared/utils'
 import { nicknameValidation } from '@widgets/auth/lib/form-validation'
 import { useProfileEditForm } from '@widgets/profile/hooks'
 import { ProfileImageUpload } from '@widgets/profile/components'
 import { useFetchMyProfile } from '@shared/hooks/query'
+import { defaultProfile } from '@/src/shared/icons'
 import type { UserPayload } from '@shared/types'
 
 interface ProfileEditFormProps {
