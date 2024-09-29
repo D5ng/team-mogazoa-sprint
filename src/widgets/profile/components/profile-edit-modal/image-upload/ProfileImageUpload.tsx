@@ -14,6 +14,7 @@ export default function ProfileImageUpload({
 }: ProfileImageUploadProps) {
   const {
     field: { onChange, value },
+    formState: { defaultValues },
   } = useController({ name: 'image', control, rules: imageValidation })
   const onUploadSuccess = async (file: File) => {
     const { url } = await createImageUpload(file)
@@ -28,6 +29,7 @@ export default function ProfileImageUpload({
       onSuccess={onUploadSuccess}
       className={`tablet:w-[135px] tablet:h-[135px] mobile:w-[140px] mobile:h-[140px] ${error ? 'border-red' : 'border-black-70'}`}
       previewImage={value}
+      isUpdated={defaultValues?.image !== value}
     />
   )
 }
