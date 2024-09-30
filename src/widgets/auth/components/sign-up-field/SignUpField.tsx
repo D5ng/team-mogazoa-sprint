@@ -80,7 +80,7 @@ export default function SignUpField() {
       <Button
         variant="primary"
         type="submit"
-        disabled={!isValid}
+        disabled={!isValid && isPending}
         isLoading={isPending}
       >
         회원가입
