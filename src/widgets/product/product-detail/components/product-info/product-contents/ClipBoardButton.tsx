@@ -6,9 +6,9 @@ export default function ClipBoardButton() {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(window.location.href)
-      toast.success('클립보드가 복사되었어요')
+      toast.success('클립보드가 복사되었습니다')
     } catch (err) {
-      const errorMessage = '클립보드를 복사하는데 에러가 발생했어요'
+      const errorMessage = '클립보드를 복사하는데 에러가 발생했습니다'
       console.error(errorMessage)
       toast.error(errorMessage)
     }
