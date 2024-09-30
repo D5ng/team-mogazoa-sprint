@@ -30,7 +30,7 @@ export default function useUpdateReviewForm({
           : { source: image.url },
       ) as []
 
-      mutateAsync({
+      await mutateAsync({
         reviewId: data.reviewId,
         content: data.content,
         rating: data.rating,
