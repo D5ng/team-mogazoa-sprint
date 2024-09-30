@@ -10,7 +10,7 @@ function CategoryDropdownWrapper() {
     formState: { errors },
     control,
   } = useForm<ProductPayload>({
-    defaultValues,
+    defaultValues: defaultValues(),
     mode: 'onTouched',
   })
 
@@ -47,7 +47,7 @@ export const CategoryDropdownExample: Story = {
       formState: { errors },
       control,
     } = useForm<ProductPayload>({
-      defaultValues,
+      defaultValues: defaultValues(),
       mode: 'onTouched',
     })
 
@@ -73,7 +73,7 @@ export const CategoryDropdownError: Story = {
       setError,
       control,
     } = useForm<ProductPayload>({
-      defaultValues,
+      defaultValues: defaultValues(),
       mode: 'onTouched',
     })
 

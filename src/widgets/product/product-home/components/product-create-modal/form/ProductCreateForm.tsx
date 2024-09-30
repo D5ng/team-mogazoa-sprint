@@ -1,5 +1,11 @@
 import { useForm } from 'react-hook-form'
-import { Button, Form, TextareaInput, TextFieldInput } from '@shared/ui'
+import {
+  Button,
+  CategoryId,
+  Form,
+  TextareaInput,
+  TextFieldInput,
+} from '@shared/ui'
 import { descriptionValidation, nameValidation } from '@shared/utils'
 import { ProductImageUpload } from '@widgets/product/common'
 import { CategoryDropdown } from '@widgets/product/common'
@@ -9,9 +15,13 @@ import { defaultValues } from './defaultValues'
 
 interface ProductAddFormProps {
   onCloseToggle: () => void
+  categoryId?: CategoryId
 }
 
-export default function ProductAddForm({ onCloseToggle }: ProductAddFormProps) {
+export default function ProductAddForm({
+  onCloseToggle,
+  categoryId,
+}: ProductAddFormProps) {
   const {
     formState: { errors, isValid },
     register,
@@ -21,7 +31,7 @@ export default function ProductAddForm({ onCloseToggle }: ProductAddFormProps) {
     control,
     setError,
   } = useForm<ProductPayload>({
-    defaultValues,
+    defaultValues: defaultValues(categoryId),
     mode: 'onTouched',
   })
 

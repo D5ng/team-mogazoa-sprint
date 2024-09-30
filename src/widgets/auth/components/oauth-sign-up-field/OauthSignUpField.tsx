@@ -44,7 +44,7 @@ export default function OauthSignUpField() {
       <Button
         variant="primary"
         type="submit"
-        disabled={!(isValid && isDirty)}
+        disabled={!isValid || isSubmitting}
         isLoading={isSubmitting}
       >
         가입하기
