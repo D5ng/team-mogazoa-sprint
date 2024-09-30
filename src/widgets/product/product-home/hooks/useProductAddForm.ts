@@ -19,12 +19,13 @@ export default function useProductAddForm({
       return onFailed('categoryId', '카테고리를 입력해주세요.')
 
     try {
-      mutateAsync({
+      await mutateAsync({
         categoryId: data.categoryId,
         description: data.description,
         name: data.name,
         image: data.image,
       })
+
       onSuccess()
       toast.success('상품이 생성되었습니다')
     } catch (error) {
