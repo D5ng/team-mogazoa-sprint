@@ -1,4 +1,6 @@
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { Meta, StoryObj } from '@storybook/react'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { FormField, FieldLabel, FieldInput } from './FormField'
 import { Button } from '@shared/ui'
 import {
@@ -7,174 +9,80 @@ import {
   passwordValidation,
   passwordConfirmationValidation,
 } from '@widgets/auth/lib/form-validation'
-import type { Meta, StoryObj } from '@storybook/react'
+import { registerHandler } from '@shared/mocks/auth'
+import { SignUp } from '@shared/types'
 
-type FormData = {
-  email: string
-  nickname: string
-  password: string
-  passwordConfirmation: string
+const meta: Meta<typeof FormField> = {
+  title: 'UI/FormField',
+  component: FormField,
+  argTypes: {
+    errors: {
+      description: 'React Hook Form의 errors 객체입니다.',
+    },
+  },
+  parameters: {
+    msw: {
+      handlers: [registerHandler],
+    },
+  },
 }
+
+export default meta
 
 type Story = StoryObj<typeof FormField>
 
-const meta: Meta<typeof FormField> = {
-  title: 'shared/ui/FormField',
-  component: FormField,
-  tags: ['autodocs'],
-}
-
-const FormFieldExample = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
-    mode: 'onTouched',
-  })
-
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data)
-  }
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-[400px]">
-      <FormField {...register('email', emailValidation)} errors={errors}>
-        <FieldLabel>이메일</FieldLabel>
-        <FieldInput type="text" placeholder="이메일을 입력해주세요" />
-      </FormField>
-      <Button type="submit" variant="primary" className="mt-4">
-        제출
-      </Button>
-    </form>
-  )
-}
-
-export const Default: Story = {
-  render: () => <FormFieldExample />,
-  parameters: {
-    docs: {
-      description: '기본 이메일 입력 폼 필드입니다.',
-    },
-  },
-}
-
-export const WithNickname: Story = {
-  render: () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<FormData>()
-    const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
-
-    return (
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
-      >
-        <FormField
-          {...register('nickname', nicknameValidation)}
-          errors={errors}
-        >
-          <FieldLabel>닉네임</FieldLabel>
-          <FieldInput type="text" placeholder="닉네임을 입력해주세요" />
-        </FormField>
-        <Button type="submit" variant="primary">
-          제출
-        </Button>
-      </form>
-    )
-  },
-  parameters: {
-    docs: {
-      description: '닉네임 입력 폼 필드입니다.',
-    },
-  },
-}
-
-export const WithPassword: Story = {
-  render: () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<FormData>()
-    const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
-
-    return (
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
-      >
-        <FormField
-          {...register('password', passwordValidation)}
-          errors={errors}
-        >
-          <FieldLabel>비밀번호</FieldLabel>
-          <FieldInput type="password" placeholder="비밀번호를 입력해주세요" />
-        </FormField>
-        <Button type="submit" variant="primary">
-          제출
-        </Button>
-      </form>
-    )
-  },
-}
-
-export const WithPasswordConfirmation: Story = {
-  render: () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm<FormData>()
-
-    const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
-
-    return (
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
-      >
-        <FormField
-          {...register('password', passwordValidation)}
-          errors={errors}
-        >
-          <FieldLabel>비밀번호</FieldLabel>
-          <FieldInput type="password" placeholder="비밀번호를 입력해주세요" />
-        </FormField>
-        <FormField
-          {...register('passwordConfirmation', passwordConfirmationValidation)}
-          errors={errors}
-        >
-          <FieldLabel>비밀번호 확인</FieldLabel>
-          <FieldInput
-            type="password"
-            placeholder="비밀번호를 한번 더 입력해주세요"
-          />
-        </FormField>
-        <Button type="submit" variant="primary">
-          제출
-        </Button>
-      </form>
-    )
-  },
-}
-
-export const AllFields: Story = {
+export const SignUpForm: Story = {
+  name: 'Sign Up Form',
   render: () => {
     const {
       register,
       handleSubmit,
       formState: { errors, isValid, isSubmitting },
-    } = useForm<FormData>()
-    const onSubmit: SubmitHandler<FormData> = (data) => console.log(data)
+      trigger,
+      watch,
+    } = useForm<SignUp>({
+      mode: 'onTouched',
+      reValidateMode: 'onChange',
+      defaultValues: {
+        email: '',
+        nickname: '',
+        password: '',
+        passwordConfirmation: '',
+      },
+    })
+
+    const password = watch('password')
+
+    useEffect(() => {
+      if (password !== '') {
+        trigger('passwordConfirmation')
+      }
+    }, [password, trigger])
+
+    const onSubmit = async (data: any) => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/auth/signUp`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          },
+        )
+        const result = await response.json()
+        alert(result.message)
+      } catch (error) {
+        console.error(error)
+        alert('회원가입 중 오류가 발생했습니다.')
+      }
+    }
 
     return (
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-[640px] flex flex-col gap-y-10 tablet:w-[440px] mobile:w-[335px]"
+        className="w-[640px] flex flex-col gap-y-10 "
       >
         <FormField {...register('email', emailValidation)} errors={errors}>
           <FieldLabel>이메일</FieldLabel>
@@ -209,17 +117,11 @@ export const AllFields: Story = {
           type="submit"
           disabled={!isValid}
           isLoading={isSubmitting}
+          className="mt-4"
         >
           회원가입
         </Button>
       </form>
     )
   },
-  parameters: {
-    docs: {
-      description: '모든 폼 필드입니다. 회원가입에서 사용될 수 있습니다.',
-    },
-  },
 }
-
-export default meta

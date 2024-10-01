@@ -37,7 +37,9 @@ export default function SignUpField() {
   const password = watch('password')
 
   useEffect(() => {
-    trigger('passwordConfirmation')
+    if (password !== '') {
+      trigger('passwordConfirmation')
+    }
   }, [password, trigger])
 
   const { mutate, isPending } = useSignUp(setError)

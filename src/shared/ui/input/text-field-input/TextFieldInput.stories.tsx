@@ -1,55 +1,54 @@
-import {
-  useForm,
-  UseFormRegister,
-  FieldErrors,
-  UseFormSetValue,
-} from 'react-hook-form'
 import TextFieldInput from './TextFieldInput'
+import { Meta, StoryObj } from '@storybook/react'
+import { useForm } from 'react-hook-form'
 import { nameValidation } from '@shared/utils'
-import type { InputHTMLAttributes } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+
+const meta: Meta<typeof TextFieldInput> = {
+  title: 'UI/TextFieldInput',
+  component: TextFieldInput,
+  argTypes: {
+    placeholder: {
+      control: 'text',
+      description: '입력 필드의 플레이스홀더 텍스트입니다.',
+    },
+  },
+}
+
+export default meta
 
 type Story = StoryObj<typeof TextFieldInput>
 
-export interface TextFieldInputProps
-  extends InputHTMLAttributes<HTMLInputElement> {
-  placeholder?: string
-  register: UseFormRegister<any>
-  errors: FieldErrors
-  setValue: UseFormSetValue<any>
+const Template: Story = {
+  render: (args) => {
+    const {
+      register,
+      formState: { errors },
+      setValue,
+    } = useForm()
+    return (
+      <TextFieldInput
+        {...args}
+        setValue={setValue}
+        {...register('name', nameValidation)}
+        errors={errors}
+      />
+    )
+  },
 }
 
-const meta: Meta<typeof TextFieldInput> = {
-  title: 'shared/ui/input/TextFieldInput',
-  component: TextFieldInput,
-  tags: ['autodocs'],
-}
-
-const TextFieldInputWrapper = (
-  props: Partial<React.ComponentProps<typeof TextFieldInput>>,
-) => {
-  const {
-    register,
-    formState: { errors },
-    setValue,
-  } = useForm()
-  return (
-    <TextFieldInput
-      placeholder="example"
-      setValue={setValue}
-      {...register('name', nameValidation)}
-      errors={errors}
-      {...props}
-    />
-  )
-}
-
-export const Default: Story = {
-  render: () => <TextFieldInputWrapper placeholder="Enter text" />,
+export const TextFieldInputExample: Story = {
+  ...Template,
+  args: {
+    placeholder: '상품명',
+  },
 }
 
 export const WithError: Story = {
-  render: () => {
+  ...Template,
+  args: {
+    placeholder: '상품명',
+  },
+  render: (args) => {
     const {
       register,
       formState: { errors },
@@ -60,7 +59,7 @@ export const WithError: Story = {
     })
     return (
       <TextFieldInput
-        placeholder="example"
+        {...args}
         setValue={setValue}
         {...register('name', nameValidation)}
         errors={errors}
@@ -70,9 +69,9 @@ export const WithError: Story = {
 }
 
 export const WithLongPlaceholder: Story = {
-  render: () => (
-    <TextFieldInputWrapper placeholder="Lorem ipsum dolor sit consectetur. Lorem ipsum dolor sit consectetur. Lorem ipsum dolor sit consectetur." />
-  ),
+  ...Template,
+  args: {
+    placeholder:
+      'Lorem ipsum dolor sit consectetur. Lorem ipsum dolor sit consectetur. Lorem ipsum dolor sit consectetur.',
+  },
 }
-
-export default meta
