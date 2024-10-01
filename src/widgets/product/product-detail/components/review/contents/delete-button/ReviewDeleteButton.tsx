@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import { useDeleteReview } from '@shared/hooks'
 
 interface ReviewDeleteButtonProps {
@@ -10,7 +11,10 @@ export default function ReviewDeleteButton({
   productId,
 }: ReviewDeleteButtonProps) {
   const { mutateAsync: deleteMutate } = useDeleteReview({ productId })
-  const handleDeleteReview = async () => await deleteMutate({ reviewId })
+  const handleDeleteReview = async () => {
+    await deleteMutate({ reviewId })
+    toast.success('리뷰가 삭제되었습니다')
+  }
 
   return (
     <button className="underline" onClick={handleDeleteReview}>

@@ -51,7 +51,7 @@ export default function SignInField() {
       <Button
         variant="primary"
         type="submit"
-        disabled={!isValid}
+        disabled={!isValid && isPending}
         isLoading={isPending}
       >
         로그인
