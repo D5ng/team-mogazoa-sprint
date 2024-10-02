@@ -77,30 +77,31 @@
 
 #### FSD 아키텍쳐 (Feature Sliced Design)
 
-프로젝트의 규모가 크지는 않지만 각 역할을 명확하게 하기위해 FSD 아키텍쳐를 선택했습니다. 저희 프로젝트에서는 `App`, `Pages`, `Widgets`, `Shared` 총 4개의 레이어를 사용해 관리하였고, 각 슬라이스에는 해당 기능과 관련된 코드들이 들어가 있습니다. 세그먼트에는 `components`, `hooks`, `constants`, `utils`등이 포함되어있고 API같은 경우엔 하나의 기능에서만 사용하지 않아 Shared에 API 세그먼트를 분리해 작성하였고, Tanstack Query에 query, mutate는 Hooks 세그먼트에 분리하였습니다. 각 폴더마다 `index.ts`를 만들어 `Barrel Pattern`을 사용해 import문이 길어지는것을 최소화 하도록 하였습니다.
-(Compound Pattern을 사용할 때에는 사용하지 않는 코드들이 한번에 import되는 문제가 있어 이름을 각각 정의해 내보내도록 하였습니다.)
+- 프로젝트의 규모가 크지는 않지만 각 역할을 명확하게 하기위해 FSD 아키텍쳐를 선택
+- `App`, `Pages`, `Widgets`, `Shared` 총 4개의 레이어를 사용해 관리
+- api같은 경우 각 기능에서만 사용하는게 아니기 때문에 `Shared`에 분리
+- Barrel Pattern과 함께 사용해 깔끔한 import문으로 작성.
 
 #### 컴포넌트 개발
 
-- 재사용성을 높이기 위해 관심사를 분리하고 가독성을 향상시키기 위해 Compound Pattern을 적극적으로 활용했습니다.
-- UI 테스트 도구인 Storybook을 활용하여 수동으로 UI 테스트를 진행했습니다. 예를 들어, 드롭다운의 경우 텍스트가 길어질 때나 항목이 많아질 때의 동작을 확인했습니다.
-- 데이터가 필요한 컴포넌트는 Mock Service Worker(MSW)를 사용해 실제 환경과 유사한 테스트를 진행하여, 안정적인 개발을 할 수 있었습니다.
+- CompoundPattern을 적극 사용해 관심사를 분리하고 가독성을 향상시켜 DX 향상
+- UI 테스트 도구인 Storybook을 활용하여 사전 오류 방지
+- 데이터가 필요한 컴포넌트는 Mock Service Worker(MSW)를 사용해 실제 환경과 유사한 테스트를 진행하여, 안정적인 개발을 할 수 있었음
 
 #### UX
-
 디자인 시안에 없지만 UX적으로 문제가 될 수 있는 부분을 미리 대비했습니다.
-- 로딩 상태는 Suspense를 사용하여 스켈레톤 UI를 보여주도록 했습니다.
-- 오류 상태는 ErrorBoundary를 활용해 사용자에게 오류를 인지시키고, 다시 시도할 수 있도록 버튼을 제공하여 사용자 경험을 개선했습니다.
+- 로딩 상태는 Suspense를 사용하여 스켈레톤 UI를 보여주어 사용자한테 로딩 중이라는것을 인지
+- 오류 상태는 ErrorBoundary를 활용해 사용자에게 오류를 인지시키고, 다시 시도할 수 있도록 버튼을 제공하여 사용자 경험을 개선
 - 인증이 안된 유저가 특정 기능에 접근하려고 할 때 토스트 메세지로 로그인할 수 있도록 유도
 
 #### Tanstack Query
 
 - 쿼리 키를 중앙 집중식으로 관리하여 일관성 유지
 - 찜, 좋아요, 팔로우 등 낙관적 업데이트를 사용해 UX 개선
+- useSuspenseQuery, useSuspenseInfiniteQuery, QueryErrorResetBoundary를 사용해 Suspense 및 ErrorBoundary 사용
 
 #### SSR
-
-이 프로젝트는 로그인 없이도 검색이 가능하고, 검색을 통한 유입을 고려해야 했기 때문에 SSR을 사용하여 완성된 페이지를 제공하도록 하였고, `Next-SEO`를 사용해 Meta태그들을 등록하고 사이트맵 제공.
+이 프로젝트는 로그인 없이도 검색이 가능하고, 검색을 통한 유입을 고려해야 했기 때문에 SSR을 사용하여 완성된 페이지를 제공하도록 하였고, `Next-SEO`를 사용해 Meta태그들을 등록하고 사이트맵 제공
 
 #### 기타
 
