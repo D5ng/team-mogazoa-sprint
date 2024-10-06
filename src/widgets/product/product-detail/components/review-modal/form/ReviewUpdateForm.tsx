@@ -85,7 +85,7 @@ export default function ReviewUpdateForm({
         isLoading={isPending}
         disabled={isPending || !isValid}
       >
-        추가하기
+        수정하기
       </Button>
     </Form>
   )

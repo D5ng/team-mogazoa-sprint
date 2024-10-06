@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import { useReviewOptionStore } from '@shared/store'
 import { useUpdateReview } from '@shared/hooks'
 import type { UpdateReview } from '@shared/types'
@@ -38,6 +39,7 @@ export default function useUpdateReviewForm({
       })
 
       onSuccess()
+      toast.success('리뷰를 수정했습니다')
     } catch (error) {
       // if (isAxiosError(error) && error.response) {
       //   const field = Object.keys(

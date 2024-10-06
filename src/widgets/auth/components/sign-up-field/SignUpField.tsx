@@ -37,7 +37,9 @@ export default function SignUpField() {
   const password = watch('password')
 
   useEffect(() => {
-    trigger('passwordConfirmation')
+    if (password !== '') {
+      trigger('passwordConfirmation')
+    }
   }, [password, trigger])
 
   const { mutate, isPending } = useSignUp(setError)
@@ -80,7 +82,7 @@ export default function SignUpField() {
       <Button
         variant="primary"
         type="submit"
-        disabled={!isValid}
+        disabled={!isValid && isPending}
         isLoading={isPending}
       >
         회원가입

@@ -1,49 +1,64 @@
-import { useForm } from 'react-hook-form'
 import TextareaInput from './TextareaInput'
+import { Meta, StoryObj } from '@storybook/react'
+import { useForm } from 'react-hook-form'
 import { descriptionValidation } from '@shared/utils'
-import type { Meta, StoryObj } from '@storybook/react'
-import type { TextareaInputProps } from './TextareaInput.type'
+
+const meta: Meta<typeof TextareaInput> = {
+  title: 'UI/TextareaInput',
+  component: TextareaInput,
+  argTypes: {
+    placeholder: {
+      control: 'text',
+      description: '입력 필드의 플레이스홀더 텍스트입니다.',
+    },
+    maxLength: {
+      control: 'number',
+      description: '입력 가능한 최대 문자 수입니다.',
+    },
+  },
+}
+
+export default meta
 
 type Story = StoryObj<typeof TextareaInput>
 
-const meta: Meta<typeof TextareaInput> = {
-  title: 'shared/ui/input/TextareaInput',
-  component: TextareaInput,
-  tags: ['autodocs'],
+const Template: Story = {
+  render: (args) => {
+    const {
+      register,
+      formState: { errors },
+      watch,
+    } = useForm<{ description: string }>({
+      defaultValues: { description: args.value || '' },
+    })
+
+    const description = watch('description')
+
+    return (
+      <TextareaInput
+        {...args}
+        {...register('description', descriptionValidation)}
+        value={description}
+        errors={errors}
+      />
+    )
+  },
 }
 
-const TextareaInputWrapper = (props: Partial<TextareaInputProps>) => {
-  const {
-    register,
-    formState: { errors },
-    watch,
-  } = useForm<{ description: string }>({
-    defaultValues: { description: props.value || '' },
-  })
-
-  const description = watch('description')
-
-  return (
-    <TextareaInput
-      {...register('description', descriptionValidation)}
-      value={description}
-      placeholder="example"
-      errors={errors}
-      {...props}
-    />
-  )
-}
-
-export const Default: Story = {
-  render: () => <TextareaInputWrapper />,
-}
-
-export const WithValue: Story = {
-  render: () => <TextareaInputWrapper value="TextInputArea" />,
+export const TextareaInputExample: Story = {
+  ...Template,
+  args: {
+    placeholder: '상품 설명을 입력해주세요',
+  },
 }
 
 export const WithError: Story = {
-  render: () => {
+  ...Template,
+  args: {
+    placeholder: '상품 설명을 입력해주세요',
+    maxLength: 500,
+  },
+  render: (args) => {
     const {
       register,
       formState: { errors },
@@ -57,10 +72,9 @@ export const WithError: Story = {
 
     return (
       <TextareaInput
+        {...args}
         {...register('description', descriptionValidation)}
         value={description}
-        placeholder="example"
-        maxLength={500}
         errors={errors}
       />
     )
@@ -68,7 +82,9 @@ export const WithError: Story = {
 }
 
 export const WithAdjustMaxLength: Story = {
-  render: () => <TextareaInputWrapper maxLength={100} />,
+  ...Template,
+  args: {
+    placeholder: '상품 설명을 입력해주세요',
+    maxLength: 100,
+  },
 }
-
-export default meta

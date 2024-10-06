@@ -17,7 +17,7 @@ export default function LogListItem({
   const isCategoryItem = name === 'mostFavoriteCategory'
 
   return (
-    <li className="w-[300px] h-[190px] flex flex-col justify-center items-center gap-y-5 bg-black-60 border border-black-70 rounded-xl tablet:w-full tablet:h-auto tablet:px-11 tablet:py-[30px] tablet:gap-x-[15px] tablet:gap-y-[15px] mobile:p-5">
+    <li className="w-[300px] h-[190px] flex flex-col justify-center items-center gap-y-5 bg-black-60 border border-black-70 rounded-xl tablet:w-full tablet:h-auto tablet:px-11 tablet:py-[30px] tablet:gap-x-[15px] tablet:gap-y-[15px] mobile:p-4">
       <div className="flex flex-col gap-y-5 items-center tablet:gap-y-[15px] mobile:gap-x-[10px]">
         <h3 className="text-lg font-medium text-white whitespace-nowrap tablet:text-base mobile:text-sm">
           {title}
