@@ -14,7 +14,7 @@ export default function RankingItem({
   reviewCount,
 }: RankingItems) {
   return (
-    <li className="flex ">
+    <li className="flex shrink-0">
       <div className="flex cursor-pointer  hover:scale-105 tablet:scale-102 transition-transform duration-200 ease-in-out">
         <Link className="flex " href={`/profile/${id}`}>
           <ProfileImage

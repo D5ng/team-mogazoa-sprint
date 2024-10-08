@@ -28,7 +28,7 @@ export default function ProductPage() {
         <div className="mobile:hidden">
           <CategoryMenu />
         </div>
-        <div className="w-[46vw] tablet:w-[68vw] ml-[24.5vw] tablet:ml-[220px] mobile:w-[89vw] mobile:ml-[30px] flex flex-col gap-[80px] tablet:gap-[60px] overflow-hidden">
+        <div className="w-[46vw] tablet:w-[68vw] ml-[24.5vw] tablet:ml-[220px] mobile:w-[89vw] mobile:ml-[3.9vw] flex flex-col gap-[80px] tablet:gap-[60px] overflow-hidden">
           <Ranking />
           {inputValue ? (
             <Suspense fallback={<ProductCardSectionSkeleton count={6} />}>
