@@ -7,7 +7,6 @@ export default function handleListByKeyboard({
   handleClickList,
 }: any) {
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
-  const router = useRouter()
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (suggestions.length > 0 && isToggle) {
