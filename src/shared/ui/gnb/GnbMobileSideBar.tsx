@@ -15,7 +15,7 @@ const GnbMobileSideBar = forwardRef<HTMLDivElement, GnbMobileSideBarProps>(
     const isMainPage = router.pathname !== '/' ? 'top-[70px]' : ''
     return (
       <div
-        className={`hidden mobile:flex flex-col   fixed w-full  top-[70px] opacity-90 left-0`}
+        className={`hidden mobile:flex flex-col   fixed w-full  top-[70px]  left-0`}
       >
         <div
           className={`px-[20px] py-[30px] hidden ${menuVisible ? 'mobile:block' : ''} z-dropdown bg-black-60  ${isMainPage}`}
