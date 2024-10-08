@@ -17,9 +17,12 @@ export default function ProductCardItem({
   const { imageSrc, onError } = useImageFallback(image!, defaultProduct)
 
   return (
-    <li className=" bg-black-60 p-[10px] tablet:p-[10px] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
-      <article className="flex flex-col gap-[25px] tablet:gap-[20px] mobile:gap-[20px]">
-        <Link href={`/product/${id}`}>
+    <li className=" bg-black-60 p-[10px] mobile:p-[5px] rounded-lg border border-black-70 cursor-pointer hover:bg-black-50">
+      <article>
+        <Link
+          className="flex flex-col gap-[25px] tablet:gap-[15px] mobile:gap-[12px]"
+          href={`/product/${id}`}
+        >
           <div className="relative w-full h-[10.4vw] tablet:h-[21.5vw] mobile:h-[26.1vw] flex overflow-hidden rounded-lg">
             <Image
               fill
@@ -31,11 +34,11 @@ export default function ProductCardItem({
               className="object-cover"
             />
           </div>
-          <div className="flex flex-col gap-[0.52vw] tablet:gap-[1.3vw] w-full p-[0.625vw] tablet:p-[10px]  mobile: ">
+          <div className="flex flex-col gap-[0.52vw] tablet:gap-[1.3vw] w-full p-[0.625vw] tablet:p-[10px]  mobile:p-[0px] ">
             <span className="text-[0.9375vw] tablet:text-[16px] mobile:text-[14px] text-white whitespace-nowrap overflow-hidden text-ellipsis">
               {name}
             </span>
-            <div className="flex mobile:flex-col items-center mobile:items-start justify-between">
+            <div className="flex mobile:flex-col mobile:gap-[12px] items-center mobile:items-start justify-between">
               <div className="flex gap-[0.781vw] text-[0.833vw] tablet:text-[16px] mobile:text-[14px] text-black-30">
                 <p>리뷰 {kIndexer(reviewCount)}</p>
                 <p>찜 {kIndexer(favoriteCount)}</p>

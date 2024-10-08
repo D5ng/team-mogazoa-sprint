@@ -38,7 +38,7 @@ export default function Gnb({ cookie }: any) {
   })
 
   return (
-    <div className="fixed mobile:h-[70px] top-0 w-full  bg-black-80 px-[120px] py-[25px]  tablet:px-[40px] tablet:py-[20px] z-dropdown">
+    <div className="fixed mobile:h-[70px] top-0 w-full  bg-black-80 px-[120px] py-[25px]  tablet:px-[40px] tablet:py-[20px] z-dropdown border border-b-black-40">
       <div className="w-full  flex items-center justify-between mobile:relative">
         <div
           className="mobile:absolute mobile:left-[50%] mobile:translate-x-[-50%] mobile:translate-y-[50%]"
