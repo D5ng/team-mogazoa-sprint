@@ -14,7 +14,7 @@ export default function ProductCardSection({
 }: ProductCardSectionProps) {
   return (
     <section>
-      <div className=" flex justify-between mb-[30px] text-[24px] tablet:text-[20px] mobile:text-[16px] text-white">
+      <div className=" flex justify-between mb-[20px] mt-[15px] tablet:mt-0 text-[24px] tablet:text-[20px] mobile:text-[16px] text-white">
         {renderTitle}
         {showCategory && <CategoryDropDown />}
       </div>
