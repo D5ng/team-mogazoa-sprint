@@ -37,7 +37,7 @@ const GnbProductSearchInput = forwardRef<
   return (
     <div
       ref={ref}
-      className={`relative ${searchVisible ? '' : 'mobile:hidden'} mobile:absolute mobile:left-1/2 mobile:top-1/2 mobile:translate-x-[-50%] mobile:translate-y-[120%]`}
+      className={`relative ${searchVisible ? '' : 'mobile:hidden'} mobile:absolute mobile:left-1/2  mobile:translate-x-[-50%] mobile:translate-y-[40%]`}
     >
       <input
         onClick={onOpenToggle}
