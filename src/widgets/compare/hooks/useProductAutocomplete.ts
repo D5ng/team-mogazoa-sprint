@@ -3,6 +3,7 @@ import { useFetchProductSearch } from '@/src/shared/hooks'
 import { useCompareStore } from '@app/provider/compareStore'
 import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 import { useProductStore } from '@/src/shared/store/productStore'
+import { useRouter } from 'next/router'
 
 export default function useProductAutocomplete(
   id: string,
@@ -16,6 +17,7 @@ export default function useProductAutocomplete(
   const [suggestions, setSuggestions] = useState<{ [key: string]: string[] }>(
     {},
   )
+  const router = useRouter()
 
   const { updateInputValue } = useSearchProduct()
 
@@ -26,6 +28,7 @@ export default function useProductAutocomplete(
     onCloseToggle && onCloseToggle()
     setSelectedProducts(id, name)
     updateInputValue(name)
+    router.push(`/?product=${name}`)
   }
 
   const handleInputChange = (value: string) => {

@@ -53,17 +53,15 @@ const GnbProductSearchInput = forwardRef<
           className="absolute z-modal bg-black-70 border border-black-40 mt-1 w-full rounded-lg"
         >
           {suggestions.map((name, index) => (
-            <Link href={`/?product=${name}`}>
-              <li
-                key={index}
-                className={`p-2 cursor-pointer text-black-30 hover:bg-gray-70 hover:text-white ${
-                  highlightedIndex === index ? 'bg-gray-70 text-white' : ''
-                }`}
-                onClick={() => handleClickList(name)}
-              >
-                {name}
-              </li>
-            </Link>
+            <li
+              key={index}
+              className={`p-2 cursor-pointer text-black-30 hover:bg-gray-70 hover:text-white ${
+                highlightedIndex === index ? 'bg-gray-70 text-white' : ''
+              }`}
+              onClick={() => handleClickList(name)}
+            >
+              {name}
+            </li>
           ))}
         </ul>
       )}

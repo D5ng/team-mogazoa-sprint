@@ -21,9 +21,6 @@ export default function handleListByKeyboard({
         )
       } else if (e.key === 'Enter' && highlightedIndex >= 0) {
         handleClickList(suggestions[highlightedIndex])
-        if (router.pathname !== '/') {
-          router.push('/')
-        }
       }
     }
   }
