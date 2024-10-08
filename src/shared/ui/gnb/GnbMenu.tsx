@@ -14,7 +14,7 @@ export default function GnbMenu({ cookie }: any) {
     <>
       {isSigned ? (
         <div
-          className={` flex gap-[40px] mobile:gap-[20px] mobile:flex-col  mobile:text-center justify-center shrink-0`}
+          className={` flex gap-[40px] mobile:gap-[20px] mobile:flex-col  mobile:text-center justify-center`}
         >
           <Link
             href={`${!productId ? '/compare' : `/compare?id=${productId}`}`}
@@ -29,7 +29,7 @@ export default function GnbMenu({ cookie }: any) {
         </div>
       ) : (
         <div
-          className={`flex gap-[40px] mobile:gap-[20px] mobile:flex-col  mobile:text-center justify-center shrink-0`}
+          className={`flex gap-[40px] mobile:gap-[20px] mobile:flex-col  mobile:text-center justify-center `}
         >
           <Link className={`${MENU_DEFAULT_STYLE}`} href="/auth/sign-in">
             로그인
