@@ -2,6 +2,7 @@ import { useProductStore } from '@/src/shared/store/productStore'
 import { ProductCardSectionSkeleton } from '@/src/shared/ui/product-card/ProductCardSkeleton'
 import { CategoryMenu } from '@/src/widgets/product/product-home/components/category-menu'
 import ProductSearched from '@/src/widgets/product/product-home/components/product-searched'
+import { RankingSkeleton } from '@/src/widgets/product/product-home/components/ranking/RankingItemSkeleton'
 import { ProductWrapper } from '@/src/widgets/profile/components'
 import {
   ProductHot,
@@ -28,9 +29,11 @@ export default function ProductPage() {
         <div className="mobile:hidden">
           <CategoryMenu />
         </div>
-        <div className="w-[46vw] tablet:w-[68vw] ml-[24.5vw] tablet:ml-[220px] mobile:w-[89vw] mobile:ml-[30px] flex flex-col gap-[80px] tablet:gap-[60px] overflow-hidden">
-          <Ranking />
-          {inputValue || selectedCategoryKey ? (
+        <div className="w-[46vw] tablet:w-[68vw] ml-[24.5vw] tablet:ml-[220px] mobile:w-[89vw] mobile:ml-[3.9vw] flex flex-col gap-[80px] tablet:gap-[60px] overflow-hidden">
+          <Suspense fallback={<RankingSkeleton />}>
+            <Ranking />
+          </Suspense>
+          {inputValue ? (
             <Suspense fallback={<ProductCardSectionSkeleton count={6} />}>
               <ProductSearched />
             </Suspense>

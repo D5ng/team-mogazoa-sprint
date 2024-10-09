@@ -30,10 +30,10 @@ export function useFetchProductsRating() {
   })
 }
 
-export function useFetchProductSearch(keyword: string) {
+export function useFetchProductSearch(keyword: string, category?: number) {
   return useQuery({
     queryKey: productKeys.productsBySearch(keyword),
-    queryFn: () => fetchProducts({ keyword: keyword }),
+    queryFn: () => fetchProducts({ keyword: keyword, category: category }),
     enabled: !!keyword,
   })
 }

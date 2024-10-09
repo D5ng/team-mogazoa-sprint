@@ -3,6 +3,8 @@ import { useFetchProductSearch } from '@/src/shared/hooks'
 import { useCompareStore } from '@app/provider/compareStore'
 import useSearchProduct from '@/src/shared/hooks/useSearchProduct'
 import { useProductStore } from '@/src/shared/store/productStore'
+import { useRouter } from 'next/router'
+import useFetchProductsByQuery from '@/src/shared/hooks/query/product.query'
 
 export default function useProductAutocomplete(
   id: string,
@@ -16,16 +18,21 @@ export default function useProductAutocomplete(
   const [suggestions, setSuggestions] = useState<{ [key: string]: string[] }>(
     {},
   )
+  const router = useRouter()
 
-  const { updateInputValue } = useSearchProduct()
+  const { updateInputValue, selectedCategoryKey } = useSearchProduct()
 
-  const { data } = useFetchProductSearch(valueTest)
+  const { data } = useFetchProductSearch(valueTest, selectedCategoryKey)
+  const { data: compareData } = useFetchProductSearch(selectedProduct)
 
   const handleClickList = (name: string) => {
     setInputValues(id, name)
     onCloseToggle && onCloseToggle()
     setSelectedProducts(id, name)
     updateInputValue(name)
+    if (router.pathname !== '/compare') {
+      router.push(`/?product=${name}`)
+    }
   }
 
   const handleInputChange = (value: string) => {
@@ -52,6 +59,7 @@ export default function useProductAutocomplete(
     handleClickList,
     handleInputChange,
     data,
+    compareData,
     selectedProduct,
     deleteSelectedProduct,
     setSelectedProducts,

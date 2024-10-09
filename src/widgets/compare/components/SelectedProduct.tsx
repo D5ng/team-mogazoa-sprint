@@ -24,7 +24,7 @@ export default function SelectedProduct({
     <div className={`input-base ${mobile} p-[13px] w-full`}>
       <div
         onClick={handleClickTag}
-        className={`flex  justify-between rounded-lg w-2/3 tablet:w-4/5 bg-opacity-20 ${TAG_STYLE} text-[12px] p-[8px] cursor-pointer`}
+        className={`flex  w-full justify-between rounded-lg  tablet:w-4/5 bg-opacity-20 ${TAG_STYLE} text-[12px] p-[8px] cursor-pointer`}
       >
         {children}
         <Image src={close} width={10} height={8} alt="클로즈" />

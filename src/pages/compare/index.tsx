@@ -4,21 +4,19 @@ import useProductAutocomplete from '@widgets/compare/hooks/useProductAutocomplet
 import { Button } from '@shared/ui'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { useParams } from 'next/navigation'
-import {
-  useFetchProductDetail,
-  useFetchProductSearch,
-} from '@/src/shared/hooks'
+import { useFetchProductDetail } from '@/src/shared/hooks'
 
 export default function ComparePage() {
   const [viewCompareSheet, setViewCompareSheet] = useState(false)
-  const { data: product1Data, selectedProduct: product1 } =
+  const { compareData: value1, selectedProduct: product1 } =
     useProductAutocomplete('상품1')
-  const { selectedProduct: product2 } = useProductAutocomplete('상품2')
+  const { compareData: value2, selectedProduct: product2 } =
+    useProductAutocomplete('상품2')
   const isDisabled = !product1 || !product2
   const router = useRouter()
   const { id } = router.query
   const { data } = useFetchProductDetail(Number(id))
+  console.log(value1)
 
   return (
     <div className="flex flex-col items-center h-[78vh] mt-[200px] mobile:pr-[20px] overflow-hidden">
