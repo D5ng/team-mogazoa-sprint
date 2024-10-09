@@ -4,7 +4,7 @@ interface SkeletonProps {
 
 export function ProductCardSectionSkeleton({ count }: SkeletonProps) {
   return (
-    <ul className="grid grid-cols-3 tablet:grid-cols-2 shrink-0 gap-[20px]">
+    <ul className="grid grid-cols-3 tablet:grid-cols-2  gap-[20px]">
       {Array.from({ length: count }).map((_, index) => (
         <ProductCardSkeletonItem key={index} />
       ))}

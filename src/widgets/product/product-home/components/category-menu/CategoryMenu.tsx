@@ -13,7 +13,7 @@ const CategoryMenu = ({ menuVisible }: CategoryMenuProps) => {
 
   return (
     <article
-      className={`fixed max-h-[calc(100vh-100px)] overflow-y-auto top-[100px]  mobile:mt-[50px]  shrink-0 left-[9vw]  tablet:left-[20px] ${menuVisible ? '' : 'mobile:hidden'} mobile:w-2/5 mobile:left-0 mobile:bg-black-50 mobile:z-dropdown none-scrollbar`}
+      className={`fixed max-h-[calc(100vh-100px)] overflow-y-auto top-[100px] mt-[20px] mobile:mt-[50px]  left-[9vw]  tablet:left-[20px] ${menuVisible ? '' : 'mobile:hidden'} mobile:w-2/5 mobile:left-0 mobile:bg-black-50 mobile:z-dropdown none-scrollbar`}
     >
       <p className="text-[16px] tablet:text-[14px] mobile:mt-[20px] ml-[20px] text-white mb-[10px]">
         카테고리

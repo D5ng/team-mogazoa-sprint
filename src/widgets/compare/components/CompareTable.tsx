@@ -15,7 +15,7 @@ export default function CompareTable({
 
   return (
     <div className="w-[60vw] tablet:w-[80vw] mobile:w-[90vw] border border-black-40 rounded-lg overflow-hidden">
-      <table className="w-full table-fixed text-center">
+      <table className="w-full table-fixed text-center mobile:text-[12px]">
         <thead className="bg-black-50 text-black-30">
           <tr>
             <th className="px-[45px] py-[20px] mobile:px-[15px] mobile:py-[10px]">
