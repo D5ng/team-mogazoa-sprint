@@ -16,7 +16,6 @@ export default function ComparePage() {
   const router = useRouter()
   const { id } = router.query
   const { data } = useFetchProductDetail(Number(id))
-  console.log(value1)
 
   return (
     <div className="flex flex-col items-center h-[78vh] mt-[200px] mobile:pr-[20px] overflow-hidden">
