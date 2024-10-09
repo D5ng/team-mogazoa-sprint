@@ -1,12 +1,12 @@
+import { useFetchProductSearch } from '@/src/shared/hooks'
 import useProductAutocomplete from '../hooks/useProductAutocomplete'
 import compareProducts from '../utils/compareProducts'
 import CompareTable from './CompareTable'
 
 export default function CompareSheet() {
-  const { data: data1 } = useProductAutocomplete('상품1')
-  const { data: data2 } = useProductAutocomplete('상품2')
-  console.log(data1)
-  console.log(data2)
+  const { compareData: data1 } = useProductAutocomplete('상품1')
+  const { compareData: data2 } = useProductAutocomplete('상품2')
+
   if (!data1 || !data2) return
   const product1 = {
     name: data1.list[0].name,

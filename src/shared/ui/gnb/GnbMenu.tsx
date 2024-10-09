@@ -1,4 +1,5 @@
 import useAuthStore from '@app/provider/authStore'
+import { getCookie } from 'cookies-next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 

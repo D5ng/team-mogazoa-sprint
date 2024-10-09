@@ -23,13 +23,16 @@ export default function useProductAutocomplete(
   const { updateInputValue, selectedCategoryKey } = useSearchProduct()
 
   const { data } = useFetchProductSearch(valueTest, selectedCategoryKey)
+  const { data: compareData } = useFetchProductSearch(selectedProduct)
 
   const handleClickList = (name: string) => {
     setInputValues(id, name)
     onCloseToggle && onCloseToggle()
     setSelectedProducts(id, name)
     updateInputValue(name)
-    router.push(`/?product=${name}`)
+    if (router.pathname !== '/compare') {
+      router.push(`/?product=${name}`)
+    }
   }
 
   const handleInputChange = (value: string) => {
@@ -56,6 +59,7 @@ export default function useProductAutocomplete(
     handleClickList,
     handleInputChange,
     data,
+    compareData,
     selectedProduct,
     deleteSelectedProduct,
     setSelectedProducts,
