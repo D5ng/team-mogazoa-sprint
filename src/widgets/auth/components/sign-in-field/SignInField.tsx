@@ -16,7 +16,7 @@ export default function SignInField() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty, isSubmitting },
+    formState: { errors, isValid },
     setError,
   } = useForm<SignIn>({
     mode: 'onTouched',
@@ -27,7 +27,7 @@ export default function SignInField() {
     },
   })
 
-  const { mutate } = useSignIn(setError)
+  const { mutate, isPending } = useSignIn(setError)
 
   const onSubmit: SubmitHandler<SignIn> = (data) => {
     mutate(data)
@@ -51,8 +51,8 @@ export default function SignInField() {
       <Button
         variant="primary"
         type="submit"
-        disabled={!(isValid && isDirty)}
-        isLoading={isSubmitting}
+        disabled={!isValid}
+        isLoading={isPending}
       >
         로그인
       </Button>
