@@ -14,8 +14,7 @@ import { useRouter } from 'next/router'
 import { Suspense, useEffect } from 'react'
 
 export default function ProductPage() {
-  const { inputValue, selectedCategoryKey, handleInputValue } =
-    useProductStore()
+  const { inputValue, handleInputValue } = useProductStore()
   const router = useRouter()
   const { product } = router.query
 
