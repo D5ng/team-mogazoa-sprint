@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import Ranking from './Ranking'
 
 const meta: Meta<typeof Ranking> = {
-  title: 'Components/RankingExample',
+  title: 'Components/Ranking',
   component: Ranking,
   decorators: [
     (Story) => (
