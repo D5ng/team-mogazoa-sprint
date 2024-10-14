@@ -20,7 +20,7 @@ export default function LikeButton({ isFavorite, productId }: LikeButtonProps) {
 
   return (
     <button
-      className="relative w-[28px] h-[28px] tablet:w-[24px] tablet:h-[24px]"
+      className="relative w-[28px] h-[28px] tablet:w-[24px] tablet:h-[24px] flex-shrink-0"
       onClick={handleFavoriteClick}
     >
       <Image src={isFavorite ? heart : emptyHeart} alt="좋아요" fill />

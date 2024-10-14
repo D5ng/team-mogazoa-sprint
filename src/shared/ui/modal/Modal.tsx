@@ -64,3 +64,7 @@ export function ModalExit() {
 export function ModalTitle({ children }: PropsWithChildren) {
   return <h2 className="text-2xl font-semibold tablet:text-xl">{children}</h2>
 }
+
+export function ModalDescription({ children }: PropsWithChildren) {
+  return <p className="my-5 tablet:text-sm">{children}</p>
+}
