@@ -21,7 +21,7 @@ export function Modal(props: ModalProps) {
     <ModalContext.Provider value={{ onCloseModal: props.onCloseModal }}>
       <div
         className={twMerge(
-          'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl tablet:w-[590px] mobile:w-[calc(100%-40px)] mobile:px-5',
+          'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[120] w-[620px] p-[40px] bg-black-80 text-white rounded-2xl tablet:w-[590px] mobile:w-[calc(100%-40px)] mobile:px-5 mobile:pt-10 mobile:pb-5',
           props.className,
         )}
       >
