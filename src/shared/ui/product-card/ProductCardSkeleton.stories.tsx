@@ -1,9 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { ProductCardSkeletonItem } from './ProductCardSkeleton'
 
-
 const SkeletonMeta: Meta<typeof ProductCardSkeletonItem> = {
-  title: 'UI/ProductCardItem/CardSkeleton',
+  title: 'UI/ProductCardItem',
   component: ProductCardSkeletonItem,
   decorators: [
     (Story) => (
