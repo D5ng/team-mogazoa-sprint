@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   cancelFavoriteProduct,
   createProduct,
+  deleteProduct,
   favoriteProduct,
   updateProduct,
 } from '@shared/api'
@@ -33,6 +34,21 @@ export function useUpdateProduct({ productId }: ProductId) {
       queryClient.invalidateQueries({
         queryKey: productKeys.detail(productId),
       }),
+  })
+}
+
+export function useDeleteProduct() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: deleteProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: productKeys.productsByRating,
+      })
+      queryClient.invalidateQueries({
+        queryKey: productKeys.productsByReview,
+      })
+    },
   })
 }
 

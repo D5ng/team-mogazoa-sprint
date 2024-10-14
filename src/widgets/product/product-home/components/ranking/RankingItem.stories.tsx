@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import RankingItem from './RankingItem'
 
 const meta: Meta<typeof RankingItem> = {
-  title: 'WIDGETS/Ranking/RankingItem',
+  title: 'Components/RankingItem',
   component: RankingItem,
   argTypes: {
     id: {
