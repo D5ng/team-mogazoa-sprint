@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import ProductHot from './ProductHot'
 
 const meta: Meta<typeof ProductHot> = {
-  title: 'Components',
+  title: 'Components/ProductList',
   component: ProductHot,
   decorators: [
     (Story) => (
