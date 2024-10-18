@@ -62,7 +62,7 @@ export default function ReviewCreateForm({
       </div>
       <Button
         variant="primary"
-        className="mt-10 mobile:mt-0"
+        className="mt-5 mobile:mt-0"
         isLoading={isPending}
         disabled={isPending || !isValid}
       >

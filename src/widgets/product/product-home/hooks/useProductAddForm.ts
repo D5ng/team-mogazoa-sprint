@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { isAxiosError } from 'axios'
 import { createProduct } from '@shared/api'
 import type { ProductPayload } from '@shared/types'
@@ -13,6 +14,7 @@ export default function useProductAddForm({
   onSuccess,
   onFailed,
 }: UseProductForm) {
+  const router = useRouter()
   const { mutateAsync, isPending } = useCreateProduct()
   const onSubmit = async (data: ProductPayload) => {
     if (!data.categoryId)

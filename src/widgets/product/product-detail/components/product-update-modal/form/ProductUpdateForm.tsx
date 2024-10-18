@@ -49,7 +49,7 @@ export default function ProductUpdateForm({
   return (
     <Form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-y-5 my-[40px] tablet:gap-y-[15px] mobile:gap-y-2.5 mobile:m-0 mobile:mt-5"
+      className="flex flex-col gap-y-5 mt-[40px] tablet:gap-y-[15px] mobile:gap-y-2.5 mobile:m-0 mobile:mt-5"
     >
       <div className="flex items-center gap-x-5 tablet:gap-x-[15px] mobile:flex-col-reverse mobile:items-start mobile:gap-y-2.5">
         <div className="flex flex-col gap-y-5 tablet:gap-y-[15px] mobile:w-full mobile:gap-y-2.5">
