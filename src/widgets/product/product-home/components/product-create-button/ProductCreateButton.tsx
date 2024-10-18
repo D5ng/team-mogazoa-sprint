@@ -6,7 +6,7 @@ import { ProductCreateModal } from '@widgets/product/product-home/components'
 import { Categories } from '@shared/ui'
 
 interface ProductCreateButtonProps {
-  category: Categories
+  category?: Categories
 }
 
 export default function ProductCreateButton({
@@ -27,7 +27,7 @@ export default function ProductCreateButton({
       {isToggle && (
         <ProductCreateModal
           onCloseToggle={onCloseToggle}
-          categoryId={category.id}
+          categoryId={category?.id}
         />
       )}
     </>
