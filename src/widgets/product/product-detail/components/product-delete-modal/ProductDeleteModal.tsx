@@ -1,6 +1,7 @@
 import { useDeleteProduct } from '@shared/hooks'
 import { Button, Modal, ModalDescription, ModalTitle } from '@shared/ui'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 export interface ProductDeleteModalProps {
   onCloseToggle: () => void
@@ -16,6 +17,7 @@ export function ProductDeleteModal({
   const onDelete = async () => {
     await mutateAsync({ productId })
     router.back()
+    toast.error('상품이 삭제되었습니다.')
   }
 
   return (
