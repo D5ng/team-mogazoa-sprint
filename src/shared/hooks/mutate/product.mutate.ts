@@ -15,12 +15,16 @@ export function useCreateProduct() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: createProduct,
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({
         queryKey: productKeys.productsByRating,
       })
       queryClient.invalidateQueries({
         queryKey: productKeys.productsByReview,
+      })
+
+      queryClient.invalidateQueries({
+        queryKey: productKeys.productsByCategory(data.categoryId),
       })
     },
   })
