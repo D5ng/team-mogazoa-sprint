@@ -3,10 +3,16 @@ import { add } from '@shared/icons'
 import { useToggle } from '@shared/hooks'
 import { toastCheckAuth } from '@shared/utils'
 import { ProductCreateModal } from '@widgets/product/product-home/components'
+import { Categories } from '@shared/ui'
 
-export default function ProductCreateButton() {
+interface ProductCreateButtonProps {
+  category: Categories
+}
+
+export default function ProductCreateButton({
+  category,
+}: ProductCreateButtonProps) {
   const { isToggle, onOpenToggle, onCloseToggle } = useToggle()
-
   const handleOpenModal = () => toastCheckAuth() && onOpenToggle()
 
   return (
@@ -18,7 +24,12 @@ export default function ProductCreateButton() {
       >
         <Image src={add} alt="제품 추가하기" width={40} height={40} />
       </button>
-      {isToggle && <ProductCreateModal onCloseToggle={onCloseToggle} />}
+      {isToggle && (
+        <ProductCreateModal
+          onCloseToggle={onCloseToggle}
+          categoryId={category.id}
+        />
+      )}
     </>
   )
 }
