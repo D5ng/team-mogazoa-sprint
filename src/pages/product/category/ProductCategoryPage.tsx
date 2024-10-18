@@ -36,7 +36,7 @@ export default function ProductCategoryPage({
           </ProductCardSection>
         </div>
       </div>
-      <ProductCreateButton />
+      <ProductCreateButton category={category} />
     </>
   )
 }
