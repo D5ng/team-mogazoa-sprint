@@ -2,6 +2,7 @@ import { isAxiosError } from 'axios'
 import { updateProduct } from '@shared/api'
 import type { ProductPayload } from '@shared/types'
 import { useUpdateProduct } from '@shared/hooks'
+import { toast } from 'react-toastify'
 
 interface UseProductForm {
   productId: number
@@ -29,6 +30,7 @@ export default function useUpdateProductForm({
         image: data.image,
       })
       onSuccess()
+      toast.success('상품이 수정되었습니다.')
     } catch (error) {
       if (isAxiosError(error) && error.response) {
         const field = Object.keys(
