@@ -25,7 +25,7 @@ export default async function handler(
       setAuthUser('auth', result, { req, res })
       res.redirect('/')
     } catch (error) {
-      res.send(error)
+      res.redirect('/auth/fail')
     }
   } catch (error) {
     res.status(500).json('failed to sign up')

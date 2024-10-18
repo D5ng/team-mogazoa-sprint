@@ -5,7 +5,7 @@
 
 - 개발 기간: 2024.09.09 - 2024.09.29
 - 프로젝트 배포 주소: https://wdj-mogazoa.vercel.app/
-- 스토리북 배포 주소: https://66f6dab61d3f9b08b3e8e893-cvinockmrn.chromatic.com
+- 스토리북 배포 주소: https://66f6dab61d3f9b08b3e8e893-cxnqpkjclh.chromatic.com
 
 ## Teams
 
@@ -68,7 +68,7 @@
 - 페이지: 로그인, 회원가입, 구글 로그인, 내 프로필, 유저 프로필
 - 공통 컴포넌트: 전반적인 Input(업로드, 자동완성 등)
 
-### 박우혁
+#### 박우혁
 - 페이지: 메인, 비교하기
 - 공통 컴포넌트: 사이드 메뉴, 랭킹
 
