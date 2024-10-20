@@ -33,7 +33,7 @@ export const CATEGORY_CHIPS = [
   },
   {
     id: 9,
-    name: '의류/악세서리',
+    name: '의류/잡화',
   },
   {
     id: 10,
@@ -50,6 +50,6 @@ export const CATEGORY_COLOR_VARIANTS = {
   식당: 'bg-[#FF7E461A] text-[#F75532]',
   전자기기: 'bg-[#23B5811A] text-[#23B581]',
   화장품: 'bg-[#FD529A1A] text-[#FD529A]',
-  '의류/악세서리': 'bg-[#757AFF1A] text-[#757AFF]',
+  '의류/잡화': 'bg-[#757AFF1A] text-[#757AFF]',
   앱: 'bg-[#3098E31A] text-[#3098E3]',
 }
