@@ -14,6 +14,7 @@ interface DropdownProps {
   title: string
   variant?: DropdownVariantType
   onClick?: () => void
+  dataArray: readonly any[]
 }
 
 function DropdownStoryComponent({
@@ -63,6 +64,9 @@ const meta: Meta<typeof DropdownStoryComponent> = {
       description:
         'DropdownMenuItem에 클릭 이벤트를 사용해 내부의 상태를 참조할 수 있습니다.',
     },
+    dataArray: {
+      description: '렌더링 할 배열 데이터',
+    },
   },
   component: DropdownStoryComponent,
 }
@@ -72,12 +76,13 @@ export const DropdownExample: Story = {
   args: {
     title: '카테고리 선택',
     variant: 'border',
+    dataArray: CATEGORY_CHIPS,
   },
-  render: ({ variant, title, onClick }) => (
+  render: ({ variant, title, onClick, dataArray }) => (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
-        {CATEGORY_CHIPS.map((menu) => (
+        {dataArray.map((menu) => (
           <DropdownMenuItem key={menu.id} onClick={onClick}>
             {menu.name}
           </DropdownMenuItem>
@@ -92,12 +97,13 @@ export const DropdownBorderType: Story = {
   args: {
     title: '카테고리 선택',
     variant: 'border',
+    dataArray: CATEGORY_CHIPS,
   },
-  render: ({ variant, title, onClick }) => (
+  render: ({ variant, title, onClick, dataArray }) => (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
-        {CATEGORY_CHIPS.map((menu) => (
+        {dataArray.map((menu) => (
           <DropdownMenuItem key={menu.id} onClick={onClick}>
             {menu.name}
           </DropdownMenuItem>
@@ -112,12 +118,13 @@ export const DropdownBorderNoneType: Story = {
   args: {
     title: SORT_DROPDOWN_TYPE[0],
     variant: 'none',
+    dataArray: SORT_DROPDOWN_TYPE,
   },
-  render: ({ variant, title, onClick }) => (
+  render: ({ variant, title, onClick, dataArray }) => (
     <Dropdown variant={variant}>
       <DropdownTrigger>{title}</DropdownTrigger>
       <DropdownMenu>
-        {SORT_DROPDOWN_TYPE.map((menu) => (
+        {dataArray.map((menu) => (
           <DropdownMenuItem key={menu} onClick={onClick}>
             {menu}
           </DropdownMenuItem>
