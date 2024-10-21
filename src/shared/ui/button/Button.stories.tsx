@@ -33,9 +33,6 @@ const meta: Meta<typeof Button> = {
       },
     },
   },
-  args: {
-    style: { width: '400px' },
-  },
 }
 export default meta
 
@@ -49,9 +46,14 @@ export const ButtonExample: Story = {
     children: '회원가입',
     isLoading: false,
   },
-  render: () => (
-    <Button variant="primary" className="w-[250px]">
-      회원가입
+  render: ({ variant, children, isLoading, disabled }) => (
+    <Button
+      variant={variant}
+      className="w-[250px]"
+      isLoading={isLoading}
+      disabled={disabled}
+    >
+      {children || '텍스트 입력'}
     </Button>
   ),
 }
