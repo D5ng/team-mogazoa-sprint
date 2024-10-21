@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import CategoryChip from './CategoryChip'
-import type { CategoryName } from './CategoryChip.type'
+import type { Categories, CategoryName } from './CategoryChip.type'
 import { CATEGORY_CHIPS } from './CategoryChip.constants'
 
 type Story = StoryObj<typeof CategoryChip>
@@ -15,11 +15,13 @@ export const CategoryChipStory: Story = {
   argTypes: {
     name: {
       options: CATEGORY_CHIPS.map((chip) => chip.name),
+      control: { type: 'radio' },
     },
   },
   args: {
     name: CATEGORY_CHIPS[0].name,
   },
+  render: ({ name }: { name: string }) => <CategoryChip name={name} />,
 }
 
 export const CategoryVariants: Story = {
